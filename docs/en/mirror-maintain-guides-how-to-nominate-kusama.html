@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Be a Nominator (Kusama) · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Nominators are participants in the staking system that are responsible for electing good validators"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Be a Nominator (Kusama) · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://guide.kusama.network/"/><meta property="og:description" content="Nominators are participants in the staking system that are responsible for electing good validators"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/en/kusama-index" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/zh-CN/mirror-maintain-guides-how-to-nominate-kusama">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>What to Try</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Kusama<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/kusama-index">Home</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Get Started</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/kusama-faucet">Faucet</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-claims">Claims</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-endpoints">Kusama Endpoints</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Try</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/mirror-maintain-guides-how-to-validate-kusama">Validator Guide</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/en/mirror-maintain-guides-how-to-nominate-kusama">Nominator Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-governance">Governance</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-identity">Identity</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-treasury">Treasury</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-build-build-with-polkadot">Polkadot Builders Starter&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/maintain-guides-society-kusama">Join Kappa Sigma Mu</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Break</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/mirror-maintain-errors">Resolving Errors</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-bug-bounty">Bug Bounty</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-adverserial-cheatsheet">Adverserial Cheatsheet</a></li></ul></div><li class="navListItem"><a class="navItem" href="/docs/en/kusama-timeline">Timeline</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-community">Community</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-time-periods">Parameters</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-coc">Code of Conduct</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/mirror-maintain-guides-how-to-nominate-kusama.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Be a Nominator (Kusama)</h1></header><article><div><span><p>Nominators are participants in the staking system that are responsible for electing good validators
+for a share in those validators' rewards.</p>
+<p>While <a href="maintain-guides-how-to-validate-kusama">validators</a> operate as active participants by taking part in the block production and
+finality voting mechanisms, nominators take more of a &quot;set-it-and-forget-it&quot; approach. Being a
+nominator does not require running a node of your own or worrying about online uptime. However, a
+good nominator performs diligence on the validators that it elects. When looking for validators to
+nominate, a nominator should pay attention to its own reward percentage for nominating a specific
+validator - as well as the risk that it bares of being slashed if the validator gets slashed.</p>
+<h1><a class="anchor" aria-hidden="true" id="setting-up-stash-and-controller-keys"></a><a href="#setting-up-stash-and-controller-keys" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setting up Stash and Controller keys</h1>
+<p>Nominators are recommended to set up two separate stash and controller accounts. Explanation and
+reasoning for generating distinct accounts for this purpose is elaborated in the <a href="learn-keys#controller-and-stash-keys">keys</a> section of
+the Wiki.</p>
+<p>You can generate your stash and controller account via any of the recommended methods that are
+detailed on the <a href="learn-account-generation">account generation</a> page.</p>
+<h1><a class="anchor" aria-hidden="true" id="using-polkadot-ui"></a><a href="#using-polkadot-ui" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using Polkadot UI</h1>
+<h3><a class="anchor" aria-hidden="true" id="step-1-bond-your-tokens"></a><a href="#step-1-bond-your-tokens" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 1: Bond your tokens</h3>
+<p>On the <a href="https://polkadot.js.org/apps">Polkadot UI</a> navigate to the &quot;Staking&quot; tab. The &quot;Staking
+Overview&quot; subsection will show you all the active validators and their information - their
+identities, the amount of KSM that are staking for them, amount that is their own provided stake,
+how much they charge in commission, the era points they've earned in the current era, and the last
+block number that they produced. If you click on the chart button it will take you to the &quot;Validator
+Stats&quot; page for that validator that shows you more detailed and historical information about the
+validator's stake, rewards and slashes.</p>
+<p>The &quot;Account actions&quot; subsection (<a href="https://polkadot.js.org/apps/#/staking/actions">link</a>) allows you
+to stake and nominate.</p>
+<p>The &quot;Payouts&quot; subsection (<a href="https://polkadot.js.org/apps/#/staking/payouts">link</a>) allows you to
+claim rewards from staking.</p>
+<p>The &quot;Targets&quot; subsection (<a href="https://polkadot.js.org/apps/#/staking/targets">link</a>) will help you
+estimate your earnings and this is where it's good to start picking favorites.</p>
+<p>The &quot;Waiting&quot; subsection (<a href="https://polkadot.js.org/apps/#/staking/waiting">link</a>) lists all pending
+validators that are awaiting more nominations to enter the active validator set. Validators will
+stay in the waiting queue until they have enough KSM backing them (as allocated through the
+<a href="https://wiki.polkadot.network/docs/en/learn-phragmen">Phragmen election mechanism</a>). It is possible
+validator can remain in the queue for a very long time if they never get enough backing.</p>
+<p>The &quot;Validator Stat's subsection (<a href="https://polkadot.js.org/apps/#/staking/query">link</a>) allows you
+to query a validator's stash address and see historical charts on era points, elected stake,
+rewards, and slashes.</p>
+<p>Pick &quot;Account actions&quot;, then click the grey &quot;+ Nominator&quot; button.</p>
+<p>You will see a modal window that looks like the below:</p>
+<p><img src="/docs/assets/nominator-update-1.png" alt="nominator-update-1"></p>
+<p>Select a &quot;value bonded&quot; that is <strong>less</strong> than the total amount of KSM you have, so you have some
+left over to pay transaction fees. Transaction fees are currently at least 0.01 KSM, but they are
+dynamic based on a variety of factors including the load of recent blocks.</p>
+<p>Also be mindful of the reaping threshold - the amount that must remain in an account lest it be
+burned. That amount is 0.01 in Kusama, so it's recommended to keep at least 0.1 KSM in your account
+to be on the safe side.</p>
+<p>Choose whatever payment destination sounds good to you. If you're unsure, you can choose &quot;Stash
+account (increase amount at stake)&quot;.</p>
+<h3><a class="anchor" aria-hidden="true" id="step-2-nominate-a-validator"></a><a href="#step-2-nominate-a-validator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 2: Nominate a validator</h3>
+<p>You are now bonded. Being bonded means your tokens are locked and could be
+<a href="learn-staking#slashing">slashed</a> if the validators you nominate misbehave. All bonded funds can now
+be distributed to up to 16 validators. Be careful about the validators you choose since you will be
+slashed if your validator commits an offence.</p>
+<p>Click on &quot;Nominate&quot; on an account you've bonded and you will be presented with another popup asking
+you to select some validators.</p>
+<p><img src="/img/NPoS/nominate.png" alt="Nominating validators"></p>
+<p>Select them, confirm the transaction, and you're done - you are now nominating. Your nominations
+will become active in the next era. Eras last six hours on Kusama - depending on when you do this,
+your nominations may become active almost immediately, or you may have to wait almost the entire six
+hours before your nominations are active. You can check how far along Kusama is in the current era
+on the <a href="https://polkadot.js.org/apps/#/staking">Staking page</a>.</p>
+<p>Assuming at least one of your nominations ends up in the active validator set, you will start to get
+rewards allocated to you. In order to claim them (i.e., add them to your account), you must manually
+claim them. See the <a href="learn-staking#claiming-rewards">Claiming Rewards</a> section of the Staking wiki
+page for more details.</p>
+<h3><a class="anchor" aria-hidden="true" id="step-3-stop-nominating"></a><a href="#step-3-stop-nominating" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 3: Stop nominating</h3>
+<p>At some point, you might decide to stop nominating one or more validators. You can always change who
+you're nominating, but you cannot withdraw your tokens unless you unbond them. Detailed instructions
+are available <a href="maintain-guides-how-to-unbond">here</a>.</p>
+<h1><a class="anchor" aria-hidden="true" id="using-command-line-interface-cli"></a><a href="#using-command-line-interface-cli" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using Command-Line Interface (CLI)</h1>
+<p>Apart from using the PolkadotJS UI to participate in the staking, you can do all these things in CLI
+instead. The CLI approach allows you to interact with the Polkadot / Kusama network without going to
+the PolkadoJS dashboard.</p>
+<h3><a class="anchor" aria-hidden="true" id="step-1-install-polkadotapi-cli"></a><a href="#step-1-install-polkadotapi-cli" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 1: Install @polkadot/api-cli</h3>
+<p>We assume you have installed <a href="https://nodejs.org">NodeJS with npm</a>. Run the following command to
+install the <code>@polkadot/api-cli</code> globally:</p>
+<pre><code class="hljs css language-bash">npm install -g @polkadot/api-cli
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="step-2-bond-your-ksm"></a><a href="#step-2-bond-your-ksm" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 2. Bond your KSM</h3>
+<p>Executing the following command:</p>
+<pre><code class="hljs css language-bash">polkadot-js-api --seed <span class="hljs-string">"MNEMONIC_PHRASE"</span> tx.staking.bond CONTROLLER_ADDRESS NUMBER_OF_TOKENS REWARD_DESTINATION --ws WEBSOCKET_ENDPOINT
+</code></pre>
+<p><code>CONTROLLER_ADDRESS</code>: An address you would like to bond to the stash account. Stash and Controller
+can be the same address but it is not recommended since it defeats the security of the two-account
+staking model.</p>
+<p><code>NUMBER_OF_TOKENS</code>: The number of KSM / DOT you would like to stake to the network. <strong>Note</strong>: KSM
+has twelve decimal places and is always represented as an integer with zeroes at the end. So 1 KSM =
+1,000,000,000,000 units.</p>
+<p><code>REWARD_DESTINATION</code>:</p>
+<ul>
+<li><code>Staked</code> - Pay into the stash account, increasing the amount at stake accordingly.</li>
+<li><code>Stash</code> - Pay into the stash account, not increasing the amount at stake.</li>
+<li><code>Controller</code> - Pay into the controller account.</li>
+</ul>
+<p>Example:</p>
+<pre><code class="hljs css language-bash">polkadot-js-api --seed <span class="hljs-string">"xxxx xxxxx xxxx xxxxx"</span> tx.staking.bond DMTHrNcmA8QbqRS4rBq8LXn8ipyczFoNMb1X4cY2WD9tdBX 1000000000000 Staked --ws wss://kusama-rpc.polkadot.io/
+</code></pre>
+<p>Result:</p>
+<pre><code class="hljs css language-bash">...
+...
+    <span class="hljs-string">"status"</span>: {
+      <span class="hljs-string">"InBlock"</span>: <span class="hljs-string">"0x0ed1ec0ba69564e8f98958d69f826adef895b5617366a32a3aa384290e98514e"</span>
+    }
+</code></pre>
+<p>You can check the transaction status by using the value of the <code>InBlock</code> in
+<a href="https://polkascan.io/pre/kusama">Polkascan</a>. Also, you can verify the bonding state under the
+<a href="https://polkadot.js.org/apps/#/staking/actions">Staking</a> page on the PolkadotJS Apps Dashboard.</p>
+<h3><a class="anchor" aria-hidden="true" id="step-3-nominate-a-validator"></a><a href="#step-3-nominate-a-validator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 3. Nominate a validator</h3>
+<p>To nominate a validator, you can execute the following command:</p>
+<pre><code class="hljs css language-bash">polkadot-js-api --seed <span class="hljs-string">"MNEMONIC_PHRASE"</span> tx.staking.nominate <span class="hljs-string">'["VALIDATOR_ADDRESS"]'</span> --ws WS_ENDPOINT
+</code></pre>
+<pre><code class="hljs css language-bash">polkadot-js-api --seed <span class="hljs-string">"xxxx xxxxx xxxx xxxxx"</span> tx.staking.nominate <span class="hljs-string">'["CmD9vaMYoiKe7HiFnfkftwvhKbxN9bhyjcDrfFRGbifJEG8","E457XaKbj2yTB2URy8N4UuzmyuFRkcdxYs67UvSgVr7HyFb"]'</span> --ws wss://kusama-rpc.polkadot.io/
+</code></pre>
+<p>After a few seconds, you should see the hash of the transaction and if you would like to verify the
+nomination status, you can check that on the PolkadotJS UI as well.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 4/14/2020 by Anson Lau</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/mirror-maintain-guides-how-to-validate-kusama"><span class="arrow-prev">← </span><span>Validator Guide</span></a><a class="docs-next button" href="/docs/en/mirror-learn-governance"><span>Governance</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

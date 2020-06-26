@@ -1,0 +1,256 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Treasury · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Details about Polkadot&#x27;s on-chain treasury."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Treasury · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://guide.kusama.network/"/><meta property="og:description" content="Details about Polkadot&#x27;s on-chain treasury."/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/en/kusama-index" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/zh-CN/mirror-learn-treasury">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>What to Try</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Kusama<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/kusama-index">Home</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Get Started</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/kusama-faucet">Faucet</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-claims">Claims</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-endpoints">Kusama Endpoints</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Try</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/mirror-maintain-guides-how-to-validate-kusama">Validator Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-maintain-guides-how-to-nominate-kusama">Nominator Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-governance">Governance</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-identity">Identity</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/en/mirror-learn-treasury">Treasury</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-build-build-with-polkadot">Polkadot Builders Starter&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/maintain-guides-society-kusama">Join Kappa Sigma Mu</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Break</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/mirror-maintain-errors">Resolving Errors</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-bug-bounty">Bug Bounty</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-adverserial-cheatsheet">Adverserial Cheatsheet</a></li></ul></div><li class="navListItem"><a class="navItem" href="/docs/en/kusama-timeline">Timeline</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-community">Community</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-time-periods">Parameters</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-coc">Code of Conduct</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/mirror-learn-treasury.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Treasury</h1></header><article><div><span><p>The treasury is a pot of funds collected through transaction fees, slashing,
+<a href="learn-staking#inflation">staking inefficiencies</a>, etc. The funds held in the treasury can be spent
+by making a spending proposal that, if approved by the council, will enter a waiting period before
+distribution. This waiting period is known as the budget period, and its duration is subject to
+<a href="learn-governance">governance</a>, with current defaults set to 24 days for Polkadot mainnet, and 6
+days for Kusama. The treasury attempts to spend as many proposals in the queue as it can without
+running out of funds. If the treasury ends a budget period without spending all of its funds, it
+suffers a burn of a percentage of its funds -- thereby causing deflationary pressure. This
+percentage is currently at 0%.</p>
+<p>When a stakeholder wishes to propose a spend from the treasury, they must reserve a deposit totaling
+5% of the proposed spend (see below for variations). This deposit will be slashed if the proposal is
+rejected, and returned if the proposal was accepted.</p>
+<p>Proposals may consist of (but are not limited to):</p>
+<ul>
+<li>Infrastructure deployment and continued operation.</li>
+<li>Network security operations (monitoring services, continuous auditing).</li>
+<li>Ecosystem provisions (collaborations with friendly chains).</li>
+<li>Marketing activities (advertising, paid features, collaborations).</li>
+<li>Community events and outreach (meetups, pizza parties, hackerspaces).</li>
+<li>Software development (wallets and wallet integration, clients and client upgrades).</li>
+</ul>
+<p>The treasury is ultimately controlled by the council, and how the funds will be spent is up to their
+judgment.</p>
+<h2><a class="anchor" aria-hidden="true" id="funding-the-treasury"></a><a href="#funding-the-treasury" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Funding the Treasury</h2>
+<p>The Treasury is funded from different sources:</p>
+<ol>
+<li>Slashing: When a validator is slashed for any reason, the slashed amount is sent to the Treasury
+with a reward going to the entity that reported the validator (another validator or fisherman).
+The reward is taken from the slash amount and varies per offence and number of reporters.</li>
+<li>Transaction fees: A portion of each block's transaction fees goes to the Treasury, with the
+remainder going to the block author.</li>
+<li>Staking inefficiency: <a href="learn-staking#inflation">Inflation</a> is designed to be 10% in the first
+year, and the ideal staking ratio is set at 50%, meaning half of all tokens should be locked in
+staking. Any deviation from this ratio will cause a proportional amount of the inflation to go to
+the Treasury. In other words, if 50% of all tokens are staked, then 100% of the inflation goes to
+the validators as reward. If the staking rate is greater than or less than 50%, then the
+validators will receive less, with the remainder going to the Treasury.</li>
+<li>Parathreads: <a href="learn-parathreads">Parathreads</a> participate in a per-block auction for block
+inclusion. Part of this bid goes to the validator that accepts the block and the remainder goes
+to the Treasury.</li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="creating-a-treasury-proposal"></a><a href="#creating-a-treasury-proposal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating a Treasury Proposal</h2>
+<p>The proposer has to deposit 5% of the requested amount or 20 KSM (whichever is higher) as an
+anti-spam measure. This amount is burned if the proposal is rejected, or refunded otherwise. These
+values are subject to <a href="learn-governance">governance</a> so they may change in the future.</p>
+<h3><a class="anchor" aria-hidden="true" id="announcing-the-proposal"></a><a href="#announcing-the-proposal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Announcing the Proposal</h3>
+<p>To minimize storage on chain, proposals don't contain contextual information. When a user submits a
+proposal, they will probably need to find an off-chain way to explain the proposal. Most discussion
+takes place on the following platforms:</p>
+<ul>
+<li>Many community members participate in discussion in the
+<a href="https://riot.w3f.tech/#/room/#kusama:matrix.parity.io">Kusama Riot</a> chat.</li>
+<li>The <a href="https://forum.kusama.network">Kusama forum</a> and
+<a href="https://forum.polkadot.network">Polkadot forum</a> can be used for proposal explanations on Kusama
+and Polkadot respectively.</li>
+<li>The <a href="https://github.com/kusamanetwork/KGPs">KGP (Kusama Governance Proposals)</a> repository is well
+suited for detailed issues about proposals on Kusama, with the added advantage of easy linkability
+across repositories and tagging team members.</li>
+<li><a href="https://commonwealth.im">Commonwealth.im</a> is a community site that allows users to log in with
+their KSM address and automatically reads proposals from the chain, turning them into discussion
+threads.</li>
+</ul>
+<p>Spreading the word about the proposal's explanation is ultimately up to the proposer - the
+recommended way is using official Riot channels like the
+<a href="https://riot.w3f.tech/#/room/#kusama:matrix.parity.io">Kusama Direction room</a> or the
+<a href="https://riot.w3f.tech/#/room/#kusamawatercooler:polkadot.builders">Kusama Watercooler</a>. For
+Polkadot, you may want to frequent the
+<a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="creating-the-proposal"></a><a href="#creating-the-proposal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating the Proposal</h3>
+<p>One way to create the proposal is to use the Polkadot JS Apps
+<a href="https://polkadot.js.org/apps">website</a>. From the website, use either the
+<a href="https://polkadot.js.org/apps/#/extrinsics">extrinsics tab</a> and select the Treasury pallet, then
+<code>proposeSpend</code> and enter the desired amount and recipient, or use the
+<a href="https://polkadot.js.org/apps/#/treasury">Treasury tab</a> and its dedicated Submit Proposal button:</p>
+<p><img src="/img/treasury/propose.jpg" alt="An example of a proposal being created"></p>
+<p>The system will automatically take the required deposit, picking the higher of the following two
+values: 20 KSM or 5% of the requested amount.</p>
+<p>Once created, your proposal will become visible in the Treasury screen and the council can start
+voting on it.</p>
+<p><img src="/img/treasury/proposal.jpg" alt="A pending proposal"></p>
+<p>Remember that the proposal has no metadata, so it's up to the proposer to create a description and
+purpose that the council could study and base their votes on.</p>
+<p>At this point, a Council member can turn this proposal into a motion to accept, or a motion to
+reject. It is possible (but unlikely) that a motion for both acceptance and rejection is created.
+After being turned into a council motion, the proposal needs 51% of the council to approve it to
+pass, or 51% to reject it to fail. If majority is not reached, the proposal remains in limbo -
+neither accepted nor rejected until more council members weigh in.</p>
+<p><img src="/img/treasury/motion.jpg" alt="Motion in action"></p>
+<h2><a class="anchor" aria-hidden="true" id="tipping"></a><a href="#tipping" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tipping</h2>
+<p>Next to the proposals process, a separate system for making tips exists for the treasury. Tips can
+be suggested by anyone and are supported by members of the council. Tips do not have any definite
+value, the final value of the tip is decided based on the median of all tips issued by the tippers.</p>
+<p>Currently on Kusama, the tippers are the same as the members of the council. However, being a tipper
+is not direct responsibility of the council, and at some point the council and the tippers may be
+different groups of accounts.</p>
+<p>To better understand the process a tip goes through until it is paid out, let's consider an example.</p>
+<h3><a class="anchor" aria-hidden="true" id="example"></a><a href="#example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h3>
+<p>Bob has done something great for Kusama. Alice has noticed this and decides to report Bob as
+deserving a tip from the treasury. The council is composed of three members Charlie, Dave, and Eve.</p>
+<p>Alice begins the process by issuing the <code>report_awesome</code> extrinsic. This extrinsic requires two
+arguments, a reason and the address to tip. Alice submits Bob's address with the reason being a
+UTF-8 encoded URL to post on <a href="https://kusama.polkassembly.io">polkassembly</a> that explains her
+reasoning for why Bob is deserving.</p>
+<p>Alice must also lock up a deposit for making this report. The deposit is the base deposit as set in
+the chain's parameter list plus the additional deposit per byte contained in the reason. This is why
+Alice submitted a URL as the reason instead of the explanation directly, it was cheaper for her to
+do so.</p>
+<p>For her trouble, Alice is able to claim the eventual finder's fee if the tip is approved by the
+tippers.</p>
+<p>Since the tipper group is the same as the council on Kusama, the council must now collectively (but
+also independently) decide on the value of the tip that Bob deserves.</p>
+<p>Charlie, Dave, and Eve all review the report and make tips according to their personal valuation of
+the benefit Bob has provided to Kusama.</p>
+<p>Charlie tips 100 KSM. Dave tips 300 KSM. Eve tips 1000 KSM.</p>
+<p>The tip could have been closed out with only two of the three tippers. Once more than half of the
+tippers group have issued tip valuations the countdown to close the tip will begin. In this case,
+the third tipper issued their tip before the end of the closing period, so all three were able to
+make their tip valuations known.</p>
+<p>Now the actual tip that will be paid out to Bob is the median of these tips, so Bob will be paid out
+300 KSM from the treasury.</p>
+<p>In order for Bob to be paid his tip, some account must call the <code>close_tip</code> extrinsic at the end of
+the closing period for the tip. This extrinsic may be called by anyone.</p>
+<h2><a class="anchor" aria-hidden="true" id="faq"></a><a href="#faq" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>FAQ</h2>
+<h3><a class="anchor" aria-hidden="true" id="what-prevents-the-treasury-from-being-captured-by-a-majority-of-the-council"></a><a href="#what-prevents-the-treasury-from-being-captured-by-a-majority-of-the-council" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What prevents the treasury from being captured by a majority of the council?</h3>
+<p>The majority of the council can decide the outcome of a treasury spend proposal. In an adversarial
+mindset, we may consider the possibility that the council may at some point go rogue and attempt to
+steal all of the treasury funds. It is a possibility that the treasury pot becomes so great, that a
+large financial incentive would present itself.</p>
+<p>For one, the treasury has deflationary pressure due to the burn that is suffered every spend period.
+The burn aims to incentivize the complete spend of all treasury funds at every burn period, so
+ideally the treasury pot doesn't have time to accumulate mass amounts of wealth. However, it is the
+case that the burn on the treasury could be so little that it does not matter - as is the case
+currently on Kusama. On Kusama, the treasury burn is currently set to 0, meaning that no funds are
+burned.</p>
+<p>However, it is the case on Kusama that the council is composed of mainly well-known members of the
+community. Remember, the council is voted in by the token holders, so they must do some campaigning
+or otherwise be recognized to earn votes. In the scenario of an attack, the council members would
+lose their social credibility. Furthermore, members of the council are usually externally motivated
+by the proper operation of the chain. This external motivation is either because they run businesses
+that depend on the chain, or they have direct financial gain (through their holdings) of the token
+value remaining steady.</p>
+<p>Concretely there are a couple on-chain methods that resist this kind of attack. One, the council
+majority may not be the token majority of the chain. This means that the token majority could vote
+to replace the council if they attempted this attack - or even reverse the treasury spend. They
+would do this through a normal referendum. Two, there are time delays to treasury spends. They are
+only enacted every spend period. This means that there will be some time to observe this attack is
+taking place. The time delay then allows chain participants time to respond. The response may take
+the form of governance measures or - in the most extreme cases a liquidation of their holdings and a
+migration to a minority fork. However, the possibility of this scenario is quite low.</p>
+<h2><a class="anchor" aria-hidden="true" id="further-reading"></a><a href="#further-reading" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Further Reading</h2>
+<ul>
+<li><a href="https://github.com/paritytech/substrate/blob/master/frame/treasury/src/lib.rs">Substrate's Treasury Pallet</a> -
+The Rust implementation of the treasury.
+(<a href="https://substrate.dev/rustdocs/master/pallet_treasury/index.html">Docs</a>)</li>
+<li><a href="https://medium.com/@gavofyork/kusama-rollout-and-governance-31eb18041044">Gavin Wood's Kusama Rollout Plan</a> -
+Details the treasury in its first live environment on the Kusama network.</li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2/15/2020 by Bruno Škvorc</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/mirror-learn-identity"><span class="arrow-prev">← </span><span>Identity</span></a><a class="docs-next button" href="/docs/en/mirror-build-build-with-polkadot"><span>Polkadot Builders Starter&#x27;s Guide</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#funding-the-treasury">Funding the Treasury</a></li><li><a href="#creating-a-treasury-proposal">Creating a Treasury Proposal</a><ul class="toc-headings"><li><a href="#announcing-the-proposal">Announcing the Proposal</a></li><li><a href="#creating-the-proposal">Creating the Proposal</a></li></ul></li><li><a href="#tipping">Tipping</a><ul class="toc-headings"><li><a href="#example">Example</a></li></ul></li><li><a href="#faq">FAQ</a><ul class="toc-headings"><li><a href="#what-prevents-the-treasury-from-being-captured-by-a-majority-of-the-council">What prevents the treasury from being captured by a majority of the council?</a></li></ul></li><li><a href="#further-reading">Further Reading</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>
