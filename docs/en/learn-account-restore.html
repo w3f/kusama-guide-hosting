@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Backing up and Restoring Accounts · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Step-by-step guides on backing up and restoring a Polkadot account."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Backing up and Restoring Accounts · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://guide.kusama.network/"/><meta property="og:description" content="Step-by-step guides on backing up and restoring a Polkadot account."/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/kusama-index" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/zh-CN/learn-account-restore">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-account-restore.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Backing up and Restoring Accounts</h1></header><article><div><span><p>In the case that your Polkadot account needs to backed up and later restored, there are simple ways
+to take care of this in Polkadot.js Browser Plugin, Polkadot.js, and Parity Signer. Note that in
+order to recover an account, it is necessary that an account is created according to the
+instructions <a href="learn-account-generation">here</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="polkadotjs-browser-plugin"></a><a href="#polkadotjs-browser-plugin" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Polkadot.js Browser Plugin</h2>
+<p>For using the Polkadot.js browser plugin, restoring an account is simple. Let's start off by heading
+over to the extension and selecting the desired account to restore. Click on the three dots beside
+the address to open up a settings tab.</p>
+<p><img src="/docs/assets/accounts/polkadot.js_list_accounts.png" alt="list-accounts-plugin"></p>
+<p>From here, we will be selecting the Export Account button, which will then ask you for the password
+for that specific account. Once you enter the password, the browser will automatically download a
+<code>.json</code> file that will hold all the account restoration details that will be used when you restore
+your account. This part is <em>very important</em>.</p>
+<p><img src="/docs/assets/accounts/polkadot.js_enter_password.png" alt="enter-password-plugin"></p>
+<p>Now, onto restoring the account. In Polkadot.js browser plugin, let's click on the + button at the
+top. This will open up a tab with many choices listed, select &quot;Restore account from backup JSON
+file&quot;. This will then prompt you for the <code>.json</code> file which was download earlier and the password
+for that account.</p>
+<p><img src="/docs/assets/accounts/polkadot.js_restore_account.png" alt="restore-account-plugin"></p>
+<p>Once these are filled out, and the &quot;Restore&quot; button has been pressed, you'll be taken back to the
+main page of the plugin. There listed will be your restored account!</p>
+<h2><a class="anchor" aria-hidden="true" id="polkadotjs"></a><a href="#polkadotjs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Polkadot.js</h2>
+<p>If you're using the main Polkadot.js UI, restoring an account will feel similar to restoring an
+account on Polkadot.js browser plugin. The first step is to head over to the chosen account and
+click on the three dots beside it. This will open up a tab with lots of options. For backing up the
+account we'll restore later, press on &quot;Create a backup file for this account&quot;.</p>
+<p><img src="/docs/assets/accounts/polkadot_click_restore.png" alt="click-account-restore-polkadot"></p>
+<p>From there, a pop up screen will appear, prompting for the password of that account. By entering
+your password and clicking on &quot;Download&quot;, your browser will download the <code>.json</code> file associated
+with the Polkadot account. This <code>.json</code> file holds all relevant data about the account to be used in
+account restoration.</p>
+<p><img src="/docs/assets/accounts/polkadot_enter_password.png" alt="enter-account-password-polkadot"></p>
+<p>Now that's completed, it's time to restore the account. On the Polkadot accounts page, click on the
+&quot;Restore JSON&quot; button, which will let you upload your <code>.json</code> file that you downloaded and enter
+your password for that account.</p>
+<p><img src="/docs/assets/accounts/polkadot_restore_account.png" alt="restore-account-polkadot"></p>
+<p>Once you've pressed the &quot;Restore&quot; button, you should see a green notification letting you know that
+your account has been restored. That's it!</p>
+<p><img src="/docs/assets/accounts/polkadot_restore_complete.png" alt="restore-complete-polkadot"></p>
+<h2><a class="anchor" aria-hidden="true" id="parity-signer"></a><a href="#parity-signer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parity Signer</h2>
+<p>To back up an account we'll restore below in Parity Signer, open the app and click on the user
+profile icon in the top right hand corner.</p>
+<p><img src="/docs/assets/accounts/parity_select_profile.jpeg" alt="click-profile-parity"></p>
+<p>From here, we want to choose &quot;Show Recovery Phase&quot;, which will be the next step in restoring an
+account.</p>
+<p><img src="/docs/assets/accounts/parity_click_restore.jpg" alt="click-restore-parity"></p>
+<p>The next step will require you to enter your PIN that was created with your account on Parity
+Signer. Once this has been added, you'll have access to your Mnemonic Recovery phrase for your
+account.</p>
+<p><img src="/docs/assets/accounts/parity_enter_password.jpg" alt="enter-pin-parity">
+<img src="/docs/assets/accounts/parity_recovery_phrase.jpg" alt="recovery-phrase-parity"></p>
+<p>Now, it's time to restore the account. Open up the Polkadot.js on your browser, and navigate to &quot;Add
+Account&quot;. Though this may seem counter-intuitive, we aren't actually adding in an account here,
+rather we are restoring the account using its mnemonic recovery phrase. It is very important here to
+put in the mnemonic recovery phrase from your Parity Signer account.</p>
+<p>Note that you can change the name and password if desired.</p>
+<p><img src="/docs/assets/accounts/parity_restoring_account.jpg" alt="restoring-account-parity"></p>
+<p>Once you hit save, click on &quot;Create and backup account&quot;, which will download a <code>.json</code> file that
+contains all the relevant data for that account. At this point, we have successfully saved the
+Parity Signer account onto Polkadot js and downloaded the account data, now we have restored the
+account.</p>
+<p><img src="/docs/assets/accounts/parity_save_recovery.png" alt="save-backup-parity"></p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/26/2020 by Kirsten Richard</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#polkadotjs-browser-plugin">Polkadot.js Browser Plugin</a></li><li><a href="#polkadotjs">Polkadot.js</a></li><li><a href="#parity-signer">Parity Signer</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>
