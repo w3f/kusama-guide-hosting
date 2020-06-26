@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Parachains · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="![One parachain](/kusama-guide-hosting/docs/assets/network/one_parachain.png)"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Parachains · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="![One parachain](/kusama-guide-hosting/docs/assets/network/one_parachain.png)"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/learn-parachains.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-parachains.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Parachains</h1></header><article><div><span><p><img src="/kusama-guide-hosting/docs/assets/network/one_parachain.png" alt="One parachain"></p>
+<h2><a class="anchor" aria-hidden="true" id="what-is-a-parachain"></a><a href="#what-is-a-parachain" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is a parachain?</h2>
+<p>A parachain is an application-specific data structure that is globally coherent and validatable by
+the validators of the Polkadot Relay Chain. Most commonly a parachain will take the form of a
+blockchain, but there is no specific need for them to be actual blockchains. They take their name
+from the concept of parallelized chains that run parallel to the Relay Chain. Due to their parallel
+nature, they are able to parallelize transaction processing and achieve scalability of the Polkadot
+system. They <a href="learn-security">share in the security</a> of the entire Polkadot network and can
+communicate with other parachains through <a href="learn-crosschain">XCMP</a>.</p>
+<p>Parachains are maintained by a network maintainer known as a <a href="maintain-collator">collator</a>. The role
+of the collator node is to maintain a full-node of the parachain, retain all necessary information
+of the parachain, and produce new block candidates to pass to the Relay Chain validators for
+verification and inclusion in the shared state of Polkadot. The incentivization of a collator node
+is an implementation detail of the parachain (see <a href="#parachain-economies">parachain economies</a>). They
+are not required to be staked on the Relay Chain or own DOT tokens unless stipulated to do so by the
+parachain implementation.</p>
+<p>The Polkadot Host (PH) allows for the state transitions performed on parachains to be specified as a
+Wasm executable. Proofs of new state transitions that occur on a parachain must be validated against
+the registered state transition function (STF) that is stored on the Relay Chain by the validators
+before Polkadot acknowledges a state transition has occurred on a parachain. The only constraint to
+the logic that a parachain is allowed to implement is that it must be verifiable by the Relay Chain
+validators. Verification most commonly takes the form of a bundled proof of a state transition known
+as a Proof-of-Verification (PoV) block, which is submitted to the validators from one or more of the
+parachain collators to be checked.</p>
+<h2><a class="anchor" aria-hidden="true" id="parachain-economies"></a><a href="#parachain-economies" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parachain economies</h2>
+<p>Parachains may have their own economies with their own native tokens. Schemes such as Proof-of-Stake
+are usually used to select the validator set in order to handle validation and finalization;
+parachains will not be required to do either of those things. However, since Polkadot is general
+over what the parachain can implement, it may be the choice of the parachain to implement a staking
+token, but it's not generally necessary.</p>
+<p>Collators may be incentivized through inflation of a native parachain token. There may be other ways
+to incentivize the collator nodes that do not involve inflating the native parachain token.</p>
+<p>Transaction fees in a native parachain token can also be an implementation choice of parachains.
+Polkadot makes no hard and fast rules for how the parachains decide on original validity of
+transactions. For example, a parachain may be implemented so that transactions must pay a minimum
+fee to collators to be valid. The Relay Chain will enforce this validity. Similarly, a parachain
+could not include that in their implementation and Polkadot would still enforce its validity.</p>
+<p>Parachains are not required to have their own token. If they do, is up to the parachain to make the
+economic case for their token, not Polkadot.</p>
+<h2><a class="anchor" aria-hidden="true" id="crowdfunding-parachains"></a><a href="#crowdfunding-parachains" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Crowdfunding parachains</h2>
+<p>Polkadot allows for parachains to crowdfund their slots in a decentralized and safe way. The logic
+for this is handled in the <a href="https://github.com/paritytech/polkadot/blob/master/runtime/common/src/crowdfund.rs">crowdfunding pallet</a>.</p>
+<p>During a parachain auction, anyone can create a new crowdfunding campaign for a parachain slot. When
+a campaign is created, the range of slots (i.e. the duration of the lease) is specified. Up to four
+slots, for a total time duration of roughly two years, can be selected. The creator of the crowdfund
+becomes the owner of the campaign, and can later upload the parachain's code. When creating a
+campaign, a crowdfunding &quot;cap&quot; is also specified. The crowdfund will refuse to accept funds after
+the cap has been reached.</p>
+<p>Parachain campaigns may use caps when they are confident they will raise enough funds to reach the
+minimum amount needed for a raise but do not want to raise too much over this amount. As a
+simplified example, let's consider that the total supply of DOTs is 10 million. We can assume that 5
+million DOTs are bonded in the staking subsystem since that is what is optimized by the rewards. We
+are left with a maximum of 5 million DOTs to use in parachain auctions. If there were only 4 slots
+up for an auction then we can calculate that 1.25 million is enough to win any one of them. A
+parachain might choose to place this as their cap, so that no single parachain can be
+oversubscribed.</p>
+<p>Once a crowdfunding campaign is open, anyone can contribute by sending a special transaction and
+depositing funds. Funds that are used to contribute must be transferrable (that is, not locked)
+because they will be moved into a module controlled account that was generated uniquely for this
+campaign.</p>
+<p>During some point of the crowdfund campaign the owner will upload the parachain data. Ideally, the
+owner does this before soliciting contributions to the campaign so that the contributors can verify
+it. The data can only be uploaded once during the course of the campaign and it will be what is
+deployed for the parachain. Of course, once the parachain is running it can always change via
+runtime upgrades (as determined through its own local governance).</p>
+<p>If a crowdfunding campaign is successful, that parachain will be on-boarded as a parachain in
+Polkadot. The funds that contributed to it will be locked in that parachain's account for the entire
+duration that it is active (up to two years). On one hand, this means that the parachain can do
+reliable accounting of contributors and reward them with parachain tokens in their local economies.
+On the other hand, the DOTs that contributors used will be essentially taken out of circulation for
+that time and cannot be used to stake or vote.</p>
+<p>At the end of the parachain's lifecycle, it will enter into a retirement phase. During this phase,
+contributors can begin to withdraw their locked DOTs. Contributors must withdraw their funds during
+the retirement phase, otherwise they will be sent to the treasury when that parachain is dissolved.
+Likewise, any parachain that started a campaign but was unsuccessful at acquiring a slot will have a
+timeout during which contributors can withdraw their funds. If funds are not withdrawn during the
+timeout, they are dissolved to the treasury.</p>
+<h2><a class="anchor" aria-hidden="true" id="examples"></a><a href="#examples" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h2>
+<p>Some examples of parachains:</p>
+<ul>
+<li><strong>Encrypted Consortium Chains</strong> - These are possibly private chains that do not leak any
+information to the public, but still can be interacted with trustlessly due to the nature of the
+XCMP protocol.</li>
+<li><strong>High Frequency Chains</strong> - These are chains that can compute many transactions in a short amount
+of time by taking certain trade-offs or making optimizations.</li>
+<li><strong>Privacy Chains</strong> - These are chains that do not leak any information to the public through use
+of novel cryptography.</li>
+<li><strong>Smart Contract Chains</strong> - These are chains that can have additional logic implemented on them
+through the deployment of code known as <em>smart contracts</em>.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="faq"></a><a href="#faq" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>FAQ</h2>
+<h3><a class="anchor" aria-hidden="true" id="what-is-parachain-consensus"></a><a href="#what-is-parachain-consensus" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is &quot;parachain consensus&quot;?</h3>
+<p>&quot;Parachain consensus&quot; is special in that it will follow the Polkadot Relay Chain. Parachains cannot
+use other consensus algorithms that provide their own finality. Only sovereign chains (that must
+bridge to the Relay Chain via a parachain) can control their own consensus. Parachains have control
+over how blocks are authored and by whom.</p>
+<h3><a class="anchor" aria-hidden="true" id="how-will-parachain-slots-be-distributed"></a><a href="#how-will-parachain-slots-be-distributed" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How will parachain slots be distributed?</h3>
+<p>Parachain slots will be acquirable through auction, please see the <a href="learn-auction">parachain slots</a>
+article. Additionally, some parachain slots will be set aside to run
+<a href="learn-parathreads">parathreads</a> - parathreads that bid on a per-block basis to be included in the
+Relay Chain.</p>
+<h3><a class="anchor" aria-hidden="true" id="parachain-development-kits-pdks"></a><a href="#parachain-development-kits-pdks" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parachain Development Kits (PDKs)</h3>
+<p>Parachain Development Kits are a set of tools that enable developers to create their own
+applications as parachains. For more info see <a href="build-pdk">here</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="deploying-parachains"></a><a href="#deploying-parachains" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Deploying parachains</h3>
+<p>Please see the builder's article on <a href="build-deploy-parachains">deploying parachains</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="resources"></a><a href="#resources" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resources</h2>
+<ul>
+<li><a href="https://medium.com/polkadot-network/polkadot-the-parachain-3808040a769a">Polkadot: The Parachain</a> -
+Blog post by Polkadot co-founder Rob Habermeier that introduced parachains in 2017 as &quot;a simpler
+form of blockchain, which attaches to the security provided by a Relay Chain rather than providing
+its own. The Relay Chain provides security to attached parachains, but also provides a guarantee
+of secure message-passing between them.&quot;</li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/1/2020 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#what-is-a-parachain">What is a parachain?</a></li><li><a href="#parachain-economies">Parachain economies</a></li><li><a href="#crowdfunding-parachains">Crowdfunding parachains</a></li><li><a href="#examples">Examples</a></li><li><a href="#faq">FAQ</a><ul class="toc-headings"><li><a href="#what-is-parachain-consensus">What is &quot;parachain consensus&quot;?</a></li><li><a href="#how-will-parachain-slots-be-distributed">How will parachain slots be distributed?</a></li><li><a href="#parachain-development-kits-pdks">Parachain Development Kits (PDKs)</a></li><li><a href="#deploying-parachains">Deploying parachains</a></li></ul></li><li><a href="#resources">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

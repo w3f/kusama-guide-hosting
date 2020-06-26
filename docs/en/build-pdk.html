@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Parachain Development Kits (PDKs) · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Parachain development kits (PDKs) are a set of tools that make it easy for developers to create"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Parachain Development Kits (PDKs) · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="Parachain development kits (PDKs) are a set of tools that make it easy for developers to create"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/build-pdk.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/build-pdk.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Parachain Development Kits (PDKs)</h1></header><article><div><span><p>Parachain development kits (PDKs) are a set of tools that make it easy for developers to create
+Polkadot compatible <a href="learn-parachains">parachains</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="why-create-a-parachain"></a><a href="#why-create-a-parachain" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Why create a parachain?</h2>
+<p>Before diving into what a PDK is and how it would be used, let's revisit <em>why</em> a developer would
+want to create a parachain and connect it to Polkadot.</p>
+<p>A parachain has two major value adds that make it a desirable choice for a developer over creating a
+standalone chain:</p>
+<ul>
+<li><em>Shared security</em> - removes the necessity of bootstrapping a chain's own validator set.</li>
+<li><em>Cross-chain communication</em> - allows parachains to interoperate with each other through the XCMP
+protocol.</li>
+</ul>
+<p>Parachains can <a href="learn-security">lease the security</a> of the Polkadot network by bonding
+<a href="learn-DOT">DOTs</a> for a parachain slot. This means that the social costs of building a community
+around your project and convincing validators to participate in your network security are reduced.
+It is anticipated that Polkadot will have strong security, and decentralized application projects
+wishing to benefit from this security would want to become a parachain. For more information on the
+mechanic of leasing a parachain slot through a candle auction see <a href="learn-auction">here</a>.</p>
+<p>Any decentralized application or chain that wants to enable trustless messaging to other parachains
+already connected to Polkadot would want to become a parachain. Interoperability between sovereign
+chains involves certain constraints and complex protocols to enable across a wide breadth of chains.
+With Polkadot, you will get this feature out of the box if your build your application as a
+parachain. The <a href="learn-crosschain">XCMP protocol</a> will allow any parachains to interoperate by
+passing messages between them. Furthermore, as bridges to other chains are launched (such as those
+to Bitcoin or Ethereum) the parachains will be able to operate with these as well.</p>
+<h2><a class="anchor" aria-hidden="true" id="what-is-a-pdk"></a><a href="#what-is-a-pdk" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is a PDK?</h2>
+<p>As mentioned, a PDK is a set of tools that allows developers to easily create a parachain. In
+practice this means that the PDK will consist of a couple key components:</p>
+<ul>
+<li><em>State transition function</em> - a way for your application to move from one state to another state.</li>
+<li><em>Collator node</em> - a type of peer-to-peer node in the Polkadot network with certain
+responsibilities in regard to parachains.</li>
+</ul>
+<p>The state transition function (STF) can be any abstract way for an application to go from one state
+to another state. The only constraint that Polkadot places on this STF is that it must be easily
+verifiable -- usually though what we call a <em>witness</em> or <em>proof</em>. It must be so because the Relay
+Chain validators will need to check that each state it receives from the collator node is correct
+without actually running through the entire computation. Some examples of these proofs include the
+Proof-of-Validity blocks or zk-SNARKs, which require less computational resources to verify than
+they do to generate. The verification asymmetry in proof generation of the STF is one of the
+integral insights that allows Polkadot to scale while keeping high security guarantees.</p>
+<p>A collator node is one of the types of network maintainers in the Polkadot protocol. They are
+responsible for <strong>keeping availability</strong> of the state of the parachain and the new states returned
+from iteration of the state transition function. They must remain online in order to keep track of
+the state and also of the XCMP messages that it will route between itself and other parachains.
+Collator nodes are responsible for passing the succinct proofs to the Relay Chain validators, and
+tracking the latest blocks from the Relay Chain. In essence, a collator node also acts as a light
+client for the Polkadot Relay Chain. For more on collator nodes see <a href="maintain-collator">here</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="what-kind-of-pdks-exist"></a><a href="#what-kind-of-pdks-exist" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What kind of PDKs exist?</h2>
+<p>Currently the only PDK is Parity <a href="https://github.com/paritytech/substrate">Substrate</a> and
+<a href="https://github.com/paritytech/cumulus">Cumulus</a>. Substrate is a blockchain framework that provides
+the basic building blocks of a blockchain (things like the networking layer, consensus, a Wasm
+interpreter) and provides an intuitive way to construct your runtime. Substrate is made to ease the
+process of creating a new chain, but it does not provide support for Polkadot compatibility
+directly. For this reason, Cumulus, an added library will contain all of the Polkadot compatibility
+glue code. Cumulus is still in development, but the idea is that it should be simple to take a
+Substrate chain and add the parachain code by importing the crates and adding a single line of code.</p>
+<p>Substrate and Cumulus provide a PDK from the abstraction of the blockchain format, but it is not
+necessary that a parachain even needs to be a blockchain. For example, a parachain just needs to
+satisfy the two constraints listed above: <em>state transition function</em> and <em>collator node</em>.
+Everything else is up to the implementer of the PDK.</p>
+<p>One interesting idea for a PDK that would be nice to see is to have a
+<a href="https://ethresear.ch/t/roll-up-roll-back-snark-side-chain-17000-tps/3675">roll-up</a> kit that allowed
+developers to create snark-based parachains. If we review the roll-up write-up, we see that the
+system uses two roles: users that update <strong>state</strong> and an operator that <strong>aggregates the state
+updates</strong> into a single on-chain update. It should be straightforward to see how we can translate
+this to the parachain terms. The state transition function for a roll-up-like parachain would be
+updating the state (in practice, most likely a merkle tree, which would be easily verifiable) from
+the user inputs. The operator would act as the collator node, which would aggregate the state and
+create the zk-SNARK proof that it would hand to the Relay Chain validators for verification.</p>
+<h2><a class="anchor" aria-hidden="true" id="build-a-pdk"></a><a href="#build-a-pdk" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Build a PDK</h2>
+<p>If you or your team are interested in developing a PDK feel free to open an issue on the
+<a href="https://github.com/w3f/Web3-collaboration">W3F collaboration repository</a> for comment. There may be
+grants available for this type of work.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/1/2020 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#why-create-a-parachain">Why create a parachain?</a></li><li><a href="#what-is-a-pdk">What is a PDK?</a></li><li><a href="#what-kind-of-pdks-exist">What kind of PDKs exist?</a></li><li><a href="#build-a-pdk">Build a PDK</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

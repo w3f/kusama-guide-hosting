@@ -1,0 +1,212 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Polkadot Accounts · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="An explanation of accounts, indices, identity, and reaping"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Polkadot Accounts · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="An explanation of accounts, indices, identity, and reaping"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/learn-accounts.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-accounts.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Polkadot Accounts</h1></header><article><div><span><p>This document covers the basics of Polkadot and Kusama account addresses and how they exist
+on-chain. For a more in-depth explanation of the cryptography behind them, please see
+<a href="learn-cryptography">the cryptography page</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="address-format"></a><a href="#address-format" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Address Format</h2>
+<p>The address format used in Substrate-based chains is SS58. SS58 is a modification of Base-58-check
+from Bitcoin with some minor modifications. Notably, the format contains an <em>address type</em> prefix
+that identifies an address as belonging to a specific network.</p>
+<p>For example:</p>
+<ul>
+<li>Polkadot addresses always start with the number 1.</li>
+<li>Kusama addresses always start with a capital letter like C, D, F, G, H, J...</li>
+<li>Generic Substrate addresses start with 5.</li>
+</ul>
+<p>These prefixes are defined
+<a href="https://github.com/paritytech/substrate/wiki/External-Address-Format-(SS58)">here</a>.</p>
+<p>It's important to understand that the different formats for different networks are merely different
+representations of the same public key in a private-public keypair generated by an address
+generation tool (see next section). This makes the addresses cross-Substrate-chain-compatible as
+long as you convert the format.</p>
+<h3><a class="anchor" aria-hidden="true" id="for-the-curious-how-prefixes-work"></a><a href="#for-the-curious-how-prefixes-work" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>For the Curious: How Prefixes Work</h3>
+<p>The <a href="https://github.com/paritytech/substrate/wiki/External-Address-Format-(SS58)">SS58 document</a>
+states that:</p>
+<ul>
+<li>Polkadot has an address type of <code>00000000b</code>, so <code>0</code> in decimal.</li>
+<li>Kusama (Polkadot Canary) has an address type of <code>00000010b</code>, so <code>2</code> in decimal.</li>
+<li>Generic Substrate has <code>00101010b</code> as address type, which is <code>42</code> in decimal.</li>
+</ul>
+<p>Because Base58-check alphabet has no number 0, the lowest value is indeed 1. So <code>00000000b</code> is 1 in
+Base58-check. If we try to
+<a href="https://www.better-converter.com/Encoders-Decoders/Base58Check-to-Hexadecimal-Decoder">decode</a> a
+Polkadot address like <code>1FRMM8PEiWXYax7rpS6X4XZX1aAAxSWx1CrKTyrVYhV24fg</code>, the result is
+<code>000aff6865635ae11013a83835c019d44ec3f865145943f487ae82a8e7bed3a66b29d7</code>. The first byte is <code>00</code>,
+which is indeed <code>00000000</code> in binary and <code>0</code> in decimal and thus matches the address type of
+Polkadot.</p>
+<p>Let's take a look at Substrate addresses. If we decode
+<code>5CK8D1sKNwF473wbuBP6NuhQfPaWUetNsWUNAAzVwTfxqjfr</code>, we get
+<code>2a0aff6865635ae11013a83835c019d44ec3f865145943f487ae82a8e7bed3a66b77e5</code>. The first byte is <code>2a</code>
+which when
+<a href="https://www.rapidtables.com/convert/number/hex-to-decimal.html">converted from hex to decimal</a>
+is 42. 42 is <code>00101010</code> in binary, just as the SS58 document states.</p>
+<p>Finally, let's look at Kusama addresses. Decoding <code>CpjsLDC1JFyrhm3ftC9Gs4QoyrkHKhZKtK7YqGTRFtTafgp</code>
+gives us <code>020aff6865635ae11013a83835c019d44ec3f865145943f487ae82a8e7bed3a66b0985</code> with the first
+byte being <code>02</code>, just as specified. If we try a Kusama address that starts with a completely
+different letter, like <code>J4iggBtsWsb61RemU2TDWDXTNHqHNfBSAkGvVZBtn1AJV1a</code>, we still get <code>02</code> as the
+first byte: <code>02f2d606a67f58fa0b3ad2b556195a0ef905676efd4e3ec62f8fa1b8461355f1142509</code>. It seems
+counterintuitive that some addresses always have the same prefix and others like Kusama can vary
+wildly, but it's just a quirk of Base58-check encoding.</p>
+<h2><a class="anchor" aria-hidden="true" id="obtaining-and-managing-an-address"></a><a href="#obtaining-and-managing-an-address" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Obtaining and Managing an Address</h2>
+<p>The <strong>most user-friendly</strong> way to create a Kusama address is through the
+<a href="https://polkadot.js.org/apps/#/accounts">Polkadot JS UI</a>. Remember to back up the seed phrase used
+to generate your account - the accounts are stored only in your browser, so purging the cache will
+wipe your accounts as well. You would then have to recreate them using the seed phrase given to you
+by the UI - this will also restore all your previously held balances.</p>
+<p>A <strong>more convenient and recommended</strong> method of keeping the accounts stored on your computer is
+using the <a href="https://github.com/polkadot-js/extension">PolkadotJS extension</a>. This extension remembers
+your accounts and allows you to clear your browser cache without fear. Still, don't forget to back
+up your seed phrase - if you lose access to this computer, or the extension somehow crashes beyond
+repair, the phrase will come in handy.</p>
+<p>Please note that as this keeps your accounts in the browser, it is not a safe place to keep large
+holdings. By definition, a browser is a &quot;hot wallet&quot; and susceptible to a wide range of attacks, so
+keep your funds in cold storage when dealing with non-trivial amounts. Creating cold storage is as
+simple as securely stashing away the seed phrase for your accounts and removing all traces of the
+accounts from your computer.</p>
+<p>Other than the extension and the default UI, Polkadot and Kusama addresses can also be created with
+the <a href="https://github.com/paritytech/substrate/tree/master/bin/utils/subkey">Subkey tool</a>. Subkey is
+intended for users comfortable with using the command line and can seem intimidating, but is quite
+approachable. Follow the instructions in the
+<a href="https://substrate.dev/docs/en/knowledgebase/integrate/subkey">Subkey documentation</a>. When used
+properly, Subkey is the <strong>most secure</strong> available method of creating an account.</p>
+<p>There is also the very secure <a href="https://www.parity.io/signer/">Parity Signer</a> but it currently only
+supports Kusama addresses, not Polkadot or generic Substrate.</p>
+<p>Alternatively, you might find some wallets on the
+<a href="http://www.polkaproject.com/">Polkaproject.com page</a> but bear in mind that these are <strong>unaudited</strong>
+and not officially affiliated with Web3 Foundation or the Polkadot project unless otherwise stated.</p>
+<p>Hardware wallet integration from <a href="https://ledger.com">Ledger</a> is coming soon.</p>
+<h2><a class="anchor" aria-hidden="true" id="existential-deposit-and-reaping"></a><a href="#existential-deposit-and-reaping" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Existential Deposit and Reaping</h2>
+<p>When you generate an account (address), you only generate a <em>key</em> that lets you access it. The
+account does not exist yet on-chain. For that, it needs the existential deposit - 0.01 KSM / DOT.
+This deposit is paid by the account sending you tokens. The one &quot;creating&quot; you pays for your
+creation.</p>
+<p>Going below 0.01 causes an account to be <em>reaped</em>. Your account will be wiped from the blockchain's
+state to conserve space. You do not lose access to the reaped address - as long as you have your
+private key or recovery phrase, you can still use the address - but it needs a top-up of another
+existential deposit to be able to interact with the chain.</p>
+<p>Here's another way to think about existential deposits. Ever notice those <code>Thumbs.db</code> files on
+Windows or <code>.DS_Store</code> files on Mac? Those are junk, they serve no specific purpose other than
+making previews a bit faster. If a folder is completely empty save for such a file, you can remove
+the folder to clear junk off your hard drive. That does not mean you lose access to this folder
+forever - you can always recreate it. You have the <em>key</em>, after all - you're the computer's owner.
+It just means you want to keep your computer clean until you maybe end up needing this folder again,
+and then recreate it. Your address is like this folder - it gets removed from the chain when nothing
+is in it, but gets put back when it has at least the existential deposit.</p>
+<h2><a class="anchor" aria-hidden="true" id="indices"></a><a href="#indices" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Indices</h2>
+<p>A Kusama address can have an index. An index is like a short and easy to remember version of an
+address.</p>
+<p>Indices are populated in order. Think of them like slots going from 0 to any arbitrary number:</p>
+<p><code>[0][1][2][3][4][5][6]...</code></p>
+<p>If slots 0-2 are populated by addresses A, B and C respectively, and I add an existential deposit to
+address X, that address will automatically be put into slot 3. Henceforth, you can send me money by
+just sending to <code>[3]</code> rather than remembering my whole address.</p>
+<pre><code class="hljs css language-js">[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>][<span class="hljs-number">2</span>][<span class="hljs-number">3</span>][<span class="hljs-number">4</span>][<span class="hljs-number">5</span>][<span class="hljs-number">6</span>]...
+[A][B][C][X][ ][ ][ ]...
+</code></pre>
+<p>But what if an account gets reaped as explained above? In that case, the index is emptied. In other
+words, the slot frees up again. If someone creates a new account, they may end up using the same
+index another address was using before.</p>
+<p>Because of this unreliability of indices, they <strong>may not be present</strong> in Polkadot mainnet.</p>
+<h2><a class="anchor" aria-hidden="true" id="identities"></a><a href="#identities" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Identities</h2>
+<p>The <em>Identities</em> pallet built into Kusama allows users to attach on-chain metadata to their
+accounts. This metadata can be verified by independent registrars to provide trustworthiness. To
+learn more about how to set or release an identity, how to define sub-accounts, or how to become a
+registrar, please read <a href="learn-identity">this guide</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="proxy-accounts"></a><a href="#proxy-accounts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Proxy Accounts</h2>
+<p>Polkadot comes with a generalized proxy account system that allows users to keep keys in cold
+storage while proxies act on their behalf with restricted (or unrestricted) functionality. See the
+<a href="learn-proxies">proxies</a> page for more information.</p>
+<h2><a class="anchor" aria-hidden="true" id="multi-signature-accounts"></a><a href="#multi-signature-accounts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Multi-signature Accounts</h2>
+<p>It is possible to create a multi-signature account in Substrate-based chains. A multi-signature
+account is composed of one or more addresses and a threshold. The threshold defines how many
+signatories (participating addresses) need to agree on the submission of an extrinsic in order for
+the call to be successful.</p>
+<p>For example, Alice, Bob, and Charlie set up a multi-sig with a threshold of 2. This means Alice and
+Bob can execute any call even if Charlie disagrees with it. Likewise, Charlie and Bob can execute
+any call without Alice. A threshold is typically a number smaller than the total number of members
+but can also be equal to it, which means they all have to be in agreement.</p>
+<p>Multi-signature accounts have several uses:</p>
+<ul>
+<li>securing your own stash: use additional signatories as a 2FA mechanism to secure your funds. One
+signer can be on one computer, another can be on another, or in cold storage. This slows down your
+interactions with the chain, but is orders of magnitude more secure.</li>
+<li>board decisions: legal entities such as businesses and foundations use multi-sigs to collectively
+govern over the entity's treasury.</li>
+<li>group participation in governance: a multi-sig account can do everything a regular account can. A
+multi-sig account could be a council member in Kusama's governance, where a set of community
+members could vote as one entity.</li>
+</ul>
+<p>Multi-signature accounts <strong>cannot be modified after being created</strong>. Changing the set of members or
+altering the threshold is not possible and instead requires the dissolution of the current multi-sig
+and creation of a new one. As such, multi-sig account addresses are <strong>deterministic</strong>, i.e. you can
+always calculate the address of a multi-sig just by knowing the members and the threshold, without
+the account existing yet. This means one can send tokens to an address that does not exist yet, and
+if the entities designated as the recipients come together in a new multi-sig under a matching
+threshold, they will immediately have access to these tokens. Calculating the address of a multi-sig
+deterministically can be done in TypeScript like so:</p>
+<pre><code class="hljs css language-js">rawAddress(addresses: string[], <span class="hljs-attr">threshold</span>: number) {
+    <span class="hljs-keyword">const</span> addr = [...addresses]
+    addr.sort()
+    <span class="hljs-keyword">const</span> prefix = <span class="hljs-string">'modlpy/utilisuba'</span>
+    <span class="hljs-keyword">const</span> payload = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint8Array</span>(prefix.length + <span class="hljs-number">1</span> + <span class="hljs-number">32</span> * addresses.length + <span class="hljs-number">2</span>)
+    payload.set(<span class="hljs-built_in">Array</span>.from(prefix).map(<span class="hljs-function"><span class="hljs-params">c</span> =&gt;</span> c.charCodeAt(<span class="hljs-number">0</span>)), <span class="hljs-number">0</span>)
+    payload[prefix.length] = addresses.length &lt;&lt; <span class="hljs-number">2</span>;
+    addr.forEach(<span class="hljs-function">(<span class="hljs-params">addr, idx</span>) =&gt;</span> {
+        <span class="hljs-keyword">const</span> decoded = decodeAddress(addr);
+        payload.set(decoded, prefix.length + <span class="hljs-number">1</span> + idx * <span class="hljs-number">32</span>)
+    })
+    payload[prefix.length + <span class="hljs-number">1</span> + <span class="hljs-number">32</span> * addresses.length] = threshold
+
+    <span class="hljs-keyword">return</span> blake2AsU8a(payload)
+},
+address(addresses: string[], <span class="hljs-attr">threshold</span>: number, ss58prefix?: number) {
+    <span class="hljs-keyword">const</span> hashed = <span class="hljs-keyword">this</span>.rawAddress(addresses, threshold)
+    <span class="hljs-keyword">return</span> encodeAddress(hashed, ss58prefix)
+}
+
+<span class="hljs-keyword">const</span> multiSigAddress = address(addresses, <span class="hljs-number">2</span>);
+</code></pre>
+<p>The Polkadot JS Apps UI also supports multi-sig accounts, as documented in the
+<a href="learn-account-generation#multi-signature-accounts">Account Generation page</a>. This is easier than
+generating them manually.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/10/2020 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#address-format">Address Format</a><ul class="toc-headings"><li><a href="#for-the-curious-how-prefixes-work">For the Curious: How Prefixes Work</a></li></ul></li><li><a href="#obtaining-and-managing-an-address">Obtaining and Managing an Address</a></li><li><a href="#existential-deposit-and-reaping">Existential Deposit and Reaping</a></li><li><a href="#indices">Indices</a></li><li><a href="#identities">Identities</a></li><li><a href="#proxy-accounts">Proxy Accounts</a></li><li><a href="#multi-signature-accounts">Multi-signature Accounts</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

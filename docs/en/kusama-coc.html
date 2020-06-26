@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Kusama Code of Conduct · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Kusama is an entirely new network, it’s one big experiment and we need your participation for it to"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Kusama Code of Conduct · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="Kusama is an entirely new network, it’s one big experiment and we need your participation for it to"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/kusama-coc.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Kusama</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Kusama<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-index.html">Home</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Get Started</h4><ul><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-faucet.html">Faucet</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-claims.html">Claims</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-endpoints.html">Kusama Endpoints</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Try</h4><ul><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-maintain-guides-how-to-validate-kusama.html">Validator Guide</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-maintain-guides-how-to-nominate-kusama.html">Nominator Guide</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-learn-governance.html">Governance</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-learn-identity.html">Identity</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-learn-treasury.html">Treasury</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-build-build-with-polkadot.html">Polkadot Builders Starter&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/maintain-guides-society-kusama.html">Join Kappa Sigma Mu</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Break</h4><ul><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-maintain-errors.html">Resolving Errors</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-bug-bounty.html">Bug Bounty</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-adverserial-cheatsheet.html">Adverserial Cheatsheet</a></li></ul></div><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-timeline.html">Timeline</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-community.html">Community</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-time-periods.html">Parameters</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-coc.html">Code of Conduct</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/kusama-coc.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Kusama Code of Conduct</h1></header><article><div><span><p>Kusama is an entirely new network, it’s one big experiment and we need your participation for it to
+be a great success.</p>
+<p>A Kusama community member is expected to keep the utmost respect for others. We want to foster a
+sense of collaboration amongst ourselves and the open source community. Kusma participants exist to
+encourage the open exchange of ideas and expression and require an environment that recognizes the
+inherent worth of every person and group. We are here to collaborate, discuss, and even disagree.
+The key is doing this is a manner that comes from a place of respect and professionalism.
+Participants in the Kusama network may consist of participants in an online forum, on-chain
+governance participants, parachain deployment teams, validators, enthusiasts, and ecosystem tool
+builders. We expect for there to be participation from all backgrounds but like to set some social
+boundaries on how you may be treated and treat others.</p>
+<h2><a class="anchor" aria-hidden="true" id="kusama-community"></a><a href="#kusama-community" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kusama Community</h2>
+<p>Kusama community members come from across the globe and are not bordered by race, gender, or
+background. Community participants have read through the requisite resources and obtained sufficient
+knowledge about Kusama and all related content. This knowledge equips the community with the
+requisite information needed in the dispense of their duties as a participant.</p>
+<p>Please understand that this network is an experiment with potential flaws, so it’s appreciated that
+community members help report any sort of exploits directly to the team before sharing publicly.
+Please see the bug bounty.</p>
+<h2><a class="anchor" aria-hidden="true" id="examples-of-unacceptable-behavior"></a><a href="#examples-of-unacceptable-behavior" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples of Unacceptable Behavior</h2>
+<p>Please note: these are just a few examples and you can always consult a team member if you have any
+questions.</p>
+<p>Angry aggressive comments towards individuals or other projects on any medium of communication
+Knowingly distributing false information about Kusama or other projects Harassing other individuals
+or projects (trolling).</p>
+<h2><a class="anchor" aria-hidden="true" id="what-to-do-if-you-witness-or-are-subject-to-unacceptable-behavior"></a><a href="#what-to-do-if-you-witness-or-are-subject-to-unacceptable-behavior" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What To Do If You Witness or Are Subject To Unacceptable Behavior</h2>
+<p>If you are being harassed, notice that someone else is being harassed, or have any other concerns
+relating to harassment, please contact the administrator of the channel you’re in.</p>
+<p>This Code of Conduct may be revised at any time. We are always willing to revise this document based
+on feedback from the Kusama participants and or Polkadot community.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 5/4/2020 by joe petrowski</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/kusama-guide-hosting/docs/en/kusama-time-periods.html"><span class="arrow-prev">← </span><span>Parameters</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#kusama-community">Kusama Community</a></li><li><a href="#examples-of-unacceptable-behavior">Examples of Unacceptable Behavior</a></li><li><a href="#what-to-do-if-you-witness-or-are-subject-to-unacceptable-behavior">What To Do If You Witness or Are Subject To Unacceptable Behavior</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

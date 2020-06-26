@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Parathreads · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Parathreads are an idea for parachains to temporarily participate (on a block by block basis) in"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Parathreads · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="Parathreads are an idea for parachains to temporarily participate (on a block by block basis) in"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/learn-parathreads.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-parathreads.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Parathreads</h1></header><article><div><span><p>Parathreads are an idea for parachains to temporarily participate (on a block by block basis) in
+Polkadot security without needing to lease a dedicated parachain slot. This is done through
+economically sharing the scarce resource of a <em>parachain slot</em> among a number of competing resources
+(parathreads). Chains that otherwise would not be able to acquire a full parachain slot, or do not
+find it economically sensible to do so, are enabled to still participate in Polkadot's shared
+security -- albeit with an associated fee per block. It also offers a graceful off-ramp to
+parachains that no longer require a dedicated parachain slot, but would like to continue using the
+Relay Chain.</p>
+<h2><a class="anchor" aria-hidden="true" id="origin"></a><a href="#origin" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Origin</h2>
+<p>According to <a href="https://v.douyu.com/show/a4Jj7llO5q47Dk01">this talk</a> in Chengdu, the origin of the
+idea came from similar notions in the limited resource of memory on early personal computers of the
+late '80s and '90s. Since computers have a limited amount of physical memory, when an application
+needs more, the computer can create virtual memory by using <em>swap space</em> on a hard disk. Swap space
+allows the capacity of a computer's memory to expand and for more processes to run concurrently with
+the trade-off that some processes will take longer to progress.</p>
+<h2><a class="anchor" aria-hidden="true" id="parachain-vs-parathread"></a><a href="#parachain-vs-parathread" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parachain vs. Parathread</h2>
+<p>Parachains and parathreads are very similar from a development perspective. One can imagine that a
+chain developed with Substrate can at different points in its lifetime assume one of three
+states: 1) independent chain with secured bridge, 2) parachain, or 3) parathread. It can switch
+between these last two states with relatively minimal effort on behalf of developers since the
+difference is more of an economic distinction than a technological one.</p>
+<p>Parathreads have the exact same benefits for connecting to Polkadot that a full parachain has.
+Namely, it is able to send messages to other para{chain,threads} through XCMP and it is secured
+under the full economic security of Polkadot's validator set.</p>
+<p>The difference between parachains and parathreads is economic. Parachains must be registered through
+a normal means of Polkadot, i.e. governance proposal or parachain slot auction. Parathreads have a
+fixed fee for registration that would realistically be much lower than the cost of acquiring a
+parachain slot. Similarly to how DOTs are locked for the duration of parachain slots and then
+returned to the winner of the auction, the deposit for a parathread will be returned to the
+parathread after the conclusion of its term.</p>
+<p>Registration of the parathread does not guarantee anything more than the registration of the
+parathread code to the Polkadot Relay Chain. When a parathread progresses by producing a new block,
+there is a fee that must be paid in order to participate in a per-block auction for inclusion in the
+verification of the next Relay Chain block. All parathreads that are registered are competing in
+this auction for their parathread to be included for progression.</p>
+<p>There are two interesting observations to make about parathreads. One, since they compete on a
+per-block basis, it is similar to how transactions are included in Bitcoin or Ethereum. A similar
+fee market will likely develop, which means that busier times will drive the price of parathread
+inclusion up, while times of low activity will require lower fees. Two, this mechanism is markedly
+different from the parachain mechanism, which guarantees inclusion as long as a parachain slot is
+held; parathread registration grants no such right to the parathread.</p>
+<h2><a class="anchor" aria-hidden="true" id="how-will-parathreads-be-operated"></a><a href="#how-will-parathreads-be-operated" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How Will Parathreads be Operated?</h2>
+<p>A portion of the parachain slots on the Relay Chain will be designated as part of the parathread
+pool. In other words, some parachain slots will have no parachain attached to them and rather will
+be used as a space for which the winner(s) of the block-by-block parathread fee auction can have
+their block candidate included.</p>
+<p>Collators will offer a bid designated in DOTs for inclusion of a parathread block candidate. The
+Relay Chain block author is able to select from these bids to include a parathread block. The
+obvious incentive is for them to accept the block candidate with the highest bid, which would bring
+them the most profit. The tokens from the parathread bids will likely be split 80-20, meaning that
+80% goes into Polkadot treasury and 20% goes to the block author. This is the same split that
+applies also to transaction fees and, like many other parameters in Polkadot, can be changed through
+a governance mechanism.</p>
+<p>For a precise description of the parathread protocol, see
+<a href="https://hackmd.io/UcOOzoyDR9WJpQBZICtg3Q?both#Parathread-Protocol">here</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="parathread-economics"></a><a href="#parathread-economics" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parathread Economics</h2>
+<p>There are two sources of compensation for collators:</p>
+<ol>
+<li>Assuming a parathread has its own local token system, it pays the collators from the transaction
+fees in its local token. If the parathread does not implement a local token, or its local token
+has no value (e.g. it is used only for governance), then it can use DOTs to incentivize
+collators.</li>
+<li>Parathread protocol subsidy. A parathread can mint new tokens in order to provide additional
+incentives for the collator. Probably, the amount of local tokens to mint for the parathread
+would be a function of time, the more time that passes between parathread blocks that are
+included in the Relay Chain, the more tokens the parathread is willing to subsidize in order to
+be considered for inclusion. The exact implementation of this minting process could be through
+local parathread inflation or via a stockpile of funds like a treasury.</li>
+</ol>
+<p>Collators may be paid in local parathread currency. However, the Relay Chain transacts with the
+Polkadot universal currency (DOT) only. Collators must then submit block candidates with an
+associated bid in DOT. This means that if the parathread offers a local currency, the collator will
+need to understand the exchange rate between this currency and DOT in order to place a proper DOT
+bid on the Relay Chain and ensure that they make a profit.</p>
+<h2><a class="anchor" aria-hidden="true" id="parachain-slot-swaps"></a><a href="#parachain-slot-swaps" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parachain Slot Swaps</h2>
+<p>It will be possible for a parachain that holds a parachain slot to swap this slot with a parathread
+so that the parathread &quot;upgrades&quot; to a full parachain and the parachain becomes a parathread.
+Similarly, this provides a graceful off-ramp for parachains that have reached the end of their lease
+and do not have sufficient usage to justify renewal; they can remain registered on the Relay Chain
+but only produce new blocks when they need to. Parathreads help ease the sharp stop of the parachain
+slot term by allowing parachains that are still doing something useful to produce blocks, even if it
+is no longer economically viable to rent a parachain slot.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/1/2020 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#origin">Origin</a></li><li><a href="#parachain-vs-parathread">Parachain vs. Parathread</a></li><li><a href="#how-will-parathreads-be-operated">How Will Parathreads be Operated?</a></li><li><a href="#parathread-economics">Parathread Economics</a></li><li><a href="#parachain-slot-swaps">Parachain Slot Swaps</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

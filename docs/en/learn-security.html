@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Security of the network · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Shared security"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Security of the network · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="## Shared security"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/learn-security.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-security.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Security of the network</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="shared-security"></a><a href="#shared-security" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Shared security</h2>
+<p>Shared security, sometimes referred in documentation as <em>pooled security</em>, is one of the unique
+value propositions for chains considering to become a parachain and join the Polkadot network. On a
+high level, shared security means that all parachains that are connected to the Polkadot Relay Chain
+by leasing a parachain slot will benefit from the economic security provided by the Relay Chain
+validators.</p>
+<p>The notion of shared security is different from interchain protocols that build on an architecture
+of bridges. For bridge protocols, each chain is considered sovereign and must maintain its own
+validator set and economic security. One concern in these protocols is on the point of scalability
+of security. For example, one suggestion to scale blockchains is that of <em>scale by altcoins,</em> which
+suggests that transaction volumes will filter down to lower market cap altcoins as the bigger ones
+fill their blocks. A major flaw in this idea is that the lower market cap coins will have less
+economic security attached, and be easier to attack. A real life example of a 51% attack occurred
+recently (
+<a href="https://cointelegraph.com/news/ethereum-classic-51-attack-the-reality-of-proof-of-work">Ethereum Classic attack on January 10</a>
+), in which an unknown attacker double spent 219,500 ETC (~1.1M USD).</p>
+<p>Polkadot overcomes security scalability concerns since it gravitates all the economic incentives to
+the Relay Chain and allows the parachains to tap into stronger guarantees at genesis. Sovereign
+chains must expend much more effort to grow the value of their coin so that it is not easily able to
+be attacked by well-funded attackers.</p>
+<h3><a class="anchor" aria-hidden="true" id="example"></a><a href="#example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h3>
+<p>Let's compare the standard sovereign security model that exists on current proof-of-work (PoW)
+chains to that of the shared security of Polkadot. Chains that are secured by their own security
+model like Bitcoin, Zcash, Ethereum, and their derivatives all must bootstrap their own independent
+network of miners and maintain a competitive portion of honest hashing power. Since mining is
+becoming a larger industry that increasingly centralizes on key players, it is becoming more real
+that a single actor may control enough hash power to attack a chain. This means that smaller chains
+that cannot maintain a secure amount of hash power on their networks could potentially be attacked
+by a large mining cartel at the simple whim of redirecting its hash power away from Bitcoin and
+toward a new and less secure chain. <a href="https://www.crypto51.app">51% attacks are viable today</a> with
+attacks having been reported on Ethereum Classic (see above),
+<a href="https://coincentral.com/verge-suffers-51-attack-hard-forks-in-response/">Verge</a>,
+<a href="https://bitcoingold.org/responding-to-attacks/">Bitcoin Gold</a>, and other cryptocurrencies.</p>
+<p>On Polkadot, this disparity between chain security will not be present. When a parachain connects to
+Polkadot, the Relay Chain validator set become the securers of that parachain's state transitions.
+The parachain will only have the overhead of needing to run a few collator nodes to keep the
+validators informed with the latest state transitions and proofs/witness. Validators will then check
+these for the parachains for which they are assigned. In this way, new parachains instantly benefit
+from the overall security of Polkadot even if they have just been launched.</p>
+<h2><a class="anchor" aria-hidden="true" id="faq"></a><a href="#faq" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>FAQ</h2>
+<h3><a class="anchor" aria-hidden="true" id="is-security-correlated-to-the-number-of-validators-what-about-the-number-of-parachains"></a><a href="#is-security-correlated-to-the-number-of-validators-what-about-the-number-of-parachains" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Is security correlated to the number of validators? What about the number of parachains?</h3>
+<p>Security is independent of the number of parachains that are connected to the Polkadot Relay Chain.
+The correlation of security and the number of validators exists as the higher number of validators
+will give the network stronger decentralization properties and make it harder to try to take down.
+However, the biggest indicator of the security of the network is the economic signal of the number
+of DOTs that are bonded and staked. The greater the number of DOTs staked by honest validators and
+nominators, the higher the minimum amount of DOTs an attacker would need to acquire a validator
+slot.</p>
+<h3><a class="anchor" aria-hidden="true" id="will-parachains-ever-need-their-own-security-in-what-scenarios-do-parachains-need-their-own-security"></a><a href="#will-parachains-ever-need-their-own-security-in-what-scenarios-do-parachains-need-their-own-security" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Will parachains ever need their own security? In what scenarios do parachains need their own security?</h3>
+<p>Most parachains will not need to worry about their own security, since all state transitions will be
+secured by the Polkadot Relay Chain validator set. However, in some cases (which are considered more
+experimental), parachains may require their own security. In general, these cases will revolve
+around lack of data available to Relay Chain validators. One example is if the state transition
+function is some succinct or zero-knowledge proof, the parachain would be responsible for keeping
+its data available as the Relay Chain won't have it. Additionally, for chains with their own
+consensus, like the one that enables fast payments on
+<a href="https://www.youtube.com/watch?v=sf5GMDlG7Uk">Blink Network</a>, there would probably need to be a
+Byzantine agreement between stakers before a parachain block is valid. The agreement would be
+necessary because the data associated with the fast consensus would be unknown to Relay Chain
+validators.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/1/2020 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#shared-security">Shared security</a><ul class="toc-headings"><li><a href="#example">Example</a></li></ul></li><li><a href="#faq">FAQ</a><ul class="toc-headings"><li><a href="#is-security-correlated-to-the-number-of-validators-what-about-the-number-of-parachains">Is security correlated to the number of validators? What about the number of parachains?</a></li><li><a href="#will-parachains-ever-need-their-own-security-in-what-scenarios-do-parachains-need-their-own-security">Will parachains ever need their own security? In what scenarios do parachains need their own security?</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

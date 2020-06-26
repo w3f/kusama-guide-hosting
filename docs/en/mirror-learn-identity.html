@@ -1,0 +1,245 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Identity · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Polkadot provides a naming system that allows participants to add personal information to their"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Identity · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="Polkadot provides a naming system that allows participants to add personal information to their"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/mirror-learn-identity.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>What to Try</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Kusama<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-index.html">Home</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Get Started</h4><ul><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-faucet.html">Faucet</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-claims.html">Claims</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-endpoints.html">Kusama Endpoints</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Try</h4><ul><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-maintain-guides-how-to-validate-kusama.html">Validator Guide</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-maintain-guides-how-to-nominate-kusama.html">Nominator Guide</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-learn-governance.html">Governance</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-learn-identity.html">Identity</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-learn-treasury.html">Treasury</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-build-build-with-polkadot.html">Polkadot Builders Starter&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/maintain-guides-society-kusama.html">Join Kappa Sigma Mu</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Break</h4><ul><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-maintain-errors.html">Resolving Errors</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-bug-bounty.html">Bug Bounty</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-adverserial-cheatsheet.html">Adverserial Cheatsheet</a></li></ul></div><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-timeline.html">Timeline</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-community.html">Community</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-time-periods.html">Parameters</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-coc.html">Code of Conduct</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/mirror-learn-identity.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Identity</h1></header><article><div><span><p>Polkadot provides a naming system that allows participants to add personal information to their
+on-chain account and subsequently ask for verification of this information by
+<a href="#registrars">registrars</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="setting-an-identity"></a><a href="#setting-an-identity" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setting an Identity</h2>
+<p>Users can register some default fields like legal name, display name, website, Twitter handle, Riot
+handle, etc. along with extra, custom fields for which they would like attestations (see
+<a href="#judgements">Judgements</a>). Users must reserve funds in a bond to store their information on chain -
+10 KSM per identity, and 2.5 KSM per each field beyond the legal name. These funds are <em>locked</em>, not
+spent - they are returned when the identity is cleared. Each field can store up to 32 bytes of
+information, so the data must be less than that. When inputting the data manually through the
+<a href="https://polkadot.js.org/apps/#/extrinsics">Extrinsics UI</a>, a
+<a href="https://onlineutf8tools.com/convert-utf8-to-bytes">UTF8 to bytes</a> converter can help.</p>
+<p>The easiest way to add the built-in fields is to click the gear icon next to one's account and
+select &quot;Set on-chain identity&quot;.</p>
+<p><img src="/img/identity/01.jpg" alt="Gear icon provides the option to set identity"></p>
+<p>A popup will appear, offering the default fields.</p>
+<p><img src="/img/identity/02.jpg" alt="Identity field setup popup"></p>
+<p>To add custom fields beyond the default ones, use the Extrinsics UI to submit a raw transaction by
+first clicking &quot;Add Item&quot; and adding any field name you like. The example below adds a field
+<code>steam</code>, which is a user's <a href="https://store.steampowered.com">Steam</a> username. The first value is the
+field name in bytes (&quot;steam&quot;) and the second is the account name in bytes (&quot;theswader&quot;). The display
+name also has to be provided, otherwise the Identity pallet would consider it wiped if we submitted
+it with the &quot;None&quot; option still selected. That is to say, every time you make a change to your
+identity values, you need to re-submit the entire set of fields: the write operation is always
+&quot;overwrite&quot;, never &quot;append&quot;.</p>
+<p><img src="/img/identity/03.jpg" alt="Setting a custom field"></p>
+<p>Note that custom fields are not shown in the UI by default:</p>
+<p><img src="/img/identity/04.jpg" alt="Only built-in fields are shown"></p>
+<p>The rendering of such custom values is, ultimately, up to the UI/dapp makers. In the case of
+PolkadotJS, the team prefers to only show official fields for now. If you want to check that the
+values are still stored, use the <a href="https://polkadot.js.org/apps/#/chainstate">Chain State UI</a> to
+query the active account's identity info:</p>
+<p><img src="/img/identity/05.jpg" alt="Raw values of custom fileds are available on-chain"></p>
+<p>It is up to your own UI or dapp to then do with this data as it pleases. The data will remain
+available for querying via the Polkadot API, so you don't have to rely on the PolkadotJS UI.</p>
+<p>You can have a maximum of 100 custom fields.</p>
+<h3><a class="anchor" aria-hidden="true" id="format-caveat"></a><a href="#format-caveat" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Format Caveat</h3>
+<p>Please note the following caveat: because the fields support different formats, from raw bytes to
+various hashes, a UI has no way of telling how to encode a given field it encounters. The PolkadotJS
+UI currently encodes the raw bytes it encounters as UTF8 strings, which makes these values readable
+on screen. However, given that there are no restrictions on the values that can be placed into these
+fields, a different UI may interpret them as, for example, IPFS hashes or encoded bitmaps. This
+means any field stored as raw bytes will become unreadable by that specific UI. As field standards
+crystallize, things will become easier to use but for now, every custom implementation of displaying
+user information will likely have to make a conscious decision on the approach to take, or support
+multiple formats and then attempt multiple encodings until the output makes sense.</p>
+<h2><a class="anchor" aria-hidden="true" id="registrars"></a><a href="#registrars" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Registrars</h2>
+<p>Registrars can set a fee for their services and limit their attestation to certain fields. For
+example, a registrar could charge 1 DOT to verify one's legal name, email, and GPG key. When a user
+requests judgement, they will pay this fee to the registrar who provides the judgement on those
+claims. Users set a maximum fee they are willing to pay and only registrars below this amount would
+provide judgement.</p>
+<h3><a class="anchor" aria-hidden="true" id="becoming-a-registrar"></a><a href="#becoming-a-registrar" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Becoming a registrar</h3>
+<p>To become a registrar, submit a pre-image and proposal into Democracy, then wait for people to vote
+on it. For best results, write a post about your identity and intentions beforehand, and once the
+proposal is in the queue ask people to second it so that it gets ahead in the referendum queue.</p>
+<p>Here's how to submit a proposal to become a registrar:</p>
+<p>Go to the Democracy tab, select &quot;Submit preimage&quot;, and input the information for this motion -
+notably which account you're nominating to be a registrar in the <code>identity.setRegistrar</code> function.</p>
+<p><img src="/img/identity/12.jpg" alt="Setting a registrar"></p>
+<p>Copy the preimage hash. In the above image, that's
+<code>0x90a1b2f648fc4eaff4f236b9af9ead77c89ecac953225c5fafb069d27b7131b7</code>. Submit the preimage by signing
+a transaction.</p>
+<p>Next, select &quot;Submit Proposal&quot; and enter the previously copied preimage hash. The <code>locked balance</code>
+field needs to be at least 10 KSM. You can find out the minimum by querying the chain state under
+<a href="https://polkadot.js.org/apps/#/chainstate">Chain State</a> -&gt; Constants -&gt; democracy -&gt;
+minimumDeposit.</p>
+<p><img src="/img/identity/13.jpg" alt="Submitting a proposal"></p>
+<p>At this point, DOT holders can second the motion. With enough seconds, the motion will become a
+referendum, which is then voted on. If it passes, users will be able to request judgement from this
+registrar.</p>
+<h2><a class="anchor" aria-hidden="true" id="judgements"></a><a href="#judgements" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Judgements</h2>
+<p>After a user injects their information on chain, they can request judgement from a registrar. Users
+declare a maximum fee that they are willing to pay for judgement, and registrars whose fee is below
+that amount can provide a judgement.</p>
+<p>When a registrar provides judgement, they can select up to six levels of confidence in their
+attestation:</p>
+<ul>
+<li>Unknown: The default value, no judgement made yet.</li>
+<li>Reasonable: The data appears reasonable, but no in-depth checks (e.g. formal KYC process) were
+performed.</li>
+<li>Known Good: The registrar has certified that the information is correct.</li>
+<li>Out of Date: The information used to be good, but is now out of date.</li>
+<li>Low Quality: The information is low quality or imprecise, but can be fixed with an update.</li>
+<li>Erroneous: The information is erroneous and may indicate malicious intent.</li>
+</ul>
+<p>A seventh state, &quot;fee paid&quot;, is for when a user has requested judgement and it is in progress.
+Information that is in this state or &quot;erroneous&quot; is &quot;sticky&quot; and cannot be modified; it can only be
+removed by complete removal of the identity.</p>
+<p>Registrars gain trust by performing proper due diligence and would presumably be replaced for
+issuing faulty judgements.</p>
+<p>To be judged after submitting your identity information, go to the
+<a href="https://polkadot.js.org/apps/#/extrinsics">&quot;Extrinsics UI&quot;</a> and select the <code>identity</code> pallet, then
+<code>requestJudgement</code>. For the <code>reg_index</code> put the index of the registrar you want to be judged by, and
+for the <code>max_fee</code> put the maximum you're willing to pay for these confirmations.</p>
+<p>If you don't know which registrar to pick, first check the available registrars by going to
+<a href="">&quot;Chain State UI&quot;</a> and selecting <code>identity.registrars()</code> to get the full list.</p>
+<p><img src="/img/identity/14.jpg" alt="Showing all registrars"></p>
+<p>The image above reveals two registrars:</p>
+<ul>
+<li>Registrar 0, FcxNWVy5RESDsErjwyZmPCW6Z8Y3fbfLzmou34YZTrbcraL charges 25 KSM per judgement</li>
+<li>Registrar 1, Fom9M5W6Kck1hNAiE2mDcZ67auUCiNTzLBUdQy4QnxHSxdn charges 5 KSM per judgement</li>
+</ul>
+<p>To find out how to contact the registrar after the application for judgement or to learn who they
+are, we can check their identity by adding them to our Address Book. Their identity will be
+automatically loaded.</p>
+<p><img src="/img/identity/15.jpg" alt="Gav is a registrar"></p>
+<p>Gavin Wood is registrar #0.</p>
+<p><img src="/img/identity/16.jpg" alt="Chevdor is registrar #1"></p>
+<p>Chevdor is registrar #1. We pick that one.</p>
+<p><img src="/img/identity/08.jpg" alt="Requesting judgement"></p>
+<p>This will make your identity go from unjudged:</p>
+<p><img src="/img/identity/07.jpg" alt="An unjudged identity"></p>
+<p>To &quot;waiting&quot;:</p>
+<p><img src="/img/identity/09.jpg" alt="A pending identity"></p>
+<p>At this point, direct contact with the registrar is required - the contact info is in their identity
+as shown above. Each registrar will have their own set of procedures to verify your identity and
+values, and only once you've satisfied their requirements will the process continue.</p>
+<p>Once the registrar has confirmed the identity, a green checkmark should appear next to your account
+name with the appropriate confidence level:</p>
+<p><img src="/img/identity/10.jpg" alt="A confirmed identity"></p>
+<p><em>Note that changing even a single field's value after you've been verified will un-verify your
+account and you will need to start the judgement process anew. However, you can still change fields
+while the judgement is going on - it's up to the registrar to keep an eye on the changes.</em></p>
+<h2><a class="anchor" aria-hidden="true" id="sub-accounts"></a><a href="#sub-accounts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sub Accounts</h2>
+<p>Users can also link accounts by setting &quot;sub accounts&quot;, each with its own identity, under a primary
+account. The system reserves a bond for each sub account. An example of how you might use this would
+be a validation company running multiple validators. A single entity, &quot;My Staking Company&quot;, could
+register multiple sub accounts that represent the <a href="learn-keys">Stash accounts</a> of each of their
+validators.</p>
+<p>An account can have a maximum of 100 sub-accounts.</p>
+<p>To register a sub-account on an existing account, you must currently use the
+<a href="https://polkadot.js.org/apps/#/extrinsics">Extrinsics UI</a>. There, select the identity pallet, then
+<code>setSubs</code> as the function to use. Click &quot;Add Item&quot; for every child account you want to add to the
+parent sender account. The value to put into the Data field of each parent is the optional name of
+the sub-account. If omitted, the sub-account will inherit the parent's name and be displayed as
+<code>parent/parent</code> instead of <code>parent/child</code>.</p>
+<p><img src="/img/identity/06.jpg" alt="Sub account setup"></p>
+<p>Note that a deposit of 2.5KSM is required for every sub-account.</p>
+<h2><a class="anchor" aria-hidden="true" id="clearing-and-killing"></a><a href="#clearing-and-killing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Clearing and Killing</h2>
+<p><strong>Clearing:</strong> Users can clear their identity information and have their deposit returned. Clearing
+an identity also clears all sub accounts and returns their deposits.</p>
+<p><img src="/img/identity/clear.gif" alt="Clearing an identity"></p>
+<p>Clearing is done through the <a href="https://polkadot.js.org/apps/#/extrinsics">Extrinsics UI</a>.</p>
+<p><strong>Killing:</strong> The Council can kill an identity that it deems erroneous. This results in a slash of
+the deposit.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 1/31/2020 by Bruno Škvorc</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/kusama-guide-hosting/docs/en/mirror-learn-governance.html"><span class="arrow-prev">← </span><span>Governance</span></a><a class="docs-next button" href="/kusama-guide-hosting/docs/en/mirror-learn-treasury.html"><span>Treasury</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#setting-an-identity">Setting an Identity</a><ul class="toc-headings"><li><a href="#format-caveat">Format Caveat</a></li></ul></li><li><a href="#registrars">Registrars</a><ul class="toc-headings"><li><a href="#becoming-a-registrar">Becoming a registrar</a></li></ul></li><li><a href="#judgements">Judgements</a></li><li><a href="#sub-accounts">Sub Accounts</a></li><li><a href="#clearing-and-killing">Clearing and Killing</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

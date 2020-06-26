@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Availability and Validity · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="The Availability and Validity (AnV) protocol of Polkadot is what allows for the network to be"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Availability and Validity · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="The Availability and Validity (AnV) protocol of Polkadot is what allows for the network to be"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/learn-availability.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-availability.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Availability and Validity</h1></header><article><div><span><p>The Availability and Validity (AnV) protocol of Polkadot is what allows for the network to be
+efficiently sharded among parachains while maintaining strong security guarantees.</p>
+<h2><a class="anchor" aria-hidden="true" id="phases-of-the-anv-protocol"></a><a href="#phases-of-the-anv-protocol" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Phases of the AnV protocol</h2>
+<p>There are six phases of the Availability and the Validity protocol.</p>
+<ol>
+<li>Parachain phase.</li>
+<li>Relay chain submission phase.</li>
+<li>Availability and unavailability subprotocols.</li>
+<li>Secondary GRANDPA approval validity checks.</li>
+<li>Objection procedure for fishermen.</li>
+<li>Invocation of a Byzantine fault tolerant <em>finality gadget</em> to cement the chain.</li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="parachain-phase"></a><a href="#parachain-phase" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parachain phase</h3>
+<p>The parachain phase of AnV is when the <em>collator</em> of a parachain proposes a <em>candidate block</em> to the
+validators that are currently assigned to the parachain.</p>
+<blockquote>
+<p>A <strong>candidate block</strong> is a new block from a parachain collator that may or may not be valid and
+must go through validity checks before being included into the Relay Chain.</p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="relay-chain-submission-phase"></a><a href="#relay-chain-submission-phase" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Relay chain submission phase</h3>
+<p>The validators then check the candidate block against the verification function exposed by that
+parachain's registered code. If the verification succeeds, then the validators will pass the
+candidate block to the other validators in the gossip network. However, if the verification fails,
+the validators immediately reject the candidate block as invalid.</p>
+<p>When more than half of the parachain validators agree that a particular parachain block candidate is
+a valid state transition, they prepare a <em>candidate receipt</em>. The candidate receipt is what will
+eventually be included into the Relay Chain state. It includes:</p>
+<ul>
+<li>The parachain ID.</li>
+<li>The collator's ID and signature.</li>
+<li>A hash of the parent block's candidate receipt.</li>
+<li>A Merkle root of the block's erasure coded pieces.</li>
+<li>A Merkle root of any outgoing messages.</li>
+<li>A hash of the block.</li>
+<li>The state root of the parachain before block execution.</li>
+<li>The state root of the parachain after block execution.</li>
+</ul>
+<p>This information is <strong>constant size</strong> while the actual PoV block of the parachain can be variable
+length. It is enough information for anyone that obtains the full PoV block to verify the state
+transition contained inside of it.</p>
+<h3><a class="anchor" aria-hidden="true" id="availability-and-unavailability-subprotocols"></a><a href="#availability-and-unavailability-subprotocols" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Availability and unavailability subprotocols</h3>
+<p>During the availability and unavailability phases, the validators gossip the
+<a href="#erasure-codes">erasure coded</a> pieces among the network. At least 1/3 + 1 validators must report
+that they possess their piece of the code word. Once this threshold of validators has been reached,
+the network can consider the PoV block of the parachain <em>available</em>.</p>
+<h2><a class="anchor" aria-hidden="true" id="erasure-codes"></a><a href="#erasure-codes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Erasure Codes</h2>
+<p>Erasure coding transforms a message into a longer <em>code</em> that allows for the original message to be
+recovered from a subset of the code and in absence of some portion of the code. A code is the
+original message padded with some extra data that enables the reconstruction of the code in the case
+of erasures.</p>
+<p>The type of erasure codes used by Polkadot's availability scheme are <a href="https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction">Reed-Solomon</a>
+codes, which already enjoys a battle-tested application in technology outside the blockchain
+industry. One example is found in the compact disk industry. CDs use Reed-Solomon codes to correct
+any missing data due to inconsistencies on the disk face such as dust particles or scratches.</p>
+<p>In Polkadot, the erasure codes are used to keep parachain state available to the system without
+requiring all validators to keep tabs on all the parachains. Instead, validators share smaller
+pieces of the data and can later reconstruct the entire data under the assumption that 1/3+1 of the
+validators can provide their individual pieces of the data.</p>
+<p><strong>Note:</strong> The 1/3+1 threshold of validators that must be responsive in order to construct the full
+parachain state data corresponds to Polkadot's security assumption in regard to Byzantine nodes.</p>
+<h2><a class="anchor" aria-hidden="true" id="fishermen"></a><a href="#fishermen" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Fishermen</h2>
+<p>Fishermen are full nodes of parachains, same as collators, but perform a different role in
+relationship to the Polkadot network. Instead of packaging the state transitions and producing the
+next parachain blocks as collators do, fishermen will watch this process and ensure no invalid state
+transitions are included. Fishermen will be moderately staked on the Relay Chain, unlike collators
+that require no stake on the Relay Chain. Fishermen will submit invalidity reports if they find that
+misconduct has occurred during the production of a parachain. If they are proven right about the
+reported misconduct, they will be handsomely rewarded, but they risk losing their stake if they're
+proven wrong. For this reason, fishermen are similar to bounty hunters that get a large payout on
+completing a job but no steady payout otherwise.</p>
+<h3><a class="anchor" aria-hidden="true" id="how-to-run-a-fisherman-node"></a><a href="#how-to-run-a-fisherman-node" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to run a fisherman node</h3>
+<p>It is expected that the requirements of running a fisherman will be moderate compared to the staking
+requirements of validator nodes. Some amount of tokens will be needed to register the &quot;fishing&quot;
+status on the Relay Chain. These tokens can be potentially slashed by the protocol if the fisherman
+submits an incorrect invalidity report. The slashing risk is to prevent fishermen from spamming the
+network since the reconstruction of parachain state is an expensive procedure for the Relay Chain to
+process.</p>
+<p>On the hardware end of requirements, a moderately powerful machine should be capable of running a
+full node of one or more parachains. The biggest requirement will likely be the storage of data for
+each of the parachains that are being fished. However, improvements such as <a href="https://example.org">pruning</a> mean
+that the eventual storage size needed to maintain a full node of a parachain will level off at a
+non-exorbitant amount. RAM and CPU requirements will likely scale with the amount of parachains
+being fished, with low to moderate requirements for fishing one parachain and increasing from there.
+A <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mi>o</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">10 or</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>20 /month cloud instance will be enough to get started.</p>
+<p><strong>Note:</strong> Fishermen are not available on Kusama or Polkadot yet! This page will be updated with a
+guide on setting one up once it becomes possible.</p>
+<h2><a class="anchor" aria-hidden="true" id="further-resources"></a><a href="#further-resources" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Further Resources</h2>
+<ul>
+<li><a href="https://polkadot.network/the-path-of-a-parachain-block/">Life of a Parachain Block</a> - Article by Parity analyst Joe Petrowski expounding on the
+validity checks that a parachain block must pass in order to progress the parachain.</li>
+<li><a href="https://github.com/w3f/research/tree/85cd4adfccb7d435f21cd9fd249cd1b7f5167537/docs/papers/AnV">Availability and Validity</a> - Paper by the W3F Research Team that specifies the
+availability and validity protocol in detail.</li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 5/4/2020 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#phases-of-the-anv-protocol">Phases of the AnV protocol</a><ul class="toc-headings"><li><a href="#parachain-phase">Parachain phase</a></li><li><a href="#relay-chain-submission-phase">Relay chain submission phase</a></li><li><a href="#availability-and-unavailability-subprotocols">Availability and unavailability subprotocols</a></li></ul></li><li><a href="#erasure-codes">Erasure Codes</a></li><li><a href="#fishermen">Fishermen</a><ul class="toc-headings"><li><a href="#how-to-run-a-fisherman-node">How to run a fisherman node</a></li></ul></li><li><a href="#further-resources">Further Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

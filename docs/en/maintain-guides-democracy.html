@@ -1,0 +1,209 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Participate in Democracy · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="The public referenda chamber is one of the three bodies of on-chain governance as it&#x27;s instantiated"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Participate in Democracy · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="The public referenda chamber is one of the three bodies of on-chain governance as it&#x27;s instantiated"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/maintain-guides-democracy.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/maintain-guides-democracy.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Participate in Democracy</h1></header><article><div><span><p>The public referenda chamber is one of the three bodies of on-chain governance as it's instantiated
+in Polkadot and Kusama. The other two bodies are the <a href="maintain-guides-how-to-join-council">council</a>
+and the <a href="learn-governance#technical-committee">technical committee</a>.</p>
+<p>Public referenda can be proposed and voted on by any token holder in the system as long as they
+provide a bond. After a proposal is made, others can agree with it by <em>seconding</em> it and putting up
+tokens equal to the original bond. Every launch period, the most seconded proposal will be moved to
+the public referenda table will it can be voted upon. Voters who are willing to lock up their tokens
+for a greater duration of time can do so and get their vote amplified. For more details on the
+governance system please see <a href="learn-governance">here</a>.</p>
+<p>This guide will instruct token holders how to propose and vote on public referenda using the
+Democracy module as it's implemented in Kusama.</p>
+<h2><a class="anchor" aria-hidden="true" id="important-parameters"></a><a href="#important-parameters" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Important Parameters</h2>
+<p>The important parameters to be aware of when voting using the Democracry module are as follow:</p>
+<p><strong>Launch Period</strong> - How often new public referenda are launched.</p>
+<p><strong>Voting Period</strong> - How often votes for referenda are tallied.</p>
+<p><strong>Emergency Voting Period</strong> - The minimum voting period for a fast-tracked emergency referendum.</p>
+<p><strong>Minimum Deposit</strong> - The minimum amount to be used as a deposit for a public referendum proposal.</p>
+<p><strong>Enactment Period</strong> - The minimum period for locking funds <em>and</em> the period between a proposal
+being approved and enacted.</p>
+<p><strong>Cooloff Period</strong> - The period in blocks where a proposal may not be re-submitted after being
+vetoed.</p>
+<h2><a class="anchor" aria-hidden="true" id="proposing-an-action"></a><a href="#proposing-an-action" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Proposing an Action</h2>
+<p>Proposing an action to be taken requires you to bond some tokens. In order to ensure you have enough
+tokens to make the minimum deposit you can check the parameter in the chain state.</p>
+<p>On Polkadot Apps you can use the &quot;Democracy&quot; tab to make a new proposal. In order to submit a
+proposal, you will need to submit what's called the preimage hash. The preimage hash is simply the
+hash of the proposal to be enacted. The easiest way to get the preimage hash is by clicking on the
+&quot;Submit preimage&quot; button and configuring the action that you are proposing.</p>
+<p>For example, if you wanted to propose that the account &quot;Dave&quot; would have a balance of 10 tokens your
+proposal may look something like the below image. The preimage hash would be
+<code>0xa50af1fadfca818feea213762d14cd198404d5496bca691294ec724be9d2a4c0</code>. You can copy this preimage
+hash and save it for the next step. There is no need to click Submit Preimage at this point, though
+you could. We'll go over that in the next section.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/democracy/submit_preimage.png" alt="submit preimage"></p>
+<p>Now you will click on the &quot;Submit proposal&quot; button and enter the preimage hash in the input titled
+&quot;preimage hash&quot; and <em>at least</em> the minimum deposit into the &quot;locked balance&quot; field. Click on the
+blue &quot;Submit proposal&quot; button and confirm the transaction. You should now see your proposal appear
+in the &quot;proposals&quot; column on the page.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/democracy/submit_proposal.png" alt="submit proposal"></p>
+<p>Now your proposal is visible by anyone who accesses the chain and others can second it or submit a
+preimage. However, it's hard to tell what exactly this proposal does since it shows the hash of the
+action. Other holders will not be able to make a judgement for whether they second it or not until
+someone submits the actual preimage for this proposal. In the next step you will submit the
+preimage.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/democracy/proposals.png" alt="proposals"></p>
+<h2><a class="anchor" aria-hidden="true" id="submitting-a-preimage"></a><a href="#submitting-a-preimage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Submitting a Preimage</h2>
+<p>The act of making a proposal is split from submitting the preimage for the proposal since the
+storage cost of submitting a large preimage could be pretty expensive. Allowing for the preimage
+submission to come as a separate transaction means that another account could submit the preimage
+for you if you don't have the funds to do so. It also means that you don't have to pay so many funds
+right away as you can prove the preimage hash out-of-band.</p>
+<p>However, at some point before the proposal passes you will need to submit the preimage or else the
+proposal cannot be enacted. The guide will now show you how to do this.</p>
+<p>Click on the blue &quot;Submit preimage&quot; button and configure it to be the same as what you did before to
+acquire the preimage hash. This time, instead of copying the hash to another tab, you will follow
+through and click &quot;Submit preimage&quot; and confirm the transaction.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/democracy/submit_preimage.png" alt="submit preimage"></p>
+<p>Once the transaction is included you should see the UI update with the information for your already
+submitted proposal.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/democracy/proposals_updated.png" alt="proposals updated"></p>
+<h2><a class="anchor" aria-hidden="true" id="seconding-a-proposal"></a><a href="#seconding-a-proposal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Seconding a Proposal</h2>
+<p>Seconding a proposal means that you are agreeing with the proposal and backing it with an equal
+amount of deposit as was originally locked. By seconding a proposal you will move it higher up the
+rank of proposals. The most seconded proposal - in value, not number of supporters - will be tabled
+as a referendum to be voted on every launch period.</p>
+<p>To second a proposal, navigate to the proposal you want to second and click on the &quot;Second&quot; button.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/democracy/second_button.png" alt="second button"></p>
+<p>You will be prompted with the full details of the proposal (if the preimage has been submitted!) and
+can then broadcast the transaction by clicking the blue &quot;Second&quot; button.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/democracy/second_confirm.png" alt="second confirm"></p>
+<p>Once successful you will see your second appear in the dropdown in the proposal details.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/democracy/second_result.png" alt="second result"></p>
+<h2><a class="anchor" aria-hidden="true" id="voting-on-a-proposal"></a><a href="#voting-on-a-proposal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Voting on a Proposal</h2>
+<p>At the end of each launch period, the most seconded proposal will move to referendum. During this
+time you can cast a vote for or against the proposal. You may also lock up your tokens for a greater
+length of time to weigh your vote more strongly. During the time your tokens are locked, you are
+unable to transfer them, however they can still be used for further votes. Locks are layered on top
+of each other, so an eight week lock does not become a 15 week lock if you vote again a week later,
+rather another eight week lock is placed to extend the lock just one extra week.</p>
+<p>To vote on a referendum, navigate to the
+<a href="https://polkadot.js.org/apps/#/democracy/">&quot;Democracy&quot; tab of Polkadot Apps</a>. Any active referendum
+will show in the &quot;referenda&quot; column. Click the blue button &quot;Vote&quot; to cast a vote for the referendum.</p>
+<p>If you would like to cast your vote for the proposal select the &quot;Aye, I approve&quot; option. If you
+would like to cast your vote against the proposal in referendum you will select &quot;Nay, I do not
+approve&quot; option.</p>
+<p>The second option is to select your conviction for this vote. The longer you are willing to lock
+your tokens, the stronger your vote will be weighted. Unwillingness to lock your tokens means that
+your vote only counts for 10% of the tokens that you hold, while the maximum lock up of 256 days
+means you can make your vote count for 600% of the tokens that you hold.</p>
+<p>When you are comfortable with the decision you have made, click the blue &quot;Vote&quot; button to submit
+your transaction and wait for it to be included in a block.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/democracy/voting.png" alt="voting"></p>
+<h2><a class="anchor" aria-hidden="true" id="delegate-a-vote"></a><a href="#delegate-a-vote" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Delegate a Vote</h2>
+<p>If you are too busy to keep up and vote on upcoming referenda, there is an option to delegate your
+vote to another account whose opinion you trust. When you delegate to another account, that account
+gets the added voting power of your tokens along with the conviction that you set. The conviction
+for delegation works just like the conviction for regular voting, except your tokens may be locked
+longer than they would normally since locking resets when you undelegate your vote.</p>
+<p>The account that is being delegated to does not make any special action once the delegation is in
+place. They can continue to vote on referenda how they see fit. The difference is now when the
+Democracy system tallies votes, the delegated tokens now are added to whatever vote the delegatee
+has made.</p>
+<p>You can delegate your vote to another account and even attach a &quot;Conviction&quot; to the delegation.
+Navigate to the &quot;Extrinsics&quot; tab on Polkadot Apps and select the options &quot;democracy&quot; and &quot;delegate&quot;.
+This means you are accessing the democracy pallet and choosing the delegate transaction type to
+send. Your delegation will count toward whatever the account you delegated for votes on until you
+explicitly undelegate your vote.</p>
+<p>In the first input select the account you want to delegate to and in the second input select the
+amount of your conviction. Remember, higher convictions means that your vote will be locked longer.
+So choose wisely!</p>
+<p><img src="/kusama-guide-hosting/docs/assets/democracy/delegate.png" alt="delegate"></p>
+<p>After you send the delegate transaction, you can verify it went through by navigating to the &quot;Chain
+State&quot; tab and selecting the &quot;democracy&quot; and &quot;delegations&quot; options. You will see an output similar
+to below, showing the addresses to which you have delegated your voting power.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/democracy/delegate_state.png" alt="delegate state"></p>
+<h2><a class="anchor" aria-hidden="true" id="undelegate-a-vote"></a><a href="#undelegate-a-vote" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Undelegate a Vote</h2>
+<p>You may decide at some point in the future to remove your delegation to a target account. In this
+case, your tokens will be locked for the maximum amount of time in accordance with the conviction
+you set at the beginning of the delegation. For example, if you chose &quot;2x&quot; delegation for four weeks
+lock up time, your tokens will be locked for 4 weeks after sending the <code>undelegate</code> transaction.
+Once your vote has been undelegated, you are in control of making votes with it once again. You can
+start to vote directly, or chose a different account to act as your delegate.</p>
+<p>The <code>undelegate</code> transaction must be sent from the account that you wish to clear of its delegation.
+For example, if Alice has delegated her tokens to Bob, Alice would need to be the one to call the
+<code>undelegate</code> transaction to clear her delegation.</p>
+<p>The easiest way to do this is from the &quot;Extrinsics&quot; tab of Polkadot Apps. Select the &quot;democracy&quot;
+pallet and the &quot;undelegate&quot; transaction type. Ensure that you are sending the transaction from the
+account you want to clear of delegations. Click &quot;Submit transaction&quot; and confirm.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/democracy/undelegate.png" alt="undelegate"></p>
+<h2><a class="anchor" aria-hidden="true" id="governance-proxies"></a><a href="#governance-proxies" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Governance Proxies</h2>
+<p>Governance Proxies can be used to participate in governance on behalf of a stash account. A
+governance proxy can perform any transaction from Democracy, Council, Technical Committee, and
+Treasury modules. Unlike delegation, the proxy is meant to act as a longer-term account that makes
+all governance-related transactions for funds held in a different account. Delegation is a logical
+action, taken when you trust another account's judgement, while proxying is more of a recommended
+security practice for keeping your funds safe and using an active account with low funds instead.</p>
+<p>Learn more about proxies and other types of proxies on the <a href="learn-proxies">proxies</a> page.</p>
+<h3><a class="anchor" aria-hidden="true" id="why-use-a-proxy"></a><a href="#why-use-a-proxy" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Why use a proxy?</h3>
+<p>The idea of a governance proxy introduces a level of security. When engaging in transactions with
+Democracy, Council, Technical Committee, and Treasury modules, a governance proxy uses its low funds
+sent from its stash account. This leaves a safer proxy performing on-chain actions, rather than the
+stash account itself.</p>
+<h3><a class="anchor" aria-hidden="true" id="adding-a-proxy"></a><a href="#adding-a-proxy" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Adding a proxy</h3>
+<p>Adding a proxy involves submitting a single transaction, the transaction type &quot;addProxy&quot; from the
+Proxy pallet.</p>
+<p>You can make this transaction from Polkadot Apps by navigating to the &quot;Extrinsics&quot; tab and selecting
+the Proxy pallet and the &quot;addProxy&quot; transaction type. Send the transaction from the &quot;Stash&quot; account
+that holds the funds that you want to vote with, and the target to the proxy account that will
+perform governance action. Choose &quot;Governance&quot; as the proxy type.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/democracy/adding_proxy.png" alt="add proxy"></p>
+<p>You also have the choice to add in a governance anonymous proxy underneath the &quot;anonymous&quot; type from
+the Proxy pallet and selecting &quot;Governance&quot; as the proxy type. A governance anonymous proxy is only
+accessible by another proxy and these do not come with any associated secret key.</p>
+<p>Read more on Anonymous Proxies
+<a href="https://wiki.polkadot.network/docs/en/learn-proxies#anonymous-proxies">here</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="voting-with-a-proxy"></a><a href="#voting-with-a-proxy" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Voting with a proxy</h3>
+<p>Making a vote on behalf of a stash requires a &quot;proxy&quot; transaction from the Proxy pallet. When you
+choose this transaction from the &quot;Extrinsics&quot; tab, it will let you select &quot;vote&quot; from the Democracy
+pallet, and you will specify the index of the referendum that is being voted, the judgement (i.e.
+&quot;Aye&quot; for approval or &quot;Nay&quot; for rejection), and the conviction, just like a normal vote.</p>
+<h3><a class="anchor" aria-hidden="true" id="removing-a-proxy"></a><a href="#removing-a-proxy" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Removing a proxy</h3>
+<p>At some point you may want to remove a proxy from being able to vote on behalf of a stash account.
+This is possible to do by submitting a &quot;removeProxy&quot; transaction from the stash account, targetting
+the proxy account. You also have the option to &quot;removeProxies&quot; which will remove all proxies created
+from a selected stash account.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/democracy/remove_proxy.png" alt="remove proxy"></p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/15/2020 by Kirsten Richard</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#important-parameters">Important Parameters</a></li><li><a href="#proposing-an-action">Proposing an Action</a></li><li><a href="#submitting-a-preimage">Submitting a Preimage</a></li><li><a href="#seconding-a-proposal">Seconding a Proposal</a></li><li><a href="#voting-on-a-proposal">Voting on a Proposal</a></li><li><a href="#delegate-a-vote">Delegate a Vote</a></li><li><a href="#undelegate-a-vote">Undelegate a Vote</a></li><li><a href="#governance-proxies">Governance Proxies</a><ul class="toc-headings"><li><a href="#why-use-a-proxy">Why use a proxy?</a></li><li><a href="#adding-a-proxy">Adding a proxy</a></li><li><a href="#voting-with-a-proxy">Voting with a proxy</a></li><li><a href="#removing-a-proxy">Removing a proxy</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

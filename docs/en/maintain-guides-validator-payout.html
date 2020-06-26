@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Validator Payout Overview · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Era Points"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Validator Payout Overview · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="## Era Points"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/maintain-guides-validator-payout.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/maintain-guides-validator-payout.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Validator Payout Overview</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="era-points"></a><a href="#era-points" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Era Points</h2>
+<p>For every era (a period of time approximately 6 hours in length in Kusama, and 24 hours in
+Polkadot), validators are paid proportionally to the amount of <em>era points</em> they have collected. Era
+points are reward points earned for payable actions like:</p>
+<ul>
+<li>issuing validity statements for <a href="learn-parachains">parachain</a> blocks.</li>
+<li>producing a non-uncle block in the Relay Chain.</li>
+<li>producing a reference to a previously unreferenced uncle block.</li>
+<li>producing a referenced uncle block.</li>
+</ul>
+<p><em>Note: An uncle block is a Relay Chain block that is valid in every regard, but which failed to
+become canonical. This can happen when two or more validators are block producers in a single slot,
+and the block produced by one validator reaches the next block producer before the others. We call
+the lagging blocks uncle blocks.</em></p>
+<p>Payments occur at the end of every era.</p>
+<h2><a class="anchor" aria-hidden="true" id="payout-scheme"></a><a href="#payout-scheme" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Payout Scheme</h2>
+<p>No matter how much total stake is behind a validator, all validators split the block authoring
+payout equally. The total payout, however, may differ based on <a href="#era-points">era points</a>, as
+described above.</p>
+<p>Validators may also receive &quot;tips&quot; from senders as an incentive to include transactions in their
+produced blocks.</p>
+<p>For simplicity, the examples below will assume all validators have the same amount of era points.</p>
+<pre><code class="hljs">Validator Set Size (v): <span class="hljs-number">4</span>
+Validator <span class="hljs-number">1</span> Stake (v1): <span class="hljs-number">18</span> DOTs
+Validator <span class="hljs-number">2</span> Stake (v2):  <span class="hljs-number">9</span> DOTs
+Validator <span class="hljs-number">3</span> Stake (v3):  <span class="hljs-number">8</span> DOTs
+Validator <span class="hljs-number">4</span> Stake (v4):  <span class="hljs-number">7</span> DOTs
+Payout (p): <span class="hljs-number">8</span> DOTs
+
+Payout <span class="hljs-keyword">for</span> each validator (v1 - v4):
+p / v = <span class="hljs-number">8</span> / <span class="hljs-number">4</span> = <span class="hljs-number">2</span> DOTs
+</code></pre>
+<p>Note that this is different than most other Proof-of-Stake systems such as Cosmos. As long as a
+validator is in the validator set, it will receive the same block reward as every other validator.
+Validator <code>v1</code>, who had 18 DOTs staked, received the same reward (2 DOTs) in this era as <code>v4</code> who
+had only 7 DOTs staked.</p>
+<h2><a class="anchor" aria-hidden="true" id="running-multiple-validators"></a><a href="#running-multiple-validators" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Running Multiple Validators</h2>
+<p>It is possible for a single entity to run multiple validators. Running multiple validators may
+provide a better risk/reward ratio. Assuming you have enough DOTs, or enough stake nominates your
+validator, to ensure that your validators remain in the validator set, running multiple validators
+will result in a higher return than running a single validator.</p>
+<p>For the following example, assume you have 18 DOTs to stake. For simplicity's sake, we will ignore
+nominators. Running a single validator, as in the example above, would net you 2 DOTs in this era.</p>
+<pre><code class="hljs">Validator Set Size (v): <span class="hljs-number">4</span>
+Validator <span class="hljs-number">1</span> Stake (v1): <span class="hljs-number">18</span> DOTs &lt;- Your validator
+Validator <span class="hljs-number">2</span> Stake (v2):  <span class="hljs-number">9</span> DOTs
+Validator <span class="hljs-number">3</span> Stake (v3):  <span class="hljs-number">8</span> DOTs
+Validator <span class="hljs-number">4</span> Stake (v4):  <span class="hljs-number">7</span> DOTs
+Payout (p): <span class="hljs-number">8</span> DOTs
+
+Your payout = (p / v) * <span class="hljs-number">1</span> = (<span class="hljs-number">8</span> / <span class="hljs-number">4</span>) * <span class="hljs-number">1</span> = <span class="hljs-number">2</span>
+</code></pre>
+<p>Running two validators, and splitting the stake equally, would result in the original validator <code>v4</code>
+to be kicked out of the validator set, as only the top <code>v</code> validators (as measured by stake) are
+selected to be in the validator set. More important, it would also double the reward that you get
+from each era.</p>
+<pre><code class="hljs">Validator Set Size (v): <span class="hljs-number">4</span>
+Validator <span class="hljs-number">1</span> Stake (v1): <span class="hljs-number">9</span> DOTs &lt;- Your first validator
+Validator <span class="hljs-number">2</span> Stake (v2): <span class="hljs-number">9</span> DOTs &lt;- Your second validator
+Validator <span class="hljs-number">3</span> Stake (v3): <span class="hljs-number">9</span> DOTs
+Validator <span class="hljs-number">4</span> Stake (v4): <span class="hljs-number">8</span> DOTs
+Payout (p): <span class="hljs-number">8</span> DOTs
+
+Your payout = (p / v) * <span class="hljs-number">1</span> = (<span class="hljs-number">8</span> / <span class="hljs-number">4</span>) * <span class="hljs-number">2</span> = <span class="hljs-number">4</span>
+</code></pre>
+<p>With enough stake, you could run more than two validators. However, each validator must have enough
+stake behind it to be in the validator set.</p>
+<p>The incentives of the system favor equally-staked validators. This will most likely be a dynamic,
+rather than static, equilibrium. Potential validators will run different numbers of validators and
+apply different amounts of stake to them as time goes on, and in response to the actions of other
+validators on the network.</p>
+<h2><a class="anchor" aria-hidden="true" id="slashing"></a><a href="#slashing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Slashing</h2>
+<p>Although rewards are paid equally, slashes are relative to a validator's stake. Therefore, if you do
+have enough DOTs to run multiple validators, it is in your best interest to do so. A slash of 30%
+will, of course, be more DOTs for a validator with 18 DOTs staked than one with 9 DOTs staked.</p>
+<p>Running multiple validators does not absolve you of the consequences of misbehavior. Polkadot
+punishes attacks that appear coordinated more severely than individual attacks. You should not, for
+example, run multiple validators hosted on the same infrastructure. A proper multi-validator
+configuration would ensure that they do not fail simultaneously.</p>
+<p>Nominators have the incentive to nominate the lowest-staked validator, as this will result in the
+lowest risk and highest reward.</p>
+<h2><a class="anchor" aria-hidden="true" id="nominators-and-validator-payments"></a><a href="#nominators-and-validator-payments" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Nominators and Validator Payments</h2>
+<p>Nominated stake allows you to &quot;vote&quot; for validators and share in the rewards (and slashing) without
+running a validator node yourself. Validators can choose to keep a percentage of the rewards due to
+their validator to &quot;reimburse&quot; themselves for the cost of running a validator node. Other than that,
+all rewards are shared based on the stake behind each validator. This includes the stake of the
+validator itself, plus any stake bonded by nominators.</p>
+<blockquote>
+<p><strong>NOTE:</strong> Validators set their preference as a percentage of the block reward, <em>not</em> an absolute
+number of DOTs. Polkadot's block reward is based on the <em>total</em> amount at stake, with the reward
+peaking when the amount staked is at 50% of the total supply. In periods when there is a lower
+amount staked, and therefore lower rewards, the validator's payout preference could mean that
+there is zero left over for nominators.</p>
+</blockquote>
+<p>In the following examples, we can see the results of several different validator payment schemes and
+split between nominator and validator stake. We will assume a single nominator for each validator.
+However, there can be numerous nominators for each validator. Rewards are still distributed
+proportionally - for example, if the total rewards to be given to nominators is 2 DOTs, and there
+are four nominators with equal stake bonded, each will receive 0.5 DOTs. Note also that a single
+nominator may stake different validators.</p>
+<p>Each validator in the example has selected a different validator payment (that is, a percentage of
+the reward set aside directly for the validator before sharing with all bonded stake). The
+validator's payment percentage (in DOTs) is listed in brackets (<code>[]</code>) next to each validator. Note
+that since the validator payment is public knowledge, having a low or non-existent validator payment
+may attract more stake from nominators, since they know they will receive a larger reward.</p>
+<pre><code class="hljs">Validator Set Size (v): <span class="hljs-number">4</span>
+Validator <span class="hljs-number">1</span> Stake (v1) [<span class="hljs-number">0.2</span>]: <span class="hljs-number">18</span> DOTs (<span class="hljs-number">9</span> validator, <span class="hljs-number">9</span> nominator)
+Validator <span class="hljs-number">2</span> Stake (v2) [<span class="hljs-number">0.4</span>]:  <span class="hljs-number">9</span> DOTs (<span class="hljs-number">3</span> validator, <span class="hljs-number">6</span> nominator)
+Validator <span class="hljs-number">3</span> Stake (v3) [<span class="hljs-number">0.1</span>]:  <span class="hljs-number">8</span> DOTs (<span class="hljs-number">4</span> validator, <span class="hljs-number">4</span> nominator)
+Validator <span class="hljs-number">4</span> Stake (v4) [<span class="hljs-number">0.0</span>]:  <span class="hljs-number">6</span> DOTs (<span class="hljs-number">1</span> validator, <span class="hljs-number">5</span> nominator)
+Payout (p): <span class="hljs-number">8</span> DOTs
+
+Payout <span class="hljs-keyword">for</span> each validator (v1 - v4):
+p / v = <span class="hljs-number">8</span> / <span class="hljs-number">4</span> = <span class="hljs-number">2</span> DOTs
+
+v1:
+(<span class="hljs-number">0.2</span> * <span class="hljs-number">2</span>) = <span class="hljs-number">0.4</span> DOTs -&gt; validator payment
+(<span class="hljs-number">2</span> - <span class="hljs-number">0.4</span>) = <span class="hljs-number">1.6</span> -&gt; <span class="hljs-keyword">shared</span> between all stake
+(<span class="hljs-number">9</span> / <span class="hljs-number">18</span>) * <span class="hljs-number">1.6</span> = <span class="hljs-number">0.8</span> -&gt; validator stake share
+(<span class="hljs-number">9</span> / <span class="hljs-number">18</span>) * <span class="hljs-number">1.6</span> = <span class="hljs-number">0.8</span> -&gt; nominator stake share
+v1 validator total reward: <span class="hljs-number">0.4</span> + <span class="hljs-number">0.8</span> = <span class="hljs-number">1.2</span> DOTs
+v1 nominator reward: <span class="hljs-number">0.8</span> DOTs
+
+v2:
+(<span class="hljs-number">0.4</span> * <span class="hljs-number">2</span>) = <span class="hljs-number">0.8</span> DOTs -&gt; validator payment
+(<span class="hljs-number">2</span> - <span class="hljs-number">0.8</span>) = <span class="hljs-number">1.2</span> -&gt; <span class="hljs-keyword">shared</span> between all stake
+(<span class="hljs-number">3</span> / <span class="hljs-number">9</span>) * <span class="hljs-number">1.2</span> = <span class="hljs-number">0.4</span> -&gt; validator stake share
+(<span class="hljs-number">6</span> / <span class="hljs-number">9</span>) * <span class="hljs-number">1.2</span> = <span class="hljs-number">0.8</span> -&gt; nominator stake share
+v2 validator total reward: <span class="hljs-number">0.8</span> + <span class="hljs-number">0.4</span> = <span class="hljs-number">1.2</span> DOTs
+v2 nominator reward: <span class="hljs-number">0.8</span> DOTs
+
+v3:
+(<span class="hljs-number">0.1</span> * <span class="hljs-number">2</span>) = <span class="hljs-number">0.2</span> DOTs -&gt; validator payment
+(<span class="hljs-number">2</span> - <span class="hljs-number">0.2</span>) = <span class="hljs-number">1.8</span> -&gt; <span class="hljs-keyword">shared</span> between all stake
+(<span class="hljs-number">4</span> / <span class="hljs-number">8</span>) * <span class="hljs-number">1.8</span> = <span class="hljs-number">0.9</span> -&gt; validator stake share
+(<span class="hljs-number">4</span> / <span class="hljs-number">8</span>) * <span class="hljs-number">1.8</span> = <span class="hljs-number">0.9</span> -&gt; nominator stake share
+v3 validator total reward: <span class="hljs-number">0.2</span> + <span class="hljs-number">0.9</span> DOTs = <span class="hljs-number">1.1</span> DOTs
+v3 nominator reward: <span class="hljs-number">0.9</span> DOTs
+
+v4:
+(<span class="hljs-number">0</span> * <span class="hljs-number">2</span>) = <span class="hljs-number">0</span> DOTs -&gt; validator payment
+(<span class="hljs-number">2</span> - <span class="hljs-number">0</span>) = <span class="hljs-number">2.0</span> -&gt; <span class="hljs-keyword">shared</span> between all stake
+(<span class="hljs-number">1</span> / <span class="hljs-number">6</span>) * <span class="hljs-number">2</span> = <span class="hljs-number">0.33</span> -&gt; validator stake share
+(<span class="hljs-number">5</span> / <span class="hljs-number">6</span>) * <span class="hljs-number">2</span> = <span class="hljs-number">1.67</span> -&gt; nominator stake share
+v4 validator total reward: <span class="hljs-number">0</span> + <span class="hljs-number">0.33</span> DOTs = <span class="hljs-number">0.33</span> DOTs
+v4 nominator reward: <span class="hljs-number">1.67</span> DOTs
+</code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/1/2020 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#era-points">Era Points</a></li><li><a href="#payout-scheme">Payout Scheme</a></li><li><a href="#running-multiple-validators">Running Multiple Validators</a></li><li><a href="#slashing">Slashing</a></li><li><a href="#nominators-and-validator-payments">Nominators and Validator Payments</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

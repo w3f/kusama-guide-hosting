@@ -1,0 +1,346 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Governance · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Polkadot uses a sophisticated governance mechanism that allows it to evolve gracefully over time at"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Governance · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="Polkadot uses a sophisticated governance mechanism that allows it to evolve gracefully over time at"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/learn-governance.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-governance.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Governance</h1></header><article><div><span><p>Polkadot uses a sophisticated governance mechanism that allows it to evolve gracefully over time at
+the ultimate behest of its assembled stakeholders. The stated goal is to ensure that the majority of
+the stake can always command the network.</p>
+<p>To do this, we bring together various novel mechanisms, including an amorphous state-transition
+function stored on-chain and defined in a platform-neutral intermediate language (i.e. WebAssembly)
+and several on-chain voting mechanisms such as referenda with adaptive super-majority thresholds and
+batch approval voting. All changes to the protocol must be agreed upon by stake-weighted referenda.</p>
+<h2><a class="anchor" aria-hidden="true" id="mechanism"></a><a href="#mechanism" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mechanism</h2>
+<p>In order to make any changes to the network, the idea is to compose active token holders and the
+council together to administrate a network upgrade decision. No matter whether the proposal is
+proposed by the public (DOT holders) or the council, it finally will have to go through a referendum
+to let all DOT holders, weighted by stake, make the decision.</p>
+<p>The following steps are the governance procedure in the Polkadot network:</p>
+<ul>
+<li><a href="#proposing-a-referendum">Proposing Referenda</a></li>
+<li><a href="#voting-on-a-referendum">Voting for a proposal</a></li>
+<li><a href="#tallying">Tallying</a></li>
+</ul>
+<p>To better understand how the council is formed, please read <a href="#council">this section</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="referenda"></a><a href="#referenda" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Referenda</h2>
+<p>Referenda are simple, inclusive, stake-based voting schemes. Each referendum has a specific
+<em>proposal</em> associated with it that takes the form of a privileged function call in the runtime (that
+includes the most powerful call: <code>set_code</code>, which is able to switch out the entire code of the
+runtime, achieving what would otherwise require a &quot;hard fork&quot;). They are discrete events, have a
+fixed period where voting happens, and then are tallied and the function call is made if the vote is
+approved. Referenda are always binary; your only options in voting are &quot;aye&quot;, &quot;nay&quot;, or abstaining
+entirely.</p>
+<p>Referenda can be started in one of several ways:</p>
+<ul>
+<li>Publicly submitted proposals;</li>
+<li>Proposals submitted by the council, either through a majority or unanimously;</li>
+<li>Proposals submitted as part of the enactment of a prior referendum;</li>
+<li>Emergency proposals submitted by the Technical Committee and approved by the Council.</li>
+</ul>
+<p>All referenda have an <em>enactment delay</em> associated with them. This is the period of time between the
+referendum ending and, assuming the proposal was approved, the changes being enacted. For the first
+two ways that a referendum is launched, this is a fixed time. For Kusama, it is 7 days; Polkadot
+will likely be 28 days. For the third type, it can be set as desired.</p>
+<p>Emergency proposals deal with major problems with the network that need to be &quot;fast-tracked&quot;. These
+will have a shorter enactment time.</p>
+<h3><a class="anchor" aria-hidden="true" id="proposing-a-referendum"></a><a href="#proposing-a-referendum" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Proposing a Referendum</h3>
+<h4><a class="anchor" aria-hidden="true" id="public-referenda"></a><a href="#public-referenda" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Public Referenda</h4>
+<p>Anyone can propose a referendum by depositing the minimum amount of DOTs for a certain period
+(number of blocks). If someone agrees with the proposal, they may deposit the same amount of tokens
+to support it. The proposal with the highest amount of bonded support will be selected to be a
+referendum. Note that this may be different than the absolute number of seconds; for instance, three
+accounts bonding 20 DOTs each would &quot;outweigh&quot; ten accounts bonding a single DOT each. The bonded
+tokens will be released once the proposal is tabled (that is, brought to a vote).</p>
+<h4><a class="anchor" aria-hidden="true" id="council-referenda"></a><a href="#council-referenda" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Council Referenda</h4>
+<p>Unanimous Council - When all members of the council agree on a proposal, it can be moved to a
+referendum. This referendum will have a negative turnout bias (that is, the smaller the amount of
+stake voting, the smaller the amount necessary for it to pass - see &quot;Adaptive Quorum Biasing&quot;,
+below).</p>
+<p>Majority Council - When agreement from only a simple majority of council members occurs, the
+referendum can also be voted upon, but it will be majority-carries.</p>
+<p>There can only be one active referendum at any given time, except when there is also an emergency
+referendum in progress.</p>
+<h4><a class="anchor" aria-hidden="true" id="voting-timetable"></a><a href="#voting-timetable" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Voting Timetable</h4>
+<p>Every thirty days, a new referendum will come up for a vote, assuming there is at least one proposal
+in one of the queues. There is a queue for Council-approved proposals and a queue for publicly
+submitted proposals. The referendum to be voted upon alternates between the top proposal in the two
+queues.</p>
+<p>The &quot;top&quot; proposal is determined by the amount of stake bonded behind it. If the given queue whose
+turn it is to create a referendum has no proposals (is empty), and there are proposals waiting in
+the other queue, the top proposal in the other queue will become a referendum.</p>
+<p>Multiple referenda cannot be voted upon in the same time period, excluding emergency referenda. An
+emergency referendum occurring at the same time as a regular referendum (either public- or
+council-proposed) is the only time that multiple referenda will be able to be voted on at once.</p>
+<h4><a class="anchor" aria-hidden="true" id="voting-on-a-referendum"></a><a href="#voting-on-a-referendum" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Voting on a referendum</h4>
+<p>To vote, a voter generally must lock their tokens up for at least the enactment delay period beyond
+the end of the referendum. This is in order to ensure that some minimal economic buy-in to the
+result is needed and to dissuade vote selling. It is possible to vote without locking at all, but
+your vote is worth a small fraction of a normal vote, given your stake. At the same time, holding
+only a small amount of DOT tokens does not mean that the holder cannot influence the referendum
+result, thanks to time-locking. You can read more about this at
+<a href="#voluntary-locking">Voluntary Locking</a>.</p>
+<pre><code class="hljs"><span class="hljs-attr">Example:</span>
+
+<span class="hljs-attr">Peter:</span> <span class="hljs-string">Votes</span> <span class="hljs-string">`No`</span> <span class="hljs-string">with</span> <span class="hljs-number">10</span> <span class="hljs-string">DOTs</span> <span class="hljs-string">for</span> <span class="hljs-string">a</span> <span class="hljs-number">128</span> <span class="hljs-string">week</span> <span class="hljs-string">lock</span> <span class="hljs-string">period</span>  <span class="hljs-string">=&gt;</span> <span class="hljs-number">10</span> <span class="hljs-string">*</span> <span class="hljs-number">6</span> <span class="hljs-string">=</span> <span class="hljs-number">60</span> <span class="hljs-string">Votes</span>
+
+<span class="hljs-attr">Logan:</span> <span class="hljs-string">Votes</span> <span class="hljs-string">`Yes`</span> <span class="hljs-string">with</span> <span class="hljs-number">20</span> <span class="hljs-string">DOTs</span> <span class="hljs-string">for</span> <span class="hljs-string">a</span> <span class="hljs-number">4</span> <span class="hljs-string">week</span> <span class="hljs-string">lock</span> <span class="hljs-string">period</span> <span class="hljs-string">=&gt;</span> <span class="hljs-number">20</span> <span class="hljs-string">*</span> <span class="hljs-number">1</span> <span class="hljs-string">=</span> <span class="hljs-number">20</span> <span class="hljs-string">Votes</span>
+
+<span class="hljs-attr">Kevin:</span> <span class="hljs-string">Votes</span> <span class="hljs-string">`Yes`</span> <span class="hljs-string">with</span> <span class="hljs-number">15</span> <span class="hljs-string">DOTs</span> <span class="hljs-string">for</span> <span class="hljs-string">a</span> <span class="hljs-number">8</span> <span class="hljs-string">week</span> <span class="hljs-string">lock</span> <span class="hljs-string">period</span> <span class="hljs-string">=&gt;</span> <span class="hljs-number">15</span> <span class="hljs-string">*</span> <span class="hljs-number">2</span> <span class="hljs-string">=</span> <span class="hljs-number">30</span> <span class="hljs-string">Votes</span>
+</code></pre>
+<p>Even though combining both Logan and Kevin vote with more DOTs than Peter, the lock period for both
+of them is less than Peter, leading to their voting power counting as less.</p>
+<h4><a class="anchor" aria-hidden="true" id="tallying"></a><a href="#tallying" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tallying</h4>
+<p>Depending on which entity proposed the proposal and whether all council members voted yes, there are
+three different scenarios. We can use following table for reference.</p>
+<table>
+<thead>
+<tr><th style="text-align:center"><strong>Entity</strong></th><th style="text-align:center"><strong>Metric</strong></th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center">Public</td><td style="text-align:center">Positive Turnout Bias (Super-Majority Approve)</td></tr>
+<tr><td style="text-align:center">Council (Complete agreement)</td><td style="text-align:center">Negative Turnout Bias (Super-Majority Against)</td></tr>
+<tr><td style="text-align:center">Council (Majority agreement)</td><td style="text-align:center">Simple Majority</td></tr>
+</tbody>
+</table>
+<p>Also, we need the following information and apply one of the formulas listed below to calculate the
+voting result. For example, let's use the public proposal as an example, so the
+<code>Super-Majority Approve</code> formula will be applied. There is no strict quorum, but the super-majority
+required increases as turnout lowers.</p>
+<pre><code class="hljs">approve - <span class="hljs-keyword">the</span> <span class="hljs-built_in">number</span> <span class="hljs-keyword">of</span> aye votes
+
+against - <span class="hljs-keyword">the</span> <span class="hljs-built_in">number</span> <span class="hljs-keyword">of</span> nay votes
+
+turnout - <span class="hljs-keyword">the</span> total <span class="hljs-built_in">number</span> <span class="hljs-keyword">of</span> voting tokens (Does <span class="hljs-keyword">not</span> <span class="hljs-built_in">include</span> conviction)
+
+electorate - <span class="hljs-keyword">the</span> total <span class="hljs-built_in">number</span> <span class="hljs-keyword">of</span> DOTs tokens issued <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> network
+</code></pre>
+<h5><a class="anchor" aria-hidden="true" id="super-majority-approve"></a><a href="#super-majority-approve" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Super-Majority Approve</h5>
+<p>A <code>positive turnout bias</code>, whereby a heavy super-majority of aye votes is required to carry at low
+turnouts, but as turnout increases towards 100%, it becomes a simple majority-carries as below.</p>
+<p><img src="https://latex.codecogs.com/svg.latex?\large&amp;space;{against&amp;space;\over&amp;space;\sqrt{turnout}}&amp;space;&lt;&amp;space;{approve&amp;space;\over&amp;space;\sqrt{electorate}}" alt=""></p>
+<h5><a class="anchor" aria-hidden="true" id="super-majority-against"></a><a href="#super-majority-against" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Super-Majority Against</h5>
+<p>A <code>negative turnout bias</code>, whereby a heavy super-majority of nay votes is required to reject at low
+turnouts, but as turnout increases towards 100%, it becomes a simple majority-carries as below.</p>
+<p><img src="https://latex.codecogs.com/svg.latex?\large&amp;space;{against&amp;space;\over&amp;space;\sqrt{electorate}}&amp;space;&lt;&amp;space;{approve&amp;space;\over&amp;space;\sqrt{turnout}}" alt=""></p>
+<h5><a class="anchor" aria-hidden="true" id="simple-majority"></a><a href="#simple-majority" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Simple-Majority</h5>
+<p>Majority-carries, a simple comparison of votes; if there are more aye votes than nay, then the
+proposal is carried, no matter how much stake votes on the proposal.</p>
+<p><img src="https://latex.codecogs.com/svg.latex?\large&amp;space;{approve}&amp;space;&gt;&amp;space;{against}" alt=""></p>
+<p><em>To know more about where these above formulas come from, please read the
+<a href="https://github.com/paritytech/substrate/blob/master/frame/democracy/src/vote_threshold.rs">democracy pallet</a></em>.</p>
+<pre><code class="hljs"><span class="hljs-attr">Example:</span>
+
+<span class="hljs-attr">Assume:</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">We</span> <span class="hljs-string">only</span> <span class="hljs-string">have</span> <span class="hljs-number">1</span><span class="hljs-string">,500</span> <span class="hljs-string">DOTs</span> <span class="hljs-string">tokens</span> <span class="hljs-string">in</span> <span class="hljs-string">total.</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">Public</span> <span class="hljs-string">proposal</span>
+
+<span class="hljs-string">John</span>  <span class="hljs-bullet">-</span> <span class="hljs-number">500</span> <span class="hljs-string">DOTs</span>
+<span class="hljs-string">Peter</span> <span class="hljs-bullet">-</span> <span class="hljs-number">100</span> <span class="hljs-string">DOTs</span>
+<span class="hljs-string">Lilly</span> <span class="hljs-bullet">-</span> <span class="hljs-number">150</span> <span class="hljs-string">DOTs</span>
+<span class="hljs-string">JJ</span>    <span class="hljs-bullet">-</span> <span class="hljs-number">150</span> <span class="hljs-string">DOTs</span>
+<span class="hljs-string">Ken</span>   <span class="hljs-bullet">-</span> <span class="hljs-number">600</span> <span class="hljs-string">DOTs</span>
+
+<span class="hljs-attr">John:</span> <span class="hljs-string">Votes</span> <span class="hljs-string">`Yes`</span> <span class="hljs-string">for</span> <span class="hljs-string">a</span> <span class="hljs-number">4</span> <span class="hljs-string">week</span> <span class="hljs-string">lock</span> <span class="hljs-string">period</span>  <span class="hljs-string">=&gt;</span> <span class="hljs-number">500</span> <span class="hljs-string">*</span> <span class="hljs-number">1</span> <span class="hljs-string">=</span> <span class="hljs-number">500</span> <span class="hljs-string">Votes</span>
+
+<span class="hljs-attr">Peter:</span> <span class="hljs-string">Votes</span> <span class="hljs-string">`Yes`</span> <span class="hljs-string">for</span> <span class="hljs-string">a</span> <span class="hljs-number">4</span> <span class="hljs-string">week</span> <span class="hljs-string">lock</span> <span class="hljs-string">period</span> <span class="hljs-string">=&gt;</span> <span class="hljs-number">100</span> <span class="hljs-string">*</span> <span class="hljs-number">1</span> <span class="hljs-string">=</span> <span class="hljs-number">100</span> <span class="hljs-string">Votes</span>
+
+<span class="hljs-attr">JJ:</span> <span class="hljs-string">Votes</span> <span class="hljs-string">`No`</span> <span class="hljs-string">for</span> <span class="hljs-string">a</span> <span class="hljs-number">16</span> <span class="hljs-string">week</span> <span class="hljs-string">lock</span> <span class="hljs-string">period</span> <span class="hljs-string">=&gt;</span> <span class="hljs-number">150</span> <span class="hljs-string">*</span> <span class="hljs-number">3</span> <span class="hljs-string">=</span> <span class="hljs-number">450</span> <span class="hljs-string">Votes</span>
+
+<span class="hljs-string">approve</span> <span class="hljs-string">=</span> <span class="hljs-number">600</span>
+<span class="hljs-string">against</span> <span class="hljs-string">=</span> <span class="hljs-number">450</span>
+<span class="hljs-string">turnout</span> <span class="hljs-string">=</span> <span class="hljs-number">750</span>
+<span class="hljs-string">electorate</span> <span class="hljs-string">=</span> <span class="hljs-number">1500</span>
+</code></pre>
+<p><img src="https://latex.codecogs.com/svg.latex?\large&amp;space;\frac{450}{\sqrt{750}}&amp;space;&lt;&amp;space;\frac{600}{\sqrt{1500}}" alt="\Large \frac{450}{\sqrt{750}}&amp;space;&lt;&amp;space;\frac{600}{\sqrt{1500}}"></p>
+<p><img src="https://latex.codecogs.com/svg.latex?\large&amp;space;{16.432}&amp;space;&lt;&amp;space;{15.492}" alt="\Large {16.432}&amp;space;&lt;&amp;space;{15.492}"></p>
+<p>Since the above example is a public referendum, <code>Super-Majority Approve</code> would be used to calculate
+the result. <code>Super-Majority Approve</code> requires more <code>aye</code> votes to pass the referendum when turnout
+is low, therefore, based on the above result, the referendum will be rejected. In addition, only the
+winning voter's tokens are locked. If the voters on the losing side of the referendum believe that
+the outcome will have negative effects, their tokens are transferrable so they will not be locked in
+to the decision. Moreover, winning proposals are autonomously enacted only after some enactment
+period.</p>
+<h4><a class="anchor" aria-hidden="true" id="voluntary-locking"></a><a href="#voluntary-locking" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Voluntary Locking</h4>
+<p>Polkadot utilizes an idea called <code>Voluntary Locking</code> that allows token holders to increase their
+voting power by declaring how long they are willing to lock-up their DOTs, hence, the maximum number
+of votes for each token holder will be calculated by the following formula:</p>
+<pre><code class="hljs"><span class="hljs-built_in">Max</span> votes = tokens * vote_multiplier
+</code></pre>
+<p>The conviction multiplier increases the vote multiplier by one every time the lock period doubles.</p>
+<table>
+<thead>
+<tr><th style="text-align:center">Lock Periods</th><th style="text-align:center">Vote Multiplier</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center">0</td><td style="text-align:center">0.1</td></tr>
+<tr><td style="text-align:center">1</td><td style="text-align:center">1</td></tr>
+<tr><td style="text-align:center">2</td><td style="text-align:center">2</td></tr>
+<tr><td style="text-align:center">4</td><td style="text-align:center">3</td></tr>
+<tr><td style="text-align:center">8</td><td style="text-align:center">4</td></tr>
+<tr><td style="text-align:center">16</td><td style="text-align:center">5</td></tr>
+<tr><td style="text-align:center">32</td><td style="text-align:center">6</td></tr>
+</tbody>
+</table>
+<p>Based on the genesis runtime, the maximum number of lock periods is set to 6 and the lock period is
+30 days on Polkadot and eight days on Kusama.</p>
+<h4><a class="anchor" aria-hidden="true" id="adaptive-quorum-biasing"></a><a href="#adaptive-quorum-biasing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Adaptive Quorum Biasing</h4>
+<p>Polkadot introduces a concept, &quot;Adaptive Quorum Biasing&quot;, which functions as a lever that the
+council can use to alter the effective super-majority required to make it easier or more difficult
+for a proposal to pass in the case that there is no clear majority of voting power backing it or
+against it.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/governance/adaptive-quorum-biasing.png" alt=""></p>
+<p>Let's use the above image as an example.</p>
+<p>If a publicly submitted referendum only has 25% turnout, the tally of &quot;aye&quot; votes has to reach 66%
+for it to pass since we applied <code>Positive Turnout Bias</code>.</p>
+<p>In contrast, when it has 75% turnout, the tally of &quot;aye&quot; votes has to reach 54%, which means that
+the super-majority required decreases as the turnout increases.</p>
+<p>When the council proposes a new proposal through unanimous consent, the referendum would be put to a
+vote using &quot;Negative Turnout Bias&quot;. In this case it is easier to pass this proposal with low turnout
+and requires a super-majority to reject. As more token holders participate in voting, the bias
+approaches a plain majority carries.</p>
+<p>Referring to the above image, when a referendum only has 25% turnout, the tally of &quot;aye&quot; votes has
+to reach 34% for it to pass.</p>
+<p>In short, when turnout rate is low, a super-majority is required to reject the proposal, which means
+a lower threshold of &quot;aye&quot; votes have to be reached, but as turnout increases towards 100%, it
+becomes a simple-majority.</p>
+<p>All three tallying mechanisms - majority carries, super-majority approve, and super-majority
+against - equate to a simple majority-carries system at 100% turnout.</p>
+<h2><a class="anchor" aria-hidden="true" id="council"></a><a href="#council" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Council</h2>
+<p>To represent passive stakeholders, we introduce the idea of a &quot;council&quot;. The council is an on-chain
+entity comprising a number of actors, each represented as an on-chain account. For Polkadot this
+number is likely to begin at around six people, and increase over the course of 9 months to 24
+people (roughly one extra individual coming on every two weeks). In general, it has a fixed number
+of seats (24 on Polkadot and 13 on Kusama).</p>
+<p>The council is called upon primarily for two tasks of governance: proposing sensible referenda, and
+cancelling uncontroversially dangerous or malicious referenda.</p>
+<p>For a referendum to be proposed by the council, a strict majority of members must be in favor, with
+no member exercising a veto. Vetoes may be exercised only once by a member for any single proposal;
+if, after a cool-down period, the proposal is resubmitted, they may not veto it a second time. In
+the case that all members vote in favor, the vote is considered unanimous and is treated as
+uncontroversial.</p>
+<p>A two-thirds majority of the council can cancel a referendum. This may function as a last-resort if
+there is an issue found late in a referendum's proposal such as a bug in the code of the runtime
+that the proposal would institute.</p>
+<p>If the cancellation is controversial enough that the council cannot get a two-thirds majority, then
+it will be left to the stakeholders <em>en masse</em> to determine the fate of the proposal.</p>
+<h3><a class="anchor" aria-hidden="true" id="how-to-be-a-council-member"></a><a href="#how-to-be-a-council-member" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to be a council member?</h3>
+<p><img src="/kusama-guide-hosting/docs/assets/governance/approval-vote.png" alt=""></p>
+<p>At genesis, there will be 6 to 12 seats in the Council. All stakeholders are free to signal their
+approval of any of the registered candidates. For every two weeks, one of those seats is up for
+election and increase over the course of 9 months to 24 people (roughly one extra individual coming
+on every two weeks). All members have a fixed term (1 year). Council members can be removed early
+only by a referendum.</p>
+<p>To elect a new council member, Polkadot employs the same election scheme as used for choosing the
+active set of validators, a <a href="learn-phragmen">Phragmén election</a>. The election also chooses a set
+number of runners up (currently seven in Kusama) that will remain in the queue with their votes
+intact.</p>
+<p>As opposed to a &quot;first past the post&quot;, where voters must decide only on a single candidate chosen
+from a list, a Phragmén election is a more expressive way to indicate voters' views. Token holders
+can treat it as Boolean voting to support as many candidates as they want. The election algorithm
+will find a fair subset of the candidates that closely matches the expressed indications of the
+electorate as a whole.</p>
+<p>Let's take a look at the example below.</p>
+<table>
+<thead>
+<tr><th style="text-align:center">Round 1</th><th style="text-align:center"></th><th style="text-align:center"></th><th style="text-align:center"></th><th style="text-align:center"></th><th style="text-align:center"></th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center"><strong>Token Holders</strong></td><td style="text-align:center"></td><td style="text-align:center"><strong>Candidates</strong></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr>
+<tr><td style="text-align:center"></td><td style="text-align:center">A</td><td style="text-align:center">B</td><td style="text-align:center">C</td><td style="text-align:center">D</td><td style="text-align:center">E</td></tr>
+<tr><td style="text-align:center">Peter</td><td style="text-align:center">X</td><td style="text-align:center"></td><td style="text-align:center">X</td><td style="text-align:center">X</td><td style="text-align:center">X</td></tr>
+<tr><td style="text-align:center">Alice</td><td style="text-align:center"></td><td style="text-align:center">X</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr>
+<tr><td style="text-align:center">Bob</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center">X</td><td style="text-align:center">X</td><td style="text-align:center">X</td></tr>
+<tr><td style="text-align:center">Kelvin</td><td style="text-align:center">X</td><td style="text-align:center"></td><td style="text-align:center">X</td><td style="text-align:center"></td><td style="text-align:center"></td></tr>
+<tr><td style="text-align:center"><strong>Total</strong></td><td style="text-align:center">2</td><td style="text-align:center">1</td><td style="text-align:center">3</td><td style="text-align:center">2</td><td style="text-align:center">2</td></tr>
+</tbody>
+</table>
+<p>The above example shows that candidate C wins the election in round 1, while candidate A, B, D &amp; E
+keep remaining on the candidates' list for the next round.</p>
+<table>
+<thead>
+<tr><th style="text-align:center">Round 2</th><th style="text-align:center"></th><th style="text-align:center"></th><th style="text-align:center"></th><th style="text-align:center"></th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center"><strong>Token Holders</strong></td><td style="text-align:center"></td><td style="text-align:center"><strong>Candidates</strong></td><td style="text-align:center"></td><td style="text-align:center"></td></tr>
+<tr><td style="text-align:center"></td><td style="text-align:center">A</td><td style="text-align:center">B</td><td style="text-align:center">D</td><td style="text-align:center">E</td></tr>
+<tr><td style="text-align:center">Peter</td><td style="text-align:center">X</td><td style="text-align:center">X</td><td style="text-align:center"></td><td style="text-align:center"></td></tr>
+<tr><td style="text-align:center">Alice</td><td style="text-align:center">X</td><td style="text-align:center">X</td><td style="text-align:center"></td><td style="text-align:center"></td></tr>
+<tr><td style="text-align:center">Bob</td><td style="text-align:center">X</td><td style="text-align:center">X</td><td style="text-align:center">X</td><td style="text-align:center">X</td></tr>
+<tr><td style="text-align:center">Kelvin</td><td style="text-align:center">X</td><td style="text-align:center">X</td><td style="text-align:center"></td><td style="text-align:center"></td></tr>
+<tr><td style="text-align:center"><strong>Total</strong></td><td style="text-align:center">4</td><td style="text-align:center">4</td><td style="text-align:center">1</td><td style="text-align:center">1</td></tr>
+</tbody>
+</table>
+<p>For the top-N (say 4 in this example) runners-up, they can remain and their votes persist until the
+next election. After round 2, even though candidates A &amp; B get the same number of votes in this
+round, candidate A gets elected because after adding the older unused approvals, it is higher than
+B.</p>
+<p>This is the tentative governance configuration for Polkadot in the initial genesis. It will be
+changed if any security loopholes have been found after third-party auditing. Further changes can be
+made through on-chain governance.</p>
+<h3><a class="anchor" aria-hidden="true" id="prime-members"></a><a href="#prime-members" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Prime Members</h3>
+<p>The council, being an instantiation of Substrate's Collective pallet, implements what's called a
+<em>prime member</em> whose vote acts as the default for other members that fail to vote before the
+timeout.</p>
+<p>The prime member is chosen based on a <a href="https://en.wikipedia.org/wiki/Borda_count">Borda count</a>.</p>
+<p>The purpose of having a prime member of the council is to ensure a quorum, even when several members
+abstain from a vote. Council members might be tempted to vote a &quot;soft rejection&quot; or a &quot;soft
+approval&quot; by not voting and letting the others vote. With the existence of a prime member, it forces
+councillors to be explicit in their votes or have their vote counted for whatever is voted on by the
+prime.</p>
+<h2><a class="anchor" aria-hidden="true" id="technical-committee"></a><a href="#technical-committee" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Technical Committee</h2>
+<p>The Technical Committee was introduced in the
+<a href="https://polkadot.network/kusama-rollout-and-governance/">Kusama rollout and governance post</a> as one
+of the three chambers of Kusama governance (along with the Council and the Referendum chamber). The
+Technical Committee is composed of the teams that have successfully implemented or specified either
+a Polkadot/Kusama runtime or Polkadot Host. Teams are added or removed from the Technical Committee
+via simple majority vote of the council.</p>
+<p>The Technical Committee can, along with the Polkadot Council, produce emergency referenda, which are
+fast-tracked for voting and implementation. These emergency referenda are intended for use only
+under urgent circumstances.</p>
+<p>Fast-tracked referenda are the only type of referenda that can be active alongside another active
+referendum. Thus, with fast tracked referenda it is possible to have two active referendums at the
+same time. Voting on one does not prevent a user from voting on the other.</p>
+<h2><a class="anchor" aria-hidden="true" id="usage-of-dotlearn-dotdots-for-governance"></a><a href="#usage-of-dotlearn-dotdots-for-governance" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="learn-DOT#dots-for-governance">Usage of DOT</a></h2>
+<h2><a class="anchor" aria-hidden="true" id="resources"></a><a href="#resources" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resources</h2>
+<ul>
+<li><a href="https://github.com/paritytech/polkadot/wiki/Governance">Initial Governance Description</a></li>
+<li><a href="https://github.com/paritytech/substrate/tree/master/frame/democracy/src">Democracy Pallet</a></li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/1/2020 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#mechanism">Mechanism</a></li><li><a href="#referenda">Referenda</a><ul class="toc-headings"><li><a href="#proposing-a-referendum">Proposing a Referendum</a></li></ul></li><li><a href="#council">Council</a><ul class="toc-headings"><li><a href="#how-to-be-a-council-member">How to be a council member?</a></li><li><a href="#prime-members">Prime Members</a></li></ul></li><li><a href="#technical-committee">Technical Committee</a></li><li><a href="#usage-of-dotlearn-dotdots-for-governance"><a href="learn-DOT#dots-for-governance">Usage of DOT</a></a></li><li><a href="#resources">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

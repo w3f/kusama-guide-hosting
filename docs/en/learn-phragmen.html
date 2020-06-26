@@ -1,0 +1,539 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Sequential Phragmén Method · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## What is the sequential Phragmén method?"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Sequential Phragmén Method · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="## What is the sequential Phragmén method?"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/learn-phragmen.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-phragmen.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Sequential Phragmén Method</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="what-is-the-sequential-phragmén-method"></a><a href="#what-is-the-sequential-phragmén-method" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is the sequential Phragmén method?</h2>
+<p>The sequential Phragmén method is a multi-winner election method introduced by Edvard Phragmén in
+the 1890s.</p>
+<p>The quote below taken from the reference <a href="#external-resources">Phragmén paper</a> sums up the purpose
+of the sequential Phragmén method:</p>
+<blockquote>
+<p>The problem that Phragmén’s methods try to solve is that of electing a set of a given numbers of
+persons from a larger set of candidates. Phragmén discussed this in the context of a parliamentary
+election in a multi-member constituency; the same problem can, of course, also occur in local
+elections, but also in many other situations such as electing a board or a committee in an
+organization.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="where-is-the-phragmén-method-used-in-polkadot"></a><a href="#where-is-the-phragmén-method-used-in-polkadot" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Where is the Phragmén method used in Polkadot?</h2>
+<h3><a class="anchor" aria-hidden="true" id="npos-validator-elections"></a><a href="#npos-validator-elections" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>NPoS: Validator Elections</h3>
+<p>The sequential Phragmén method is used in the Nominated Proof-of-Stake scheme to elect validators
+based on their own self-stake and the stake that is voted to them from nominators. It also tries to
+equalize the weights between the validators after each election round. Since validators are paid
+equally in Polkadot, it is important that the stake behind each validator is spread out. Polkadot
+tries to optimize three metrics in its elections:</p>
+<ol>
+<li>Maximize the total amount at stake.</li>
+<li>Maximize the stake behind the minimally staked validator.</li>
+<li>Minimize the variance of the stake in the set.</li>
+</ol>
+<h4><a class="anchor" aria-hidden="true" id="off-chain-phragmen"></a><a href="#off-chain-phragmen" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Off-Chain Phragmen</h4>
+<p>Given the large set of nominators and validators, Phragmén's method is a difficult optimization
+problem. Polkadot uses off-chain workers to compute the result off-chain and submit a transaction to
+propose the set of winners. The reason for performing this computation off-chain is to keep a
+constant block time of six seconds and prevent long block times at the end of each era, when the
+validator election takes place.</p>
+<p>Because certain user actions, like changing nominations, can change the outcome of the Phragmén
+election, the system forbids calls to these functions for the last quarter of the session before an
+era change. These functions are not permitted:</p>
+<ul>
+<li><code>bondExtra</code></li>
+<li><code>unbond</code></li>
+<li><code>withdrawUnbonded</code></li>
+<li><code>validate</code></li>
+<li><code>nominate</code></li>
+<li><code>chill</code></li>
+<li><code>payoutStakers</code></li>
+<li><code>rebond</code></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="council-elections"></a><a href="#council-elections" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Council Elections</h3>
+<p>The Phragmén method is also used in the council election mechanism. When you vote for council
+members, you can select up to 16 different candidates, and then place a reserved bond as the weight
+of your vote. Phragmén will run once on every election to determine the top candidates to assume
+council positions and then again amongst the top candidates to equalize the weight of the votes
+behind them as much as possible.</p>
+<h2><a class="anchor" aria-hidden="true" id="what-does-it-mean-for-node-operators"></a><a href="#what-does-it-mean-for-node-operators" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What does it mean for node operators?</h2>
+<p>Phragmén is something that will run in the background and requires no extra effort from you.
+However, it is good to understand how it works since it means that not all the stake you've been
+nominated will end up on your validator after an election. Nominators are likely to nominate a few
+different validators that they trust to do a good job operating their nodes.</p>
+<p>You can use the <a href="https://github.com/kianenigma/offline-phragmen">offline-phragmén</a> script for
+predicting the outcome of a validator election ahead of a new election.</p>
+<h2><a class="anchor" aria-hidden="true" id="understanding-phragmén"></a><a href="#understanding-phragmén" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Understanding Phragmén</h2>
+<p>This section explains the sequential Phragmén method in-depth and walks through examples.</p>
+<h3><a class="anchor" aria-hidden="true" id="basic-phragmén"></a><a href="#basic-phragmén" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Basic Phragmén</h3>
+<h3><a class="anchor" aria-hidden="true" id="rationale"></a><a href="#rationale" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rationale</h3>
+<p>In order to understand the Weighted Phragmén method, we must first understand the basic Phragmén
+method. There must be some group of candidates, a group of seats they are vying for (which is less
+than the size of the group of candidates), and some group of voters. The voters can cast an approval
+vote - that is, they can signal approval for any subset of the candidates.</p>
+<p>The subset should be a minimum size of one (i.e., one cannot vote for no candidates) and a maximum
+size of one less than the number of candidates (i.e., one cannot vote for all candidates). Users are
+allowed to vote for all or no candidates, but this will not have an effect on the final result, and
+so votes of this nature are meaningless.</p>
+<p>Note that in this example, all voters are assumed to have equal say (that is, their vote does not
+count more or less than any other votes). The weighted case will be considered later. However,
+weighting can be &quot;simulated&quot; by having multiple voters vote for the same slate of candidates. For
+instance, five people voting for a particular candidate is mathematically the same as a single
+person with weight <code>5</code> voting for that candidate.</p>
+<p>The particular algorithm we call here the &quot;Basic Phragmén&quot; was first described by Brill <em>et al.</em> in
+their paper
+<a href="https://aaai.org/ocs/index.php/AAAI/AAAI17/paper/download/14757/13791">&quot;Phragmén’s Voting Methods and Justified Representation&quot;</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="algorithm"></a><a href="#algorithm" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Algorithm</h3>
+<p>The Phragmén method will iterate, selecting one seat at a time, according to the following rules:</p>
+<ol>
+<li>Candidates submit their ballots, marking which candidates they approve. Ballots will not be
+modified after submission.</li>
+<li>An initial load of 0 is set for each ballot.</li>
+<li>The candidate who wins the next available seat is the one where the ballots of their supporters
+would have the <em>least average (mean) cost</em> if that candidate wins.</li>
+<li>The <em>n</em> ballots that approved that winning candidate get <em>1/n</em> added to their load.</li>
+<li>The load of all ballots that supported the winner of this round are averaged out so that they are
+equal.</li>
+<li>If there are any more seats, go back to step 3. Otherwise, the selection ends.</li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="example"></a><a href="#example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h3>
+<p>Let's walk through an example with four candidates vying for three seats, and five voters.</p>
+<pre><code class="hljs"><span class="hljs-attr">Open Seats:</span> <span class="hljs-number">3</span>
+
+<span class="hljs-attr">Candidates:</span>   <span class="hljs-string">A</span> <span class="hljs-string">B</span> <span class="hljs-string">C</span> <span class="hljs-string">D</span>  <span class="hljs-string">L0</span>
+<span class="hljs-string">-------------------------</span>
+<span class="hljs-attr">Voter V1:</span>       <span class="hljs-string">X</span>      <span class="hljs-number">0</span>
+<span class="hljs-attr">Voter V2:</span>         <span class="hljs-string">X</span> <span class="hljs-string">X</span>  <span class="hljs-number">0</span>
+<span class="hljs-attr">Voter V3:</span>       <span class="hljs-string">X</span>   <span class="hljs-string">X</span>  <span class="hljs-number">0</span>
+<span class="hljs-attr">Voter V4:</span>     <span class="hljs-string">X</span> <span class="hljs-string">X</span>      <span class="hljs-number">0</span>
+<span class="hljs-attr">Voter V5:</span>       <span class="hljs-string">X</span> <span class="hljs-string">X</span> <span class="hljs-string">X</span>  <span class="hljs-number">0</span>
+</code></pre>
+<p>In this example, we can see that voter <code>V1</code> approves only of candidate <code>B</code>, voter <code>V2</code> approves of
+candidates <code>C</code> and <code>D</code>, etc. Voters can approve any number of candidates between 1 and
+<code>number_of_candidates - 1</code>. An initial &quot;load&quot; of <code>0</code> is set for each ballot (<code>L0</code> = load after round
+<code>0</code>, i.e., the &quot;round&quot; before the first round). We shall see shortly how this load is updated and
+used to select candidates.</p>
+<p>We will now run through an iterative algorithm, with each iteration corresponding to one &quot;seat&quot;.
+Since there are three seats, we will walk through three rounds.</p>
+<p>For the first round, the winner is simply going to be the candidate with the most votes. Since all
+loads are equal, the lowest average load will be the candidate with the highest n, since <code>1/n</code> will
+get smaller as <code>n</code> increases. For this first example round, for instance, candidate <code>A</code> had only one
+ballot vote for them. Thus, the average load for candidate A is <code>1/1</code>, or 1. Candidate C has two
+ballots approving of them, so the average load is <code>1/2</code>. Candidate B has the lowest average load, at
+<code>1/4</code> and they get the first seat. Ballots loads are now averaged out, although for the first
+iteration, this will have not have any effect.</p>
+<pre><code class="hljs"><span class="hljs-attr">Filled seats:</span> <span class="hljs-number">1</span> <span class="hljs-string">(B)</span>
+<span class="hljs-attr">Open Seats:</span> <span class="hljs-number">2</span>
+
+<span class="hljs-attr">Candidates:</span>   <span class="hljs-string">A</span> <span class="hljs-string">B</span> <span class="hljs-string">C</span> <span class="hljs-string">D</span>  <span class="hljs-string">L0</span> <span class="hljs-string">L1</span>
+<span class="hljs-string">-----------------------------</span>
+<span class="hljs-attr">Voter V1:</span>       <span class="hljs-string">X</span>      <span class="hljs-number">0</span>  <span class="hljs-number">1</span><span class="hljs-string">/4</span>
+<span class="hljs-attr">Voter V2:</span>         <span class="hljs-string">X</span> <span class="hljs-string">X</span>  <span class="hljs-number">0</span>  <span class="hljs-number">0</span>
+<span class="hljs-attr">Voter V3:</span>       <span class="hljs-string">X</span>   <span class="hljs-string">X</span>  <span class="hljs-number">0</span>  <span class="hljs-number">1</span><span class="hljs-string">/4</span>
+<span class="hljs-attr">Voter V4:</span>     <span class="hljs-string">X</span> <span class="hljs-string">X</span>      <span class="hljs-number">0</span>  <span class="hljs-number">1</span><span class="hljs-string">/4</span>
+<span class="hljs-attr">Voter V5:</span>       <span class="hljs-string">X</span> <span class="hljs-string">X</span> <span class="hljs-string">X</span>  <span class="hljs-number">0</span>  <span class="hljs-number">1</span><span class="hljs-string">/4</span>
+</code></pre>
+<p>We are now down to candidates <code>A</code>, <code>C</code>, and <code>D</code> for two open seats. There is only one voter (<code>V4</code>)
+for <code>A</code>, with load <code>1/4</code>. <code>C</code> has two voters, <code>V2</code> and <code>V5</code>, with loads of <code>0</code> and <code>1/4</code>. <code>D</code> has
+three voters approving of them, <code>V2</code>, <code>V3</code>, and <code>V5</code>, with loads of <code>0</code>, <code>1/4</code>, and <code>1/4</code>,
+respectively.</p>
+<p>If Candidate <code>A</code> wins, the average load would be <code>(1/4 + 1/1) / 1</code>, or <code>5/4</code>. If candidate <code>C</code> wins,
+the average load would be <code>(0 + 1/2) + (1/4 + 1/2) / 2</code>, or <code>5/8</code>. If candidate <code>D</code> wins, the
+average load would be <code>(0 + 1/3) + (1/4 + 1/3) + (1/4 + 1/3) / 3</code>, or <code>1/2</code>. Since <code>1/2</code> is the
+lowest average load, candidate D wins the second round.</p>
+<p>Now everybody who voted for Candidate <code>D</code> has their load set to the average, <code>1/2</code> of all the loads.</p>
+<pre><code class="hljs">Filled seats: <span class="hljs-number">2</span> (B, D)
+Open Seats: <span class="hljs-number">1</span>
+
+Candidates:   A B C D  L0 L1  L2
+---------------------------------
+Voter V1:       X      <span class="hljs-number">0</span>  <span class="hljs-number">1</span>/<span class="hljs-number">4</span> <span class="hljs-number">1</span>/<span class="hljs-number">4</span>
+Voter V2:         X X  <span class="hljs-number">0</span>  <span class="hljs-number">0</span>   <span class="hljs-number">1</span>/<span class="hljs-number">2</span>
+Voter V3:       X   X  <span class="hljs-number">0</span>  <span class="hljs-number">1</span>/<span class="hljs-number">4</span> <span class="hljs-number">1</span>/<span class="hljs-number">2</span>
+Voter V4:     X X      <span class="hljs-number">0</span>  <span class="hljs-number">1</span>/<span class="hljs-number">4</span> <span class="hljs-number">1</span>/<span class="hljs-number">4</span>
+Voter V5:       X X X  <span class="hljs-number">0</span>  <span class="hljs-number">1</span>/<span class="hljs-number">4</span> <span class="hljs-number">1</span>/<span class="hljs-number">2</span>
+</code></pre>
+<p>There is now one seat open and two candidates, <code>A</code> and <code>C</code>. Voter <code>V4</code> is the only one voting for
+<code>A</code>, so if <code>A</code> wins then the average load would be <code>(1/4 + 1/1) / 1</code>, or <code>5/4</code>. Voters <code>V2</code> and <code>V5</code>
+(both with load <code>1/2</code>) support <code>C</code>, so if <code>C</code> wins the average load would be
+<code>((1/2 + 1/2) + (1/2 + 1/2)) / 2</code>, or <code>1</code>. Since the average load would be lower with <code>C</code>, <code>C</code> wins
+the final seat.</p>
+<pre><code class="hljs">Filled seats: <span class="hljs-number">3</span> (B, D, C)
+Open Seats: <span class="hljs-number">0</span>
+
+Candidates:   A B C D  L0 L1  L2  L3
+------------------------------------
+Voter V1:       X      <span class="hljs-number">0</span>  <span class="hljs-number">1</span>/<span class="hljs-number">4</span> <span class="hljs-number">1</span>/<span class="hljs-number">4</span> <span class="hljs-number">1</span>/<span class="hljs-number">4</span>
+Voter V2:         X X  <span class="hljs-number">0</span>  <span class="hljs-number">0</span>   <span class="hljs-number">1</span>/<span class="hljs-number">2</span> <span class="hljs-number">1</span>
+Voter V3:       X   X  <span class="hljs-number">0</span>  <span class="hljs-number">1</span>/<span class="hljs-number">4</span> <span class="hljs-number">1</span>/<span class="hljs-number">2</span> <span class="hljs-number">1</span>/<span class="hljs-number">2</span>
+Voter V4:     X X      <span class="hljs-number">0</span>  <span class="hljs-number">1</span>/<span class="hljs-number">4</span> <span class="hljs-number">1</span>/<span class="hljs-number">4</span> <span class="hljs-number">1</span>/<span class="hljs-number">4</span>
+Voter V5:       X X X  <span class="hljs-number">0</span>  <span class="hljs-number">1</span>/<span class="hljs-number">4</span> <span class="hljs-number">1</span>/<span class="hljs-number">2</span> <span class="hljs-number">1</span>
+</code></pre>
+<p>An interesting characteristic of this calculation is that the total load of all voters will always
+equal the number of seats filled in that round. In the zeroth round, load starts at <code>0</code> and there
+are no seats filled. After the first round, the total of all loads is <code>1</code>, after the second round it
+is <code>2</code>, etc.</p>
+<h3><a class="anchor" aria-hidden="true" id="weighted-phragmén"></a><a href="#weighted-phragmén" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Weighted Phragmén</h3>
+<h3><a class="anchor" aria-hidden="true" id="rationale-1"></a><a href="#rationale-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rationale</h3>
+<p>While this method works well if all voters have equal weight, this is not the case in Polkadot.
+Elections for both validators and candidates for the Polkadot Council are weighted by the number of
+tokens held by the voters. This makes elections more similar to a corporate shareholder election
+than a traditional political election, where some members have more pull than others. Someone with a
+single token will have much less voting power than someone with 100. Although this may seem
+anti-democratic, in a pseudonymous system, it is trivial for someone with 100 tokens to create 100
+different accounts and spread their wealth to all of their pseudonyms.</p>
+<p>Therefore, not only do we want to allow voters to have their preferences expressed in the result,
+but do so while keeping as equal a distribution of their stake as possible and express the wishes of
+minorities as much as is possible. The Weighted Phragmén method allows us to reach these goals.</p>
+<h3><a class="anchor" aria-hidden="true" id="algorithm-1"></a><a href="#algorithm-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Algorithm</h3>
+<p>Weighted Phragmén is similar to Basic Phragmén in that it selects candidates sequentially, one per
+round, until the maximum number of candidates are elected. However, it has additional features to
+also allocate weight (stake) behind the candidates.</p>
+<p><em>Note: in terms of validator selection, for the following algorithm, you can think of &quot;voters&quot; as
+&quot;nominators&quot; and &quot;candidates&quot; as &quot;validators&quot;.</em></p>
+<ol>
+<li>Candidates are elected, one per round, and added to the set of successful candidates (they have
+won a &quot;seat&quot;). This aspect of the algorithm is very similar to the &quot;basic Phragmén&quot; algorithm
+described above.</li>
+<li>However, as candidates are elected, a weighted mapping is built, defining the weights of each
+selection of a validator by each candidate.</li>
+</ol>
+<p>In more depth, the algorithm operates like so:</p>
+<ol>
+<li>Create a list of all voters, their total amount of stake, and which validators they support.</li>
+<li>Generate an initial edge-weighted graph mapping from voters to candidates, where each edge weight
+is the total <em>potential</em> weight (stake) given by that voter. The sum of all potential weight for
+a given candidate is called their <em>approval stake</em>.</li>
+<li>Now we start electing candidates. For the list of all candidates who have not been elected, get
+their score, which is equal to <code>1 / approval_stake</code>.</li>
+<li>For each voter, update the score of each candidate they support by adding their total budget
+(stake) multiplied by the load of the candidate and then dividing by that candidate's approval
+stake (<code>voter_budget * voter_load / candidate_approval_stake</code>.</li>
+<li>Determine the candidate with the lowest score and elect that candidate. Remove the elected
+candidate from the pool of potential candidates.</li>
+<li>The load for each edge connecting to the winning candidate is updated, with the edge load set to
+the score of the candidate minus the voter's load, and the voter's load then set to the
+candidate's score.</li>
+<li>If there are more candidates to elect, go to Step 3. Otherwise, continue to step 8.</li>
+<li>Now the stake is distributed amongst each nominator who backed at least one elected candidate.
+The backing stake for each candidate is calculated by taking the budget of the voter and
+multiplying by the edge load then dividing by the candidate load
+(<code>voter_budget * edge_load / candidate_load</code>).</li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="example-1"></a><a href="#example-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h3>
+<p><em>Note: All numbers in this example are rounded off to three decimal places.</em></p>
+<p>In the following example, there are five voters and five candidates vying for three potential seats.
+Each voter <code>V1 - V5</code> has an amount of stake equal to their number (e.g., <code>V1</code> has stake of 1, <code>V2</code>
+has stake of 2, etc.). Every voter is also going to have a <em>load,</em> which initially starts at <code>0</code>.</p>
+<pre><code class="hljs">Filled seats: <span class="hljs-number">0</span>
+Open Seats: <span class="hljs-number">3</span>
+
+Candidates:    A B C D E  L0
+----------------------------
+Voter V1 (<span class="hljs-number">1</span>):  X X        <span class="hljs-number">0</span>
+Voter V2 (<span class="hljs-number">2</span>):  X X        <span class="hljs-number">0</span>
+Voter V3 (<span class="hljs-number">3</span>):  X          <span class="hljs-number">0</span>
+Voter V4 (<span class="hljs-number">4</span>):    X X X    <span class="hljs-number">0</span>
+Voter V5 (<span class="hljs-number">5</span>):  X     X    <span class="hljs-number">0</span>
+</code></pre>
+<p>Let us now calculate the approval stake of each of the candidates. Recall that this is merely the
+amount of all support for that candidate by all voters.</p>
+<pre><code class="hljs"><span class="hljs-attr">Candidate A:</span> <span class="hljs-number">1</span> <span class="hljs-string">+</span> <span class="hljs-number">2</span> <span class="hljs-string">+</span> <span class="hljs-number">3</span> <span class="hljs-string">+</span> <span class="hljs-number">5</span> <span class="hljs-string">=</span> <span class="hljs-number">11</span>
+<span class="hljs-attr">Candidate B:</span> <span class="hljs-number">1</span> <span class="hljs-string">+</span> <span class="hljs-number">2</span> <span class="hljs-string">+</span> <span class="hljs-number">4</span> <span class="hljs-string">=</span> <span class="hljs-number">7</span>
+<span class="hljs-attr">Candidate C:</span> <span class="hljs-number">4</span> <span class="hljs-string">=</span> <span class="hljs-number">4</span>
+<span class="hljs-attr">Candidate D:</span> <span class="hljs-number">4</span> <span class="hljs-string">+</span> <span class="hljs-number">5</span> <span class="hljs-string">=</span> <span class="hljs-number">9</span>
+<span class="hljs-attr">Candidate E:</span> <span class="hljs-number">0</span>
+</code></pre>
+<p>The first step is easy - candidate <code>E</code> has 0 approval stake and can be ignored from here on out.
+They will never be elected.</p>
+<p>We can now calculate the initial scores of the candidates, which is <code>1 / approval_stake</code>:</p>
+<pre><code class="hljs"><span class="hljs-attr">Candidate A:</span> <span class="hljs-number">1</span> <span class="hljs-string">/</span> <span class="hljs-number">11</span> <span class="hljs-string">=</span> <span class="hljs-number">0.091</span>
+<span class="hljs-attr">Candidate B:</span> <span class="hljs-number">1</span> <span class="hljs-string">/</span> <span class="hljs-number">7</span> <span class="hljs-string">=</span> <span class="hljs-number">0.143</span>
+<span class="hljs-attr">Candidate C:</span> <span class="hljs-number">1</span> <span class="hljs-string">/</span> <span class="hljs-number">4</span> <span class="hljs-string">=</span> <span class="hljs-number">0.25</span>
+<span class="hljs-attr">Candidate D:</span> <span class="hljs-number">1</span> <span class="hljs-string">/</span> <span class="hljs-number">9</span> <span class="hljs-string">=</span> <span class="hljs-number">0.111</span>
+<span class="hljs-attr">Candidate E:</span> <span class="hljs-string">N/A</span>
+</code></pre>
+<p>For every edge, we are going to calculate the score, which is current score plus the total budget *
+the load of the voter divided by the approval stake of the candidate. However, since the load of
+every voter starts at 0, and anything multiplied by 0 is 0, any addition will be <code>0 / x</code>, or 0. This
+means that this step can be safely ignored for the initial round.</p>
+<p>Thus, the best (lowest) score for Round 0 is Candidate A, with a score of <code>0.091</code>.</p>
+<pre><code class="hljs">Candidates:    A B C D E  L0 L1
+----------------------------------
+Voter V1 (<span class="hljs-number">1</span>):  X X        <span class="hljs-number">0</span>  <span class="hljs-number">0.091</span>
+Voter V2 (<span class="hljs-number">2</span>):  X X        <span class="hljs-number">0</span>  <span class="hljs-number">0.091</span>
+Voter V3 (<span class="hljs-number">3</span>):  X          <span class="hljs-number">0</span>  <span class="hljs-number">0.091</span>
+Voter V4 (<span class="hljs-number">4</span>):    X X X    <span class="hljs-number">0</span>  <span class="hljs-number">0</span>
+Voter V5 (<span class="hljs-number">5</span>):  X     X    <span class="hljs-number">0</span>  <span class="hljs-number">0.091</span>
+</code></pre>
+<pre><code class="hljs">Filled seats: <span class="hljs-number">1</span> (A)
+Open Seats: <span class="hljs-number">2</span>
+
+Candidates:    A B C D E  L0
+----------------------------
+Voter V1 (<span class="hljs-number">1</span>):  X X        <span class="hljs-number">0</span>
+Voter V2 (<span class="hljs-number">2</span>):  X X        <span class="hljs-number">0</span>
+Voter V3 (<span class="hljs-number">3</span>):  X          <span class="hljs-number">0</span>
+Voter V4 (<span class="hljs-number">4</span>):    X X X    <span class="hljs-number">0</span>
+Voter V5 (<span class="hljs-number">5</span>):  X     X    <span class="hljs-number">0</span>
+</code></pre>
+<p>Candidate <code>A</code> is now safe; there is no way that they will lose their seat. Before moving on to the
+next round, we need to update the scores on the edges of our graph for any candidates who have not
+yet been elected.</p>
+<p>We elided this detail in the previous round, since it made no difference to the final scores, but we
+should go into depth here to see how scores are updated. We first must calculate the new loads of
+the voters, and then calculate the new scores of the candidates.</p>
+<p>Any voter who had one of their choices for candidate fill the seat in this round (i.e., voters <code>V1</code>,
+<code>V2</code>, <code>V3</code>, and <code>V5</code>, who all voted for <code>A</code>) will have their load increased. This load increase will
+blunt the impact of their vote in future rounds, and the edge (which will be used in determining
+stake allocation later) is set to the score of the elected candidate minus the <em>current</em> voter load.</p>
+<pre><code class="hljs"><span class="hljs-attr">edge_load</span> = elected_candidate_score - voter_load
+<span class="hljs-attr">voter_load</span> = elected_candidate_score
+</code></pre>
+<p>In this instance, the score of the elected candidate is <code>0.091</code> and the voter loads are all <code>0</code>. So
+for each voter who voted for <code>A</code>, we will calculate a new edge load <code>Voter</code> -&gt; <code>A</code> of:</p>
+<pre><code class="hljs"><span class="hljs-attr">Edge load:</span> <span class="hljs-number">0.091</span> <span class="hljs-bullet">-</span> <span class="hljs-number">0</span> <span class="hljs-string">=</span> <span class="hljs-number">0.091</span>
+</code></pre>
+<p>and a new voter load of:</p>
+<pre><code class="hljs"><span class="hljs-attr">Voter load:</span> <span class="hljs-number">0.091</span>
+</code></pre>
+<p>As a reminder, here are the current scores. Loads of the voters are all <code>0</code>.</p>
+<pre><code class="hljs"><span class="hljs-attr">Candidate B :</span> <span class="hljs-number">0.143</span>
+<span class="hljs-attr">Candidate C :</span> <span class="hljs-number">0.25</span>
+<span class="hljs-attr">Candidate D :</span> <span class="hljs-number">0.111</span>
+</code></pre>
+<p>Now, we go through the weighted graph and update the score of the candidate and the load of the
+edge, using the algorithm:</p>
+<pre><code class="hljs"><span class="hljs-attr">candidate_score</span> = candidate_score + ((voter_budget * voter_load) / candidate_approval_stake)
+</code></pre>
+<p>Without walking through each step, this gives us the following modifications to the scores of the
+different candidates.</p>
+<pre><code class="hljs">V1 updates B to <span class="hljs-number">0.156</span>
+V2 updates B to <span class="hljs-number">0.182</span>
+V4 updates B to <span class="hljs-number">0.182</span>
+V4 updates C to <span class="hljs-number">0.25</span>
+V4 updates D to <span class="hljs-number">0.111</span>
+V5 updates D to <span class="hljs-number">0.162</span>
+</code></pre>
+<p>After scores are updated, the final scores for the candidates for this round are:</p>
+<pre><code class="hljs"><span class="hljs-attr">Candidate B:</span> <span class="hljs-number">0.182</span>
+<span class="hljs-attr">Candidate C:</span> <span class="hljs-number">0.25</span>
+<span class="hljs-attr">Candidate D:</span> <span class="hljs-number">0.162</span>
+</code></pre>
+<p><code>D</code>, with the lowest score, is elected. You will note that even though candidate <code>B</code> had more voters
+supporting them, candidate <code>D</code> won the election due to their lower score. This is directly due to
+the fact that they had the lowest score, of course, but the root reason behind them having a lower
+score was both the greater amount of stake behind them and that voters who did not get one of their
+choices in an earlier round (in this example, voter V4) correspond to a higher likelihood of a
+candidate being elected.</p>
+<p>We then update the loads for the voters and edges as specified above for any voters who voted for
+candidate <code>D</code> (viz., <code>V4</code> and <code>V5</code>) using the same formula as above.</p>
+<pre><code class="hljs">Filled seats: <span class="hljs-number">2</span> (A, D)
+Open Seats: <span class="hljs-number">1</span>
+
+Candidates:    A B C D E  L0 L1    L2
+-----------------------------------
+Voter V1 (<span class="hljs-number">1</span>):  X X        <span class="hljs-number">0</span>  <span class="hljs-number">0.091</span> <span class="hljs-number">0.091</span>
+Voter V2 (<span class="hljs-number">2</span>):  X X        <span class="hljs-number">0</span>  <span class="hljs-number">0.091</span> <span class="hljs-number">0.091</span>
+Voter V3 (<span class="hljs-number">3</span>):  X          <span class="hljs-number">0</span>  <span class="hljs-number">0.091</span> <span class="hljs-number">0.091</span>
+Voter V4 (<span class="hljs-number">4</span>):    X X X    <span class="hljs-number">0</span>  <span class="hljs-number">0</span>     <span class="hljs-number">0.162</span>
+Voter V5 (<span class="hljs-number">5</span>):  X     X    <span class="hljs-number">0</span>  <span class="hljs-number">0.091</span> <span class="hljs-number">0.162</span>
+</code></pre>
+<p>Following a similar process for Round 2, we start with initial candidate scores of:</p>
+<pre><code class="hljs"><span class="hljs-attr">Candidate B :</span> <span class="hljs-number">0.143</span>
+<span class="hljs-attr">Candidate C :</span> <span class="hljs-number">0.25</span>
+</code></pre>
+<p>We can then update the scores of the remaining two candidates according to the algorithm described
+above.</p>
+<pre><code class="hljs">V1 updates B to <span class="hljs-number">0.156</span>
+V2 updates B to <span class="hljs-number">0.182</span>
+V4 updates B to <span class="hljs-number">0.274</span>
+V4 updates C to <span class="hljs-number">0.412</span>
+</code></pre>
+<p>With the lowest score of <code>0.274</code>, Candidate <code>B</code> claims the last open seat. Candidates <code>A</code>, <code>D</code>, and
+<code>B</code> have been elected, and candidates <code>C</code> and <code>E</code> are not.</p>
+<p>Before moving on, we must perform a final load adjustment for the voters and the graph.</p>
+<pre><code class="hljs">Filled seats: <span class="hljs-number">3</span> (A, D, B)
+Open Seats: <span class="hljs-number">0</span>
+
+Candidates:    A B C D E  L0 L1    L2    L3
+------------------------------------------
+Voter V1 (<span class="hljs-number">1</span>):  X X        <span class="hljs-number">0</span>  <span class="hljs-number">0.091</span> <span class="hljs-number">0.091</span> <span class="hljs-number">0.274</span>
+Voter V2 (<span class="hljs-number">2</span>):  X X        <span class="hljs-number">0</span>  <span class="hljs-number">0.091</span> <span class="hljs-number">0.091</span> <span class="hljs-number">0.274</span>
+Voter V3 (<span class="hljs-number">3</span>):  X          <span class="hljs-number">0</span>  <span class="hljs-number">0.091</span> <span class="hljs-number">0.091</span> <span class="hljs-number">0.091</span>
+Voter V4 (<span class="hljs-number">4</span>):    X X X    <span class="hljs-number">0</span>  <span class="hljs-number">0</span>     <span class="hljs-number">0.162</span> <span class="hljs-number">0.274</span>
+Voter V5 (<span class="hljs-number">5</span>):  X     X    <span class="hljs-number">0</span>  <span class="hljs-number">0.091</span> <span class="hljs-number">0.162</span> <span class="hljs-number">0.162</span>
+</code></pre>
+<p>Now we have to determine how much stake every voter should allocate to each candidate. This is done
+by taking the load of the each edge and dividing it by the voter load, then multiplying by the total
+budget of the voter.</p>
+<p>In this example, the weighted graph ended up looking like this:</p>
+<pre><code class="hljs">Nominator: V1
+    Edge <span class="hljs-built_in">to</span> A <span class="hljs-built_in">load</span>= <span class="hljs-number">0.091</span>
+    Edge <span class="hljs-built_in">to</span> B <span class="hljs-built_in">load</span>= <span class="hljs-number">0.183</span>
+Nominator: V2
+    Edge <span class="hljs-built_in">to</span> A <span class="hljs-built_in">load</span>= <span class="hljs-number">0.091</span>
+    Edge <span class="hljs-built_in">to</span> B <span class="hljs-built_in">load</span>= <span class="hljs-number">0.183</span>
+Nominator: V3
+    Edge <span class="hljs-built_in">to</span> A <span class="hljs-built_in">load</span>= <span class="hljs-number">0.091</span>
+Nominator: V4
+    Edge <span class="hljs-built_in">to</span> B <span class="hljs-built_in">load</span>= <span class="hljs-number">0.113</span>
+    Edge <span class="hljs-built_in">to</span> D <span class="hljs-built_in">load</span>= <span class="hljs-number">0.162</span>
+Nominator: V5
+    Edge <span class="hljs-built_in">to</span> A <span class="hljs-built_in">load</span>= <span class="hljs-number">0.091</span>
+    Edge <span class="hljs-built_in">to</span> D <span class="hljs-built_in">load</span>= <span class="hljs-number">0.071</span>
+</code></pre>
+<p>For instance, the budget of <code>V1</code> is <code>1</code>, the edge load to <code>A</code> is <code>0.091</code>, and the voter load is
+<code>0.274</code>. Using our equation:</p>
+<pre><code class="hljs">backing_stake (<span class="hljs-name">A</span>) = voter_budget * edge_load / voter_load
+</code></pre>
+<p>We can fill these variables in with:</p>
+<pre><code class="hljs">backing_stake (A) = <span class="hljs-number">1</span> * <span class="hljs-number">0.091</span> / <span class="hljs-number">0.274</span> = <span class="hljs-number">0.332</span>
+</code></pre>
+<p>For <code>V1</code> backing stake of <code>B</code>, you can simply replace the edge load value and re-calculate.</p>
+<pre><code class="hljs">backing_stake (B) = <span class="hljs-number">1</span> * <span class="hljs-number">0.183</span> / <span class="hljs-number">0.274</span> = <span class="hljs-number">0.668</span>
+</code></pre>
+<p>Note that the total amount of all backing stake for a given voter will equal the total budget of the
+voter, unless that voter had no candidates elected, in which case it will be 0.</p>
+<p>The final results are:</p>
+<pre><code class="hljs">A <span class="hljs-keyword">is</span> elected <span class="hljs-keyword">with</span> stake <span class="hljs-number">6.807</span>.
+D <span class="hljs-keyword">is</span> elected <span class="hljs-keyword">with</span> stake <span class="hljs-number">4.545</span>.
+B <span class="hljs-keyword">is</span> elected <span class="hljs-keyword">with</span> stake <span class="hljs-number">3.647</span>.
+
+V1 supports: A <span class="hljs-keyword">with</span> stake: <span class="hljs-number">0.332</span> and B <span class="hljs-keyword">with</span> stake: <span class="hljs-number">0.668</span>.
+V2 supports: A <span class="hljs-keyword">with</span> stake: <span class="hljs-number">0.663</span> and B <span class="hljs-keyword">with</span> stake: <span class="hljs-number">1.337</span>.
+V3 supports: A <span class="hljs-keyword">with</span> stake: <span class="hljs-number">3.0</span>.
+V4 supports: B <span class="hljs-keyword">with</span> stake: <span class="hljs-number">1.642</span> and D <span class="hljs-keyword">with</span> stake: <span class="hljs-number">2.358</span>.
+V5 supports: A <span class="hljs-keyword">with</span> stake: <span class="hljs-number">2.813</span> and D <span class="hljs-keyword">with</span> stake: <span class="hljs-number">2.187</span>.
+</code></pre>
+<p>You will notice that the total amount of stake for candidates <code>A</code>, <code>D</code>, and <code>B</code> equals (aside from
+rounding errors) the total amount of stake of all the voters (<code>1 + 2 + 3 + 4 + 5 = 15</code>). This is
+because each voter had at least one of their candidates fill a seat. Any voter whose had none of
+their candidates selected will also not have any stake in any of the elected candidates.</p>
+<h2><a class="anchor" aria-hidden="true" id="optimizations"></a><a href="#optimizations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Optimizations</h2>
+<p>The results for nominating validators are further optimized for several purposes:</p>
+<ol>
+<li>To reduce the number of edges, i.e. to minimize the number of validators any nominator selects</li>
+<li>To ensure, as much as possible, an even distribution of stake among the validators</li>
+<li>Reduce the amount of block computation time</li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="high-level-description"></a><a href="#high-level-description" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>High-Level Description</h3>
+<p>After running the weighted Phragmén algorithm, a process is run that redistributes the vote amongst
+the elected set. This process will never add or remove an elected candidate from the set. Instead,
+it reduces the variance in the list of backing stake from the voters to the elected candidates.
+Perfect equalization is not always possible, but the algorithm attempts to equalize as much as
+possible. It then runs an edge-reducing algorithm to minimize the number of validators per
+nominator, ideally giving every nominator a single validator to nominate per era.</p>
+<p>To minimize block computation time, the staking process is run as an
+<a href="https://substrate.dev/docs/en/knowledgebase/learn-substrate/off-chain-workers">off-chain worker</a>.
+In order to give time for this off-chain worker to run, staking commands (bond, nominate, etc.) are
+not allowed in the last quarter of each era.</p>
+<p>These optimizations will not be covered in-depth on this page. For more details, you can view the
+<a href="https://github.com/paritytech/substrate/blob/master/frame/elections-phragmen/src/lib.rs">Rust implementation of elections in Substrate</a>,
+the
+<a href="https://github.com/paritytech/substrate/blob/master/frame/staking/src/lib.rs">Rust implementation of staking in Substrate</a>,
+or the <code>seqPhragménwithpostprocessing</code> method in the
+<a href="https://github.com/w3f/consensus/tree/master/NPoS">Python reference implementation</a>. If you would
+like to dive even more deeply, you can review the
+<a href="https://research.web3.foundation/en/latest/polkadot/NPoS/4.%20Sequential%20Phragm%C3%A9n%E2%80%99s%20method.html">W3F Research Page on Sequential Phragmén Method</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="rationale-for-minimizing-the-number-of-validators-per-nominator"></a><a href="#rationale-for-minimizing-the-number-of-validators-per-nominator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rationale for Minimizing the Number of Validators Per Nominator</h3>
+<p>Paying out rewards for staking from every validator to all of their nominators can cost a
+non-trivial amount of chain resources (in terms of space on chain and resources to compute). Assume
+a system with 200 validators and 1000 nominators, where each of the nominators has nominated 10
+different validators. Payout would thus require <code>1000 * 10</code>, or 10,000 transactions. In an ideal
+scenario, if every nominator selects a single validator, only 1,000 transactions would need to take
+place - an order of magnitude fewer. Empirically, network slowdown at the beginning of an era has
+occurred due to the large number of individual payouts by validators to nominators. In extreme
+cases, this could be an attack vector on the system, where nominators nominate many different
+validators with small amounts of stake in order to slow the system at the next era change.</p>
+<p>While this would reduce network and on-chain load, being able to select only a single validator
+incurs some diversification costs. If the single validator that a nominator has nominated goes
+offline or acts maliciously, then the nominator incurs a risk of a significant amount of slashing.
+Nominators are thus allowed to nominate up to 16 different validators. However, after the weighted
+edge-reducing algorithm is run, the number of validators per nominator is minimized. Nominators are
+likely to see themselves nominating a single active validator for an era.</p>
+<p>At each era change, as the algorithm runs again, nominators are likely to have a different validator
+than they had before (assuming a significant number of selected validators). Therefore, nominators
+can diversify against incompetent or corrupt validators causing slashing on their accounts, even if
+they only nominate a single validator per era.</p>
+<h3><a class="anchor" aria-hidden="true" id="rationale-for-maintaining-an-even-distribution-of-stake"></a><a href="#rationale-for-maintaining-an-even-distribution-of-stake" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rationale for Maintaining an Even Distribution of Stake</h3>
+<p>Another issue is that we want to ensure that as equal a distribution of votes as possible amongst
+the elected validators or council members. This helps us increase the security of the system by
+ensuring that the minimum amount of tokens in order to join the active validator set or council is
+as high as possible. For example, assume a result of five validators being elected, where validators
+have the following stake: <code>{1000, 20, 10, 10, 10}</code>, for a total stake of 1,050. In this case, a
+potential attacker could join the active validator set with only 11 tokens, and could obtain a
+majority of validators with only 33 tokens (since the attacker only has to have enough stake to
+&quot;kick out&quot; the three lowest validators).</p>
+<p>In contrast, imagine a different result with the same amount of total stake, but with that stake
+perfectly equally distributed: <code>{210, 210, 210, 210, 210}</code>. With the same amount of stake, an
+attacker would need to stake 633 tokens in order to get a majority of validators, a much more
+expensive proposition. Although obtaining an equal distribution is unlikely, the more equal the
+distribution, the higher the threshold - and thus the higher the expense - for attackers to gain
+entry to the set.</p>
+<h3><a class="anchor" aria-hidden="true" id="rationale-for-reducing-block-computing-time"></a><a href="#rationale-for-reducing-block-computing-time" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rationale for Reducing Block Computing Time</h3>
+<p>Running the Phragmén algorithm is time-consuming, and often cannot be completed within the time
+limits of production of a single block. Waiting for calculation to complete would jeopardize the
+constant block production time of the network. Therefore, as much computation as possible is moved
+to an offchain worker, which validators can work on the problem without impacting block production
+time. By restricting the ability of users to make any modifications in the last 25% of an era, and
+running the selection of validators by nominators as an offchain process, validators have a
+significant amount of time to calculate the new active validator set and allocate the nominators in
+an optimal manner.</p>
+<p>There are several further restrictions put in place to limit the complexity of the election and
+payout. As already mentioned, any given nominator can only select up to 16 validators to nominate.
+Conversely, a single validator can have only 64 nominators. A drawback to this is that it is
+possible, if the number of nominators is very high or the number of validators is very low, that all
+available validators may be &quot;saturated&quot; and unable to accept more nominations. In this case, one may
+need a larger amount of stake to participate in staking, since nominations are priority-ranked in
+terms of amount of stake.</p>
+<h2><a class="anchor" aria-hidden="true" id="external-resources"></a><a href="#external-resources" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>External Resources</h2>
+<ul>
+<li><a href="https://research.web3.foundation/en/latest/polkadot/NPoS/4.%20Sequential%20Phragm%C3%A9n%E2%80%99s%20method.html">W3F Research Page on Sequential Phragmén Method</a> -
+The formal adaptation of the Phragmén method as applied to Polkadot validators.</li>
+<li><a href="https://github.com/w3f/consensus/tree/master/NPoS">Python Reference Implementations</a> - Python
+implementations of Simple and Complicated Phragmén methods.</li>
+<li><a href="https://github.com/paritytech/substrate/blob/master/frame/staking/src/lib.rs">Substrate Implementation</a> -
+Rust implementation used in Substrate.</li>
+<li><a href="https://arxiv.org/pdf/1611.08826.pdf">Phragmén's and Thiele's Election Methods</a> - 95-page paper
+explaining Phragmén's election methods in detail.</li>
+<li><a href="https://aaai.org/ocs/index.php/AAAI/AAAI17/paper/download/14757/13791">Phragmén’s Voting Methods and Justified Representation</a> -
+This paper by Brill <em>et al.</em> is the source for the simple Phragmén algorithm, along with proofs
+about its properties.</li>
+<li><a href="https://github.com/kianenigma/offline-phragmen">Offline Phragmén</a> - Script to generate the
+Phragmén validator election outcome before the start of an era.</li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/16/2020 by Bill Laboon</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#what-is-the-sequential-phragmén-method">What is the sequential Phragmén method?</a></li><li><a href="#where-is-the-phragmén-method-used-in-polkadot">Where is the Phragmén method used in Polkadot?</a><ul class="toc-headings"><li><a href="#npos-validator-elections">NPoS: Validator Elections</a></li><li><a href="#council-elections">Council Elections</a></li></ul></li><li><a href="#what-does-it-mean-for-node-operators">What does it mean for node operators?</a></li><li><a href="#understanding-phragmén">Understanding Phragmén</a><ul class="toc-headings"><li><a href="#basic-phragmén">Basic Phragmén</a></li><li><a href="#rationale">Rationale</a></li><li><a href="#algorithm">Algorithm</a></li><li><a href="#example">Example</a></li><li><a href="#weighted-phragmén">Weighted Phragmén</a></li><li><a href="#rationale-1">Rationale</a></li><li><a href="#algorithm-1">Algorithm</a></li><li><a href="#example-1">Example</a></li></ul></li><li><a href="#optimizations">Optimizations</a><ul class="toc-headings"><li><a href="#high-level-description">High-Level Description</a></li><li><a href="#rationale-for-minimizing-the-number-of-validators-per-nominator">Rationale for Minimizing the Number of Validators Per Nominator</a></li><li><a href="#rationale-for-maintaining-an-even-distribution-of-stake">Rationale for Maintaining an Even Distribution of Stake</a></li><li><a href="#rationale-for-reducing-block-computing-time">Rationale for Reducing Block Computing Time</a></li></ul></li><li><a href="#external-resources">External Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

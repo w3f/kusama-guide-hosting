@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Kusama Claims · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="The Kusama network is Polkadot&#x27;s experimental, community-focused R&amp;D network. If you hold the DOT"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Kusama Claims · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="The Kusama network is Polkadot&#x27;s experimental, community-focused R&amp;D network. If you hold the DOT"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/kusama-claims.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Get Started</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Kusama<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-index.html">Home</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Get Started</h4><ul><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-faucet.html">Faucet</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-claims.html">Claims</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-endpoints.html">Kusama Endpoints</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Try</h4><ul><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-maintain-guides-how-to-validate-kusama.html">Validator Guide</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-maintain-guides-how-to-nominate-kusama.html">Nominator Guide</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-learn-governance.html">Governance</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-learn-identity.html">Identity</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-learn-treasury.html">Treasury</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-build-build-with-polkadot.html">Polkadot Builders Starter&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/maintain-guides-society-kusama.html">Join Kappa Sigma Mu</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Break</h4><ul><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-maintain-errors.html">Resolving Errors</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-bug-bounty.html">Bug Bounty</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-adverserial-cheatsheet.html">Adverserial Cheatsheet</a></li></ul></div><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-timeline.html">Timeline</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-community.html">Community</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-time-periods.html">Parameters</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-coc.html">Code of Conduct</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/kusama-claims.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Kusama Claims</h1></header><article><div><span><p>The Kusama network is Polkadot's experimental, community-focused R&amp;D network. If you hold the DOT
+indicator token, you are entitled to claim an equivalent amount of KSM on the Kusama network. This
+is so that the Kusama network is aligned with the existing DOT holders and community.</p>
+<p>You can claim KSMs by signing a message with the Ethereum account that holds your DOT indicator
+tokens. There is no deadline for claiming KSM.</p>
+<h2><a class="anchor" aria-hidden="true" id="step-1-create-a-kusama-account"></a><a href="#step-1-create-a-kusama-account" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 1. Create a Kusama account</h2>
+<p>You will need to generate a Kusama account to claim KSM. There are a few ways you can create one.</p>
+<p>For most users, we recommend using the <a href="https://polkadot.js.org/apps/#/explorer">Polkadot UI</a> since
+it will allow you to store your encrypted keystore locally.</p>
+<blockquote>
+<p>NOTICE: Unfortunately, at this time Kusama does not have hardware wallet support. Hopefully this
+will change soon!</p>
+</blockquote>
+<p>Another option you may consider using is the <code>subkey</code> command line utility, which will allow you to
+take extra steps to protect the security of your key. Additionally, another option is the
+Polkawallet mobile wallet, although it requires an extra step to generate Kusama addresses.</p>
+<h3><a class="anchor" aria-hidden="true" id="using-polkadotjs-extension-chromebrave-or-firefox"></a><a href="#using-polkadotjs-extension-chromebrave-or-firefox" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using polkadot{.js} extension (Chrome/Brave or Firefox)</h3>
+<ol>
+<li>Install the polkadot{.js} extension from the
+<a href="https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd?hl=en">Chrome store</a>
+or <a href="https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/">Firefox store</a>.</li>
+<li>Create a new account by clicking on <code>I want to create a new account with a new seed</code>.</li>
+<li>Copy the seed phrase and store it somewhere safe. Don't share the seed phrase with anyone, you
+can use it to access your account if you forget your password or want to import your account
+again.</li>
+<li>Enter a name for the account and type a strong password (at least 6 characters).</li>
+<li>Click on <code>Add the account with the generated seed</code>.</li>
+<li>You can copy the account's address to the clipboard by clicking on its identicon.</li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="using-subkey"></a><a href="#using-subkey" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using <code>subkey</code></h3>
+<h4><a class="anchor" aria-hidden="true" id="installation"></a><a href="#installation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installation</h4>
+<p>You can install <code>subkey</code> with this one-line command:</p>
+<pre><code class="hljs">cargo install <span class="hljs-params">--force</span> <span class="hljs-params">--git</span> https:<span class="hljs-string">//github.com/paritytech/substrate</span> subkey
+</code></pre>
+<p>Note that you will already have had to install the proper Rust version and dependencies. If you have
+not done so, or experience problems installing using that command, run the following commands first,
+and then re-try the previous command:</p>
+<pre><code class="hljs">curl https://sh.rustup.rs -sSf | sh
+
+rustup <span class="hljs-keyword">update</span> nightly
+rustup target <span class="hljs-keyword">add</span> wasm32-<span class="hljs-type">unknown</span>-<span class="hljs-type">unknown</span> <span class="hljs-comment">--toolchain nightly</span>
+rustup <span class="hljs-keyword">update</span> <span class="hljs-keyword">stable</span>
+cargo install <span class="hljs-comment">--git https://github.com/alexcrichton/wasm-gc</span>
+</code></pre>
+<p>Alternatively, you can build <code>subkey</code> from the source code.</p>
+<ol>
+<li>Follow the build instructions for
+<a href="https://substrate.dev/docs/en/knowledgebase/getting-started">Substrate</a>.</li>
+<li>When building, only build <code>subkey</code> by typing <code>cargo build -p subkey</code>.</li>
+<li>The executable is <code>./target/debug/subkey</code>.</li>
+</ol>
+<h4><a class="anchor" aria-hidden="true" id="usage"></a><a href="#usage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage</h4>
+<p>You can use subkey on a computer that is not connected to the internet for added security.</p>
+<p>The command <code>subkey --network kusama generate</code> will generate a new key-pair. If you want to be more
+secure, use 24 words, <code>subkey --network kusama generate --words 24</code>.</p>
+<pre><code class="hljs">$ subkey --network kusama generate<span class="hljs-built_in">
+Secret </span>phrase `lobster flock few equip connect boost excuse glass machine <span class="hljs-builtin-name">find</span> wonder tattoo` is account:
+ <span class="hljs-built_in"> Secret </span>seed: 0x95b90eb1344e3aea40f4a6dc81622901a2ac39efb331c41db10c311bb9b46927
+  Public key (hex): 0xfe7fce341ff73e1db537daa4cc8c539997a8b0654b06cb81c47e4f067f55a65a
+ <span class="hljs-built_in"> Address </span>(SS58): JL1eTcbzuZP99FjeySkDrMygNREPdbhRyV7iD5AsV4fDRcg
+</code></pre>
+<p>The <code>Address (SS58)</code> field is what you should use to claim your KSM tokens. Never share your
+<code>Secret phrase</code> or <code>Secret seed</code>, as these can both control your funds.</p>
+<p>NOTE: Previous versions of <code>subkey</code> only generated Substrate addresses. If you do not want to
+generate a new seed, you can convert the Substrate address to a Kusama address by following
+<a href="#kusama-from-substrate-address">this section</a>.</p>
+<p>See the <a href="https://substrate.dev/docs/en/knowledgebase/integrate/subkey"><code>subkey</code> documentation</a> or
+enter <code>subkey --help</code> for more usage examples.</p>
+<h3><a class="anchor" aria-hidden="true" id="using-polkadot-ui"></a><a href="#using-polkadot-ui" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using Polkadot UI</h3>
+<ol>
+<li><p>Open up the <a href="https://polkadot.js.org/apps">Polkadot UI</a> and navigate to the <code>Settings</code> tab. Find
+the configuration dropdown for <code>address network prefix</code> and select <code>Kusama (canary)</code>. Click
+<code>Save and reload</code>.</p></li>
+<li><p>Navigate to the <a href="https://polkadot.js.org/apps/#/accounts">Polkadot UI Accounts Tab</a> and click on
+the <code>Add account</code> button.</p></li>
+</ol>
+<p><img src="/img/kusama/polkadotui-find-the-accounts-page.png" width=50% /></p>
+<ol start="2">
+<li>Enter a name for your account and create a secure password. This password will be used to decrypt
+your account.</li>
+</ol>
+<p><img src="/img/kusama/polkadotui-create-your-account.png" width=50% /></p>
+<ol start="3">
+<li><p>Ignore the advanced options unless you want to change the type of cryptography used for your keys
+(we recommend &quot;Schnorrkel (sr25519)&quot;).</p></li>
+<li><p>Click <code>Save</code> and <code>Create and backup account</code>.</p></li>
+<li><p>Save your encrypted keystore locally.</p></li>
+<li><p>The account now appears in your Accounts tab and is backed up to the keystore you just saved.</p></li>
+<li><p>Click on the DOT identicon to copy the address to the clipboard.
+<img src="/img/kusama/polkadotui-copy-account-address.png" width=50% /></p></li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="using-polkawallet"></a><a href="#using-polkawallet" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using Polkawallet</h3>
+<ol>
+<li><p>Install <a href="https://polkawallet.io">Polkawallet</a>. Click <code>Download</code> and select the link corresponding
+to the platform you are using. On Android you may need to allow installing apps from external
+sources. On iOS, you may need to &quot;trust&quot; Polkawallet in the
+<code>General &gt; Profiles &amp; Device Management &gt; Enterprise App</code> section before running the app.</p></li>
+<li><p>Once the app is open, copy the seed phrase and store it in a safe place. Don't share the seed
+phrase with anyone, you can use it to access your account if you forget your password or
+otherwise lose your keystore.</p></li>
+</ol>
+<p><img src="/img/kusama/polkawallet-create-account.jpg" width=50% /></p>
+<ol start="3">
+<li><p>Name your account and make a strong password, make sure to write it down in another place, then
+click <code>Save</code>.</p></li>
+<li><p>You will be asked to confirm your seed phrase - this is to make sure you have copied it somewhere
+safe.</p></li>
+<li><p>Click on the pink QR Code symbol and select <code>Copy address</code> to copy your address to clipboard.</p></li>
+</ol>
+<p><img src="/img/kusama/polkawallet-accounts-page.jpg" width=50% />
+<img src="/img/kusama/polkawallet-copy-address.jpg" width=50% /></p>
+<ol start="6">
+<li><a href="#kusama-from-substrate-address">Get the Kusama address from the Substrate address.</a></li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="kusama-from-substrate-address"></a><a href="#kusama-from-substrate-address" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kusama from Substrate address</h3>
+<p>If you used one of the generation methods that gave you a generic Substrate address (begins with a
+<code>5</code>), then you will need to take an extra step to turn this into the properly encoded Kusama
+address.</p>
+<ol>
+<li>Copy your Substrate generic address to the clipboard.</li>
+<li>Go to the <a href="https://polkadot.js.org/apps">Polkadot UI</a>.</li>
+<li>Go to the <code>Settings</code> tab and find the configuration for <code>address network prefix</code>.</li>
+<li>Select <code>Substrate (development)</code> and click <code>Save and reload</code>.</li>
+<li>Go to the <code>Address book</code> and click the <code>Add contact</code> button.</li>
+<li>Enter your address and give it a name like &quot;My Address&quot;.</li>
+<li>Go back to the <code>Settings</code> tab and select the <code>Kusama (canary)</code> option in <code>address network prefix</code>
+and click <code>Save and reload</code>.</li>
+<li>Go back to the <code>Address book</code> and find the account you just added (it will have the same name).</li>
+<li>The address is now formatted as a Kusama address.</li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="step-2-get-ksm-tokens"></a><a href="#step-2-get-ksm-tokens" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 2. Get KSM tokens</h2>
+<p>There are two methods to claim KSM.</p>
+<h3><a class="anchor" aria-hidden="true" id="1-dot-holders"></a><a href="#1-dot-holders" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. DOT Holders:</h3>
+<p>Those who participated in the Polkadot sales and have been allocated DOT indicator tokens can claim
+a proportional amount of KSMs on the Kusama Network.</p>
+<p>To do this you must sign a message containing the address of your Kusama account. You can do this by
+using the Polkadot UI <a href="https://polkadot.js.org/apps/#/claims">Claims app</a>.</p>
+<h4><a class="anchor" aria-hidden="true" id="generate-a-kusama-address"></a><a href="#generate-a-kusama-address" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Generate a Kusama address</h4>
+<p>If you haven't already done so, you will need to generate a Kusama address. See further up this page
+for detailed instructions first!</p>
+<h4><a class="anchor" aria-hidden="true" id="claiming-your-ksm-with-mycrypto"></a><a href="#claiming-your-ksm-with-mycrypto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Claiming your KSM with MyCrypto</h4>
+<p>The Polkadot JS <a href="https://polkadot.js.org/apps/#/claims">Claims app</a> helps you sign a message from
+MyCrypto. MyCrypto is good to use in case you have stored the key to the Ethereum account holding
+your DOT indicator tokens on a hardware device like a Ledger Nano S or a Trezor. It also supports
+raw private keys, mnemonics and the Parity signer.</p>
+<p><strong>NOTICE</strong>: It is much more secure to download and use the MyCrypto app locally. Please make sure to
+download the latest version for your operating system. You can always find the most up-to-date
+releases of the desktop app on their
+<a href="https://github.com/MyCryptoHQ/MyCrypto/releases">releases page</a>.</p>
+<p>Once you've downloaded MyCrypto and have it running locally (we recommend an air-gapped computer for
+maximum security), you can start by navigating to the Claims app on the Polkadot JS UI. Select the
+account you would like to claim the KSMs into and click the blue &quot;Continue&quot; button to proceed. Your
+screen should look something like this:</p>
+<p><img src="/kusama-guide-hosting/docs/assets/kusama/claim/claim-1.png" alt="Claim Step 1"></p>
+<p>The hex encoded string that follows the sentence: &quot;Pay KSMs to the Kusama account:&quot; is the
+hex-encoded public key of your Kusama account, minus the <code>0x</code> prefix. To verify that the public key
+is correct you can use the <code>subkey</code> tool to inspect your address.</p>
+<p>The next step is to go to the MyCrypto application and click on &quot;Sign &amp; Verify Message&quot; tab. This
+will prompt you to select a method for unlocking your wallet. After unlocking your wallet, you will
+copy and paste the outputted sentence into the input box.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/kusama/claim/claim-2.png" alt="Claim Step 2"></p>
+<p>When you click &quot;Sign Message&quot; you will get a JSON output like the below:</p>
+<p><img src="/kusama-guide-hosting/docs/assets/kusama/claim/claim_3.png" alt="Claim Step 3"></p>
+<p>Copy and paste the JSON output of the signed message from MyCrypto into the input box on the
+Polkadot JS UI and click &quot;Confirm Claim.&quot;</p>
+<p><img src="/kusama-guide-hosting/docs/assets/kusama/claim/claim-3.png" alt="Claim Step 3"></p>
+<p>At this point you will see a success message if everything went right and your KSMs will now be in
+the account that you claimed to. Congratulations you can now participate in aspects of the Kusama
+network such as <a href="learn-governance">governance</a> and <a href="learn-staking">staking</a>. During the soft launch
+period balance transfers will not be enabled.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/kusama/claim/claim-4.png" alt="Claim Step 4">]</p>
+<h4><a class="anchor" aria-hidden="true" id="verifying-your-claim"></a><a href="#verifying-your-claim" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Verifying your Claim</h4>
+<p>After you make an on-chain claim for KSMs, your balance should be updated on the Polkadot UI
+immediately.</p>
+<p>Having trouble? Get support in the KSM
+<a href="https://riot.im/app/#/room/#KSMAClaims:polkadot.builders">Claims Support</a> channel.</p>
+<h3><a class="anchor" aria-hidden="true" id="third-party-claims-processes"></a><a href="#third-party-claims-processes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Third Party Claims Processes</h3>
+<p><strong>We do not recommend using a third-party app or process to perform your claim or acquire KSM</strong></p>
+<p>Claiming using a third-party process can lead to the loss of your allocation, therefore we cannot
+recommend using any third party apps to do so. Manually specifying your transaction data, as
+specified in our claims process, is the only way to be certain you will receive your allocation.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/10/2020 by Bill Laboon</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/kusama-guide-hosting/docs/en/kusama-faucet.html"><span class="arrow-prev">← </span><span>Faucet</span></a><a class="docs-next button" href="/kusama-guide-hosting/docs/en/kusama-endpoints.html"><span>Kusama Endpoints</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#step-1-create-a-kusama-account">Step 1. Create a Kusama account</a><ul class="toc-headings"><li><a href="#using-polkadotjs-extension-chromebrave-or-firefox">Using polkadot{.js} extension (Chrome/Brave or Firefox)</a></li><li><a href="#using-subkey">Using <code>subkey</code></a></li><li><a href="#using-polkadot-ui">Using Polkadot UI</a></li><li><a href="#using-polkawallet">Using Polkawallet</a></li><li><a href="#kusama-from-substrate-address">Kusama from Substrate address</a></li></ul></li><li><a href="#step-2-get-ksm-tokens">Step 2. Get KSM tokens</a><ul class="toc-headings"><li><a href="#1-dot-holders">1. DOT Holders:</a></li><li><a href="#third-party-claims-processes">Third Party Claims Processes</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

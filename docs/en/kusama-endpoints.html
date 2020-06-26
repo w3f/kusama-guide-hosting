@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Kusama Endpoints · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="When interacting with the [Kusama network](https://kusama.network) via"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Kusama Endpoints · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="When interacting with the [Kusama network](https://kusama.network) via"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/kusama-endpoints.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Get Started</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Kusama<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-index.html">Home</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Get Started</h4><ul><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-faucet.html">Faucet</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-claims.html">Claims</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-endpoints.html">Kusama Endpoints</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Try</h4><ul><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-maintain-guides-how-to-validate-kusama.html">Validator Guide</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-maintain-guides-how-to-nominate-kusama.html">Nominator Guide</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-learn-governance.html">Governance</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-learn-identity.html">Identity</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-learn-treasury.html">Treasury</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-build-build-with-polkadot.html">Polkadot Builders Starter&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/maintain-guides-society-kusama.html">Join Kappa Sigma Mu</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Break</h4><ul><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-maintain-errors.html">Resolving Errors</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-bug-bounty.html">Bug Bounty</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-adverserial-cheatsheet.html">Adverserial Cheatsheet</a></li></ul></div><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-timeline.html">Timeline</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-community.html">Community</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-time-periods.html">Parameters</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-coc.html">Code of Conduct</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/kusama-endpoints.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Kusama Endpoints</h1></header><article><div><span><p>When interacting with the <a href="https://kusama.network">Kusama network</a> via
+<a href="https://polkadot.js.org/apps">Polkadot Apps</a> or other UIs and programmatic methods, you'd ideally
+be running your own node (<a href="maintain-sync">text guide</a>,
+<a href="https://www.youtube.com/watch?v=31DdfcxbAVs">video guide</a>). Granted, that's not something everyone
+can or wants to do, so convenience trumps ideals in most cases. To facilitate this convenience,
+Kusama has several public endpoints you can use for your apps.</p>
+<h2><a class="anchor" aria-hidden="true" id="parity-archive-node"></a><a href="#parity-archive-node" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parity Archive Node</h2>
+<p>The development company Parity maintains an archive node at endpoint
+<code>wss://kusama-rpc.polkadot.io/</code>.</p>
+<p>To connect to the Parity node, use the endpoint in your JavaScript apps like so:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span>{ ApiPromise, WsProvider } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@polkadot/api'</span>)
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> provider = <span class="hljs-keyword">new</span> WsProvider(<span class="hljs-string">'wss://kusama-rpc.polkadot.io/'</span>)
+    <span class="hljs-keyword">const</span> api = <span class="hljs-keyword">await</span> ApiPromise.create({ provider })
+    <span class="hljs-comment">// ...</span>
+</code></pre>
+<p>or in Polkadot Apps UI by clicking the top-left corner of the screen and selecting the appropriate
+option:</p>
+<p><img src="/img/endpoints/parity.png" alt="Selecting Parity's Node"></p>
+<h2><a class="anchor" aria-hidden="true" id="web3-foundation-archive-node"></a><a href="#web3-foundation-archive-node" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Web3 Foundation Archive Node</h2>
+<p>The Web3 Foundation maintains an archive node at endpoint <code>wss://cc3-5.kusama.network/</code>.</p>
+<p>To connect to this node, replace the endpoint in the JavaScript snippet above.</p>
+<p>Connect to it in Polkadot Apps UI by clicking the top-left corner of the screen and selecting the
+appropriate option:</p>
+<p><img src="/img/endpoints/w3f.png" alt="Selecting W3F's Node"></p>
+<h2><a class="anchor" aria-hidden="true" id="kusama-ryo-full-node-cloud"></a><a href="#kusama-ryo-full-node-cloud" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kusama RYO Full Node Cloud</h2>
+<p>RYO (Run Your Own) infrastructure from <a href="https://ava.do">Avado</a> is a load balancer - a server
+redirecting requests randomly to other computers - to which you can attach your own home-run node.
+This means that by connecting to the load balancer's endpoint, you're randomly connecting to another
+person's public node: the convenience of one reliable endpoint, without the downside of
+centralization*.</p>
+<p>Check the current status of the Kusama RYO cloud including available nodes at
+<a href="https://status.cloud.ava.do/">https://status.cloud.ava.do/</a></p>
+<p>To connect to the RYO cloud, use the endpoint <code>wss://kusama.polkadot.cloud.ava.do/</code> in the
+JavaScript code.</p>
+<p>Connect to the endpoint in Polkadot Apps UI by clicking the top-left corner of the screen and
+selecting the appropriate option:</p>
+<p><img src="/img/endpoints/ryo.png" alt="Selecting the RYO cloud"></p>
+<h3><a class="anchor" aria-hidden="true" id="things-to-know"></a><a href="#things-to-know" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Things to know</h3>
+<h4><a class="anchor" aria-hidden="true" id="reliability"></a><a href="#reliability" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Reliability</h4>
+<p>There is no incentive to run these public nodes yet. We're working on making that happen. Ideally,
+the Kusama Treasury would fund this public infrastructure venture. For now, running the nodes is
+altruistic.</p>
+<h4><a class="anchor" aria-hidden="true" id="centralization"></a><a href="#centralization" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>*Centralization</h4>
+<p>The nodes are distributed and decentralized, but the load balancer serving them requests isn't. The
+Ava.do team is actively looking for other companies and organizations willing to run load balancers
+as backups to the main one - <a href="https://t.me/joinchat/F_LlkBLEoDrFioPNviEpsQ">get in touch</a> if you'd
+like to lend a hand.</p>
+<h4><a class="anchor" aria-hidden="true" id="full-nodes"></a><a href="#full-nodes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Full nodes</h4>
+<p>The nodes in the RYO cloud are currently <em>full nodes</em>, not <em>archive nodes</em>. To learn the difference,
+<a href="https://www.youtube.com/watch?v=31DdfcxbAVs">watch this crash course</a>. If you need archive data,
+run your own archive node or use a Parity or W3F hosted node for now. Archive nodes in RYO are
+planned for a future update.</p>
+<h4><a class="anchor" aria-hidden="true" id="avado-only"></a><a href="#avado-only" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Avado Only</h4>
+<p>For now, the RYO cloud can be joined only with Ava.do hardware. This is a guarantee that the
+hardware is at or above minimum requirements, so that the endpoint can guarantee a reliable node on
+the other end. In the future, fully custom remote-run and even cloud-run nodes will be able to join
+the RYO cloud.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 5/4/2020 by joe petrowski</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/kusama-guide-hosting/docs/en/kusama-claims.html"><span class="arrow-prev">← </span><span>Claims</span></a><a class="docs-next button" href="/kusama-guide-hosting/docs/en/mirror-maintain-guides-how-to-validate-kusama.html"><span>Validator Guide</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#parity-archive-node">Parity Archive Node</a></li><li><a href="#web3-foundation-archive-node">Web3 Foundation Archive Node</a></li><li><a href="#kusama-ryo-full-node-cloud">Kusama RYO Full Node Cloud</a><ul class="toc-headings"><li><a href="#things-to-know">Things to know</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

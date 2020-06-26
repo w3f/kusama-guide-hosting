@@ -1,0 +1,285 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Frequently Asked Questions (FAQs) · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="_This FAQ focuses on technical questions for users interested in developing applications for"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Frequently Asked Questions (FAQs) · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="_This FAQ focuses on technical questions for users interested in developing applications for"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/learn-faq.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-faq.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Frequently Asked Questions (FAQs)</h1></header><article><div><span><p><em>This FAQ focuses on technical questions for users interested in developing applications for
+Polkadot. If you have a more general question, you may wish to search for the answer on the main
+<a href="https://polkadot.network/faq">Polkadot Network FAQ</a>. If you have a question that is not answered,
+please feel free to ask on the Polkadot Watercooler
+<a href="https://riot.im/app/#/room/#polkadot-watercooler:matrix.org">Riot channel</a>.</em></p>
+<h2><a class="anchor" aria-hidden="true" id="polkadot-launch"></a><a href="#polkadot-launch" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Polkadot Launch</h2>
+<h3><a class="anchor" aria-hidden="true" id="what-is-the-launch-process-of-polkadot"></a><a href="#what-is-the-launch-process-of-polkadot" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is the launch process of Polkadot?</h3>
+<p>The Polkadot network will launch first as a Proof-of-Authority (PoA) chain. During this time,
+governance will be controlled by the single Sudo (super-user) account, and functionality will be
+restricted. Among other things, transfer of funds will not be enabled during this period.</p>
+<p>During this time, validators can start joining the network and signaling their intention to
+participate in consensus. When a sufficient number of validators are sourced from the community, the
+Sudo account will initiate the transition of the chain security from PoA to Proof-of-Stake (PoS).
+After this happens, the first validator elections will begin, and from that time onward, the chain
+will be secured by the economic stake that is bonded by validators and nominators.</p>
+<p>After the chain has been secured by the decentralized community of validators, the next step is to
+transition the governance of the chain into the hands of the token holders. The Sudo account will
+initiate an upgrade that erases the Sudo logic from the chain entirely and replaces it with the
+stakeholder governance modules. From this point, the network is entirely in the hands of the token
+holders and no longer under control of any centralized authority.</p>
+<p>The final step to transition to full-functioning Polkadot is the enabling of transfer functionality.
+The community will need to propose a runtime upgrade and vote upon it in order to accomplish this.
+If the vote to enable transfers passes, then it will be enacted shortly thereafter. When this takes
+place, Polkadot will be fully live and move out of its Beta release label.</p>
+<h3><a class="anchor" aria-hidden="true" id="how-many-validators-will-be-validating-at-polkadot-beta-launch"></a><a href="#how-many-validators-will-be-validating-at-polkadot-beta-launch" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How many validators will be validating at Polkadot Beta launch?</h3>
+<p>Initially only a few authorized validators will be securing the network. However, as
+<a href="#what-is-the-launch-process-of-polkadot-beta">detailed in the answer above</a>, the network will right
+away be available to validators that want to register their intention to validate. The transition to
+Proof-of-Stake will largely depend on when a sufficient number of validators have registered and are
+ready to take over the security of the network. This number can be as low as 50 but probably closer
+to 100.</p>
+<p>The launch process is expected to be similar to that of the Kusama network. Kusama transitioned to
+PoS when there were 50 validators ready, but in a matter of months scaled up the validator count to
+{{ num_validators }}. Polkadot's validator count is expected to scale up in a similar fashion.</p>
+<h2><a class="anchor" aria-hidden="true" id="validators"></a><a href="#validators" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Validators</h2>
+<h3><a class="anchor" aria-hidden="true" id="how-do-i-apply-to-be-a-validator"></a><a href="#how-do-i-apply-to-be-a-validator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How do I apply to be a validator?</h3>
+<p>There is no central authority that decides on validators, so there is not per se an <em>application</em>
+that you can fill out. Registering as a validator is permissionless; in order to become one you must
+only set up a validator node and mark your intention to validate on chain. For detailed instruction
+on how to do this you can consult the <a href="/kusama-guide-hosting/docs/en/maintain-guides-how-to-validate-kusama.html">wiki guide</a> on
+validating for Kusama.</p>
+<p>However, once you've set up a validator and have registered your intention it does not mean that you
+will be included in the <em>active set</em> right away. The validators are elected to the active set based
+on the results of an election algorithm known as <a href="learn-phragmen">Phragmen's method</a>. Phragmen's
+method tries to accomplish two goals: 1) select <code>n</code> members from a larger set based on
+stake-weighted votes and 2) equalize the stake backing each validator as much as possible.</p>
+<p>You will likely want to campaign your validator to the community in order to get more backing. You
+are looking for <em>nominators</em> that will put up their tokens to increase the stake for your validator.
+For validators who cannot acquire the minimum stake from the community, Parity and Web3 Foundation
+also run a joint program called <a href="https://thousand-validators.kusama.network/#/">Thousand Validators</a> that will nominate
+validators if they apply and fit the requirements.</p>
+<h3><a class="anchor" aria-hidden="true" id="how-are-validators-rewarded"></a><a href="#how-are-validators-rewarded" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How are validators rewarded?</h3>
+<p>Validators are rewarded from the inflation of the Relay Chain, transaction fees, and tips. However,
+they only take a percentage of the former two. More details can be read on the page for
+<a href="maintain-guides-validator-payout">validator payouts</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="what-is-the-minimum-stake-necessary-to-be-elected-as-an-active-validator"></a><a href="#what-is-the-minimum-stake-necessary-to-be-elected-as-an-active-validator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is the minimum stake necessary to be elected as an active validator?</h3>
+<p>The minimum stake that is necessary to be elected as an active validator is dynamic and can change
+over time. It depends not only on how much stake is being put behind each validator, but also the
+size of the active set and how many validators are waiting in the pool.</p>
+<p>There are a few ways to estimate the minimum stake.</p>
+<p>One way can be to navigate to the <a href="https://polkadot.js.org/apps">Polkadot Apps</a> and click on the
+Staking tab. Scroll all the way down to the bottom and look at the stake backing the validator at
+the end of the list. That's roughly the minimum stake required to enter the active set at that era.</p>
+<p>You can also use some tools some to perform estimations.</p>
+<ul>
+<li><p><a href="https://github.com/kianenigma/offline-phragmen">Offline Phragmen</a> can provide exact results of
+running an election on the current set of validators using the same Rust code that is ran in
+Polkadot.</p></li>
+<li><p><a href="https://github.com/ansonla3/kusama-validator-stats">Validator stats script</a> can give you an
+estimate that is based on the currently elected set, as well as some statistics about Kusama
+validators.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="why-will-polkadot-have-only-1000-validators-while-other-projects-have-hundreds-of-thousands"></a><a href="#why-will-polkadot-have-only-1000-validators-while-other-projects-have-hundreds-of-thousands" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Why will Polkadot have only 1000 validators while other projects have hundreds of thousands?</h3>
+<p>Polkadot's goal to have 1000 validators is set to be something that is practically achievable in the
+short term with high confidence of good performance in a live environment. Furthermore, validators
+in Polkadot are not the only stakers, and if we consider the number of stakers that can be possible
+on Polkadot the number can scale up to hundreds of thousands. Since validators are performing
+critical consensus work to maintain the security of the chain including all of its shards, a more
+modest number of validators is estimated to start. Upon later improvements, such as implementing
+signature aggregation for finalization messages, the number of validators could reasonably scale up.
+However, increasing validators above one thousand remains a goal for later iterations of Polkadot.</p>
+<p>It is also worth mentioning that one thousand validators is more than the number of validators of
+similar PoS chains with comparable levels of economic security as Polkadot. The closest contenders
+are operating with around 150 validators, while Kusama is securely running with
+{{ num_validators }}.</p>
+<p>Additionally, other projects sometimes have a different definition of <em>validator</em> that approximates
+more closely to remote signing keys without the full operation of a validating node. On Polkadot,
+each validator is running their own validating node and performing full verification of the Relay
+Chain, voting on finality, producing blocks in their decided slots, and verifying parachain state
+transitions. Other projects may consider validators and &quot;validating nodes&quot; as separate entities.</p>
+<h2><a class="anchor" aria-hidden="true" id="relay-chain"></a><a href="#relay-chain" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Relay Chain</h2>
+<h3><a class="anchor" aria-hidden="true" id="what-is-the-expected-block-time-on-the-relay-chain"></a><a href="#what-is-the-expected-block-time-on-the-relay-chain" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is the expected block time on the Relay Chain?</h3>
+<p>The Kusama network, an early and unaudited release of the Polkadot code is currently operating at a
+rate of one block every six seconds.</p>
+<p>We expect that Polkadot will target its block production rate to produce a block every six seconds.
+However, it is still subject to change. It may go as low as two to three seconds after
+optimizations, or it may potentially increase in order to handle the capacity of the parachain
+networking in a live environment.</p>
+<h3><a class="anchor" aria-hidden="true" id="does-polkadot-have-smart-contracts"></a><a href="#does-polkadot-have-smart-contracts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Does Polkadot have smart contracts?</h3>
+<p>No - and yes. The Polkadot Relay Chain does not implement smart contracts natively. The reason for
+not having smart contracts on the Relay Chain is part of the design philosophy for Polkadot that
+dictates that the Relay Chain should be the minimal logic required to accomplish its job.</p>
+<p>However, Polkadot will be a platform for other chains that <em>do</em> implement smart contracts. It's
+possible for parachains to enable smart contract functionality and then benefit from the security
+and interoperability features of Polkadot. Additionally, existing smart contract chains can connect
+to Polkadot as a parachain, or via a bridge.</p>
+<p>While the Polkadot Relay Chain does not implement smart contracts directly, undoubtedly there will
+be parachains that do. So it's better to say that the Polkadot <em>ecosystem</em> has smart contracts
+versus &quot;Polkadot has smart contracts.&quot;</p>
+<h3><a class="anchor" aria-hidden="true" id="how-will-the-polkadot-relay-chain-connect-to-external-chains-in-the-ecosystem"></a><a href="#how-will-the-polkadot-relay-chain-connect-to-external-chains-in-the-ecosystem" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How will the Polkadot Relay Chain connect to external chains in the ecosystem?</h3>
+<p>One of the cornerstone interoperability technologies being research and developed for deployment on
+Polkadot is cross-chain bridges. Bridges come in a variety of flavors with varying levels of trust
+associated with them. Polkadot is predominantly researching the trust-minimized flavor that imposes
+economic costs on the operators of the bridge, and therefore makes it economically secure. Bridge
+efforts are being worked on in concert with other projects in the ecosystem. Eventually, there will
+be bridges between Polkadot and most of the other major chains.</p>
+<h2><a class="anchor" aria-hidden="true" id="dots"></a><a href="#dots" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DOTs</h2>
+<h3><a class="anchor" aria-hidden="true" id="what-is-the-inflation-rate-of-the-dot"></a><a href="#what-is-the-inflation-rate-of-the-dot" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is the inflation rate of the DOT?</h3>
+<p>The inflation rate is 10% per year.</p>
+<p>A portion of the inflation is rewarded to validators for performing their duties, while another
+portion may go directly to the treasury. The exact percentage that goes into both varies and is
+based on the amount of DOTs that are staked. Please see the article on
+<a href="learn-staking#inflation">inflation</a> for more information.</p>
+<h3><a class="anchor" aria-hidden="true" id="can-i-buy-or-transfer-dot-tokens"></a><a href="#can-i-buy-or-transfer-dot-tokens" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Can I buy or transfer DOT tokens?</h3>
+<p>Testnet DOT tokens are freely available from a variety of sources. See the <a href="learn-DOT">DOT page</a> for
+details.</p>
+<p>The Web3 Foundation will distribute up to 20% of mainnet DOTs prior to network launch (see
+<a href="https://polkadot.network/Polkadot-lightpaper.pdf">Light Paper</a> or the
+<a href="https://polkadot.network/faq/">Polkadot Network FAQ</a>). Subscribe to the Polkadot newsletter on
+<a href="https://polkadot.network/">polkadot.network</a> for further updates.</p>
+<p>DOT tokens are not transferable until the launch of Polkadot Beta is complete. Any transfers of DOTs
+before that time are illegitimate and unauthorized. DOTs are currently represented on Ethereum as
+the DOT Indicator Token, these cannot be moved from the current allocation address. Individuals with
+an allocation of DOTs can always keep a copy of their private key, therefore it is extremely risky
+for individuals to participate in trading of DOTs before Polkadot launch.</p>
+<h2><a class="anchor" aria-hidden="true" id="governance"></a><a href="#governance" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Governance</h2>
+<h3><a class="anchor" aria-hidden="true" id="what-prevents-polkadot-governance-from-failing"></a><a href="#what-prevents-polkadot-governance-from-failing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What prevents Polkadot governance from failing?</h3>
+<p>Polkadot's governance has already been shown to work. Examples can be found in the runtime upgrades
+that have successfully taken place through on the testnets as well as in a real economic environment
+on <a href="kusama-index">Kusama</a>.</p>
+<p>It is fair to say that the field of on-chain blockchain governance is still new, and no one can
+claim to know exactly what is the optimal version of on-chain governance yet. However, Polkadot
+takes a brave step forward in pioneering thought-through mechanisms for evolving a blockchain.</p>
+<p>Blockchains need a method to adapt and evolve. Therefore, an on-chain governance system was
+necessary for the long-term success of Polkadot. Ultimately, it is the token holders that are
+responsible for preventing Polkadot's governance from failing by using their economic value and
+conviction to sway the progression of the protocol.</p>
+<h3><a class="anchor" aria-hidden="true" id="what-prevents-polkadot-governance-from-becoming-plutocratic"></a><a href="#what-prevents-polkadot-governance-from-becoming-plutocratic" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What prevents Polkadot governance from becoming plutocratic?</h3>
+<p>A savvy reader might have noticed that the answer to the previous question endowed the token holder
+with the ultimate responsibility to ensure that Polkadot's governance does not fail. By following
+the train of this assertion, one might assume that Polkadot's governance is susceptible to becoming
+ruled by a few large token holders (called <em>whales</em> in trading parlance) and therefore become a mere
+plutocracy (rule of the rich).</p>
+<p>There are several other mechanisms that are built-in to the governance system to resist this
+plutocratic tendency. One of these mechanisms is called conviction voting, and imbues greater voting
+power to token holders who are willing to lock their tokens on the protocol for longer lengths of
+time. Longer lock-ups display <em>conviction</em> in a vote. Conviction voting could allow a highly
+determined minority to overrule the vote of an apathetic majority in certain situations. Another
+mechanism is known as Adaptive Quorum Biasing. This makes proposals have a varying threshold for
+approval or rejection based on what part of the governance protocol the proposal originated in. For
+details on the subtleties of Polkadot's governance system, please see the
+<a href="learn-governance">governance page</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="parachains"></a><a href="#parachains" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parachains</h2>
+<h3><a class="anchor" aria-hidden="true" id="how-do-parachain-economics-work"></a><a href="#how-do-parachain-economics-work" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How do parachain economics work?</h3>
+<p>Parachains have the flexibility to implement their own monetary system or incentive structure for
+collators. However, this is not strictly necessary. Since the collator's job is to continue to give
+recent state transitions to the validators on the Relay Chain who validate each transition, the
+security of the parachain and the Polkadot network is completely separate from parachain economics.
+Parachains need collators to continue to progress, so it wouldn't be unreasonable to see them
+incentivize collator nodes in some way but the specific mechanism is completely up to parachain
+implementers.</p>
+<h3><a class="anchor" aria-hidden="true" id="are-parachains-ephemeral-what-happens-when-a-parachain-loses-the-next-auction"></a><a href="#are-parachains-ephemeral-what-happens-when-a-parachain-loses-the-next-auction" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Are parachains ephemeral? What happens when a parachain loses the next auction?</h3>
+<p>Parachains are not ephemeral. As long as someone is keeping the data for a parachain, the parachain
+can move between being a parachain, a parathread, or a separate sovereign chain at different points
+of its lifetime. Especially with parathreads, parachains can be decommissioned to only produce
+blocks when their usage and throughput makes it necessary.</p>
+<p>When a parachain loses an auction for renewal, that parachain has a few options. In most cases,
+becoming a parathread instead would be a suitable choice. Parathreads are still secured by the Relay
+Chain, but don't need to hold a parachain slot and can produce a block when its economically
+feasible for them. For more on parachains please see the <a href="learn-parachains">parachains page</a> and for
+more on parathreads see <a href="learn-parathreads">the parathreads page</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="networking"></a><a href="#networking" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Networking</h2>
+<h3><a class="anchor" aria-hidden="true" id="what-is-libp2p"></a><a href="#what-is-libp2p" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is libp2p?</h3>
+<p><a href="https://libp2p.io">Libp2p</a> is a modular and extensible networking stack that is used by IPFS, Substrate, and
+many other projects. It is a collection of peer-to-peer protocols for finding peers and connecting
+to them. Its modules have logic for content routing, peer routing, peer discovery, different
+transports, and NAT traversals. It is intended to be used by applications for building large scale
+peer-to-peer networks by only selecting the parts of the protocol suite that are needed.</p>
+<p>The Rust implementation of the specification was built and primarily maintained by a team of
+contributors at Parity Technologies. The Go and JavaScript versions are maintained by Protocol Labs
+as well as community contributors. A <a href="https://github.com/status-im/nim-libp2p">Nim</a> version of the library also exists. Libp2p as
+a whole is an open source project that is actively developed and expanded on various code
+repositories hosted on <a href="https://github.com/libp2p">GitHub</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="does-polkadot-use-libp2p"></a><a href="#does-polkadot-use-libp2p" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Does Polkadot use libp2p?</h3>
+<p>Yes, since Polkadot is built with Substrate. Substrate uses a networking protocol that is based on
+libp2p (specifically the Rust libp2p library). However, Substrate uses a mix of standard libp2p
+protocols and protocols that are homegrown and not official libp2p standards. Of the standards
+protocols, those which are shared with other implementations of libp2p such as IPFS, are
+connection-checking (ping), asking for information on a peer (identity), and Kademlia random walks
+(kad).</p>
+<p>Of the protocols that are custom to Substrate, there are the legacy Substrate stream, a
+request-response for getting information on blocks (sync), a light client protocol, a notification
+protocol for transactions, and block announcement. For detailed information on how Substrate uses
+libp2p and the standard and custom protocols, please see the <a href="https://crates.parity.io/sc_network/index.html">networking
+documentation</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="how-does-libp2p-differ-from-ipfs"></a><a href="#how-does-libp2p-differ-from-ipfs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How does libp2p differ from IPFS?</h3>
+<p>The [Interplanetary Filesystem][ipfs] (IPFS) is a peer-to-peer hypermedia protocol used primarily
+for storage of files. It allows one to upload a file onto the network and share it with its content
+addressable URI. IPFS, like Substrate, is an application of libp2p and exists higher on the
+technology stack. Although both IPFS and Substrate use libp2p, it cannot be said that Substrate
+&quot;uses&quot; IPFS since besides sharing the underlying library for networking there is no native
+integration between the two applications.</p>
+<h2><a class="anchor" aria-hidden="true" id="kusama"></a><a href="#kusama" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kusama</h2>
+<h3><a class="anchor" aria-hidden="true" id="what-is-the-minimum-amount-of-ksm-i-can-have-in-my-account"></a><a href="#what-is-the-minimum-amount-of-ksm-i-can-have-in-my-account" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is the minimum amount of KSM I can have in my account?</h3>
+<p>We recommend users always keep at least 0.1 KSM in their account in order to avoid the reaping
+threshold of 0.01 KSM. If you have less than 0.01 KSM in your account, that account will be
+&quot;reaped&quot; - it will be removed and no longer occupy space on the chain. In other words, no accounts
+are allowed on-chain with an account balance of less than 0.01 KSM. This is a dust prevention
+measure, in order to ensure that the chain is not full of accounts with minuscule amounts of KSM
+taking up space. Since the blockchain is copied to every person running a full node, any savings of
+space provide dramatic benefits in terms of scalability.</p>
+<h3><a class="anchor" aria-hidden="true" id="what-are-the-transfer-fees-for-kusama"></a><a href="#what-are-the-transfer-fees-for-kusama" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What are the transfer fees for Kusama?</h3>
+<p>It is important to note that the cost of transferring KSM is dynamic. Currently, the minimum cost of
+transferring KSM is 0.01 KSM (the base fee), although this can be changed via governance. However,
+actual transaction fees will vary based on a variety of factors. Specifically, fee calculation
+follows the following formula:</p>
+<pre><code class="hljs">base_fee + <span class="hljs-comment">(tx_length * length_fee)</span> + WeightToFee<span class="hljs-comment">(weight)</span>
+</code></pre>
+<p>Please see the <a href="https://substrate.dev/docs/en/knowledgebase/runtime/fees">fee calculation</a> page in the Substrate documentation for more
+detailed information.</p>
+<h2><a class="anchor" aria-hidden="true" id="answered-by-gav-series"></a><a href="#answered-by-gav-series" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Answered by Gav series</h2>
+<p>The &quot;Answered by Gav&quot; series is a collection of posts uploaded to Reddit of questions that have been
+asked in the Polkadot Watercooler Riot channel and answered by Polkadot founder Gavin Wood.</p>
+<ul>
+<li><a href="https://www.reddit.com/r/dot/comments/b87d96/answered_by_gav_reason_for_using_asynchronous/">Reason for using asynchronous rather than synchronous communication? Difference in terms of TPS?</a></li>
+<li><a href="https://www.reddit.com/r/dot/comments/b87awr/answered_by_gav_how_exactly_do_validators_in_an/">How exactly do validators in an ETH parachain keep moving around and how is communication between zones trustless?</a></li>
+<li><a href="https://www.reddit.com/r/dot/comments/b87bua/answered_by_gav_what_are_the_main_issues_with/">What are the main issues with Bitcoin integration and will it ever be possible? Same problem with other POW chains? Is Polkadot only going to work with POS chains? How is it trust-less in comparison to Cosmos though?</a></li>
+<li><a href="https://www.reddit.com/r/dot/comments/b87cjz/answered_by_gav_what_are_the_current_thoughts/">What are the current thoughts around governance especially since projects have to be voted in to receive the parachains security?</a></li>
+<li><a href="https://www.reddit.com/r/dot/comments/b87ds8/answered_by_gav_also_is_there_any_detailed/">Also is there any detailed overview of how exactly a token transfer from ETH could be exchanged with another chain's currency?</a></li>
+<li><a href="https://www.reddit.com/r/dot/comments/bcqrx9/answered_by_gav_can_i_run_multiple_validators/">Can I run multiple Validators with the same Session Key?</a></li>
+<li><a href="https://www.reddit.com/r/dot/comments/bcqwit/answered_by_gav_how_to_tackle_the_concentration/">How to tackle the concentration risk of Validators in data centers?</a></li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/3/2020 by Dan Forbes</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#polkadot-launch">Polkadot Launch</a><ul class="toc-headings"><li><a href="#what-is-the-launch-process-of-polkadot">What is the launch process of Polkadot?</a></li><li><a href="#how-many-validators-will-be-validating-at-polkadot-beta-launch">How many validators will be validating at Polkadot Beta launch?</a></li></ul></li><li><a href="#validators">Validators</a><ul class="toc-headings"><li><a href="#how-do-i-apply-to-be-a-validator">How do I apply to be a validator?</a></li><li><a href="#how-are-validators-rewarded">How are validators rewarded?</a></li><li><a href="#what-is-the-minimum-stake-necessary-to-be-elected-as-an-active-validator">What is the minimum stake necessary to be elected as an active validator?</a></li><li><a href="#why-will-polkadot-have-only-1000-validators-while-other-projects-have-hundreds-of-thousands">Why will Polkadot have only 1000 validators while other projects have hundreds of thousands?</a></li></ul></li><li><a href="#relay-chain">Relay Chain</a><ul class="toc-headings"><li><a href="#what-is-the-expected-block-time-on-the-relay-chain">What is the expected block time on the Relay Chain?</a></li><li><a href="#does-polkadot-have-smart-contracts">Does Polkadot have smart contracts?</a></li><li><a href="#how-will-the-polkadot-relay-chain-connect-to-external-chains-in-the-ecosystem">How will the Polkadot Relay Chain connect to external chains in the ecosystem?</a></li></ul></li><li><a href="#dots">DOTs</a><ul class="toc-headings"><li><a href="#what-is-the-inflation-rate-of-the-dot">What is the inflation rate of the DOT?</a></li><li><a href="#can-i-buy-or-transfer-dot-tokens">Can I buy or transfer DOT tokens?</a></li></ul></li><li><a href="#governance">Governance</a><ul class="toc-headings"><li><a href="#what-prevents-polkadot-governance-from-failing">What prevents Polkadot governance from failing?</a></li><li><a href="#what-prevents-polkadot-governance-from-becoming-plutocratic">What prevents Polkadot governance from becoming plutocratic?</a></li></ul></li><li><a href="#parachains">Parachains</a><ul class="toc-headings"><li><a href="#how-do-parachain-economics-work">How do parachain economics work?</a></li><li><a href="#are-parachains-ephemeral-what-happens-when-a-parachain-loses-the-next-auction">Are parachains ephemeral? What happens when a parachain loses the next auction?</a></li></ul></li><li><a href="#networking">Networking</a><ul class="toc-headings"><li><a href="#what-is-libp2p">What is libp2p?</a></li><li><a href="#does-polkadot-use-libp2p">Does Polkadot use libp2p?</a></li><li><a href="#how-does-libp2p-differ-from-ipfs">How does libp2p differ from IPFS?</a></li></ul></li><li><a href="#kusama">Kusama</a><ul class="toc-headings"><li><a href="#what-is-the-minimum-amount-of-ksm-i-can-have-in-my-account">What is the minimum amount of KSM I can have in my account?</a></li><li><a href="#what-are-the-transfer-fees-for-kusama">What are the transfer fees for Kusama?</a></li></ul></li><li><a href="#answered-by-gav-series">Answered by Gav series</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

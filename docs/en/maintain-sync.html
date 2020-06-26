@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Set up a Full Node · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="If you&#x27;re building dapps or products on a Substrate-based chain like Polkadot, Kusama or a custom"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Set up a Full Node · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="If you&#x27;re building dapps or products on a Substrate-based chain like Polkadot, Kusama or a custom"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/maintain-sync.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/maintain-sync.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Set up a Full Node</h1></header><article><div><span><p>If you're building dapps or products on a Substrate-based chain like Polkadot, Kusama or a custom
+Substrate implementation, you probably want the ability to run a node-as-a-back-end. After all, it's
+always better to rely on your own infrastructure than on a third-party-hosted one in this brave new
+decentralized world.</p>
+<p>This guide will show you how to connect to <a href="https://kusama.network">Kusama network</a>, but the same
+process applies to any other <a href="https://substrate.dev/docs/en/">Substrate</a>-based chain. First, let's
+clarify the term <em>full node</em>.</p>
+<h3><a class="anchor" aria-hidden="true" id="types-of-nodes"></a><a href="#types-of-nodes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Types of Nodes</h3>
+<p>A blockchain's growth comes from a <em>genesis block</em>, <em>extrinsics</em>, and <em>events</em>.</p>
+<p>When a validator seals block 1, it takes the blockchain's state at block 0. It then applies all
+pending changes on top of it, and emits the events that are the result of these changes. Later, the
+state of the chain at block 1 is used in the same way to build the state of the chain at block 2,
+and so on. Once two thirds of the validators agree on a specific block being valid, it is finalized.</p>
+<p>An <strong>archive node</strong> keeps all the past blocks. An archive node makes it convenient to query the past
+state of the chain at any point in time. Finding out what an account's balance at a certain block
+was, or which extrinsics resulted in a certain state change are fast operations when using an
+archive node. However, an archive node takes up a lot of disk space - around Kusama's 1.6 millionth
+block this was around 15 to 20GB. When running a validator, this requirement doubles as
+<a href="maintain-guides-how-to-setup-sentry-node">the sentry node</a> in front of a validator should be an
+archive node too.</p>
+<p>A <strong>full node</strong> is <em>pruned</em>, meaning it discards all information older than 256 blocks, but keeps
+the extrinsics for all past blocks, and the genesis block. A node that is pruned this way requires
+much less space than an archive node. In order to query past state through a full node, a user would
+have to wait for the node to rebuild the chain up until that block. A full node <em>can</em> rebuild the
+entire chain with no additional input from other nodes and become an archive node. One caveat is
+that if finality stalled for some reason and the last finalized block is more than 256 blocks
+behind, a pruned full node will not be able to sync to the network.</p>
+<p>Archive nodes are used by utilities that need past information - like block explorers, council
+scanners, discussion platforms like <a href="https://polkassembly.io">Polkassembly</a>, and others. They need
+to be able to look at past on-chain data. Full nodes are used by everyone else - they allow you to
+read the current state of the chain and to submit transactions directly to the chain without relying
+on a centralized infrastructure provider.</p>
+<p>Another type of node is a <strong>light node</strong>. A light node has only the runtime and the current state,
+but does not store past extrinsics and so cannot restore the full chain from genesis. Light nodes
+are useful for resource restricted devices. An interesting use-case of light nodes is a Chrome
+extension, which is a node in its own right, running the runtime in WASM format:
+<a href="https://github.com/paritytech/substrate-light-ui">https://github.com/paritytech/substrate-light-ui</a></p>
+<h3><a class="anchor" aria-hidden="true" id="fast-install-instructions-mac"></a><a href="#fast-install-instructions-mac" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Fast Install Instructions (Mac)</h3>
+<blockquote>
+<p>Not recommended if you're a validator. Please see
+<a href="maintain-guides-secure-validator">secure validator setup</a></p>
+</blockquote>
+<ul>
+<li>Type terminal in the ios searchbar/searchlight to open the 'terminal' application</li>
+<li>Install Homebrew within the terminal by running:
+<code>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;</code></li>
+<li>Then run: <code>brew install openssl cmake llvm</code></li>
+<li>Install Rust in your terminal by running:
+<code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code></li>
+<li>Once Rust is installed, run the following command to clone and build the kusama code:
+<pre><code class="hljs">git clone http<span class="hljs-variable">s:</span>//github.<span class="hljs-keyword">com</span>/paritytech/polkadot kusama
+<span class="hljs-keyword">cd</span> kusama
+./scripts/init.<span class="hljs-keyword">sh</span>
+cargo build –-release
+</code></pre></li>
+<li>Run the following command to start your node: <code>./target/release/polkadot --name &quot;My node's name&quot;</code></li>
+<li>Find your node at <a href="https://telemetry.polkadot.io/#list/Kusama">https://telemetry.polkadot.io/#list/Kusama</a></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="fast-install-instructions-windows"></a><a href="#fast-install-instructions-windows" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Fast Install Instructions (Windows)</h3>
+<blockquote>
+<p>This works only on Windows Pro with virtualization enabled.</p>
+</blockquote>
+<blockquote>
+<p>Not recommended if you're a validator. Please see
+<a href="maintain-guides-secure-validator">secure validator setup</a></p>
+</blockquote>
+<p>For the most recent binary please see the
+<a href="https://github.com/paritytech/polkadot/releases/">release page</a> on the polkadot repository. The URL
+in the code snippet below may become slightly out-of-date.</p>
+<ul>
+<li>Install WSL: <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">https://docs.microsoft.com/en-us/windows/wsl/install-win10</a></li>
+<li>Install Ubuntu (same webpage): <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">https://docs.microsoft.com/en-us/windows/wsl/install-win10</a></li>
+<li>Download Polkadot binary within Ubuntu by running:
+<code>curl -sL https://github.com/paritytech/polkadot/releases/download/v0.8.3/polkadot -o polkadot</code></li>
+<li>Run the following: <code>sudo chmod +x polkadot</code></li>
+<li>Run the following: <code>./polkadot --name &quot;Your Node Name Here&quot;</code></li>
+<li>Find your node at <a href="https://telemetry.polkadot.io/#list/Kusama">https://telemetry.polkadot.io/#list/Kusama</a></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="fast-install-instructions-linux"></a><a href="#fast-install-instructions-linux" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Fast Install Instructions (Linux)</h3>
+<blockquote>
+<p>Not recommended if you're a validator. Please see
+<a href="maintain-guides-secure-validator">secure validator setup</a></p>
+</blockquote>
+<p>For the most recent binary please see the
+<a href="https://github.com/paritytech/polkadot/releases/">release page</a> on the polkadot repository. The URL
+in the code snippet below may become slightly out-of-date.</p>
+<p>Also please note that the nature of pre-built binaries means that they may not work on your
+particular architecture or Linux distribution. If you see an error like
+<code>cannot execute binary file: Exec format error</code> it likely means the binary is not compatible with
+your system. You will either need to compile the <a href="#clone-and-build">source code yourself</a> or use
+<a href="#using-docker">docker</a>.</p>
+<ul>
+<li>Download Polkadot binary by running:
+<code>curl -sL https://github.com/paritytech/polkadot/releases/download/v0.8.3/polkadot -o polkadot</code></li>
+<li>Run the following: <code>sudo chmod +x polkadot</code></li>
+<li>Run the following: <code>./polkadot --name &quot;Your Node Name Here&quot;</code></li>
+<li>Find your node at <a href="https://telemetry.polkadot.io/#list/Kusama">https://telemetry.polkadot.io/#list/Kusama</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="get-substrate"></a><a href="#get-substrate" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Get Substrate</h2>
+<p>Follow instructions as outlined
+<a href="https://substrate.dev/docs/en/knowledgebase/getting-started">here</a> - note that Windows users will
+have their work cut out for them. It's better to use a virtual machine instead.</p>
+<p>Test if the installation was successful by running <code>cargo --version</code>.</p>
+<pre><code class="hljs css language-bash">λ cargo --version
+cargo 1.41.0 (626f0f40e 2019-12-03)
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="clone-and-build"></a><a href="#clone-and-build" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Clone and Build</h2>
+<p>The <a href="https://github.com/paritytech/polkadot">paritytech/polkadot</a> repo's master branch contains the
+latest Kusama code.</p>
+<pre><code class="hljs css language-bash">git <span class="hljs-built_in">clone</span> https://github.com/paritytech/polkadot kusama
+<span class="hljs-built_in">cd</span> kusama
+./scripts/init.sh
+cargo build --release
+</code></pre>
+<p>Alternatively, check out a specific tagged release:</p>
+<pre><code class="hljs css language-bash">git <span class="hljs-built_in">clone</span> https://github.com/paritytech/polkadot kusama
+<span class="hljs-built_in">cd</span> kusama
+git checkout tags/v0.8.3
+./scripts/init.sh
+cargo build --release
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="run"></a><a href="#run" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Run</h2>
+<p>The built binary will be in the <code>target/release</code> folder, called <code>polkadot</code>.</p>
+<pre><code class="hljs css language-bash">./target/release/polkadot --name <span class="hljs-string">"My node's name"</span>
+</code></pre>
+<p>Use the <code>--help</code> flag to find out which flags you can use when running the node. For example, if
+<a href="maintain-wss">connecting to your node remotely</a>, you'll probably want to use <code>--ws-external</code> and
+<code>--rpc-cors all</code>.</p>
+<p>The syncing process will take a while depending on your bandwidth, processing power, disk speed and
+RAM. On a $10 DigitalOcean droplet, the process can complete in some 36 hours.</p>
+<p>Congratulations, you're now syncing with Kusama. Keep in mind that the process is identical when
+using any other Substrate chain.</p>
+<h2><a class="anchor" aria-hidden="true" id="running-an-archive-node"></a><a href="#running-an-archive-node" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Running an Archive Node</h2>
+<p>When running as a simple sync node (above), only the state of the past 256 blocks will be kept. When
+validating, it defaults to <a href="#types-of-nodes">archive mode</a>. To keep the full state use the
+<code>--pruning</code> flag:</p>
+<pre><code class="hljs css language-bash">./target/release/polkadot --name <span class="hljs-string">"My node's name"</span> --pruning archive
+</code></pre>
+<p>It is possible to almost quadruple synchronization speed by using an additional flag:
+<code>--wasm-execution Compiled</code>. Note that this uses much more CPU and RAM, so it should be turned off
+after the node is in sync.</p>
+<h2><a class="anchor" aria-hidden="true" id="using-docker"></a><a href="#using-docker" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using Docker</h2>
+<p>Finally, you can use Docker to run your node in a container. Doing this is a bit more advanced so
+it's best left up to those that either already have familiarity with docker, or have completed the
+other set-up instructions in this guide.</p>
+<pre><code class="hljs css language-zsh">docker run -p 9944:9944 parity/polkadot:v0.8.3 --name <span class="hljs-string">"calling_home_from_a_docker_container"</span>
+</code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/5/2020 by Logan Saether</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#get-substrate">Get Substrate</a></li><li><a href="#clone-and-build">Clone and Build</a></li><li><a href="#run">Run</a></li><li><a href="#running-an-archive-node">Running an Archive Node</a></li><li><a href="#using-docker">Using Docker</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

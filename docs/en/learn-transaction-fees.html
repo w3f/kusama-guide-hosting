@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Transaction Fees · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Several resources in a blockchain network are limited, for example, storage and computation."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Transaction Fees · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="Several resources in a blockchain network are limited, for example, storage and computation."/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/learn-transaction-fees.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-transaction-fees.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Transaction Fees</h1></header><article><div><span><p>Several resources in a blockchain network are limited, for example, storage and computation.
+Transaction fees prevent individual users from consuming too many resources. Polkadot uses a
+weight-based fee model as opposed to a gas-metering model. As such, fees are charged prior to
+transaction execution; once the fee is paid, nodes will execute the transaction.</p>
+<p><a href="https://research.web3.foundation/en/latest/polkadot/Token%20Economics.html">Web3 Foundation Research</a>
+designed the Polkadot fee system with the following objectives:</p>
+<ul>
+<li>Each Relay Chain block should be processed efficiently to avoid delays in block production.</li>
+<li>The growth rate of the Relay Chain should be bounded.</li>
+<li>Each block should have space for special, high-priority transactions like misconduct reports.</li>
+<li>The system should be able to handle spikes in demand.</li>
+<li>Fees should change slowly so that senders can accurately predict the fee for a given transaction.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="fee-calculation"></a><a href="#fee-calculation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Fee Calculation</h2>
+<p>Fees on the Polkadot Relay Chain are calculated based on three parameters:</p>
+<ul>
+<li>A per-byte fee (also known as the &quot;length fee&quot;)</li>
+<li>A weight fee</li>
+<li>A tip (optional)</li>
+</ul>
+<p>The length fee is the product of a constant per-byte fee and the size of the transaction in bytes.</p>
+<p>Weights are a fixed number designed to manage the time is takes to validate a block. Each
+transaction has a base weight that accounts for the overhead of inclusion (e.g. signature
+verification) as well as a dispatch weight that accounts for the time to execute the transaction.
+The total weight is multiplied by a per-weight fee to calculate the transaction's weight fee.</p>
+<p>Tips are an optional transaction fee that users can add to give a transaction higher priority.</p>
+<p>Together, these three fees constitute the inclusion fee. This fee is deducted from the sender's
+account prior to transaction execution. A portion of the fee will go to the block producer and the
+remainder will go to the <a href="learn-treasury">Treasury</a>. At Polkadot's genesis, this is set to 20% and
+80%, respectively.</p>
+<h2><a class="anchor" aria-hidden="true" id="block-limits-and-transaction-priority"></a><a href="#block-limits-and-transaction-priority" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Block Limits and Transaction Priority</h2>
+<p>Blocks in Polkadot have both a maximum length (in bytes) and a maximum weight. Block producers will
+fill blocks with transactions up to these limits. A portion of each block - currently 25% - is
+reserved for critical transactions that are related to the chain's operation. Block producers will
+only fill up to 75% of a block with normal transactions. Some examples of operational transactions:</p>
+<ul>
+<li>Misbehavior reports</li>
+<li>Council operations</li>
+<li>Member operations in an election (e.g. renouncing candidacy)</li>
+</ul>
+<p>Block producers prioritize transactions based on each transaction's total fee. Since a portion of
+the fee will go to the block producer, producers will include the transactions with the highest fees
+to maximize their reward.</p>
+<h2><a class="anchor" aria-hidden="true" id="fee-adjustment"></a><a href="#fee-adjustment" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Fee Adjustment</h2>
+<p>Transaction volume on blockchains is highly irregular, and therefore transaction fees need a
+mechanism to adjust. However, users should be able to predict transaction fees.</p>
+<p>Polkadot uses a slow-adjusting fee mechanism with tips to balance these two considerations. In
+addition to block <em>limits,</em> Polkadot also has a block fullness <em>target.</em> Fees increase or decrease
+for the next block based on the fullness of the current block relative to the target. The per-weight
+fee can change up to 30% in a 24 hour period. This rate captures long-term trends in demand, but not
+short-term spikes. To consider short term spikes, Polkadot uses tips on top of the length and weight
+fees. Users can optionally add a tip to the fee to give the transaction a higher priority.</p>
+<h2><a class="anchor" aria-hidden="true" id="shard-transactions"></a><a href="#shard-transactions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Shard Transactions</h2>
+<p>The transactions that take place within Polkadot's shards - parachains and parathreads - do not
+incur Relay Chain transaction fees. Users of shard applications do not even need to hold DOT tokens,
+as each shard has its own economic model and may or may not have a token. There are, however,
+situations where shards themselves make transactions on the Relay Chain.</p>
+<p><a href="learn-parachains">Parachains</a> have a dedicated slot on the Relay Chain for execution, so their
+collators do not need to own DOTs in order to include blocks. The parachain will make some
+transactions itself, for example, opening or closing an <a href="learn-crosschain">XCMP</a> channel,
+participating in an <a href="learn-auction">auction</a> to renew its slot, or upgrading its runtime. Parachains
+have their own accounts on the Relay Chain and will need to use those funds to issue transactions on
+the parachain's behalf.</p>
+<p><a href="learn-parathreads">Parathreads</a> will also make all the same transactions that a parachain might. In
+addition, the collators need to participate in an auction every block to progress their chain. The
+collators will need to have DOTs to participate in these auctions.</p>
+<h2><a class="anchor" aria-hidden="true" id="other-resource-limitation-strategies"></a><a href="#other-resource-limitation-strategies" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Other Resource Limitation Strategies</h2>
+<p>Transaction weight must be computable prior to execution, and therefore can only represent fixed
+logic. Some transactions warrant limiting resources with other strategies. For example:</p>
+<ul>
+<li>Bonds: Some transactions, like voting, may require a bond that will be returned or slashed after
+an on-chain event. In the voting example, returned at the end of the election or slashed if the
+voter tried anything malicious.</li>
+<li>Deposits: Some transactions, like setting an <a href="learn-identity">identity</a> or claiming an index, use
+storage space indefinitely. These require a deposit that will be returned if the user decides to
+free storage (e.g. clear their ide).</li>
+<li>Burns: A transaction may burn funds internally based on its logic. For example, a transaction may
+burn funds from the sender if it creates new storage entries, thus increasing the state size.</li>
+<li>Limits: Some limits are part of the protocol. For example, nominators can only nominate 16
+validators. This limits the complexity of <a href="learn-phragmen">Phragmen</a>.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="advanced"></a><a href="#advanced" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Advanced</h2>
+<p>This page only covered transactions that come from normal users. If you look at blocks in a block
+explorer, though, you may see some &quot;extrinsics&quot; that look different from these transactions. In
+Polkadot (and any chain built on Substrate), an extrinsic is a piece of information that comes from
+outside the chain. Extrinsics fall into three categories:</p>
+<ul>
+<li>Signed transactions</li>
+<li>Unsigned transactions</li>
+<li>Inherents</li>
+</ul>
+<p>This page only covered signed transactions, which is the way that most users will interact with
+Polkadot. Signed transactions come from an account that has funds, and therefore Polkadot can charge
+a transaction fee as a way to prevent spam.</p>
+<p>Unsigned transactions are for special cases where a user needs to submit an extrinsic from a key
+pair that does not control funds. For example, when users
+<a href="https://claims.polkadot.network">claim their DOT tokens</a> after genesis, their DOT address doesn't
+have any funds yet, so that uses an unsigned transaction. Validators also submit unsigned
+transactions in the form of &quot;heartbeat&quot; messages to indicate that they are online. These heartbeats
+must be signed by one of the validator's <a href="learn-keys">session keys</a>. Session keys never control
+funds. Unsigned transactions are only used in special cases because, since Polkadot cannot charge a
+fee for them, each one needs its own, custom validation logic.</p>
+<p>Finally, inherents are pieces of information that are not signed or included in the transaction
+queue. As such, only the block author can add inherents to a block. Inherents are assumed to be
+&quot;true&quot; simply because a sufficiently large number of validators have agreed on them being
+reasonable. For example, Polkadot blocks include a timestamp inherent. There is no way to prove that
+a timestamp is true the way one proves the desire to send funds with a signature. Rather, validators
+accept or reject the block based on how reasonable they find the timestamp. In Polkadot, it must be
+within some acceptable range of their own system clocks.</p>
+<h2><a class="anchor" aria-hidden="true" id="learn-more"></a><a href="#learn-more" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Learn More</h2>
+<ul>
+<li><a href="https://research.web3.foundation/en/latest/polkadot/Token%20Economics.html#relay-chain-transaction-fees-and-per-block-transaction-limits">Web3 Foundation Research</a></li>
+<li><a href="https://substrate.dev/docs/en/knowledgebase/learn-substrate/weight">Substrate Weights</a></li>
+<li><a href="https://substrate.dev/docs/en/knowledgebase/runtime/fees">Substrate Fees</a></li>
+<li><a href="https://substrate.dev/docs/en/knowledgebase/learn-substrate/extrinsics">Extrinsics</a></li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/11/2020 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#fee-calculation">Fee Calculation</a></li><li><a href="#block-limits-and-transaction-priority">Block Limits and Transaction Priority</a></li><li><a href="#fee-adjustment">Fee Adjustment</a></li><li><a href="#shard-transactions">Shard Transactions</a></li><li><a href="#other-resource-limitation-strategies">Other Resource Limitation Strategies</a></li><li><a href="#advanced">Advanced</a></li><li><a href="#learn-more">Learn More</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

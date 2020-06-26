@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Parachain Slots Auction · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="The parachain slots of Polkadot will be sold according to an unpermissioned"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Parachain Slots Auction · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="The parachain slots of Polkadot will be sold according to an unpermissioned"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/learn-auction.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-auction.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Parachain Slots Auction</h1></header><article><div><span><p>The parachain slots of Polkadot will be sold according to an unpermissioned
+<a href="https://en.wikipedia.org/wiki/Candle_auction">Candle auction</a> that has been slightly modified to be
+secure on a blockchain.</p>
+<h2><a class="anchor" aria-hidden="true" id="mechanics-of-a-candle-auction"></a><a href="#mechanics-of-a-candle-auction" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mechanics of a Candle auction</h2>
+<p>Candle auctions are a variant of open auctions where bidders submit bids that are increasingly
+higher and the highest bidder at the conclusion of the auction is considered the winner.</p>
+<p>Candle auctions were originally employed in 16th century for the sale of ships and get their name
+from the &quot;inch of a candle&quot; that determined the open period of the auction. When the flame
+extinguished and the candle went out, the auction would suddenly terminate and the standing bid at
+that point would win.</p>
+<p>When Candle auctions are used online, they require a random number to decide the moment of
+termination.</p>
+<p>Parachain slot auctions will differ slightly from a normal Candle auction in that it does not use
+the random number to decide the duration of its opening phase. Instead, it has a known open phase
+and will be retroactively determined (at the normal close) to have ended at some point in the past.
+So during the open phase, bids will continue to be accepted but, later bids have higher probability
+of losing since the retroactively determined close moment may be found to have preceded the time
+that a bid was submitted.</p>
+<h2><a class="anchor" aria-hidden="true" id="why-use-a-candle-auction"></a><a href="#why-use-a-candle-auction" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Why use a Candle auction?</h2>
+<p>The open and transparent nature of blockchain systems opens attack vectors that are non-existent in
+traditional auction formats. Normal open auctions in particular can be vulnerable to <em>auction
+sniping</em> when implemented over the internet or on a blockchain.</p>
+<p>Auction sniping takes place when the end of an auction is known and bidders are hesitant to bid
+their true price early, in hopes of paying less than they actually value the item.</p>
+<p>For example, Alice may value an item at auction for 30 USD. She submits an initial bid of 10 USD in
+hopes of acquiring the items at a lower price. Alice's strategy is to place incrementally higher
+bids until her true value of 30 USD is exceeded. Another bidder Eve values the same item at 11 USD.
+Eve's strategy is to watch the auction and submit a bid of 11 USD at the last second. Alice will
+have no time to respond to this bid before the close of the auction and will lose the item. The
+auction mechanism is sub-optimal because it has not discovered the true price of the item and the
+item has not gone to the actor who valued it the most.</p>
+<p>On blockchains this problem may be even worse, since it potentially gives the producer of the block
+an opportunity to snipe any auction at the last concluding block by adding it themselves and/or
+ignoring other bids. There is also the possibility of a malicious bidder or a block producer trying
+to <em>grief</em> honest bidders by sniping auctions.</p>
+<p>For this reason, <a href="https://en.wikipedia.org/wiki/Vickrey_auction">Vickrey auctions</a>, a variant of
+second price auction in which bids are hidden and only revealed in a later phase, have emerged as a
+well-regarded mechanic. For example, it is implemented as the mechanism to auction human readable
+names on the <a href="https://ens.domains">ENS</a>. The Candle auction is another solution that does not need
+the two-step commit and reveal schemes (a main component of Vickrey auctions), and for this reason
+allows smart contracts to participate.</p>
+<p>Candle auctions allow everyone to always know the states of the bid, but not when the auction will
+be determined to have &quot;ended.&quot; This helps to ensure that bidders are willing to bid their true bids
+early. Otherwise, they might find themselves in the situation that the auction was determined to
+have &quot;ended&quot; before they even bid.</p>
+<h2><a class="anchor" aria-hidden="true" id="how-its-used-in-polkadot"></a><a href="#how-its-used-in-polkadot" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How it's used in Polkadot</h2>
+<p>Polkadot will use a <em>random beacon</em> based on the VRF that's used also in other places of the
+protocol. The VRF will provide the base of the randomness, which will retroactively determine the
+&quot;end-time&quot; of the auction.</p>
+<p>When an account bids, they can place bids for any of the available periods or ranges in a slot.
+However, if a parachain (with the same STF) bids then that parachain must bid on a continuous period
+or range to the one they already occupy. They will not be able to bid for an overlapping slot (no
+multiples of the same parachain at the same time) and they will not be able to bid for a future slot
+if there is a gap in between. In the case a parachain is rebooted after having already reached the
+conclusion of its slot duration, it will need to be started again from a new genesis (which could be
+snapshot of all the old state) and will need to be bid from an external account.</p>
+<p>The slot durations are capped to 2 years and divided into 6-month periods. Parachains may lease a
+slot for any contiguous range of the slot duration. Parachains may lease more than one slot over
+time, meaning that they could extend their lease to Polkadot past the 2 year slot duration simply by
+leasing a contiguous slot.</p>
+<h2><a class="anchor" aria-hidden="true" id="how-does-bidding-work"></a><a href="#how-does-bidding-work" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How does bidding work?</h2>
+<pre><code class="hljs">Parachain slots <span class="hljs-built_in">at</span> genesis
+
+       -<span class="hljs-number">-6</span> months--
+       v          v
+Slot A |     <span class="hljs-type">1</span>    |     <span class="hljs-type">2</span>    |     <span class="hljs-type">3</span>     |     <span class="hljs-type">4</span>     |<span class="hljs-type">...
+Slot</span> B |     <span class="hljs-type">1</span>    |     <span class="hljs-type">2</span>    |     <span class="hljs-type">3</span>     |     <span class="hljs-type">4</span>     |<span class="hljs-type">...
+Slot</span> C |<span class="hljs-type">__________</span>|     <span class="hljs-type">1</span>    |     <span class="hljs-type">2</span>     |     <span class="hljs-type">3</span>     |     <span class="hljs-type">4</span>     |<span class="hljs-type">...
+Slot</span> D |<span class="hljs-type">__________</span>|     <span class="hljs-type">1</span>    |     <span class="hljs-type">2</span>     |     <span class="hljs-type">3</span>     |     <span class="hljs-type">4</span>     |<span class="hljs-type">...
+Slot</span> E |<span class="hljs-type">__________</span>|<span class="hljs-type">__________</span>|     <span class="hljs-type">1</span>     |     <span class="hljs-type">2</span>     |     <span class="hljs-type">3</span>     |     <span class="hljs-type">4</span>     |<span class="hljs-type">...
+       ^                                             ^
+       ---------------------2</span> years-------------------
+
+Each period of the range <span class="hljs-number">1</span> - <span class="hljs-number">4</span> represents a <span class="hljs-number">6</span>-month duration <span class="hljs-keyword">for</span> a total of <span class="hljs-number">2</span> years
+</code></pre>
+<p>Each parachain slot has a maximum duration of 2 years. Each 6 month interval in the slot is divided
+into its own <code>lease period</code>. More than one continuous <code>period</code> is a <code>range</code>.</p>
+<p>Several auctions will take place in the preceding six months before a set of parachain slot leases
+begin.</p>
+<p>Bidders will submit a configuration of bids specifying the DOT amount they are willing to lock up
+and for which ranges. The slot ranges may be any continuous range of the periods 1 - 4.</p>
+<p>A bidder configuration for a single bidder may look like this:</p>
+<pre><code class="hljs css language-js">Bids[
+  ({
+    <span class="hljs-attr">range</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>],
+    <span class="hljs-attr">bond_amount</span>: <span class="hljs-number">300</span>, <span class="hljs-comment">//DOTs</span>
+  },
+  {
+    <span class="hljs-attr">range</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>],
+    <span class="hljs-attr">bond_amount</span>: <span class="hljs-number">777</span>, <span class="hljs-comment">//DOTs</span>
+  },
+  {
+    <span class="hljs-attr">range</span>: [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>],
+    <span class="hljs-attr">bond_amount</span>: <span class="hljs-number">450</span>, <span class="hljs-comment">// DOTs</span>
+  })
+];
+</code></pre>
+<p>The winner selection algorithm will pick bids that may be non-overlapping in order to maximize the
+amount of DOTs held over the entire 2-year lease duration of the parachain slot. This means that the
+highest bidder for any given slot lease period might not always win (see the
+<a href="#compete">example below</a>).</p>
+<p>A random number, which is based on the VRF used by Polkadot, is determined at each block.
+Additionally, each auction will have a threshold that starts at 0 and increases to 1. The random
+number produced by the VRF is examined next to the threshold to determine if that block is the end
+of the auction. Additionally, the VRF will pick a block from the last epoch to take the state of
+bids from (to mitigate some types of attacks from malicious validators).</p>
+<h3><a class="anchor" aria-hidden="true" id="examples"></a><a href="#examples" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h3>
+<h4><a class="anchor" aria-hidden="true" id="non-compete"></a><a href="#non-compete" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Non-compete</h4>
+<p>There is one parachain slot available.</p>
+<p>Alice bids <code>20 DOTs</code> for the range 1 - 2.</p>
+<p>Bob bids <code>30 DOTs</code> for the range 3 - 4.</p>
+<p>The auction ends.</p>
+<p>Alice bonds <code>20 DOTs</code> and will have the parachain slot for the first year.</p>
+<p>Bob bonds <code>30 DOTs</code> and will have the parachain slot for the second year.</p>
+<h4><a class="anchor" aria-hidden="true" id="compete"></a><a href="#compete" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Compete</h4>
+<p>There is one parachain slot available.</p>
+<p>Charlie bids <code>75 DOTs</code> for the range 1 - 4.</p>
+<p>Dave bids <code>100 DOTs</code> for the range 3 - 4.</p>
+<p>Emily bids <code>40 DOTs</code> for the range 1 - 2.</p>
+<p>Let's calculate every bidder's valuation according to the algorithm. We do this by multiplying the
+bond amount by the amount of periods in the specified range of the bid.</p>
+<p>Charlie - 75 * 4 = 300 for range 1 - 4</p>
+<p>Dave - 100 * 2 = 200 for range 3 - 4</p>
+<p>Emily - 40 * 2 = 80 for range 1 - 2</p>
+<p>Although Dave had the highest bid in accordance to DOT amount, when we do the calculations we see
+that since he only bid for a range of 2, he would need to share the slot with Emily who bid much
+less. Together Dave's and Emily's bids only equal a valuation of <code>280</code>.</p>
+<p>Charlie's valuation for the entire range is <code>300</code> therefore Charlie is awarded the complete range of
+the parachain slot.</p>
+<h2><a class="anchor" aria-hidden="true" id="faq"></a><a href="#faq" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>FAQ</h2>
+<h3><a class="anchor" aria-hidden="true" id="why-doesnt-everyone-bid-for-the-max-length"></a><a href="#why-doesnt-everyone-bid-for-the-max-length" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Why doesn't everyone bid for the max length?</h3>
+<p>For the duration of the slot the <code>DOTs</code> bid in the auction will be locked up. This means that there
+are opportunity costs from the possibility of using those <code>DOTs</code> for something else. For parachains
+that are beneficial to Polkadot, this should align the interests between parachains and the Polkadot
+Relay Chain.</p>
+<h3><a class="anchor" aria-hidden="true" id="how-does-this-mechanism-help-ensure-parachain-diversity"></a><a href="#how-does-this-mechanism-help-ensure-parachain-diversity" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How does this mechanism help ensure parachain diversity?</h3>
+<p>The method for dividing the parachain slots into six month intervals was partly inspired by the
+desire to allow for a greater amount of parachain diversity, and prevent particularly large and
+well-funded parachains from hoarding slots. By making each period a six-month duration but the
+overall slot a 2-year duration, the mechanism can cope with well-funded parachains that will ensure
+they secure a slot at the end of their lease, while gradually allowing other parachains to enter the
+ecosystem to occupy the six-month durations that are not filled. For example, if a large,
+well-funded parachain has already acquired a slot for range 1 - 4, they would be very interested in
+getting the next slot that would open for 2 - 5. Under this mechanism that parachain could acquire
+period 5 (since that is the only one it needs) and allow range 2 - 4 of the second parachain slot to
+be occupied by another.</p>
+<h3><a class="anchor" aria-hidden="true" id="why-is-randomness-difficult-on-blockchains"></a><a href="#why-is-randomness-difficult-on-blockchains" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Why is randomness difficult on blockchains?</h3>
+<p>Randomness is problematic for blockchain systems. Generating a random number trustlessly on a
+transparent and open network in which other parties must be able to verify opens the possibility for
+actors to attempt to alter or manipulate the randomness. There have been a few solutions that have
+been put forward, including hash-onions like <a href="https://github.com/randao/randao">RANDAO</a> and
+<a href="https://en.wikipedia.org/wiki/Verifiable_random_function">verifiable random functions</a> (VRFs). The
+latter is what Polkadot uses as a base for its randomness.</p>
+<h2><a class="anchor" aria-hidden="true" id="resources"></a><a href="#resources" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resources</h2>
+<ul>
+<li><a href="https://research.web3.foundation/en/latest/polkadot/Parachain-Allocation.html">Parachain Allocation</a> -
+W3F research page on parachain allocation that goes more in depth to the mechanism.</li>
+<li><a href="https://github.com/paritytech/polkadot/pull/239">paritytech/polkadot#239</a> - Pull request
+introducing the parachain slots code.</li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/1/2020 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#mechanics-of-a-candle-auction">Mechanics of a Candle auction</a></li><li><a href="#why-use-a-candle-auction">Why use a Candle auction?</a></li><li><a href="#how-its-used-in-polkadot">How it's used in Polkadot</a></li><li><a href="#how-does-bidding-work">How does bidding work?</a><ul class="toc-headings"><li><a href="#examples">Examples</a></li></ul></li><li><a href="#faq">FAQ</a><ul class="toc-headings"><li><a href="#why-doesnt-everyone-bid-for-the-max-length">Why doesn't everyone bid for the max length?</a></li><li><a href="#how-does-this-mechanism-help-ensure-parachain-diversity">How does this mechanism help ensure parachain diversity?</a></li><li><a href="#why-is-randomness-difficult-on-blockchains">Why is randomness difficult on blockchains?</a></li></ul></li><li><a href="#resources">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

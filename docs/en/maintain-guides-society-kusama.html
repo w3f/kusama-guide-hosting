@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Join Kappa Sigma Mu · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Kappa Sigma Mu is a membership club using the Substrate [Society][substrate society] pallet. It is"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Join Kappa Sigma Mu · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="Kappa Sigma Mu is a membership club using the Substrate [Society][substrate society] pallet. It is"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/maintain-guides-society-kusama.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>What to Try</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Kusama<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-index.html">Home</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Get Started</h4><ul><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-faucet.html">Faucet</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-claims.html">Claims</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-endpoints.html">Kusama Endpoints</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Try</h4><ul><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-maintain-guides-how-to-validate-kusama.html">Validator Guide</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-maintain-guides-how-to-nominate-kusama.html">Nominator Guide</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-learn-governance.html">Governance</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-learn-identity.html">Identity</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-learn-treasury.html">Treasury</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-build-build-with-polkadot.html">Polkadot Builders Starter&#x27;s Guide</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/kusama-guide-hosting/docs/en/maintain-guides-society-kusama.html">Join Kappa Sigma Mu</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Break</h4><ul><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/mirror-maintain-errors.html">Resolving Errors</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-bug-bounty.html">Bug Bounty</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-adverserial-cheatsheet.html">Adverserial Cheatsheet</a></li></ul></div><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-timeline.html">Timeline</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-community.html">Community</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-time-periods.html">Parameters</a></li><li class="navListItem"><a class="navItem" href="/kusama-guide-hosting/docs/en/kusama-coc.html">Code of Conduct</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/maintain-guides-society-kusama.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Join Kappa Sigma Mu</h1></header><article><div><span><p>Kappa Sigma Mu is a membership club using the Substrate <a href="https://substrate.dev/rustdocs/master/pallet_society/index.html">Society</a> pallet. It is
+an economic game to incentivize users to join a society that coordinates around whatever the rules
+are decided to be. The members of the society are incentivized to participate in the society via the
+rewards paid by the treasury. Currently, there is only one society on Kusama but it is possible to
+have multiple societies in the future through a runtime upgrade.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/society/dashboard.jpg" alt="Society Dashboard"></p>
+<p>Before joining the society, let's take a brief look at the
+<a href="https://polkadot.js.org/apps/#/society">Society UI</a> on PolkadotJS apps and read through all the
+<a href="https://polkascan.io/pre/kusama/transaction/0x948d3a4378914341dc7af9220a4c73acb2b3f72a70f14ee8089799da16d94c17">rules</a> to become a member.</p>
+<h2><a class="anchor" aria-hidden="true" id="ui-overview"></a><a href="#ui-overview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UI Overview</h2>
+<p><code>Members</code>: The number of members in the society. Currently, the maximum number of members is set to
+<code>150</code>. It can be changed by using governance to increase the number.</p>
+<p><code>Rotation</code>: The duration between each time the membership rotates.</p>
+<p><code>Challenge</code>: The time period to randomly select one of the members to defend his membership in the
+society.</p>
+<p><code>Pot</code>: Resource that is used to support the member of society.</p>
+<p><code>Bids</code>: A list of users who submitted a bid to join the society.</p>
+<h2><a class="anchor" aria-hidden="true" id="user-types"></a><a href="#user-types" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>User Types</h2>
+<p>Below are the various types of users at different stages.</p>
+<p><code>Bidder</code> - A token holder who intends to join the society by placing a bid.</p>
+<p><code>Candidate</code> - The selected bidders that will be voted on by members of the society.</p>
+<p><code>Suspended Candidate</code> - The candidates that failed to join the society.</p>
+<p><code>Member</code> - Member of the society.</p>
+<p><code>Suspender Member</code> - A member of the society who has accumulated too many strikes or failed their
+membership challenge.</p>
+<p><code>Head</code> - One winning candidate will be randomly chosen as head of the members, weighted by the
+number of approvals the winning candidates accumulated.</p>
+<p><code>Defender</code> - In every challenge period, one of the members will be randomly selected to defend their
+membership in the society. The rules for defending the membership are documented <a href="https://polkascan.io/pre/kusama/transaction/0x948d3a4378914341dc7af9220a4c73acb2b3f72a70f14ee8089799da16d94c17">in the
+rules</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="procedure"></a><a href="#procedure" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Procedure</h2>
+<p><strong>Remember to take a look at the [rules][kapp rules] first. And since those rules are not enforced
+entirely on-chain, it is recommended to join the
+<a href="https://matrix.to/#/!BUmiAAnAYSRGarqwOt:matrix.parity.io?via=matrix.parity.io&amp;via=matrix.org&amp;via=web3.foundation">public chat room</a>
+to ask any questions if anything is unclear.</strong></p>
+<h3><a class="anchor" aria-hidden="true" id="1-bid-phase"></a><a href="#1-bid-phase" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Bid Phase</h3>
+<p>Anyone can submit a bid to join the society by reserving a deposit or finding an existing member to
+create a bid on their behalf by vouching for them. At every rotation period, as many bids the
+society pot can support will be selected. The selected bids will be moved to the candidate phase,
+whereas bids that were not selected will stay in the bidder pool until they are selected or a user
+chooses to unbid.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/society/submit_bid.jpg" alt="Society Dashboard"></p>
+<p>Anyone who wants to join the society is required to deposit 10 KSM for reserve on Kusama and place
+the bid amount (1 KSM in this case) that they want to get when joining the society.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/society/test_bid.jpg" alt="Society Dashboard"></p>
+<p>Once you have submitted the transaction, your bid will be shown on the
+<a href="https://polkadot.js.org/apps/#/society">Society page</a> under the bids section. You can cancel the
+bidding if you changed your mind about joining the society by calling <code>unbid</code>.</p>
+<blockquote>
+<p>unbid(pos)</p>
+<p>pos - The index of the bid.</p>
+</blockquote>
+<p>If you are not sure what your position is, you can check that by going to the
+<a href="https://polkadot.js.org/apps/#/chainstate">Society-&gt;bids chain state</a> in the PolkadotJS apps.</p>
+<p>You can find an existing member to place a bid on your behalf if you do not have KSM and you are
+willing to give them a tip. An existing member can submit a <code>vouch</code> transaction.</p>
+<blockquote>
+<p>vouch(who,value,tip)</p>
+<p>who - The user you are vouching for</p>
+<p>value - The value that the user would like to get when joining the society</p>
+<p>tip - Fees you get</p>
+<p>Note: The final value that the candidate will get = (value - tip)</p>
+</blockquote>
+<p><img src="/kusama-guide-hosting/docs/assets/society/vouch.jpg" alt="Society Dashboard"></p>
+<h3><a class="anchor" aria-hidden="true" id="2-candidate-phase"></a><a href="#2-candidate-phase" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Candidate Phase</h3>
+<p><img src="/kusama-guide-hosting/docs/assets/society/vote_candidate.jpg" alt="Society Vote Candidate"></p>
+<blockquote>
+<p>vote(candidate,approve)</p>
+<p>candidate - Select the candidate you would like to vote</p>
+<p>approve - Yes / No</p>
+</blockquote>
+<p>Bids selected in this phase will be voted on by the existing members to decide whether or not you
+will be approved to join the society. Members will vote for all the candidates and the final outcome
+will be randomly selected by one of the votes. Let's take a look the example shown below:</p>
+<blockquote>
+<p><strong><em>NOTE:</em></strong></p>
+<p>If the randomly selected member does not vote, it will be treated as a rejection.</p>
+<p>For each rotation period, the maximum number of members that can be accepted is set as 10.</p>
+</blockquote>
+<p>A - Accept, R - Reject, S - Skeptic</p>
+<table>
+<thead>
+<tr><th>Member</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+</thead>
+<tbody>
+<tr><td>Vote</td><td>A</td><td>A</td><td>A</td><td>R</td><td>S</td></tr>
+<tr><td>Selected</td><td></td><td></td><td>X</td><td></td><td></td></tr>
+</tbody>
+</table>
+<p>In this example, a candidate will be approved to join the society since member 3 was selected as a
+final voting outcome. A number of members will also be randomly chosen as &quot;skeptics&quot; to vote for the
+candidates during the rotation period. Since member 5 was chosen as a skeptic, they are required to
+participate in the voting process. If they do not participate in voting, they will be punished with
+one strike per missing vote. If one accumulates too many strikes, one's membership is suspended
+which means they may need to re-apply and their unclaimed payouts will be slashed. Moreover, each
+member who voted opposite to the randomly selected vote will have their unclaimed payouts slashed
+and strikes increased. In this case, member 4 will be punished.</p>
+<blockquote>
+<p><strong><em>NOTE:</em></strong></p>
+<p>The maximum number of strikes you can have is on Kusama is 10.</p>
+</blockquote>
+<p>The slashed funds (2 KSM currently) will be given to a random member who voted the same as the
+selected vote as a reward for participating in the vote. The reward is escrowed for some period of
+time - see below.</p>
+<h4><a class="anchor" aria-hidden="true" id="lock-up-time"></a><a href="#lock-up-time" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Lock-up Time</h4>
+<p>It would take the number of members of the society as the variable to determine how many blocks you
+have to wait in order to get the payout. The longest lock-up time is closer to 3 years. The formula
+is defined <a href="https://substrate.dev/rustdocs/master/pallet_society/index.html">in the society pallet</a> if you would like to have a look.</p>
+<p>Example:</p>
+<pre><code class="hljs">Let's assume we have <span class="hljs-number">5</span> members in the society.
+
+lock_duration = <span class="hljs-number">100</span> - <span class="hljs-number">50</span>,<span class="hljs-number">000</span> / (<span class="hljs-number">5</span> + <span class="hljs-number">500</span>)
+lock_duration * MAX_LOCK_DURATION_IN_BLOCKS
+
+Result = <span class="hljs-number">1</span>% * <span class="hljs-number">15</span>,<span class="hljs-number">552</span>,<span class="hljs-number">000</span> ~ <span class="hljs-number">11</span> days
+</code></pre>
+<p>Based on the above calculation, it is required to wait close to 11 days to get the slashed funds.</p>
+<p>If the candidate wins the vote, they receive their bid reward as a future payout. If the bid was
+placed by a voucher, they will get back the reward that was set during vouching with the remainder
+given to the candidate - both escrowed for some time.</p>
+<p>If the candidate loses the vote, they are suspended and it is up to the founder of the society (the
+<code>Suspension Judgment Origin</code>) to determine if the candidate should go through the bidding process
+again, should be accepted into the membership society, or rejected and their deposit slashed.</p>
+<h3><a class="anchor" aria-hidden="true" id="3-member-phase"></a><a href="#3-member-phase" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. Member Phase</h3>
+<p>Once you become a member of the society, you will get back the deposit that you have reserved during
+the bidding. A few things you need to be aware of. First, you should vote on candidates who applied
+for the membership in every rotation period.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/society/vote_defender.jpg" alt="Society Vote Defender"></p>
+<blockquote>
+<p>defenderVote(approve)</p>
+<p>approve - Yes / No</p>
+</blockquote>
+<p>Second, you will need to claim your payout manually by calling <code>payout</code> after the lock-up time. It
+is the same as the above mentioned lock-up formula.</p>
+<p><img src="/kusama-guide-hosting/docs/assets/society/payout.jpg" alt="Society Payout"></p>
+<p>Third, there will be a membership challenge every seven days on Kusama. So one of the members will
+be randomly selected as a defender. Then, other members can vote whether this defender should stay
+in society or not. A simple majority wins the vote. You can take a look <a href="https://polkascan.io/pre/kusama/transaction/0x948d3a4378914341dc7af9220a4c73acb2b3f72a70f14ee8089799da16d94c17">here</a> and
+search for &quot;Existing Members (Challenges)&quot;. Besides that, you can earn extra KSM by helping a user
+apply for the membership and requesting a tip. This is useful when a user does not have enough
+balance to reserve a deposit. The tip will be given when a user successfully joins the society.</p>
+<blockquote>
+<p><strong><em>NOTE:</em></strong></p>
+<p>Each member can only vouch for one user at a time.</p>
+<p>A member is not required to reserve the deposit when vouching for a user.</p>
+</blockquote>
+<p>If a member accumulates too many strikes or fails their membership challenge, they will become
+suspended. While a member is suspended, they are unable to claim matured payouts. It is up to the
+suspension judgment origin to determine if the member should re-enter society or be removed from
+society with all their future payouts slashed.</p>
+<h2><a class="anchor" aria-hidden="true" id="useful-links"></a><a href="#useful-links" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Useful links</h2>
+<p><a href="https://polkascan.io/pre/kusama/transaction/0x948d3a4378914341dc7af9220a4c73acb2b3f72a70f14ee8089799da16d94c17">Convention of Approval of Membership</a> -
+Rules about joining the Kusama society</p>
+<p><a href="https://matrix.to/#/!BUmiAAnAYSRGarqwOt:matrix.parity.io?via=matrix.parity.io&amp;via=matrix.org&amp;via=web3.foundation">Kappa Sigma Mu Lounge</a> -
+A public chat room on Riot to talk about anything about the society.</p>
+<p><a href="https://www.shawntabrizi.com/substrate-society/">Substrate Society</a> - It shows the Kusama society
+information and allowing you to directly place a bid if you have installed the
+<a href="https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd">PolkadotJS extension</a>.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/1/2020 by joe petrowski</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/kusama-guide-hosting/docs/en/mirror-build-build-with-polkadot.html"><span class="arrow-prev">← </span><span>Polkadot Builders Starter&#x27;s Guide</span></a><a class="docs-next button" href="/kusama-guide-hosting/docs/en/mirror-maintain-errors.html"><span>Resolving Errors</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#ui-overview">UI Overview</a></li><li><a href="#user-types">User Types</a></li><li><a href="#procedure">Procedure</a><ul class="toc-headings"><li><a href="#1-bid-phase">1. Bid Phase</a></li><li><a href="#2-candidate-phase">2. Candidate Phase</a></li><li><a href="#3-member-phase">3. Member Phase</a></li></ul></li><li><a href="#useful-links">Useful links</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

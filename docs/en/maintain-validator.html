@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Validator · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Validators secure the Relay Chain by staking DOTs, validating proofs from collators and"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Validator · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="Validators secure the Relay Chain by staking DOTs, validating proofs from collators and"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/maintain-validator.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/maintain-validator.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Validator</h1></header><article><div><span><p>Validators secure the Relay Chain by staking DOTs, validating proofs from collators and
+participating in consensus with other validators.</p>
+<p>These participants will play a crucial role in adding new blocks to the Relay Chain and, by
+extension, to all parachains. This allows parties to complete cross-chain transactions via the Relay
+Chain.</p>
+<p>Validators perform two functions. First, verifying that the information contained in an assigned set
+of parachain blocks is valid (such as the identities of the transacting parties and the subject
+matter of the contract). Their second role is to participate in the consensus mechanism to produce
+the Relay Chain blocks based on validity statements from other validators. Any instances of
+non-compliance with the consensus algorithms result in punishment by removal of some or all of the
+validator’s staked DOTs, thereby discouraging bad actors. Good performance, however, will be
+rewarded, with validators receiving block rewards (including transaction fees) in the form of DOTs
+in exchange for their activities.</p>
+<h2><a class="anchor" aria-hidden="true" id="guides"></a><a href="#guides" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Guides</h2>
+<ul>
+<li><a href="maintain-guides-how-to-validate-polkadot">How to Validate on Polkadot</a> - Guide on how to set up a
+validator on the Polkadot live network.</li>
+<li><a href="maintain-guides-validator-payout">Validator Payout Overview</a> - A short overview on how the
+validator payout mechanism works.</li>
+<li><a href="maintain-guides-how-to-systemd">How to run your validator as a systemd process</a> - Guide on
+running your validator as a <code>systemd</code> process so that it will run in the background and start
+automatically on reboots.</li>
+<li><a href="maintain-guides-how-to-upgrade">How to Upgrade your Validator</a> - Guide for securely upgrading
+your validator when you want to switch to a different machine or begin running the latest version
+of client code.</li>
+<li><a href="maintain-guides-how-to-setup-sentry-node">How to Set up a Sentry Node</a> - Guide for setting up a
+sentry node for your validator.</li>
+<li><a href="maintain-guides-how-to-use-polkadot-secure-validator">How to Use Secure Validator Setup</a> - Guide
+on how to use Polkadot / Kusama secure validator setup.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="other-references"></a><a href="#other-references" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Other References</h2>
+<ul>
+<li><a href="https://medium.com/@acvlls/setting-up-a-maintain-the-easy-way-3a885283091f">How to run a Polkadot node (Docker)</a></li>
+<li><a href="https://medium.com/hackernoon/a-serverless-failover-solution-for-web-3-0-validator-nodes-e26b9d24c71d">A Serverless Failover Solution for Web3.0 Validator Nodes</a> -
+Blog that details how to create a robust failover solution for running validators.</li>
+<li><a href="maintain-guides-how-to-validate-kusama#vps-list">VPS list</a></li>
+<li><a href="https://matrix.to/#/!NZrbtteFeqYKCUGQtr:matrix.parity.io?via=matrix.parity.io&amp;via=matrix.org&amp;via=web3.foundation">Polkadot Validator Lounge</a> -
+A place to chat about being a validator.</li>
+<li><a href="https://wiki.polkadot.network/docs/en/learn-staking#slashing">Slashing Consequences</a> - Learn more
+about slashing consequences for running a validator node.</li>
+<li><a href="https://www.youtube.com/watch?v=0EmP0s6JOW4&amp;list=PLOyWqupZ-WGuAuS00rK-pebTMAOxW41W8&amp;index=2">Why You Should be A Validator on Polkadot and Kusama</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="security--key-management"></a><a href="#security--key-management" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Security / Key Management</h2>
+<ul>
+<li><a href="https://github.com/w3f/validator-security">Validator Security Overview</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="monitoring-tools"></a><a href="#monitoring-tools" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Monitoring Tools</h2>
+<ul>
+<li><a href="https://github.com/SimplyVC/panic_polkadot">PANIC for Polkadot</a> - A monitoring and alerting
+solution for Polkadot / Kusama node</li>
+<li><a href="https://telemetry.polkadot.io/#list/Kusama%20CC3">Polkadot Telemetry Service</a> - Network
+information, including what nodes are running on a given chain, what software versions they are
+running, and sync status.</li>
+<li><a href="https://forum.web3.foundation/t/useful-links-for-validators/20">Other Useful Links</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="validator-stats"></a><a href="#validator-stats" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Validator Stats</h2>
+<ul>
+<li><a href="https://labs.hashquark.io/#/polka/strategy">HashQuark Staking Strategy</a> - The HashQuark staking
+strategy dashboard helps you choose the optimal set-up to maximize rewards.</li>
+<li><a href="https://polkastats.io/">Polkastats</a> - Polkastats is a cleanly designed dashboard for validator
+statistics.</li>
+<li><a href="https://polkanalytics.com/#/dashboard">Polkanalytics</a> - A validator dashboard that displays the
+daily earnings of all nominators.</li>
+<li><a href="https://kusama.subscan.io/validator">Subscan Validators Page</a> - Displays information on the
+current validators - not as tailored for validators as the other sites.</li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/22/2020 by Kirsten Richard</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#guides">Guides</a></li><li><a href="#other-references">Other References</a></li><li><a href="#security--key-management">Security / Key Management</a></li><li><a href="#monitoring-tools">Monitoring Tools</a></li><li><a href="#validator-stats">Validator Stats</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

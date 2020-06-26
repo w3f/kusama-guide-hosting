@@ -1,0 +1,160 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>DOT · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## What are DOTs?"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="DOT · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="## What are DOTs?"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/learn-DOT.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-DOT.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">DOT</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="what-are-dots"></a><a href="#what-are-dots" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What are DOTs?</h2>
+<p>DOT is the native token of the Polkadot network in a similar way that BTC is the native token of
+Bitcoin or ether is the native token of the Ethereum blockchain.</p>
+<p>Kusama tokens (KSM) and DOT tokens both have 12 decimal places, with the smallest unit being the
+Planck (a reference to <a href="https://en.wikipedia.org/wiki/Planck_length">Planck Length</a>, the smallest
+possible distance in the physical Universe). You can compare the Planck to satoshis or wei, while
+the DOT is like a bitcoin or an ether.</p>
+<h3><a class="anchor" aria-hidden="true" id="polkadot"></a><a href="#polkadot" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Polkadot</h3>
+<table>
+<thead>
+<tr><th>Unit</th><th>Decimal Places</th></tr>
+</thead>
+<tbody>
+<tr><td>Planck</td><td>1</td></tr>
+<tr><td>Point</td><td>3</td></tr>
+<tr><td>Microdot (uDOT)</td><td>6</td></tr>
+<tr><td>Millidot (mDOT)</td><td>9</td></tr>
+<tr><td>Dot (DOT)</td><td>12</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="kusama"></a><a href="#kusama" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kusama</h3>
+<table>
+<thead>
+<tr><th>Unit</th><th>Decimal Places</th></tr>
+</thead>
+<tbody>
+<tr><td>Planck</td><td>1</td></tr>
+<tr><td>Point</td><td>3</td></tr>
+<tr><td>MicroKSM (uKSM)</td><td>6</td></tr>
+<tr><td>MilliKSM (mKSM)</td><td>9</td></tr>
+<tr><td>KSM</td><td>12</td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="what-are-the-uses-of-dots"></a><a href="#what-are-the-uses-of-dots" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What are the uses of DOTs?</h2>
+<p>DOTs serve three key functions in Polkadot, (i) to be used for governance of the network, (ii) to be
+staked for operation of the network, and (iii) to be bonded to connect a chain to Polkadot as a
+parachain.</p>
+<p>DOTs can also serve ancillary functions by virtue of being a transferrable token. For example, DOTs
+stored in the Treasury can be sent to teams working on relevant projects for the Polkadot network.</p>
+<blockquote>
+<p>These concepts have been further explained in the
+<a href="https://www.youtube.com/watch?v=POfFgrMfkTo&amp;list=PLOyWqupZ-WGuAuS00rK-pebTMAOxW41W8&amp;index=7">Usage of DOTs and KSM on Polkadot and Kusama</a></p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="dots-for-governance"></a><a href="#dots-for-governance" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DOTs for governance</h3>
+<p>The first function of DOTs is to entitle holders to control of the governance of the platform. Some
+functions that are included under the governance mechanism include determining the fees of the
+network, the addition or removal of parachains, and exceptional events such as upgrades and fixes to
+the Polkadot platform.</p>
+<p>Polkadot will enable any holder of DOTs to participate in governance. For details on how holders can
+participate in governance, as well as their rights and responsibilities, see the
+<a href="learn-governance">governance page</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="dots-for-consensus"></a><a href="#dots-for-consensus" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DOTs for consensus</h3>
+<p>DOTs will be used to facilitate the consensus mechanism that underpins Polkadot. In order for the
+platform to function and allow for valid transactions to be carried out across parachains, Polkadot
+will rely on holders of DOTs to play active roles. Participants will put their DOTs at risk (via
+staking) to perform these functions. The staking of DOTs acts as a disincentive for malicious
+participants whom will be punished by the network by getting their DOTs slashed. The DOTs required
+to participate in the network will vary depending on the activity that is being performed, the
+duration the DOTs will be staked for, and the total number of DOTs staked.</p>
+<h3><a class="anchor" aria-hidden="true" id="dots-for-bonding"></a><a href="#dots-for-bonding" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DOTs for bonding</h3>
+<p>DOTs will have the ability to be bonded for a duration of time in order to add a new parachain to
+the network. The DOTs will be locked during their bonding period and will be released back to the
+account that bonded them after the duration of the bond has elapsed and the parachain is removed.</p>
+<h3><a class="anchor" aria-hidden="true" id="vesting"></a><a href="#vesting" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Vesting</h3>
+<p>DOTs may have a lock placed on them to account for vesting funds. Like other types of locks, these
+funds cannot be transferred but can be used in other parts of the protocol such as voting in
+governance or being staked as a validator or nominator.</p>
+<p>Vesting funds are on a linear release schedule and unlock a constant number of tokens at each block.
+Although the tokens are released in this manner, it does not get reflected on-chain automatically
+due to the fact that locks are <a href="#lazy-vesting">lazy</a> and require an extrinsic to update.</p>
+<p>There are two ways that vesting schedules can be created.</p>
+<ul>
+<li>One way is as part of the genesis configuration of the chain. In the case of Polkadot and Kusama,
+the chain specification genesis script reads the state of the Polkadot Claims contract that exists
+on the Ethereum blockchain and creates vesting schedules in genesis for all the allocations
+registered as being vested.</li>
+<li>A second way is through an extrinsic type available in the Vesting pallet, <code>vested_transfer</code>. The
+vested transfer function allows anyone to create a vesting schedule with a transfer of funds, as
+long as the account for which the vesting schedule will be created does not already have one and
+the transfer moves at least <code>MinVestedTransfer</code> funds, which is specified as a chain constant.</li>
+</ul>
+<p>Vesting schedules have three parameters, <code>locked</code>, <code>per_block</code>, and <code>starting_block</code>. The
+configuration of these three fields dictate the amount of funds that are originally locked, the
+slope of the unlock line, and the block number for when the unlocking begins.</p>
+<h4><a class="anchor" aria-hidden="true" id="lazy-vesting"></a><a href="#lazy-vesting" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Lazy Vesting</h4>
+<p>Like <a href="learn-simple-payouts">simple payouts</a>, vesting is <em>lazy</em>, which means that someone must
+explicitly call an extrinsic to update the lock that is placed on an account.</p>
+<ul>
+<li>The <code>vest</code> extrinsic will update the lock that is placed on the caller.</li>
+<li>The <code>vest_other</code> will update the lock that is placed on another &quot;target&quot; account's funds.</li>
+</ul>
+<p>These extrinsics are exposed from the Vesting pallet.</p>
+<h2><a class="anchor" aria-hidden="true" id="mainnet-dots"></a><a href="#mainnet-dots" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mainnet DOTs</h2>
+<p>Web3 Foundation will distribute up to 20% of mainnet DOTs prior to network launch in early 2020 (see
+the <a href="https://polkadot.network/Polkadot-lightpaper.pdf">Light Paper</a> or the
+<a href="https://polkadot.network/faq/">Polkadot Network FAQ</a>). As Gavin Wood, one of the project's
+founders, said in his year-end recap, there may be a generally available public sale for some
+portion of that amount at some point this year. Subscribe to the Polkadot newsletter on
+<a href="https://polkadot.network/">polkadot.network</a> for further updates.</p>
+<p><em>Warning: Mainnet DOT tokens are not transferrable until mainnet launch, expected in early 2020.
+Therefore any transfers of Mainnet DOTs are illegitimate and unauthorized. DOTs can not be moved
+from a current allocation address. Individuals with an allocation of DOTs who transfer their DOT
+address to someone else can always keep a copy of their private key, therefore there is extreme risk
+for individuals participating in transfers of DOTs before mainnet launch.</em></p>
+<p>Testnet DOTs are freely available now - see below for various ways to obtain them.</p>
+<h2><a class="anchor" aria-hidden="true" id="testnet-dots"></a><a href="#testnet-dots" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Testnet DOTs</h2>
+<p>DOTs are required to make transactions on the Polkadot network. Testnet DOTs do not have any value
+beside allowing you to experiment with the network.</p>
+<h3><a class="anchor" aria-hidden="true" id="getting-westies"></a><a href="#getting-westies" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Getting Westies</h3>
+<p>The current testnet is called <a href="maintain-networks#westend-test-network">Westend</a> and you can obtain
+its native tokens by posting <code>!drip &lt;WESTEND_ADDRESS&gt;</code> in the Riot chatroom
+<a href="https://riot.w3f.tech/#/room/#westend_faucet:matrix.org">#westend_faucet:matrix.org</a>.</p>
+<p>You can also make your own WNDs (testnet DOTs) by <a href="maintain-validator">becoming a validator</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="kusama-tokens"></a><a href="#kusama-tokens" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kusama Tokens</h2>
+<p>Unlike testnet DOTs (WND), Kusama tokens are not freely given away. Kusama tokens are available via
+the <a href="https://claim.kusama.network/">claims process</a> (if you have already purchased DOTs) or through
+the <a href="learn-treasury">Treasury</a>.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/24/2020 by Gavin</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#what-are-dots">What are DOTs?</a><ul class="toc-headings"><li><a href="#polkadot">Polkadot</a></li><li><a href="#kusama">Kusama</a></li></ul></li><li><a href="#what-are-the-uses-of-dots">What are the uses of DOTs?</a><ul class="toc-headings"><li><a href="#dots-for-governance">DOTs for governance</a></li><li><a href="#dots-for-consensus">DOTs for consensus</a></li><li><a href="#dots-for-bonding">DOTs for bonding</a></li><li><a href="#vesting">Vesting</a></li></ul></li><li><a href="#mainnet-dots">Mainnet DOTs</a></li><li><a href="#testnet-dots">Testnet DOTs</a><ul class="toc-headings"><li><a href="#getting-westies">Getting Westies</a></li></ul></li><li><a href="#kusama-tokens">Kusama Tokens</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

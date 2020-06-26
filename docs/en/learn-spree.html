@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>SPREE · Kusama Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Shared Protected Runtime Execution Enclaves (SPREE) sometimes referred to as &quot;trust wormholes,&quot; are"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="SPREE · Kusama Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://w3f.github.io//kusama-guide-hosting/index.html"/><meta property="og:description" content="Shared Protected Runtime Execution Enclaves (SPREE) sometimes referred to as &quot;trust wormholes,&quot; are"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="./css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://wiki.polkadot.network/js/load.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="./js/custom.js"></script><script type="text/javascript" src="./js/klaro-config.js"></script><script type="text/javascript" src="./js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/kusama-guide-hosting/js/scrollSpy.js"></script><link rel="stylesheet" href="/kusama-guide-hosting/css/main.css"/><script src="/kusama-guide-hosting/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/kusama-guide-hosting/en"><img class="logo" src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide"/><h2 class="headerTitleWithLogo">Kusama Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/kusama-guide-hosting/docs/en/kusama-index.html" target="_self">Kusama</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/kusama-guide-hosting/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/kusama-guide-hosting/docs/zh-CN/learn-spree.html">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-spree.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">SPREE</h1></header><article><div><span><p>Shared Protected Runtime Execution Enclaves (SPREE) sometimes referred to as &quot;trust wormholes,&quot; are
+fragments of logic comparable to runtime modules in Substrate, but live on the Polkadot Relaychain
+and may be opted into by parachains.</p>
+<p>SPREE in brief was described with the following properties and functions:</p>
+<ul>
+<li>Parachains can opt-in to special runtime logic fragments (like smart contracts).</li>
+<li>These fragments have their own storage and own <a href="learn-crosschain">XCMP</a> endpoint.</li>
+<li>All instances across parachains have identical logic.</li>
+<li>It executes alongside parachain.</li>
+<li>Protected: storage can not be altered by parachain logic; messages can not be faked from them by
+parachains.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="origin"></a><a href="#origin" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Origin</h2>
+<p>On 28 March, 2019 u/Tawaren, a member of the Polkadot community, made a post on
+<a href="https://www.reddit.com/r/dot/">r/dot</a> called &quot;SmartProtocols Idea&quot; and laid out a proposal for <a href="https://www.reddit.com/r/dot/comments/b6kljn/smartprotocols_idea/">Smart
+Protocols</a>. The core insight of the post was that XCMP had a
+complication in that it was difficult to verify and prove code was executed on a parachain without
+trust. A solution was to install the SmartProtocols in the Relaychain that would be isolated blobs
+of code with their own storage per instance that could only be changed through an interface with
+each parachain. SmartProtocols are the precursor to SPREE.</p>
+<h2><a class="anchor" aria-hidden="true" id="what-is-a-spree-module"></a><a href="#what-is-a-spree-module" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is a SPREE module?</h2>
+<p>SPREE modules are fragments of logic (in concrete terms they are blobs of WebAssembly code) that are
+uploaded onto Polkadot through a governance mechanism or by parachains. Once the blob is uploaded to
+Polkadot, all other parachains can decide to opt-in to the logic. The SPREE module would retain its
+own storage independent of the parachain, but would be able to be called through an interface with
+the parachain. Parachains will send messages to the SPREE module synchronously.</p>
+<p>SPREE modules are important to the overall XCMP architecture because they give guarentee to the code
+that will be executed on destination parachains. While XCMP guarantees the delivery of a message, it
+does not guarantee what code will be executed, i.e. how the receiving parachain will interpret the
+message. While XCMP accomplishes trustless message passing, SPREE is the trustless interpenetration
+of the message and a key part to the usefulness of XCMP.</p>
+<p>SPREE modules are like recipes in cookbooks. For example, if we give an order to a cook to make a
+soufflé, and we’re decently confident in the ability of the cook, we have a vague idea of what will
+be made but no actually surety how it will be made. However, let’s say that a cook has the “Soufflé
+Maker’s Manual” on their bookshelf and has committed themselves to only make souffles from this
+book. Now we can also consult the same book that the cook has, and we have a precise understanding
+of what will happen when we tell the cook to make a soufflé. In this example, “make a soufflé” was
+the message in XCMP and the cookbook was the SPREE module.</p>
+<p>In concrete terms, SPREE modules could be useful for various functionality on Polkadot. One
+suggested use case of SPREE modules is for a trustless decentralized exchange that is offered as
+functionality to any parachain without any extra effort from parachain developers. One can imagine
+this working by having a SPREE module that exposes the interface for the incrementing and
+decrementing of balances of various assets based on a unique identifier.</p>
+<h2><a class="anchor" aria-hidden="true" id="why"></a><a href="#why" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Why?</h2>
+<p>Sending messages across parachains in XCMP only ensures that the message will be delivered but does
+not specify the code that will be executed, or how the message will be interpreted by the receiving
+parachain. There would be ways around this such as requesting a verifiable receipt of the execution
+from the receiving parachain, but in the naked case the other parachain would have to be trusted.
+Having shared code that exists in appendices that the parachain can opt-in to resolves the need for
+trust and makes the execution of the appendices completely trustless.</p>
+<p>SPREE would be helpful to ensure that the same logic is shared between parachains in the SPREE
+modules. An especially relevant use case would revolve around the use of token transfers across
+parachains in which it is important that the sending and receiving parachains agree about how to
+change the total supply of tokens and a basic interface.</p>
+<h2><a class="anchor" aria-hidden="true" id="example"></a><a href="#example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h2>
+<p><img src="/kusama-guide-hosting/docs/assets/SPREE/spree_module.png" alt="spree example"></p>
+<p>The diagram above is a simplification of the Polkadot system.</p>
+<p>In this diagram we see that the Wasm code for SPREE module &quot;X&quot; has been uploaded to the Polkadot
+Relay Chain. The two cylinders &quot;A&quot; and &quot;B&quot; represent two distinct parachains that have both opted-in
+to this SPREE module creating two distinct instances of it with their own XCMP endpoints &quot;A.X&quot; and
+&quot;B.X&quot;.</p>
+<p>In the example we assume that this SPREE module &quot;X&quot; contains the functionality for incrementing of
+decrementing the balance of a particular asset that is unique to this module.</p>
+<p>By initiating a transaction at A.X to decrease a particular balance by 1, a message over XCMP can be
+trustlessly sent to B.X to increase a balance by 1.</p>
+<p>Collators, represented as the green triangle are responsible for relaying this message from
+parachain A to parachain B, as well as mantaining the storage for each particular instance of A.X
+and B.X for their respective parachains. They provide proofs of valid state transitions to the Relay
+Chain validators, represented as blue diamonds.</p>
+<p>Validators can validate the correct state transitions of SPREE modules A.X and B.X by being provided
+with the previous state root of the SPREE module instances, the data of the XCMP message between the
+instances, and the next state root of the instance. They do this validation be checking it against
+the <code>validate</code> function as provided by the SPREE module API. Collators are expected to be able to
+provide this information in order to progress their parachains.</p>
+<h2><a class="anchor" aria-hidden="true" id="metaphor"></a><a href="#metaphor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Metaphor</h2>
+<p>SPREE modules are like recipes in cookbooks. Let’s consider an example for comparison. We are at a
+restaurant and we give an order to a cook to make a soufflé. We're sufficiently confident in the
+cook’s ability and we have a vague idea of what will be made, but no actual surety how it will be
+made. If we want to be sure on the exact execution of the making of the soufflé, then we would need
+to inspect the cook’s kitchen before hand and verify ourselves how the cook makes the soufflé. This
+is comparable to sending XCMP messages without SPREE, as the sending party is responsible for
+verifying themselves the receiving chain’s code.</p>
+<p>However, let's say that a cook has the Soufflé Maker's Manual; on their bookshelf and has committed
+themselves to only making soufflés from this book. One can now examine the book and have a precise
+understanding of what will happen when we tell the cook to make a soufflé. When we place an order to
+make a soufflé as is written on page 10 of the manual, we then know exactly what will be executed in
+the cook’s kitchen and the finished product that will come back to the table. Additionally, any
+kitchen we go to we can ask if the cook owns this book and if so we can order the standard recipe
+and be sure of the execution in the cook’s kitchen. Like the recipe in the cookbook, we only need to
+verify a SPREE module once in order to be sure of its execution across all parachains. If we know a
+parachain uses a specific SPREE module, it’s not necessary to know any other details on how the
+parachain is implemented.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/1/2020 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#origin">Origin</a></li><li><a href="#what-is-a-spree-module">What is a SPREE module?</a></li><li><a href="#why">Why?</a></li><li><a href="#example">Example</a></li><li><a href="#metaphor">Metaphor</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/kusama-guide-hosting/" class="nav-home"><img src="/kusama-guide-hosting/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Kusama Guide" width="66" height="58"/></a><div><a href="https://stackoverflow.com/questions/tagged/polkadot" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://riot.w3f.tech/#/room/#polkadot-watercooler:matrix.org">Polkadot Watercooler (Riot Chat)</a><a href="https://twitter.com/polkadotnetwork" target="_blank" rel="noreferrer noopener">Twitter</a></div><a class="github-button" href="https://github.com/paritytech/polkadot" data-icon="octicon-star" data-count-href="/paritytech/polkadot/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></section><section class="row"><div class="copyright">Copyright © 2020 Web3 Foundation</div><a class="item" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8bfa06b56bb8f33e5698c7f40b00b38f',
+                indexName: 'polkadot',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>
