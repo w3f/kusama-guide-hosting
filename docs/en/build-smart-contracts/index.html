@@ -21,6 +21,12 @@ will support smart contracts. There are already announced projects such as
 <a href="https://edgewa.re">Edgeware</a>, and thanks to the Substrate built-in
 <a href="https://crates.parity.io/pallet_contracts/index.html">contract pallet</a>, it is likely that more
 parachains will support this feature.</p>
+<p>Additionally, there is the EVM pallet which lets a parachain implement the Ethereum Virtual Machine,
+thereby supporting almost direct ports of Ethereum contracts. Some of the projects using this
+approach are <a href="https://moonbeam.network/">Moonbeam</a> and
+<a href="https://github.com/paritytech/frontier">Frontier</a>.</p>
+<p>A video version of the recap of the smart contract situation on Polkadot and Kusama is available
+<a href="https://www.youtube.com/watch?v=fKHkFBXaUxQ">here</a>.</p>
 <h2><a class="anchor" aria-hidden="true" id="resources"></a><a href="#resources" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resources</h2>
 <p>Here is the list of current resources available to developers who want to get started writing smart
 contracts to deploy on parachains based on Substrate.</p>
@@ -28,7 +34,6 @@ contracts to deploy on parachains based on Substrate.</p>
 <li><a href="https://github.com/paritytech/ink">ink!</a> - Parity's ink to write smart contracts.</li>
 <li><a href="https://substrate.dev/substrate-contracts-workshop/#/">Substrate Contracts Workshop</a> - Walks you
 through the basics of writing and deploying an ERC20 token using <code>ink!</code>.</li>
-<li><a href="https://www.youtube.com/watch?v=fKHkFBXaUxQ&amp;list=PLOyWqupZ-WGuAuS00rK-pebTMAOxW41W8&amp;index=6">Using Smart Contracts on Polkadot and Kusama</a></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="examples"></a><a href="#examples" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h2>
 <p>Collected below are some community examples of smart contracts in <code>ink!</code>. Are you working on a smart
@@ -36,6 +41,20 @@ contract example? Ask us to add it to this page!</p>
 <ul>
 <li><a href="https://github.com/JesseAbram/foRust/">Ownable</a> - Port of the OpenZeppelin <code>Ownable</code> contract.</li>
 </ul>
+<h2><a class="anchor" aria-hidden="true" id="storage-rent"></a><a href="#storage-rent" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Storage Rent</h2>
+<p>Storage rent limits the footprint that a contract can have on the blockchain's storage.</p>
+<p>A contract deployed to the chain produces a code hash from which new instances of the chain can be
+created, but there is currently no rent applied to the code hash itself. The rent applies only to
+instances of this contract which have their own <em>contract accounts</em>. Deploying a code hash currently
+has a one-time byte-fee applied to the transaction, but no recurring cost.</p>
+<p>An account of a contract instance is charged proportionally to the amount of storage its account
+uses. When a contract's balance goes below a defined limit, the contract's account is turned into a
+&quot;tombstone&quot; (a hash of the contract's current state) and its storage is cleaned up. A tombstone
+contract can be restored by providing the data that was cleaned up when it became a tombstone as
+well as any additional funds needed to keep the contract alive. This fee will retroactively apply to
+missed rent periods.</p>
+<p>Block producers or regular users of the chain can &quot;poke&quot; a smart contract if they think it ran out
+of funds for rent. This will initiate the cleanup process and the <em>poker</em> will get a finder's fee.</p>
 <h2><a class="anchor" aria-hidden="true" id="what-is-the-difference-between-developing-a-smart-contract-versus-a-parachain"></a><a href="#what-is-the-difference-between-developing-a-smart-contract-versus-a-parachain" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is the difference between developing a smart contract versus a parachain?</h2>
 <h3><a class="anchor" aria-hidden="true" id="layer-of-abstraction"></a><a href="#layer-of-abstraction" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Layer of Abstraction</h3>
 <p>When you write a smart contract you are creating the instructions that will be deployed and
@@ -70,7 +89,7 @@ entirely, will often be a wiser choice.</p>
 From a technical standpoint answers the question of when a developer might choose to develop a
 runtime versus a smart contract.</li>
 </ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/22/2020 by Kirsten Richard</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#resources">Resources</a></li><li><a href="#examples">Examples</a></li><li><a href="#what-is-the-difference-between-developing-a-smart-contract-versus-a-parachain">What is the difference between developing a smart contract versus a parachain?</a><ul class="toc-headings"><li><a href="#layer-of-abstraction">Layer of Abstraction</a></li><li><a href="#gas-fees">Gas Fees</a></li></ul></li><li><a href="#resources-1">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 7/7/2020 by Bruno Škvorc</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#resources">Resources</a></li><li><a href="#examples">Examples</a></li><li><a href="#storage-rent">Storage Rent</a></li><li><a href="#what-is-the-difference-between-developing-a-smart-contract-versus-a-parachain">What is the difference between developing a smart contract versus a parachain?</a><ul class="toc-headings"><li><a href="#layer-of-abstraction">Layer of Abstraction</a></li><li><a href="#gas-fees">Gas Fees</a></li></ul></li><li><a href="#resources-1">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
