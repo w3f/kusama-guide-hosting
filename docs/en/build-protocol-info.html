@@ -117,6 +117,39 @@ against, i.e. the minimum value of validity period and block hash count.</p>
 make the transaction &quot;immortal&quot;.</p>
 <p><strong>NOTE:</strong> If an account is reaped and a user re-funds the account, then they could replay an
 immortal transaction. Always default to using a mortal extrinsic.</p>
+<h3><a class="anchor" aria-hidden="true" id="unique-identifiers-for-extrinsics"></a><a href="#unique-identifiers-for-extrinsics" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Unique Identifiers for Extrinsics</h3>
+<p>Many infrastructure providers on existing blockchains, e.g. Ethereum, consider a transaction's hash
+as a unique identifier. In Substrate-based chains like Polkadot, a transaction's hash only serves as
+a fingerprint of the information within a transaction, and there are times when two transactions
+with the same hash are both valid. In the case that one is invalid, the network properly handles the
+transaction and does not charge a transaction fee to the sender nor consider the transaction in the
+block's fullness.</p>
+<p>Imagine this contrived example with a <a href="#existential-deposit">reaped account</a>. The first and last
+transactions are identical, and both valid.</p>
+<table>
+<thead>
+<tr><th style="text-align:center">Index</th><th style="text-align:center">Hash</th><th style="text-align:left">Origin</th><th style="text-align:center">Nonce</th><th style="text-align:left">Call</th><th style="text-align:left">Results</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center">0</td><td style="text-align:center">0x01</td><td style="text-align:left">Account A</td><td style="text-align:center">0</td><td style="text-align:left">Transfer 5 DOT to B</td><td style="text-align:left">Account A reaped</td></tr>
+<tr><td style="text-align:center">1</td><td style="text-align:center">0x02</td><td style="text-align:left">Account B</td><td style="text-align:center">4</td><td style="text-align:left">Transfer 7 DOT to A</td><td style="text-align:left">Account A created (nonce = 0)</td></tr>
+<tr><td style="text-align:center">2</td><td style="text-align:center">0x01</td><td style="text-align:left">Account A</td><td style="text-align:center">0</td><td style="text-align:left">Transfer 5 DOT to B</td><td style="text-align:left">Successful transaction</td></tr>
+</tbody>
+</table>
+<p>In addition, not every extrinsic in a Substrate-based chain comes from an account as a
+public/private key pair; Substrate, rather, has the concept of dispatch “origin”, which could be
+created from a public key account, but could also form from other means such as governance. These
+origins do not have a nonce associated with them the way that an account does. For example,
+governance might dispatch the same call with the same arguments multiple times, like “increase the
+validator set by 10%.” This dispatch information (and therefore its hash) would be the same, and the
+hash would be a reliable representative of the call, but its execution would have different effects
+depending on the chain’s state at the time of dispatch.</p>
+<p>The correct way to uniquely identify an extrinsic on a Substrate-based chain is to use the block ID
+(height or hash) and the extrinsic's index. Substrate defines a block as a header and an array of
+extrinsics; therefore, an index in the array at a canonical height will always uniquely identify a
+transaction. This methodology is reflected in the Substrate codebase itself, for example to
+<a href="https://substrate.dev/rustdocs/v2.0.0-rc4/pallet_multisig/struct.Timepoint.html">reference a previous transaction</a>
+from the Multisig pallet.</p>
 <h3><a class="anchor" aria-hidden="true" id="events"></a><a href="#events" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Events</h3>
 <p>While extrinsics represent information from the outside world, events represent information from the
 chain. Extrinsics can trigger events. For example, the Staking pallet emits a <code>Reward</code> event when
@@ -160,7 +193,7 @@ like locking or reserving tokens for operations that utilize state.</p>
 <li><a href="https://polkadot.js.org/apps/#/explorer">Polkadot JS explorer</a></li>
 <li><a href="https://polkascan.io/">Polkascan block explorer</a></li>
 </ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 7/6/2020 by Kirsten Richard</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#dot-tokens">DOT Tokens</a></li><li><a href="#addresses">Addresses</a><ul class="toc-headings"><li><a href="#cryptography">Cryptography</a></li></ul></li><li><a href="#existential-deposit">Existential Deposit</a></li><li><a href="#free-vs-reserved-vs-locked-vs-vesting-balance">Free vs. Reserved vs. Locked vs. Vesting Balance</a></li><li><a href="#extrinsics-and-events">Extrinsics and Events</a><ul class="toc-headings"><li><a href="#extrinsics">Extrinsics</a></li><li><a href="#transaction-mortality">Transaction Mortality</a></li><li><a href="#events">Events</a></li><li><a href="#fees">Fees</a></li><li><a href="#encoding">Encoding</a></li></ul></li><li><a href="#smart-contracts">Smart Contracts</a></li><li><a href="#other-networks">Other Networks</a></li><li><a href="#other-faq">Other F.A.Q.</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 7/10/2020 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#dot-tokens">DOT Tokens</a></li><li><a href="#addresses">Addresses</a><ul class="toc-headings"><li><a href="#cryptography">Cryptography</a></li></ul></li><li><a href="#existential-deposit">Existential Deposit</a></li><li><a href="#free-vs-reserved-vs-locked-vs-vesting-balance">Free vs. Reserved vs. Locked vs. Vesting Balance</a></li><li><a href="#extrinsics-and-events">Extrinsics and Events</a><ul class="toc-headings"><li><a href="#extrinsics">Extrinsics</a></li><li><a href="#transaction-mortality">Transaction Mortality</a></li><li><a href="#unique-identifiers-for-extrinsics">Unique Identifiers for Extrinsics</a></li><li><a href="#events">Events</a></li><li><a href="#fees">Fees</a></li><li><a href="#encoding">Encoding</a></li></ul></li><li><a href="#smart-contracts">Smart Contracts</a></li><li><a href="#other-networks">Other Networks</a></li><li><a href="#other-faq">Other F.A.Q.</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
