@@ -158,34 +158,85 @@ and creation of a new one. As such, multi-sig account addresses are <strong>dete
 always calculate the address of a multi-sig just by knowing the members and the threshold, without
 the account existing yet. This means one can send tokens to an address that does not exist yet, and
 if the entities designated as the recipients come together in a new multi-sig under a matching
-threshold, they will immediately have access to these tokens. Calculating the address of a multi-sig
-deterministically can be done in TypeScript like so:</p>
-<pre><code class="hljs css language-js">rawAddress(addresses: string[], <span class="hljs-attr">threshold</span>: number) {
-    <span class="hljs-keyword">const</span> addr = [...addresses]
-    addr.sort()
-    <span class="hljs-keyword">const</span> prefix = <span class="hljs-string">'modlpy/utilisuba'</span>
-    <span class="hljs-keyword">const</span> payload = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint8Array</span>(prefix.length + <span class="hljs-number">1</span> + <span class="hljs-number">32</span> * addresses.length + <span class="hljs-number">2</span>)
-    payload.set(<span class="hljs-built_in">Array</span>.from(prefix).map(<span class="hljs-function"><span class="hljs-params">c</span> =&gt;</span> c.charCodeAt(<span class="hljs-number">0</span>)), <span class="hljs-number">0</span>)
-    payload[prefix.length] = addresses.length &lt;&lt; <span class="hljs-number">2</span>;
-    addr.forEach(<span class="hljs-function">(<span class="hljs-params">addr, idx</span>) =&gt;</span> {
-        <span class="hljs-keyword">const</span> decoded = decodeAddress(addr);
-        payload.set(decoded, prefix.length + <span class="hljs-number">1</span> + idx * <span class="hljs-number">32</span>)
-    })
-    payload[prefix.length + <span class="hljs-number">1</span> + <span class="hljs-number">32</span> * addresses.length] = threshold
-
-    <span class="hljs-keyword">return</span> blake2AsU8a(payload)
-},
-address(addresses: string[], <span class="hljs-attr">threshold</span>: number, ss58prefix?: number) {
-    <span class="hljs-keyword">const</span> hashed = <span class="hljs-keyword">this</span>.rawAddress(addresses, threshold)
-    <span class="hljs-keyword">return</span> encodeAddress(hashed, ss58prefix)
-}
-
-<span class="hljs-keyword">const</span> multiSigAddress = address(addresses, <span class="hljs-number">2</span>);
+threshold, they will immediately have access to these tokens.</p>
+<h3><a class="anchor" aria-hidden="true" id="generating-addresses-of-multi-signature-accounts"></a><a href="#generating-addresses-of-multi-signature-accounts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Generating Addresses of Multi-signature Accounts</h3>
+<blockquote>
+<p>NOTE: Addresses that are provided to the multi-sig wallets must be sorted. The below methods for
+generating sort the accounts for you, but if you are implementing your own sorting then be aware
+that the public keys are compared byte-for-byte and sorted ascending before being inserted in the
+payload that is hashed.</p>
+</blockquote>
+<p>Addresses are deterministically generated from the signers and threshold of the multisig wallet. For
+a code example (in TypeScript) of generating you can view the internals of <code>@w3f/msig-util</code>
+<a href="https://github.com/lsaether/msig-util/blob/master/src/actions/deriveAddress.ts">here</a>.</p>
+<p>The <code>@w3f/msig-util</code> is a small CLI tool that can determine the multisignature address based on your
+inputs.</p>
+<pre><code class="hljs css language-zsh">$ npx @w3f/msig-util@1.0.7 derive --addresses 15o5762QE4UPrUaYcM83HERK7Wzbmgcsxa93NJjkHGH1unvr,1TMxLj56NtRg3scE7rRo8H9GZJMFXdsJk1GyxCuTRAxTTzU --threshold 1
+npx: installed 79 <span class="hljs-keyword">in</span> 7.764s
+--------------------------------
+Addresses: 15o5762QE4UPrUaYcM83HERK7Wzbmgcsxa93NJjkHGH1unvr 1TMxLj56NtRg3scE7rRo8H9GZJMFXdsJk1GyxCuTRAxTTzU
+Threshold: 1
+Multisig Address (SS58: 0): 15FKUKXC6kwaXxJ1tXNywmFy4ZY6FoDFCnU3fMbibFdeqwGw
+--------------------------------
 </code></pre>
 <p>The Polkadot JS Apps UI also supports multi-sig accounts, as documented in the
 <a href="learn-account-generation#multi-signature-accounts">Account Generation page</a>. This is easier than
 generating them manually.</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/10/2020 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#address-format">Address Format</a><ul class="toc-headings"><li><a href="#for-the-curious-how-prefixes-work">For the Curious: How Prefixes Work</a></li></ul></li><li><a href="#obtaining-and-managing-an-address">Obtaining and Managing an Address</a></li><li><a href="#existential-deposit-and-reaping">Existential Deposit and Reaping</a></li><li><a href="#indices">Indices</a></li><li><a href="#identities">Identities</a></li><li><a href="#proxy-accounts">Proxy Accounts</a></li><li><a href="#multi-signature-accounts">Multi-signature Accounts</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+<h3><a class="anchor" aria-hidden="true" id="making-transactions-with-a-multi-signature-account"></a><a href="#making-transactions-with-a-multi-signature-account" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Making Transactions with a Multi-signature Account</h3>
+<p>There are three types of actions you can take with a multi-sig account:</p>
+<ul>
+<li>Executing a call.</li>
+<li>Approving a call.</li>
+<li>Cancelling a call.</li>
+</ul>
+<p>In scenarios where only a single approval is needed, a convenience method <code>as_multi_threshold_1</code>
+should be used. This function takes only the other signatories and the raw call as its arguments.</p>
+<p>However, in anything but the simple one approval case, you will likely need more than one of the
+signatories to approve the call before finally executing it. When you create a new call or approve a
+call as a multi-sig, you will need to place a small deposit. The deposit stays locked in the pallet
+until the call is executed. The reason for the deposit is to place an economic cost on the storage
+space that the multi-sig call takes up on the chain and discourage users from creating dangling
+multi-sig operations that never get executed. The deposit will be reserved in the caller's accounts
+so participants in multi-signature wallets should have spare funds available.</p>
+<p>The deposit is dependent on the <code>threshold</code> parameter and is calculated as follows:</p>
+<pre><code class="hljs"><span class="hljs-attr">Deposit</span> = DepositBase + threshold * DepositFactor
+</code></pre>
+<p>Where <code>DepositBase</code> and <code>DepositFactor</code> are chain constants set in the runtime code.</p>
+<p>Currently, the DepositBase is equal to <code>deposit(1, 88)</code> and the DepositFactor is equal to
+<code>deposit(0,32)</code>.</p>
+<p>The deposit function in JavaScript is defined below, cribbed from the
+<a href="https://github.com/paritytech/polkadot/blob/master/runtime/kusama/src/constants.rs#L26">Rust source</a>.</p>
+<pre><code class="hljs css language-js"><span class="hljs-comment">// Polkadot</span>
+<span class="hljs-keyword">const</span> DOLLARS = <span class="hljs-number">10000000000</span>; <span class="hljs-comment">// planck</span>
+<span class="hljs-keyword">const</span> MILLICENTS = <span class="hljs-number">100000</span>; <span class="hljs-comment">// planck</span>
+
+<span class="hljs-comment">// Kusama</span>
+<span class="hljs-comment">// const DOLLARS = 166666666666.67;</span>
+<span class="hljs-comment">// const MILLICENTS = 1666666.66;</span>
+
+<span class="hljs-keyword">const</span> deposit = <span class="hljs-function">(<span class="hljs-params">items, bytes</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> items * <span class="hljs-number">20</span> * DOLLARS + bytes * <span class="hljs-number">100</span> * MILLICENTS;
+};
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"DepositBase"</span>, deposit(<span class="hljs-number">1</span>, <span class="hljs-number">88</span>));
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"DepositFactor"</span>, deposit(<span class="hljs-number">0</span>, <span class="hljs-number">32</span>));
+</code></pre>
+<p>Thus the deposit values can be calculated as shown in the table below.</p>
+<table>
+<thead>
+<tr><th></th><th>Polkadot</th><th>Kusama</th></tr>
+</thead>
+<tbody>
+<tr><td>DepositBase</td><td>200880000000</td><td>3347999999941.4</td></tr>
+<tr><td>DepositFactor</td><td>320000000</td><td>5333333312</td></tr>
+</tbody>
+</table>
+<p>Let's consider an example of a multi-sig on Polkadot with a threshold of 2 and 3 signers: Alice,
+Bob, and Charlie. First Alice will create the call on chain by calling <code>as_multi</code> with the raw call.
+When doing this Alice will have to deposit 0.20152 DOTs while she waits for either Bob or Charlie to
+also approve the call. When Bob comes to approve the call and execute the transaction, he will not
+need to place the deposit and Alice will receive her deposit back.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 7/11/2020 by Logan Saether</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#address-format">Address Format</a><ul class="toc-headings"><li><a href="#for-the-curious-how-prefixes-work">For the Curious: How Prefixes Work</a></li></ul></li><li><a href="#obtaining-and-managing-an-address">Obtaining and Managing an Address</a></li><li><a href="#existential-deposit-and-reaping">Existential Deposit and Reaping</a></li><li><a href="#indices">Indices</a></li><li><a href="#identities">Identities</a></li><li><a href="#proxy-accounts">Proxy Accounts</a></li><li><a href="#multi-signature-accounts">Multi-signature Accounts</a><ul class="toc-headings"><li><a href="#generating-addresses-of-multi-signature-accounts">Generating Addresses of Multi-signature Accounts</a></li><li><a href="#making-transactions-with-a-multi-signature-account">Making Transactions with a Multi-signature Account</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
