@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Getting Started · Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="It&#x27;s time to get started on the Kusama network! Please check out our recommended list for getting"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Getting Started · Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://guide.kusama.network/"/><meta property="og:description" content="It&#x27;s time to get started on the Kusama network! Please check out our recommended list for getting"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="/css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="/js/custom.js"></script><script type="text/javascript" src="/js/klaro-config.js"></script><script type="text/javascript" src="/js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/./img/Kusama_logotype_white_large.png" alt="Guide"/><h2 class="headerTitleWithLogo">Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive siteNavItemActive"><a href="/docs/en/kusama-getting-started" target="_self">Get Started</a></li><li class="siteNavGroupActive"><a href="/docs/en/kusama-index" target="_self">Docs</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/zh-CN/kusama-getting-started">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Get Started</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Kusama<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/kusama-index">Home</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Get Started</h4><ul><li class="navListItem navListItemActive"><a class="navItem" href="/docs/en/kusama-getting-started">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-faucet">Faucet</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-claims">Claims</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-endpoints">Kusama Endpoints</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Try</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/mirror-maintain-guides-how-to-validate-kusama">Validator Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-maintain-guides-how-to-nominate-kusama">Nominator Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-governance">Governance</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-identity">Identity</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-treasury">Treasury</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-build-build-with-polkadot">Polkadot Builders Starter&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/maintain-guides-society-kusama">Join Kappa Sigma Mu</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Break</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/mirror-maintain-errors">Resolving Errors</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-bug-bounty">Bug Bounty</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-adverserial-cheatsheet">Adverserial Cheatsheet</a></li></ul></div><li class="navListItem"><a class="navItem" href="/docs/en/kusama-timeline">Timeline</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-community">Community</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-time-periods">Parameters</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-coc">Code of Conduct</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/kusama-getting-started.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Getting Started</h1></header><article><div><span><p>It's time to get started on the Kusama network! Please check out our recommended list for getting
+started.</p>
+<p>For brand-new learners of Blockchain technology:</p>
+<ul>
+<li>The <a href="https://mooc.web3.foundation/course/blockchain-fundamentals/">Blockchain Fundamentals MOOC course</a> is a great introduction to familiarizing yourself
+with crytography, blockchain concepts, decentralization, networks, crytocurrency, and so much
+more. This is recommended for users with backgrounds of all levels, and is also a free course.</li>
+</ul>
+<p>For brand-new learners of Kusama:</p>
+<ul>
+<li><a href="kusama-index">Reading the Kusama Overview page</a></li>
+<li><a href="https://medium.com/polkadot-network/kusama-network-7446706b8f4c">Reading the &quot;What is Kusama&quot;</a> article on Medium.</li>
+<li><a href="kusama-claims">Creating a Kusama Account</a></li>
+<li><a href="kusama-endpoints">Using Kusama endpoints</a></li>
+<li><a href="https://claim.kusama.network/">Claiming Kusama KSM tokens</a></li>
+<li><a href="mirror-maintain-guides-how-to-validate-kusama">Running a Validator on Kusama</a></li>
+<li><a href="mirror-maintain-guides-how-to-nominate-kusama">Staking as a Nominator on Kusama</a></li>
+</ul>
+<p>For brand-new learners of Kusama's cousin network, Polkadot, please head over to our <a href="https://wiki.polkadot.network/">Polkadot
+Wiki</a>.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 7/15/2020 by Kirsten Richard</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/kusama-index"><span class="arrow-prev">← </span><span>Home</span></a><a class="docs-next button" href="/docs/en/kusama-faucet"><span>Faucet</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '53c6a4ab0d77c0755375a971c9b7cc3d',
+                indexName: 'kusama_guide',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>
