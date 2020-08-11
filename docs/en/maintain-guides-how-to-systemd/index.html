@@ -30,10 +30,19 @@ will automatically restart on server reboots or crashes (and helps to avoid gett
 <span class="hljs-section">[Service]</span>
 <span class="hljs-attr">ExecStart</span>=PATH_TO_POLKADOT_BIN --validator --name SHOW_ON_TELEMETRY
 <span class="hljs-attr">Restart</span>=always
+<span class="hljs-attr">RestartSec</span>=<span class="hljs-number">120</span>
 
 <span class="hljs-section">[Install]</span>
 <span class="hljs-attr">WantedBy</span>=multi-user.target
 </code></pre>
+<blockquote>
+<p><strong>WARNING:</strong> It's recommended to delay the restart of a node with <code>RestartSec</code> in the case of node
+crashes. It's possible that when a node crashes, consensus votes in GRANDPA aren't persisted to
+disk. In this case, there is potential to equivocate when immediately restarting. What can happen
+is the node will not recognize votes that didn't make it to disk, and will then cast conflicting
+votes. Delaying the restart will allow the network to progress past potentially conflicting votes,
+at which point other nodes will not accept them.</p>
+</blockquote>
 <p>To enable this to autostart on bootup run:</p>
 <pre><code class="hljs css language-bash">systemctl <span class="hljs-built_in">enable</span> polkadot-validator.service
 </code></pre>
@@ -80,7 +89,7 @@ doubt, run <code>whereis wg-quick</code>. To enable this to autostart on boot:</
 <p>You can tail the logs with journalctl like so:</p>
 <pre><code class="hljs css language-bash">journalctl -f -u wireguard
 </code></pre>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/3/2020 by m-saxemberg</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#wireguard-systemd-configuration">Wireguard systemd configuration</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 8/11/2020 by Will Pankiewicz</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#wireguard-systemd-configuration">Wireguard systemd configuration</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
