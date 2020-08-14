@@ -219,18 +219,20 @@ becomes a simple-majority.</p>
 <p>All three tallying mechanisms - majority carries, super-majority approve, and super-majority
 against - equate to a simple majority-carries system at 100% turnout.</p>
 <h2><a class="anchor" aria-hidden="true" id="council"></a><a href="#council" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Council</h2>
-<p>To represent passive stakeholders, we introduce the idea of a &quot;council&quot;. The council is an on-chain
-entity comprising a number of actors, each represented as an on-chain account. For Polkadot this
-number is likely to begin at around six people, and increase over the course of 9 months to 24
-people (roughly one extra individual coming on every two weeks). In general, it has a fixed number
-of seats (24 on Polkadot and 17 on Kusama).</p>
-<p>The council is called upon primarily for two tasks of governance: proposing sensible referenda, and
-cancelling uncontroversially dangerous or malicious referenda.</p>
+<p>To represent passive stakeholders, Polkadot introduces the idea of a &quot;council&quot;. The council is an
+on-chain entity comprising a number of actors, each represented as an on-chain account. On Polkadot,
+the council currently consists of 13 members. This is expected to increase over the next few months
+to 24 seats. In general, the council will end up having a fixed number of seats. On Polkadot, this
+will be 24 seats while on Kusama it is 17 seats.</p>
+<p>The council is called upon primarily for three tasks of governance: proposing sensible referenda,
+cancelling uncontroversially dangerous or malicious referenda, and electing the technical committee.</p>
 <p>For a referendum to be proposed by the council, a strict majority of members must be in favor, with
 no member exercising a veto. Vetoes may be exercised only once by a member for any single proposal;
-if, after a cool-down period, the proposal is resubmitted, they may not veto it a second time. In
-the case that all members vote in favor, the vote is considered unanimous and is treated as
-uncontroversial.</p>
+if, after a cool-down period, the proposal is resubmitted, they may not veto it a second time.
+Council motions which pass with a strict majority - but without reaching unanimous support - will
+move to public referendum under a neutral, majority-carries voting scheme. In the case that all
+members of the council vote in favor of a motion, the vote is considered unanimous and becomes a
+referundum with negative adaptive quorum biasing.</p>
 <p>A two-thirds majority of the council can cancel a referendum. This may function as a last-resort if
 there is an issue found late in a referendum's proposal such as a bug in the code of the runtime
 that the proposal would institute.</p>
@@ -238,18 +240,18 @@ that the proposal would institute.</p>
 it will be left to the stakeholders <em>en masse</em> to determine the fate of the proposal.</p>
 <h3><a class="anchor" aria-hidden="true" id="how-to-be-a-council-member"></a><a href="#how-to-be-a-council-member" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to be a council member?</h3>
 <p><img src="/docs/assets/governance/approval-vote.png" alt=""></p>
-<p>At genesis, there will be 6 to 12 seats in the Council. All stakeholders are free to signal their
-approval of any of the registered candidates. For every two weeks, one of those seats is up for
-election and increase over the course of 9 months to 24 people (roughly one extra individual coming
-on every two weeks). All members have a fixed term (1 year). Council members can be removed early
-only by a referendum.</p>
-<p>To elect a new council member, Polkadot employs the same election scheme as used for choosing the
-active set of validators, a <a href="learn-phragmen">Phragmén election</a>. The election also chooses a set
-number of runners up (currently seven in Kusama) that will remain in the queue with their votes
-intact.</p>
+<p>Currently there are 13 seats on the council. All stakeholders are free to signal their approval of
+any of the registered candidates.</p>
+<p>Council elections are handled by the same <a href="learn-phragmen">Phragmén election</a> process that selects
+validators from the available pool based on nominations. However, token holders' votes for
+councillors are isolated from any of the nominations they may have on validators. Council terms last
+for one day. At the end of each term, Phragmen election algorithm runs and the result will choose
+the new councillors based on the vote configurations of all voters. The election also chooses a set
+number of runners up (currently seven on Kusama and fifteen on Polkadot) that will remain in the
+queue with their votes intact.</p>
 <p>As opposed to a &quot;first past the post&quot;, where voters must decide only on a single candidate chosen
 from a list, a Phragmén election is a more expressive way to indicate voters' views. Token holders
-can treat it as Boolean voting to support as many candidates as they want. The election algorithm
+can treat it as Yes or No voting to support as many candidates as they want. The election algorithm
 will find a fair subset of the candidates that closely matches the expressed indications of the
 electorate as a whole.</p>
 <p>Let's take a look at the example below.</p>
@@ -319,7 +321,7 @@ same time. Voting on one does not prevent a user from voting on the other.</p>
 <li><a href="https://github.com/paritytech/polkadot/wiki/Governance">Initial Governance Description</a></li>
 <li><a href="https://github.com/paritytech/substrate/tree/master/frame/democracy/src">Democracy Pallet</a></li>
 </ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 7/31/2020 by RRTTI</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#mechanism">Mechanism</a></li><li><a href="#referenda">Referenda</a><ul class="toc-headings"><li><a href="#proposing-a-referendum">Proposing a Referendum</a></li></ul></li><li><a href="#council">Council</a><ul class="toc-headings"><li><a href="#how-to-be-a-council-member">How to be a council member?</a></li><li><a href="#prime-members">Prime Members</a></li></ul></li><li><a href="#technical-committee">Technical Committee</a></li><li><a href="#usage-of-dotlearn-dotdots-for-governance"><a href="learn-DOT#dots-for-governance">Usage of DOT</a></a></li><li><a href="#resources">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 8/14/2020 by Logan Saether</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#mechanism">Mechanism</a></li><li><a href="#referenda">Referenda</a><ul class="toc-headings"><li><a href="#proposing-a-referendum">Proposing a Referendum</a></li></ul></li><li><a href="#council">Council</a><ul class="toc-headings"><li><a href="#how-to-be-a-council-member">How to be a council member?</a></li><li><a href="#prime-members">Prime Members</a></li></ul></li><li><a href="#technical-committee">Technical Committee</a></li><li><a href="#usage-of-dotlearn-dotdots-for-governance"><a href="learn-DOT#dots-for-governance">Usage of DOT</a></a></li><li><a href="#resources">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
