@@ -37,7 +37,7 @@ validator set.</p>
 <h3><a class="anchor" aria-hidden="true" id="1-identifying-which-role-you-are"></a><a href="#1-identifying-which-role-you-are" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Identifying which role you are</h3>
 <p>In staking, you can be either a <a href="#validators-and-nominators">nominator or a validator</a>.</p>
 <p>As a nominator, you can nominate one or more (up to 16) validator candidates that you trust to help
-you earn rewards in DOTs. You can take a look at the <a href="maintain-nominator">nominator guide</a> to
+you earn rewards in DOT. You can take a look at the <a href="maintain-nominator">nominator guide</a> to
 understand what you are required to do when the mainnet launches.</p>
 <p>A validator node is required to be responsive 24/7, perform its expected duties in a timely manner,
 and avoid any slashable behavior. You can follow our
@@ -66,15 +66,15 @@ validator <code>i</code> with stake <code>s_i</code>. In that case, nominator <c
 were <code>k</code> nominators in different pools, each backing a single validator <code>i</code> with stake <code>s_i</code>). For
 each validator pool, we keep a list of nominators with the associated stakes.</p>
 <p>The general rule for rewards across validator pools is that two validator pools get paid the <strong>same
-amount of DOTs</strong> for equal work, i.e. they are NOT paid proportional to the stakes in each pool.
+amount of DOT</strong> for equal work, i.e. they are NOT paid proportional to the stakes in each pool.
 Within a validator pool, a (configurable) part of the reward goes to pay the validator's commission
 fees and the remainder is paid <strong>pro-rata</strong> (i.e. proportional to stake) to the nominators and
 validator. Notice in particular that the validator is rewarded twice: once as commission fees for
 validating, and once for nominating itself with stake.</p>
-<p>To estimate the inflation rate and how many DOTs you can get each month as a nominator or validator,
+<p>To estimate the inflation rate and how many DOT you can get each month as a nominator or validator,
 you can use this <a href="https://www.stakingrewards.com/earn/polkadot/calculate">tool</a> as a reference and
 play around with it by changing some parameters (e.g. how many days you would like to stake with
-your DOTs, provider fees, compound rewards, etc.) to have a better estimate. Even though it may not
+your DOT, provider fees, compound rewards, etc.) to have a better estimate. Even though it may not
 be entirely accurate since staking participation is changing dynamically, it works well as an
 indicator.</p>
 <h3><a class="anchor" aria-hidden="true" id="4-rewards-mechanism"></a><a href="#4-rewards-mechanism" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. Rewards Mechanism</h3>
@@ -92,7 +92,7 @@ will get paid more).</p>
 <li>These validators do not have a stake of their own.</li>
 <li>They do NOT charge any commission fees</li>
 <li>Reward amount is 100 DOT tokens</li>
-<li>The least amount of DOTs to be a validator is 350</li>
+<li>The least amount of DOT to be a validator is 350</li>
 </ul>
 <table>
 <thead>
@@ -120,17 +120,17 @@ will get paid more).</p>
 </table>
 <p><em>Both validator pools A &amp; B have 4 nominators with the total stake 600 and 400 respectively.</em></p>
 <p>Based on the above rewards distribution, nominators in validator pool B get more rewards per DOT
-than those in pool A because pool A has more overall stake. Sam has staked 50 DOTs in pool A, but he
+than those in pool A because pool A has more overall stake. Sam has staked 50 DOT in pool A, but he
 only gets 8.3 in return, whereas Kitty gets 12.5 with the same amount of stake.</p>
 <p>We also remark that when the network slashes a validator slot for a misbehavior (e.g. validator
 offline, equivocation, etc.) the slashed amount is a fixed percentage (and NOT a fixed amount of
-DOTs), which means that validator pools with more stake get slashed more DOTs. Again, this is done
-to provide nominators with an economic incentive to shift their preferences and back less popular
+DOT), which means that validator pools with more stake get slashed more DOT. Again, this is done to
+provide nominators with an economic incentive to shift their preferences and back less popular
 validators whom they consider to be trustworthy.</p>
 <p>The second point to note is that each validator candidate is free to name their desired commission
 fee (as a percentage of rewards) to cover operational costs. Since validator pools are paid the
 same, pools with lower commission fees pay more to nominators than pools with higher fees. Thus,
-each validator can choose between increasing their fees to earn more DOTs, or decreasing their fees
+each validator can choose between increasing their fees to earn more DOT, or decreasing their fees
 to attract more nominators and increase their chances of being elected. We will let the market
 regulate itself in this regard. In the long term, we expect that all validators will need to be cost
 efficient to remain competitive, and that validators with higher reputation will be able to charge
@@ -155,18 +155,18 @@ should never use any account key for a &quot;hot&quot; session key in particular
 <p>Controller and Stash account keys can be either sr25519 or ed25519. For more on how keys are used in
 Polkadot and the cryptography behind it <a href="learn-keys">see here</a>.</p>
 <h2><a class="anchor" aria-hidden="true" id="validators-and-nominators"></a><a href="#validators-and-nominators" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Validators and nominators</h2>
-<p>Since validator slots will be limited, most of those who wish to stake their DOTs and contribute
+<p>Since validator slots will be limited, most of those who wish to stake their DOT and contribute
 economic security to the network will be nominators. Validators do most of the heavy lifting: they
 produce new block candidates in BABE, vote and come to consensus in GRANDPA, validate the state
 transition function of parachains, and possibly some other responsibilities regarding data
 availability and <a href="learn-crosschain">XCMP</a>. Nominators, on the other hand, do not need to do anything
-once they have bonded their DOTs. The experience of the nominator is similar to &quot;set it and forget
+once they have bonded their DOT. The experience of the nominator is similar to &quot;set it and forget
 it,&quot; while the validator will be doing active service for the network by performing the critical
 operations. For this reason, the validator has certain privileges regarding the payout of the
 staking mechanism and will be able to declare its own allocation before the share is divided to
 nominators.</p>
 <p><img src="/docs/assets/NPoS/article-2.png" alt="staking"></p>
-<h3><a class="anchor" aria-hidden="true" id="want-to-stake-dots"></a><a href="#want-to-stake-dots" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Want to stake DOTs?</h3>
+<h3><a class="anchor" aria-hidden="true" id="want-to-stake-dot"></a><a href="#want-to-stake-dot" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Want to stake DOT?</h3>
 <ul>
 <li><a href="mirror-maintain-guides-how-to-nominate-kusama">Nominator Guide</a> - Become a nominator on the
 Kusama network.</li>
@@ -176,7 +176,7 @@ Kusama network.</li>
 <h2><a class="anchor" aria-hidden="true" id="slashing"></a><a href="#slashing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Slashing</h2>
 <p>Slashing will happen if a validator misbehaves (e.g. goes offline, attacks the network, or runs
 modified software) in the network. They and their nominators will get slashed by losing a percentage
-of their bonded/staked DOTs. Any slashed DOTs will be added to the Treasury. The rationale for this
+of their bonded/staked DOT. Any slashed DOT will be added to the Treasury. The rationale for this
 (rather than burning or distributing them as rewards) is that slashes may then be reverted by the
 Council by simply paying out from the Treasury. This would be useful in situations such as a faulty
 runtime causing slashing or forcing validators offline through no fault of their own. In the case of
@@ -300,14 +300,14 @@ eras, and anyone can call it.</p>
 percentage of the block reward, not an absolute value. After the value gets deducted, the remaining
 portion is based on their staked value and split between the validator and all of the nominators who
 have voted for this validator.</p>
-<p>For example, assume the block reward for a validator is 10 DOTs. A validator may specify
-<code>validator_payment = 50%</code>, in which case the validator would receive 5 DOTs. The remaining 5 DOTs
+<p>For example, assume the block reward for a validator is 10 DOT. A validator may specify
+<code>validator_payment = 50%</code>, in which case the validator would receive 5 DOT. The remaining 5 DOT
 would then be split between the validator and their nominators based on the proportion of stake each
 nominator had. Note that validators can put up their own stake, and for this calculation, their
 stake acts just as if they were another nominator.</p>
 <p>Rewards can be directed to the same account (controller) or to the stash account (and either
 increasing the staked value or not increasing the staked value). It is also possible to top-up /
-withdraw some bonded DOTs without having to un-stake everything.</p>
+withdraw some bonded DOT without having to un-stake everything.</p>
 <p>For specific details about validator payouts, please see
 <a href="maintain-guides-validator-payout">this guide</a>.</p>
 <h2><a class="anchor" aria-hidden="true" id="inflation"></a><a href="#inflation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Inflation</h2>
@@ -316,7 +316,7 @@ staked and the remainder going to treasury.</p>
 <p><img src="/docs/assets/NPoS/staking-participation-rate.png" alt="staking"></p>
 <p style="text-align:center">Source: <a href="https://research.web3.foundation/en/latest/polkadot/Token%20Economics.html">Research - Web3 Foundation</a></p>
 <ul>
-<li><strong>x-axis</strong>: Proportion of DOTs staked</li>
+<li><strong>x-axis</strong>: Proportion of DOT staked</li>
 <li><strong>y-axis</strong>: Inflation, annualized percentage</li>
 <li><strong>Blue line</strong>: Inflation rewards to stakers</li>
 <li><strong>Green line</strong>: Staker rate of return</li>
@@ -354,7 +354,7 @@ around 1000. Kusama, Polkadot's canary network, has over 300 validator slots.</p
 Blog post by Web3 Foundation researcher Alfonso Cevallos covering NPoS in Polkadot.</li>
 <li><a href="https://wiki.polkadot.network/docs/en/maintain-guides-secure-validator">Secure validator setup</a></li>
 </ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 8/14/2020 by Anson Lau</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#how-does-staking-work-in-polkadot">How does staking work in Polkadot?</a><ul class="toc-headings"><li><a href="#1-identifying-which-role-you-are">1. Identifying which role you are</a></li><li><a href="#2-nomination-period">2. Nomination period</a></li><li><a href="#3-staking-rewards-distribution">3. Staking Rewards Distribution</a></li><li><a href="#4-rewards-mechanism">4. Rewards Mechanism</a></li></ul></li><li><a href="#accounts">Accounts</a></li><li><a href="#validators-and-nominators">Validators and nominators</a><ul class="toc-headings"><li><a href="#want-to-stake-dots">Want to stake DOTs?</a></li></ul></li><li><a href="#slashing">Slashing</a><ul class="toc-headings"><li><a href="#unresponsiveness">Unresponsiveness</a></li><li><a href="#grandpa-equivocation">GRANDPA Equivocation</a></li><li><a href="#babe-equivocation">BABE Equivocation</a></li><li><a href="#chilling">Chilling</a></li><li><a href="#slashing-across-eras">Slashing Across Eras</a></li></ul></li><li><a href="#reward-distribution">Reward Distribution</a><ul class="toc-headings"><li><a href="#claiming-rewards">Claiming Rewards</a></li><li><a href="#reward-distribution-example">Reward Distribution Example</a></li></ul></li><li><a href="#inflation">Inflation</a></li><li><a href="#why-stake">Why stake?</a></li><li><a href="#why-not-stake">Why not stake?</a></li><li><a href="#how-many-validators-will-polkadot-have">How many validators will Polkadot have?</a></li><li><a href="#resources">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 8/18/2020 by Logan Saether</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#how-does-staking-work-in-polkadot">How does staking work in Polkadot?</a><ul class="toc-headings"><li><a href="#1-identifying-which-role-you-are">1. Identifying which role you are</a></li><li><a href="#2-nomination-period">2. Nomination period</a></li><li><a href="#3-staking-rewards-distribution">3. Staking Rewards Distribution</a></li><li><a href="#4-rewards-mechanism">4. Rewards Mechanism</a></li></ul></li><li><a href="#accounts">Accounts</a></li><li><a href="#validators-and-nominators">Validators and nominators</a><ul class="toc-headings"><li><a href="#want-to-stake-dot">Want to stake DOT?</a></li></ul></li><li><a href="#slashing">Slashing</a><ul class="toc-headings"><li><a href="#unresponsiveness">Unresponsiveness</a></li><li><a href="#grandpa-equivocation">GRANDPA Equivocation</a></li><li><a href="#babe-equivocation">BABE Equivocation</a></li><li><a href="#chilling">Chilling</a></li><li><a href="#slashing-across-eras">Slashing Across Eras</a></li></ul></li><li><a href="#reward-distribution">Reward Distribution</a><ul class="toc-headings"><li><a href="#claiming-rewards">Claiming Rewards</a></li><li><a href="#reward-distribution-example">Reward Distribution Example</a></li></ul></li><li><a href="#inflation">Inflation</a></li><li><a href="#why-stake">Why stake?</a></li><li><a href="#why-not-stake">Why not stake?</a></li><li><a href="#how-many-validators-will-polkadot-have">How many validators will Polkadot have?</a></li><li><a href="#resources">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();

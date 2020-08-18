@@ -44,17 +44,17 @@ numbers and times are:</p>
 </tbody>
 </table>
 <p>Block explorers, wallets, and any component that displays DOT balances should use the symbol &quot;DOT
-(old)&quot; to differentiate DOTs of the original denomination. This change can be made immediately. For
-a period of time after the redenomination occurs, we recommend that you use the symbol &quot;<em>New DOT</em>&quot;
-to clearly indicate that you have made the change. After sufficient time has elapsed
+(old)&quot; to differentiate DOT of the original denomination. This change can be made immediately. For a
+period of time after the redenomination occurs, we recommend that you use the symbol &quot;<em>New DOT</em>&quot; to
+clearly indicate that you have made the change. After sufficient time has elapsed
 post-redenomination, you should change &quot;<em>New DOT</em>&quot; back to &quot;DOT&quot;. An example of an explanation would
 be:</p>
 <blockquote>
 <p>“On approximately August 21st at 16:40 UTC (block number 1,248,328), the DOT token will undergo a
-redenomination. New DOTs will be 100x smaller than DOTs (old). Therefore, your DOT balance will be
-100x higher. The percentage of the DOTs you own relative to total supply will be unchanged. See
-the Polkadot <a href="https://medium.com/polkadot-network/the-results-are-in-8f6b1ca2a4e6">blog post</a> for
-more information.”</p>
+redenomination. New DOT will be 100x smaller than DOT (old). Therefore, your DOT balance will be
+100x higher. The percentage of the DOT you own relative to total supply will be unchanged. See the
+Polkadot <a href="https://medium.com/polkadot-network/the-results-are-in-8f6b1ca2a4e6">blog post</a> for more
+information.”</p>
 </blockquote>
 <p>If you require assistance with redenomination, please contact <a href="mailto:redenomination@web3.foundation">redenomination@web3.foundation</a>.</p>
 <h2><a class="anchor" aria-hidden="true" id="addresses"></a><a href="#addresses" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Addresses</h2>
@@ -99,10 +99,10 @@ some operation and still belong to the account holder, but cannot be used.</p>
 <p>Locks are an abstraction over free balance that prevent spending for certain purposes. Several locks
 can operate on the same account, but they overlap rather than add. Locks are automatically added
 onto accounts when tasks are done on the network (e.g. leasing a parachain slot or voting), these
-are not customizable. For example, an account could have a free balance of 200 DOTs with two locks
-on it: 150 DOTs for <code>Transfer</code> purposes and 100 DOTs for <code>Reserve</code> purposes. The account could not
-make a transfer that brings its free balance below 150 DOTs, but an operation could result in
-reserving DOTs such that the free balance is below 150, but above 100 DOTs.</p>
+are not customizable. For example, an account could have a free balance of 200 DOT with two locks on
+it: 150 DOT for <code>Transfer</code> purposes and 100 DOT for <code>Reserve</code> purposes. The account could not make a
+transfer that brings its free balance below 150 DOT, but an operation could result in reserving DOT
+such that the free balance is below 150, but above 100 DOT.</p>
 <p>Bonding tokens for staking and voting in governance referenda both utilize locks.</p>
 <p>Vesting is another abstraction that uses locks on free balance. Vesting sets a lock that decreases
 over time until all the funds are transferable.</p>
@@ -133,8 +133,8 @@ on-chain can be recognized prior to execution, they can be gossiped on the netwo
 with a low risk of spam. Signed transactions fit the concept of a transaction in Ethereum or
 Bitcoin.</p>
 <p>Some transactions cannot be signed by a fee-paying account and use unsigned transactions. For
-example, when a user claims their DOTs from the Ethereum DOT indicator contract to a new DOT
-address, the new address doesn't yet have any funds with which to pay fees.</p>
+example, when a user claims their DOT from the Ethereum DOT indicator contract to a new DOT address,
+the new address doesn't yet have any funds with which to pay fees.</p>
 <h3><a class="anchor" aria-hidden="true" id="transaction-mortality"></a><a href="#transaction-mortality" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Transaction Mortality</h3>
 <p>Extrinsics can be mortal or immortal. The transaction payload includes a block number and block hash
 checkpoint from which a transaction is valid and a validity period (also called &quot;era&quot; in some
@@ -226,7 +226,7 @@ like locking or reserving tokens for operations that utilize state.</p>
 <li><a href="https://polkadot.js.org/apps/#/explorer">Polkadot JS explorer</a></li>
 <li><a href="https://polkascan.io/">Polkascan block explorer</a></li>
 </ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 8/17/2020 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#dot-tokens">DOT Tokens</a><ul class="toc-headings"><li><a href="#redenomination">Redenomination</a></li></ul></li><li><a href="#addresses">Addresses</a><ul class="toc-headings"><li><a href="#cryptography">Cryptography</a></li></ul></li><li><a href="#existential-deposit">Existential Deposit</a></li><li><a href="#free-vs-reserved-vs-locked-vs-vesting-balance">Free vs. Reserved vs. Locked vs. Vesting Balance</a></li><li><a href="#extrinsics-and-events">Extrinsics and Events</a><ul class="toc-headings"><li><a href="#extrinsics">Extrinsics</a></li><li><a href="#transaction-mortality">Transaction Mortality</a></li><li><a href="#unique-identifiers-for-extrinsics">Unique Identifiers for Extrinsics</a></li><li><a href="#events">Events</a></li><li><a href="#fees">Fees</a></li><li><a href="#encoding">Encoding</a></li></ul></li><li><a href="#smart-contracts">Smart Contracts</a></li><li><a href="#other-networks">Other Networks</a></li><li><a href="#other-faq">Other F.A.Q.</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 8/18/2020 by Logan Saether</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#dot-tokens">DOT Tokens</a><ul class="toc-headings"><li><a href="#redenomination">Redenomination</a></li></ul></li><li><a href="#addresses">Addresses</a><ul class="toc-headings"><li><a href="#cryptography">Cryptography</a></li></ul></li><li><a href="#existential-deposit">Existential Deposit</a></li><li><a href="#free-vs-reserved-vs-locked-vs-vesting-balance">Free vs. Reserved vs. Locked vs. Vesting Balance</a></li><li><a href="#extrinsics-and-events">Extrinsics and Events</a><ul class="toc-headings"><li><a href="#extrinsics">Extrinsics</a></li><li><a href="#transaction-mortality">Transaction Mortality</a></li><li><a href="#unique-identifiers-for-extrinsics">Unique Identifiers for Extrinsics</a></li><li><a href="#events">Events</a></li><li><a href="#fees">Fees</a></li><li><a href="#encoding">Encoding</a></li></ul></li><li><a href="#smart-contracts">Smart Contracts</a></li><li><a href="#other-networks">Other Networks</a></li><li><a href="#other-faq">Other F.A.Q.</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
