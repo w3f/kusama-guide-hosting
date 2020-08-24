@@ -82,14 +82,14 @@ cargo build –-release
 <p>Not recommended if you're a validator. Please see
 <a href="maintain-guides-secure-validator">secure validator setup</a></p>
 </blockquote>
-<p>For the most recent binary please see the
-<a href="https://github.com/paritytech/polkadot/releases/">release page</a> on the polkadot repository. The URL
-in the code snippet below may become slightly out-of-date.</p>
 <ul>
 <li>Install WSL: <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">https://docs.microsoft.com/en-us/windows/wsl/install-win10</a></li>
 <li>Install Ubuntu (same webpage): <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">https://docs.microsoft.com/en-us/windows/wsl/install-win10</a></li>
-<li>Download Polkadot binary within Ubuntu by running:
-<code>curl -sL https://github.com/paritytech/polkadot/releases/download/v0.8.3/polkadot -o polkadot</code></li>
+<li>Determine the latest version of the Polkadot binary (you can see the latest releases here:
+<a href="https://github.com/paritytech/polkadot/releases">https://github.com/paritytech/polkadot/releases</a>)</li>
+<li>Download the correct Polkadot binary within Ubuntu by running the following command. Replace
+<code>*VERSION*</code> with the tag of the latest version from the last step (e.g. <code>v0.8.22</code>):
+<code>curl -sL https://github.com/paritytech/polkadot/releases/download/*VERSION*/polkadot -o polkadot</code></li>
 <li>Run the following: <code>sudo chmod +x polkadot</code></li>
 <li>Run the following: <code>./polkadot --name &quot;Your Node Name Here&quot;</code></li>
 <li>Find your node at <a href="https://telemetry.polkadot.io/#list/Kusama">https://telemetry.polkadot.io/#list/Kusama</a></li>
@@ -108,8 +108,11 @@ particular architecture or Linux distribution. If you see an error like
 your system. You will either need to compile the <a href="#clone-and-build">source code yourself</a> or use
 <a href="#using-docker">docker</a>.</p>
 <ul>
-<li>Download Polkadot binary by running:
-<code>curl -sL https://github.com/paritytech/polkadot/releases/download/v0.8.3/polkadot -o polkadot</code></li>
+<li>Determine the latest version of the Polkadot binary (you can see the latest releases here:
+<a href="https://github.com/paritytech/polkadot/releases">https://github.com/paritytech/polkadot/releases</a>)</li>
+<li>Download the correct Polkadot binary within Ubuntu by running the following command. Replace
+<code>*VERSION*</code> with the tag of the latest version from the last step (e.g. <code>v0.8.22</code>):
+<code>curl -sL https://github.com/paritytech/polkadot/releases/download/*VERSION*/polkadot -o polkadot</code></li>
 <li>Run the following: <code>sudo chmod +x polkadot</code></li>
 <li>Run the following: <code>./polkadot --name &quot;Your Node Name Here&quot;</code></li>
 <li>Find your node at <a href="https://telemetry.polkadot.io/#list/Kusama">https://telemetry.polkadot.io/#list/Kusama</a></li>
@@ -130,7 +133,8 @@ latest Kusama code.</p>
 ./scripts/init.sh
 cargo build --release
 </code></pre>
-<p>Alternatively, check out a specific tagged release:</p>
+<p>Alternatively, if you wish to use a specific release, you can check out a specific tag (<code>v0.8.3</code> in
+the example below):</p>
 <pre><code class="hljs css language-bash">git <span class="hljs-built_in">clone</span> https://github.com/paritytech/polkadot kusama
 <span class="hljs-built_in">cd</span> kusama
 git checkout tags/v0.8.3
@@ -163,7 +167,7 @@ it's best left up to those that either already have familiarity with docker, or 
 other set-up instructions in this guide.</p>
 <pre><code class="hljs css language-zsh">docker run -p 9944:9944 parity/polkadot:v0.8.3 --name <span class="hljs-string">"calling_home_from_a_docker_container"</span>
 </code></pre>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/5/2020 by Logan Saether</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#get-substrate">Get Substrate</a></li><li><a href="#clone-and-build">Clone and Build</a></li><li><a href="#run">Run</a></li><li><a href="#running-an-archive-node">Running an Archive Node</a></li><li><a href="#using-docker">Using Docker</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 8/24/2020 by Bill Laboon</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#get-substrate">Get Substrate</a></li><li><a href="#clone-and-build">Clone and Build</a></li><li><a href="#run">Run</a></li><li><a href="#running-an-archive-node">Running an Archive Node</a></li><li><a href="#using-docker">Using Docker</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
