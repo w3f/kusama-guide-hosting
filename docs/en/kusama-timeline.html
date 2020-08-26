@@ -75,8 +75,9 @@
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/kusama-timeline.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Kusama Timeline</h1></header><article><div><span><p>Kusama network started as a Proof-of-Authority network and was transitioned to Proof-of-Stake on 28
 October 2019 at approximately 18:43 Zurich time (CET). The first successful validator set rotation
 took place at 22:45 CET.</p>
-<p>Currently, Kusama is a healthy Proof-of-Stake network with over 150 validators and over a million
-blocks produced.</p>
+<p>Currently, Kusama is a healthy Proof-of-Stake network with over 500 validators and over two million
+blocks produced. If you are curious about the history of the Kusama network, you will find more
+information in the sections below.</p>
 <h2><a class="anchor" aria-hidden="true" id="rollout-plan"></a><a href="#rollout-plan" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rollout plan</h2>
 <p>The rollout of full functionality of Kusama was staggered to allow for a safe transition. The first
 PoS phase began with 20 validators. Of the 20, the Web3 Foundation ran nine and Parity Technologies
@@ -86,8 +87,25 @@ order to allow for more validators to enter the active set.</p>
 <p>When the first transition to PoS took place, the full functionality of Kusama was not fully
 available. Notably, the Sudo key still existed and was used to initiate further upgrades. Balance
 transfers were still disabled for a short while.</p>
-<p>Kusama now has had its full functionality enabled.</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 5/4/2020 by joe petrowski</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/kusama-adverserial-cheatsheet"><span class="arrow-prev">← </span><span>Adverserial Cheatsheet</span></a><a class="docs-next button" href="/docs/en/kusama-community"><span>Community</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#rollout-plan">Rollout plan</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+<p>Kusama now has its full functionality enabled.</p>
+<h2><a class="anchor" aria-hidden="true" id="kusamas-first-adventure"></a><a href="#kusamas-first-adventure" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kusama's First Adventure</h2>
+<p><a href="https://polkadot.network/kusamas-first-adventure/">Source</a></p>
+<p>On 4th January 2020, the Polkadot mainnet runtime, which at that time still wasn't live, was
+uploaded to the Kusama chain during a runtime upgrade. The mishap was due to a recent split of the
+Kusama logic from the Polkadot logic and that runtime was not properly named. This led to a halt of
+block production on the Kusama chain and bricked the chain entirely.</p>
+<p>The solution to the issue involved a rollback of the chain history before the problematic runtime
+upgrade took place. However, due to intricacies of the block production mechanism, it was also
+necessary to encapsulate the validators of the chain into a time bubble to trick them into believing
+that they were producing blocks in the past. Furthermore, in order for the chain to catch up to the
+present moment it was necessary to make time flow in the bubble at a speed of six times greater than
+the speed of time in the real world. Therefore, the session of Kusama which would normally last one
+hour would last only 10 minutes until the validators caught up to the present moment.</p>
+<p>The above plan was executed successfully on the 7th of January. Due to the time warp, the number of
+missed blocks in the sessions directly following
+<a href="https://polkascan.io/kusama/block/516558">block #516558</a> was significantly higher. This is partly
+what contributes to the much higher ratio of missed blocks on Kusama versus Polkadot today.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 8/26/2020 by Logan Saether</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/kusama-adverserial-cheatsheet"><span class="arrow-prev">← </span><span>Adverserial Cheatsheet</span></a><a class="docs-next button" href="/docs/en/kusama-community"><span>Community</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#rollout-plan">Rollout plan</a></li><li><a href="#kusamas-first-adventure">Kusama's First Adventure</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a></div></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
