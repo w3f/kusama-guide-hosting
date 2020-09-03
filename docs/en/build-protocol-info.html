@@ -23,7 +23,7 @@ practical information for dealing with the chain.</p>
 <ul>
 <li><strong>Token decimals:</strong>
 <ul>
-<li>Polkadot (DOT): 10 (See <a href="#redenomination">Redenomination</a>)</li>
+<li>Polkadot (DOT): 10</li>
 <li>Kusama (KSM): 12</li>
 </ul></li>
 <li><strong>Base unit:</strong> &quot;Planck&quot;</li>
@@ -38,19 +38,6 @@ decided to redenominate the DOT token. The redenomination does not change the nu
 <a href="https://medium.com/polkadot-network/the-results-are-in-8f6b1ca2a4e6">results</a> of the vote.</p>
 <p>The redenomination took effect 72 hours after transfers were enabled, at block 1,248,326, which
 occurred at approximately 16:50 UTC on 21 Aug 2020.</p>
-<p>Block explorers, wallets, and any component that displays DOT balances should use the symbol &quot;DOT
-(old)&quot; to differentiate DOT of the original denomination. For a period of time after the
-redenomination occurs, we recommend that you use the symbol &quot;<em>New DOT</em>&quot; to clearly indicate that you
-have made the change. After sufficient time has elapsed post-redenomination, you should change &quot;<em>New
-DOT</em>&quot; back to &quot;DOT&quot;. An example of an explanation would be:</p>
-<blockquote>
-<p>“On approximately August 21st at 16:40 UTC (block number 1,248,328), the DOT token underwent a
-redenomination from its original sale. New DOT are 100x smaller than DOT (old). Therefore, your
-DOT balance is 100x higher and the price per DOT is 100x lower. The percentage of the DOT you own
-relative to total supply is unchanged. This will not affect the total value of your position. See
-the Polkadot blog post for more information.”</p>
-</blockquote>
-<p>If you require assistance with redenomination, please contact <a href="mailto:redenomination@web3.foundation">redenomination@web3.foundation</a>.</p>
 <h2><a class="anchor" aria-hidden="true" id="addresses"></a><a href="#addresses" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Addresses</h2>
 <p>In Polkadot (and most Substrate chains), user accounts are identified by a 32-byte (256-bit)
 <code>AccountId</code>. This is simply the public key for the cryptography used by Substrate.</p>
@@ -148,6 +135,11 @@ make the transaction &quot;immortal&quot;.</p>
 <p><strong>NOTE:</strong> If an account is reaped and a user re-funds the account, then they could replay an
 immortal transaction. Always default to using a mortal extrinsic.</p>
 <h3><a class="anchor" aria-hidden="true" id="unique-identifiers-for-extrinsics"></a><a href="#unique-identifiers-for-extrinsics" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Unique Identifiers for Extrinsics</h3>
+<blockquote>
+<p>Note: The assumption that a transaction's hash is a unique identifier is the number one mistake
+that indexing services and custodians make. This error will cause major issues for your users.
+Make sure that you read this section carefully.</p>
+</blockquote>
 <p>Many infrastructure providers on existing blockchains, e.g. Ethereum, consider a transaction's hash
 as a unique identifier. In Substrate-based chains like Polkadot, a transaction's hash only serves as
 a fingerprint of the information within a transaction, and there are times when two transactions
@@ -228,7 +220,7 @@ like locking or reserving tokens for operations that utilize state.</p>
 <li><a href="https://polkadot.js.org/apps/#/explorer">Polkadot JS explorer</a></li>
 <li><a href="https://polkascan.io/">Polkascan block explorer</a></li>
 </ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 8/31/2020 by Kirsten Richard</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#tokens">Tokens</a><ul class="toc-headings"><li><a href="#redenomination">Redenomination</a></li></ul></li><li><a href="#addresses">Addresses</a><ul class="toc-headings"><li><a href="#cryptography">Cryptography</a></li></ul></li><li><a href="#existential-deposit">Existential Deposit</a></li><li><a href="#free-vs-reserved-vs-locked-vs-vesting-balance">Free vs. Reserved vs. Locked vs. Vesting Balance</a></li><li><a href="#extrinsics-and-events">Extrinsics and Events</a><ul class="toc-headings"><li><a href="#extrinsics">Extrinsics</a></li><li><a href="#transaction-mortality">Transaction Mortality</a></li><li><a href="#unique-identifiers-for-extrinsics">Unique Identifiers for Extrinsics</a></li><li><a href="#events">Events</a></li><li><a href="#fees">Fees</a></li><li><a href="#encoding">Encoding</a></li></ul></li><li><a href="#smart-contracts">Smart Contracts</a></li><li><a href="#other-networks">Other Networks</a></li><li><a href="#other-faq">Other F.A.Q.</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/3/2020 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#tokens">Tokens</a><ul class="toc-headings"><li><a href="#redenomination">Redenomination</a></li></ul></li><li><a href="#addresses">Addresses</a><ul class="toc-headings"><li><a href="#cryptography">Cryptography</a></li></ul></li><li><a href="#existential-deposit">Existential Deposit</a></li><li><a href="#free-vs-reserved-vs-locked-vs-vesting-balance">Free vs. Reserved vs. Locked vs. Vesting Balance</a></li><li><a href="#extrinsics-and-events">Extrinsics and Events</a><ul class="toc-headings"><li><a href="#extrinsics">Extrinsics</a></li><li><a href="#transaction-mortality">Transaction Mortality</a></li><li><a href="#unique-identifiers-for-extrinsics">Unique Identifiers for Extrinsics</a></li><li><a href="#events">Events</a></li><li><a href="#fees">Fees</a></li><li><a href="#encoding">Encoding</a></li></ul></li><li><a href="#smart-contracts">Smart Contracts</a></li><li><a href="#other-networks">Other Networks</a></li><li><a href="#other-faq">Other F.A.Q.</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
