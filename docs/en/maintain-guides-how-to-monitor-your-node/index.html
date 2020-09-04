@@ -1,0 +1,405 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Monitor your node · Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="This guide will walk you through how to set up [Prometheus](https://prometheus.io/) with"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Monitor your node · Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://guide.kusama.network/"/><meta property="og:description" content="This guide will walk you through how to set up [Prometheus](https://prometheus.io/) with"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="/css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="/js/custom.js"></script><script type="text/javascript" src="/js/klaro-config.js"></script><script type="text/javascript" src="/js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/./img/Kusama_logotype_white_large.png" alt="Guide"/><h2 class="headerTitleWithLogo">Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/kusama-getting-started" target="_self">Get Started</a></li><li class=""><a href="/docs/en/kusama-index" target="_self">Docs</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/zh-CN/maintain-guides-how-to-monitor-your-node">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/maintain-guides-how-to-monitor-your-node.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Monitor your node</h1></header><article><div><span><p>This guide will walk you through how to set up <a href="https://prometheus.io/">Prometheus</a> with
+<a href="https://grafana.com/">Grafana</a> to monitor your node using Ubuntu 18.04 or 20.04.</p>
+<p>A Substrate-based chain exposes data such as the height of the chain, the number of connected peers
+to your node, CPU, memory usage of your machine, and more. To monitor this data, Prometheus is used
+to collect metrics and Grafana allows for displaying them on the dashboard.</p>
+<h2><a class="anchor" aria-hidden="true" id="preparation"></a><a href="#preparation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Preparation</h2>
+<p>First, create a user for Prometheus by adding the <code>--no-create-home</code> flag to disallow <code>prometheus</code>
+from logging in.</p>
+<pre><code class="hljs css language-bash">sudo useradd --no-create-home --shell /usr/sbin/nologin prometheus
+</code></pre>
+<p>Create the directories required to store the configuration and executable files.</p>
+<pre><code class="hljs css language-bash">sudo mkdir /etc/prometheus
+sudo mkdir /var/lib/prometheus
+</code></pre>
+<p>Change the ownership of these directories to <code>prometheus</code> so that only prometheus can access them.</p>
+<pre><code class="hljs css language-bash">sudo chown -R prometheus:prometheus /etc/prometheus
+sudo chown -R prometheus:prometheus /var/lib/prometheus
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="installing-and-configuring-prometheus"></a><a href="#installing-and-configuring-prometheus" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installing and Configuring Prometheus</h2>
+<p>After setting up the environment, update your OS, and install the latest Prometheus. You can check
+the latest release by going to their GitHub repository under the
+<a href="https://github.com/prometheus/prometheus/releases/">releases</a> page.</p>
+<pre><code class="hljs css language-bash">sudo apt-get update &amp;&amp; apt-get upgrade
+wget https://github.com/prometheus/prometheus/releases/download/v2.20.1/prometheus-2.20.1.linux-amd64.tar.gz
+tar xfz prometheus-*.tar.gz
+<span class="hljs-built_in">cd</span> prometheus-2.20.1.linux-amd64
+</code></pre>
+<p>The following two binaries are in the directory:</p>
+<ul>
+<li>prometheus - Prometheus main binary file</li>
+<li>promtool</li>
+</ul>
+<p>The following two directories (which contain the web interface, configuration files examples and the
+license) are in the directory:</p>
+<ul>
+<li>consoles</li>
+<li>console_libraries</li>
+</ul>
+<p>Copy the executable files to the <code>/usr/local/bin/</code> directory.</p>
+<pre><code class="hljs css language-bash">sudo cp ./prometheus /usr/<span class="hljs-built_in">local</span>/bin/
+sudo cp ./promtool /usr/<span class="hljs-built_in">local</span>/bin/
+</code></pre>
+<p>Change the ownership of these files to the <code>prometheus</code> user.</p>
+<pre><code class="hljs css language-bash">sudo chown prometheus:prometheus /usr/<span class="hljs-built_in">local</span>/bin/prometheus
+sudo chown prometheus:prometheus /usr/<span class="hljs-built_in">local</span>/bin/promtool
+</code></pre>
+<p>Copy the <code>consoles</code> and <code>console_libraries</code> directories to <code>/etc/prometheus</code></p>
+<pre><code class="hljs css language-bash">sudo cp -r ./consoles /etc/prometheus
+sudo cp -r ./console_libraries /etc/prometheus
+</code></pre>
+<p>Change the ownership of these directories to the <code>prometheus</code> user.</p>
+<pre><code class="hljs css language-bash">sudo chown -R prometheus:prometheus /etc/prometheus/consoles
+sudo chown -R prometheus:prometheus /etc/prometheus/console_libraries
+</code></pre>
+<p>Once everything is done, run this command to remove <code>prometheus</code> directory.</p>
+<pre><code class="hljs css language-bash"><span class="hljs-built_in">cd</span> .. &amp;&amp; rm -rf prometheus*
+</code></pre>
+<p>Before using Prometheus, it needs some configuration. Create a YAML configuration file named
+<code>prometheus.yml</code> by running the command below.</p>
+<pre><code class="hljs css language-bash">sudo nano /etc/prometheus/prometheus.yml
+</code></pre>
+<p>The configuration file is divided into three parts which are <code>global</code>, <code>rule_files</code>, and
+<code>scrape_configs</code>.</p>
+<ul>
+<li><p><code>scrape_interval</code> defines how often Prometheus scrapes targets, while <code>evaluation_interval</code>
+controls how often the software will evaluate rules.</p></li>
+<li><p><code>rule_files</code> block contains information of the location of any rules we want the Prometheus server
+to load.</p></li>
+<li><p><code>scrape_configs</code> contains the information which resources Prometheus monitors.</p></li>
+</ul>
+<p>The configuration file should look like this below:</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">global:</span>
+  <span class="hljs-attr">scrape_interval:</span> <span class="hljs-string">15s</span>
+  <span class="hljs-attr">evaluation_interval:</span> <span class="hljs-string">15s</span>
+
+<span class="hljs-attr">rule_files:</span>
+  <span class="hljs-comment"># - "first.rules"</span>
+  <span class="hljs-comment"># - "second.rules"</span>
+
+<span class="hljs-attr">scrape_configs:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">job_name:</span> <span class="hljs-string">"prometheus"</span>
+    <span class="hljs-attr">scrape_interval:</span> <span class="hljs-string">5s</span>
+    <span class="hljs-attr">static_configs:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">targets:</span> <span class="hljs-string">["localhost:9090"]</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">job_name:</span> <span class="hljs-string">"substrate_node"</span>
+    <span class="hljs-attr">scrape_interval:</span> <span class="hljs-string">5s</span>
+    <span class="hljs-attr">static_configs:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">targets:</span> <span class="hljs-string">["localhost:9165"]</span>
+</code></pre>
+<p>With the above configuration file, the first exporter is the one that Prometheus exports to monitor
+itself. As we want to have more precise information about the state of the Prometheus server we
+reduced the <code>scrape_interval</code> to 5 seconds for this job. The parameters <code>static_configs</code> and
+<code>targets</code> determine where the exporters are running. The second exporter is capturing the data from
+your node, and the port by default is <code>9165</code>.</p>
+<p>You can check the validity of this configuration file by running
+<code>promtool check config /etc/prometheus/prometheus.yml</code>.</p>
+<p>Save the configuration file and change the ownership of the file to <code>prometheus</code> user.</p>
+<pre><code class="hljs css language-bash">sudo chown prometheus:prometheus /etc/prometheus/prometheus.yml
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="starting-prometheus"></a><a href="#starting-prometheus" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Starting Prometheus</h2>
+<p>To test that Prometheus is set up properly, execute the following command to start it as the
+<code>prometheus</code> user.</p>
+<pre><code class="hljs css language-bash">sudo -u prometheus /usr/<span class="hljs-built_in">local</span>/bin/prometheus --config.file /etc/prometheus/prometheus.yml --storage.tsdb.path /var/lib/prometheus/ --web.console.templates=/etc/prometheus/consoles --web.console.libraries=/etc/prometheus/console_libraries
+</code></pre>
+<p>The following messages indicate the status of the server. If you see the following messages, your
+server is set up properly.</p>
+<pre><code class="hljs css language-bash">level=info ts=2020-08-12T21:39:05.453Z <span class="hljs-built_in">caller</span>=main.go:308 msg=<span class="hljs-string">"No time or size retention was set so using the default time retention"</span> duration=15d
+level=info ts=2020-08-12T21:39:05.453Z <span class="hljs-built_in">caller</span>=main.go:343 msg=<span class="hljs-string">"Starting Prometheus"</span> version=<span class="hljs-string">"(version=2.20.1, branch=HEAD, revision=983ebb4a513302315a8117932ab832815f85e3d2)"</span>
+level=info ts=2020-08-12T21:39:05.453Z <span class="hljs-built_in">caller</span>=main.go:344 build_context=<span class="hljs-string">"(go=go1.14.6, user=root@7cbd4d1c15e0, date=20200805-17:26:58)"</span>
+level=info ts=2020-08-12T21:39:05.453Z <span class="hljs-built_in">caller</span>=main.go:345 host_details=<span class="hljs-string">"(Linux 4.15.0-88-generic #88-Ubuntu SMP Tue Feb 11 20:11:34 UTC 2020 x86_64 Ethereum-Archive-Node (none))"</span>
+level=info ts=2020-08-12T21:39:05.453Z <span class="hljs-built_in">caller</span>=main.go:346 fd_limits=<span class="hljs-string">"(soft=1024, hard=1048576)"</span>
+level=info ts=2020-08-12T21:39:05.453Z <span class="hljs-built_in">caller</span>=main.go:347 vm_limits=<span class="hljs-string">"(soft=unlimited, hard=unlimited)"</span>
+level=info ts=2020-08-12T21:39:05.455Z <span class="hljs-built_in">caller</span>=web.go:524 component=web msg=<span class="hljs-string">"Start listening for connections"</span> address=0.0.0.0:9090
+level=info ts=2020-08-12T21:39:05.455Z <span class="hljs-built_in">caller</span>=main.go:684 msg=<span class="hljs-string">"Starting TSDB ..."</span>
+level=info ts=2020-08-12T21:39:05.459Z <span class="hljs-built_in">caller</span>=head.go:641 component=tsdb msg=<span class="hljs-string">"Replaying on-disk memory mappable chunks if any"</span>
+level=info ts=2020-08-12T21:39:05.459Z <span class="hljs-built_in">caller</span>=head.go:655 component=tsdb msg=<span class="hljs-string">"On-disk memory mappable chunks replay completed"</span> duration=2.846µs
+level=info ts=2020-08-12T21:39:05.459Z <span class="hljs-built_in">caller</span>=head.go:661 component=tsdb msg=<span class="hljs-string">"Replaying WAL, this may take a while"</span>
+level=info ts=2020-08-12T21:39:05.464Z <span class="hljs-built_in">caller</span>=head.go:713 component=tsdb msg=<span class="hljs-string">"WAL segment loaded"</span> segment=0 maxSegment=0
+level=info ts=2020-08-12T21:39:05.464Z <span class="hljs-built_in">caller</span>=head.go:716 component=tsdb msg=<span class="hljs-string">"WAL replay completed"</span> checkpoint_replay_duration=26.822µs wal_replay_duration=4.649295ms total_replay_duration=4.737874ms
+level=info ts=2020-08-12T21:39:05.466Z <span class="hljs-built_in">caller</span>=main.go:700 fs_type=EXT4_SUPER_MAGIC
+level=info ts=2020-08-12T21:39:05.466Z <span class="hljs-built_in">caller</span>=main.go:701 msg=<span class="hljs-string">"TSDB started"</span>
+level=info ts=2020-08-12T21:39:05.466Z <span class="hljs-built_in">caller</span>=main.go:805 msg=<span class="hljs-string">"Loading configuration file"</span> filename=/etc/prometheus/prometheus.yml
+level=info ts=2020-08-12T21:39:05.467Z <span class="hljs-built_in">caller</span>=main.go:833 msg=<span class="hljs-string">"Completed loading of configuration file"</span> filename=/etc/prometheus/prometheus.yml
+level=info ts=2020-08-12T21:39:05.467Z <span class="hljs-built_in">caller</span>=main.go:652 msg=<span class="hljs-string">"Server is ready to receive web requests."</span>
+</code></pre>
+<p>Go to <code>http://SERVER_IP_ADDRESS:9090/graph</code> to check whether you are able to access the Prometheus
+interface or not. If it is working, exit the process by pressing on <code>CTRL + C</code>.</p>
+<p>Next, we would like to automatically start the server during the boot process, so we have to create
+a new <code>systemd</code> configuration file with the following config.</p>
+<pre><code class="hljs css language-bash">sudo nano /etc/systemd/system/prometheus.service
+</code></pre>
+<pre><code class="hljs css language-bash">[Unit]
+  Description=Prometheus Monitoring
+  Wants=network-online.target
+  After=network-online.target
+
+[Service]
+  User=prometheus
+  Group=prometheus
+  Type=simple
+  ExecStart=/usr/<span class="hljs-built_in">local</span>/bin/prometheus \
+  --config.file /etc/prometheus/prometheus.yml \
+  --storage.tsdb.path /var/lib/prometheus/ \
+  --web.console.templates=/etc/prometheus/consoles \
+  --web.console.libraries=/etc/prometheus/console_libraries
+  ExecReload=/bin/<span class="hljs-built_in">kill</span> -HUP <span class="hljs-variable">$MAINPID</span>
+
+[Install]
+  WantedBy=multi-user.target
+</code></pre>
+<p>Once the file is saved, execute the command below to reload <code>systemd</code> and enable the service so that
+it will be loaded automatically during the operating system's startup.</p>
+<pre><code class="hljs css language-bash">sudo systemctl daemon-reload &amp;&amp; systemctl <span class="hljs-built_in">enable</span> prometheus &amp;&amp; systemctl start prometheus
+</code></pre>
+<p>Prometheus should be running now, and you should be able to access its front again end by
+re-visiting <code>IP_ADDRESS:9090/</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="installing-grafana"></a><a href="#installing-grafana" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installing Grafana</h2>
+<p>In order to visualize your node metrics, you can use Grafana to query the Prometheus server. Run the
+following commands to install it first.</p>
+<pre><code class="hljs css language-bash">sudo apt-get install -y adduser libfontconfig1
+wget https://dl.grafana.com/oss/release/grafana_7.1.3_amd64.deb
+sudo dpkg -i grafana_7.1.3_amd64.deb
+</code></pre>
+<p>If everything is fine, start the Grafana server and access it by going to the
+<code>http://SERVER_IP_ADDRESS:3000/login</code>. The default user and password is admin/admin.</p>
+<p>Now configure Grafana to auto-start on boot.</p>
+<blockquote>
+<p>Note: If you want to change the port on which Grafana runs (3000 is a popular port), edit the file
+<code>/usr/share/grafana/conf/defaults.ini</code> with a command like
+<code>sudo vim /usr/share/grafana/conf/defaults.ini</code> and change the <code>http_port</code> value to something
+else. Then restart grafana with <code>sudo systemctl restart grafana-server</code>.</p>
+</blockquote>
+<pre><code class="hljs css language-bash">sudo systemctl daemon-reload &amp;&amp; sudo systemctl <span class="hljs-built_in">enable</span> grafana-server &amp;&amp; sudo systemctl start grafana-server
+</code></pre>
+<p><img src="/docs/assets/guides/how-to-monitor/1-grafana-login.png" alt="grafana-1"></p>
+<p>In order to visualize the node metrics, click <em>settings</em> to configure the <code>Data Sources</code> first.</p>
+<p><img src="/docs/assets/guides/how-to-monitor/2-add-data-source.png" alt="grafana-1"></p>
+<p>Click <code>Add data source</code> to choose where the data is coming from.</p>
+<p><img src="/docs/assets/guides/how-to-monitor/2-add-data-source-2.png" alt="grafana-1"></p>
+<p>Select <code>Prometheus</code>.</p>
+<p><img src="/docs/assets/guides/how-to-monitor/3-select-prometheus.png" alt="grafana-1"></p>
+<p>The only thing you need to input is the <code>URL</code> that is <code>https://localhost:9090</code> and then click
+<code>Save &amp; Test</code>. If you see <code>Data source is working</code>, your connection is configured correctly.</p>
+<p><img src="/docs/assets/guides/how-to-monitor/4-configure-data-source.png" alt="grafana-1"></p>
+<p>Next, import the dashboard that lets you visualize your node data. Go to the menu bar on the left
+and mouse hover &quot;+&quot; then select <code>Import</code>.</p>
+<p><code>Import via grafana.com</code> - It allows you to use a dashboard that someone else has created and made
+public. You can check what other dashboards are available via
+<a href="https://grafana.com/grafana/dashboards">https://grafana.com/grafana/dashboards</a>. In this guide, we
+use <a href="https://grafana.com/grafana/dashboards/12425">&quot;My Polkadot Metrics&quot;</a>, so input &quot;12425&quot; under
+the id field and click <code>Load</code>.</p>
+<p><img src="/docs/assets/guides/how-to-monitor/5-import-dashboard.png" alt="grafana-1"></p>
+<p>Once it has been loaded, make sure to select &quot;Prometheus&quot; in the Prometheus dropdown list. Then
+click <code>Import</code>.</p>
+<p><img src="/docs/assets/guides/how-to-monitor/5-import-dashboard-2.png" alt="grafana-1"></p>
+<p>In the meantime, start your Polkadot node by running <code>./polkadot</code>. If everything is done correctly,
+you should be able to monitor your node's performance such as the current block height, CPU, memory
+usage, etc. on the Grafana dashboard.</p>
+<p><img src="/docs/assets/guides/how-to-monitor/6-dashboard-metric.png" alt="grafana-1"></p>
+<h2><a class="anchor" aria-hidden="true" id="installing-and-configuring-alertmanager-optional"></a><a href="#installing-and-configuring-alertmanager-optional" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installing and Configuring Alertmanager (Optional)</h2>
+<p>In this section, let's configure the Alertmanager that helps to predict the potential problem or
+notify you of the current problem in your server. Alerts can be sent in Slack, Email, Matrix, or
+others. In this guide, we will show you how to configure the email notifications using Gmail if your
+node goes down.</p>
+<p>First, download the latest binary of AlertManager and unzip it by running the command below:</p>
+<pre><code class="hljs">wget https:<span class="hljs-comment">//github.com/prometheus/alertmanager/releases/download/v0.21.0/alertmanager-0.21.0.linux-amd64.tar.gz)</span>
+tar -xvzf alertmanager-<span class="hljs-number">0.21</span>.<span class="hljs-number">0</span><span class="hljs-selector-class">.linux-amd64</span><span class="hljs-selector-class">.tar</span><span class="hljs-selector-class">.gz</span>
+mv alertmanager-<span class="hljs-number">0.21</span>.<span class="hljs-number">0</span><span class="hljs-selector-class">.linux-amd64</span><span class="hljs-selector-class">.tar</span>.gz/alertmanager /usr/local/bin/
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="gmail-setup"></a><a href="#gmail-setup" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Gmail Setup</h3>
+<p>To allow AlertManager to send an email to you, you will need to generate something called an
+<code>app password</code> in your Gmail account. For details, click
+<a href="https://support.google.com/accounts/answer/185833?hl=en">here</a> to follow the whole setup.</p>
+<p>You should see something like below:</p>
+<p><img src="/docs/assets/guides/how-to-monitor/1-alert-manager.png" alt="grafana-am-1"></p>
+<p>Copy and save it somewhere else first.</p>
+<h3><a class="anchor" aria-hidden="true" id="alertmanager-configuration"></a><a href="#alertmanager-configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AlertManager Configuration</h3>
+<p>There is a configuration file named <code>alertmanager.yml</code> inside the directory that you just extracted
+in the previous command, but that is not of our use. We will create our <code>alertmanager.yml</code> file
+under <code>/etc/alertmanager</code> with the following config.</p>
+<blockquote>
+<p>Ensure to change the ownership of &quot;/etc/alertmanager&quot; to <code>prometheus</code> by executing</p>
+<p>sudo chown -R prometheus:prometheus /etc/alertmanager</p>
+</blockquote>
+<pre><code class="hljs"><span class="hljs-attribute">global</span>:
+ <span class="hljs-attribute">resolve_timeout</span>: <span class="hljs-number">1</span>m
+
+<span class="hljs-attribute">route</span>:
+ <span class="hljs-attribute">receiver</span>: <span class="hljs-string">'gmail-notifications'</span>
+
+<span class="hljs-attribute">receivers</span>:
+- <span class="hljs-attribute">name</span>: <span class="hljs-string">'gmail-notifications'</span>
+  <span class="hljs-attribute">email_configs</span>:
+  - <span class="hljs-attribute">to</span>: YOUR_EMAIL
+    <span class="hljs-attribute">from</span>: YOUR_EMAIL
+    <span class="hljs-attribute">smarthost</span>: smtp.gmail.<span class="hljs-attribute">com</span>:<span class="hljs-number">587</span>
+    <span class="hljs-attribute">auth_username</span>: YOUR_EMAIL
+    <span class="hljs-attribute">auth_identity</span>: YOUR_EMAIL
+    <span class="hljs-attribute">auth_password</span>: YOUR_APP_PASSWORD
+    <span class="hljs-attribute">send_resolved</span>: true
+</code></pre>
+<p>With the above configuration, alerts will be sent using the the email you set above. Remember to
+change <code>YOUR_EMAIL</code> to your email and paste the app password you just saved earlier to the
+<code>YOUR_APP_PASSWORD</code>.</p>
+<p>Next, create another <code>systemd</code> configuration file named <code>alertmanager.service</code> by running the
+command <code>sudo nano /etc/systemd/system/alertmanager.service</code> with the following config.</p>
+<blockquote>
+<p>SERVER_IP - Change to your host IP address amd make sure port 9093 is opened</p>
+</blockquote>
+<pre><code class="hljs">[Unit]
+<span class="hljs-attribute">Description</span>=AlertManager<span class="hljs-built_in"> Server Service
+</span><span class="hljs-attribute">Wants</span>=network-online.target
+<span class="hljs-attribute">After</span>=network-online.target
+
+[Service]
+<span class="hljs-attribute">User</span>=root
+<span class="hljs-attribute">Group</span>=root
+<span class="hljs-attribute">Type</span>=simple
+<span class="hljs-attribute">ExecStart</span>=/usr/local/bin/alertmanager --config.file /etc/alertmanager/alertmanager.yml --web.<span class="hljs-attribute">external-url</span>=http://SERVER_IP:9093 --cluster.advertise-a$
+
+
+[Install]
+<span class="hljs-attribute">WantedBy</span>=multi-user.target
+</code></pre>
+<p>To the start the Alertmanager, run the following commands:</p>
+<pre><code class="hljs">sudo<span class="hljs-keyword"> system</span>ctl daemon-reload &amp;&amp;<span class="hljs-keyword"> system</span>ctl start alertmanager &amp;&amp;<span class="hljs-keyword"> system</span>ctl enable alertmanager &amp;&amp;<span class="hljs-keyword"> system</span>ctl status alertmanager
+</code></pre>
+<pre><code class="hljs"><span class="hljs-string">●</span> <span class="hljs-string">alertmanager.service</span> <span class="hljs-bullet">-</span> <span class="hljs-string">AlertManager</span> <span class="hljs-string">Server</span> <span class="hljs-string">Service</span>
+   <span class="hljs-attr">Loaded:</span> <span class="hljs-string">loaded</span> <span class="hljs-string">(/etc/systemd/system/alertmanager.service;</span> <span class="hljs-string">enabled;</span> <span class="hljs-attr">vendor preset:</span> <span class="hljs-string">enabled)</span>
+   <span class="hljs-attr">Active:</span> <span class="hljs-string">active</span> <span class="hljs-string">(running)</span> <span class="hljs-string">since</span> <span class="hljs-string">Thu</span> <span class="hljs-number">2020</span><span class="hljs-number">-08</span><span class="hljs-number">-20</span> <span class="hljs-number">22</span><span class="hljs-string">:01:21</span> <span class="hljs-string">CEST;</span> <span class="hljs-number">3</span> <span class="hljs-string">days</span> <span class="hljs-string">ago</span>
+ <span class="hljs-attr">Main PID:</span> <span class="hljs-number">20592</span> <span class="hljs-string">(alertmanager)</span>
+    <span class="hljs-attr">Tasks:</span> <span class="hljs-number">70</span> <span class="hljs-string">(limit:</span> <span class="hljs-number">9830</span><span class="hljs-string">)</span>
+   <span class="hljs-attr">CGroup:</span> <span class="hljs-string">/system.slice/alertmanager.service</span>
+</code></pre>
+<p>You should see the process status is &quot;active (running)&quot; if you have configured properly.</p>
+<p>There is a Alertmanager plugin in Grafana that can help you to monitor the alert information. To
+install it, execute the command below:</p>
+<pre><code class="hljs">sudo grafana-<span class="hljs-keyword">cli</span> plugins install camptocamp-prometheus-alertmanager-datasource
+</code></pre>
+<p>And restart Grafana once the plugin is successfully installed.</p>
+<pre><code class="hljs">sudo<span class="hljs-built_in"> service </span>grafana-server restart
+</code></pre>
+<p>Now go to your Grafana dashboard <code>SERVER_IP:3000</code> and configure the Alertmanager datasource.</p>
+<p><img src="/docs/assets/guides/how-to-monitor/5-alert-manager.png" alt="grafana-am-5"></p>
+<p>Go to Configuration -&gt; Data Sources, search &quot;Prometheus AlertManger&quot; if you cannot find it at the
+top.</p>
+<p><img src="/docs/assets/guides/how-to-monitor/2-alert-manager.png" alt="grafana-am-2"></p>
+<p>Fill in the <code>URL</code> to your server location followed by the port number used in the Alertmanager.</p>
+<p>Then click &quot;Save &amp; Test&quot; at the bottom to test the connection.</p>
+<p><img src="/docs/assets/guides/how-to-monitor/3-alert-manager.png" alt="grafana-am-3"></p>
+<p>To monitor the alerts, let's import dashboard &quot;<a href="https://grafana.com/dashboards/8010">8010</a>&quot; that is
+used for Alertmanager. And make sure to select the &quot;Prometheus AlertManager&quot; in the last column.
+Then click &quot;Import&quot;.</p>
+<p>You will end up having the follwing:</p>
+<p><img src="/docs/assets/guides/how-to-monitor/4-alert-manager.png" alt="grafana-am-4"></p>
+<h3><a class="anchor" aria-hidden="true" id="alertmanager-integration"></a><a href="#alertmanager-integration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AlertManager Integration</h3>
+<p>To let the Prometheus server be able to talk to the Alertmanger, we will need to add the following
+config in the <code>etc/prometheus/prometheus.yml</code>.</p>
+<pre><code class="hljs"><span class="hljs-attribute">rule_files</span>:
+  - <span class="hljs-string">'rules.yml'</span>
+
+<span class="hljs-attribute">alerting</span>:
+  <span class="hljs-attribute">alertmanagers</span>:
+  - <span class="hljs-attribute">static_configs</span>:
+    - <span class="hljs-attribute">targets</span>:
+      - <span class="hljs-attribute">localhost</span>:<span class="hljs-number">9093</span>
+</code></pre>
+<p>That is the updated <code>etc/prometheus/prometheus.yml</code>.</p>
+<pre><code class="hljs"><span class="hljs-attribute">global</span>:
+  <span class="hljs-attribute">scrape_interval</span>:     <span class="hljs-number">15s</span>
+  <span class="hljs-attribute">evaluation_interval</span>: <span class="hljs-number">15s</span>
+
+<span class="hljs-attribute">rule_files</span>:
+  - <span class="hljs-string">'rules.yml'</span>
+
+<span class="hljs-attribute">alerting</span>:
+  <span class="hljs-attribute">alertmanagers</span>:
+  - <span class="hljs-attribute">static_configs</span>:
+    - <span class="hljs-attribute">targets</span>:
+      - <span class="hljs-attribute">localhost</span>:<span class="hljs-number">9093</span>
+
+<span class="hljs-attribute">scrape_configs</span>:
+  - <span class="hljs-attribute">job_name</span>: <span class="hljs-string">'prometheus'</span>
+    <span class="hljs-attribute">scrape_interval</span>: <span class="hljs-number">5s</span>
+    <span class="hljs-attribute">static_configs</span>:
+      - <span class="hljs-attribute">targets</span>: [<span class="hljs-string">'localhost:9090'</span>]
+  - <span class="hljs-attribute">job_name</span>: <span class="hljs-string">'substrate_node'</span>
+    <span class="hljs-attribute">scrape_interval</span>: <span class="hljs-number">5s</span>
+    <span class="hljs-attribute">static_configs</span>:
+      - <span class="hljs-attribute">targets</span>: [<span class="hljs-string">'localhost:9615'</span>]
+</code></pre>
+<p>We will need to create a new file called &quot;rules.yml&quot; under <code>/etc/prometheus/</code> that is defined all
+the rules we would like to detect. If any of the rules defined in this file is fulfilled, an alert
+will be triggered. The rule below checks whether the instance is down. If it is down for more than 5
+minutes, an email notification will be sent. If you would like to learn more about the details of
+the rule defining, go
+<a href="https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/">here</a>. There are other
+interesting alerts you may find useful <a href="https://awesome-prometheus-alerts.grep.to/rules.html">here</a>.</p>
+<pre><code class="hljs"><span class="hljs-attr">groups:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">alert_rules</span>
+    <span class="hljs-attr">rules:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">alert:</span> <span class="hljs-string">InstanceDown</span>
+        <span class="hljs-attr">expr:</span> <span class="hljs-string">up</span> <span class="hljs-string">==</span> <span class="hljs-number">0</span>
+        <span class="hljs-attr">for:</span> <span class="hljs-string">5m</span>
+        <span class="hljs-attr">labels:</span>
+          <span class="hljs-attr">severity:</span> <span class="hljs-string">critical</span>
+        <span class="hljs-attr">annotations:</span>
+          <span class="hljs-attr">summary:</span> <span class="hljs-string">"Instance [<span class="hljs-template-variable">{{ $labels.instance }}</span>] down"</span>
+          <span class="hljs-attr">description:</span> <span class="hljs-string">"[<span class="hljs-template-variable">{{ $labels.instance }}</span>] of job [<span class="hljs-template-variable">{{ $labels.job }}</span>] has been down for more than 1 minute."</span>
+</code></pre>
+<p>Change the ownership of this file to <code>prometheus</code> instead of <code>root</code> by running:</p>
+<pre><code class="hljs"><span class="hljs-selector-tag">sudo</span> <span class="hljs-selector-tag">chown</span> <span class="hljs-selector-tag">prometheus</span><span class="hljs-selector-pseudo">:prometheus</span> <span class="hljs-selector-tag">rules</span><span class="hljs-selector-class">.yml</span>
+</code></pre>
+<p>To check the rules defined in the &quot;rules.yml&quot; is syntactically correct, run the following command:</p>
+<pre><code class="hljs">promtool<span class="hljs-built_in"> check </span>rules rules.yml
+</code></pre>
+<p>Finally, restart everthing by running:</p>
+<pre><code class="hljs">sudo systemctl <span class="hljs-meta">stop</span> prometheus <span class="hljs-variable">&amp;&amp;</span> systemctl start prometheus <span class="hljs-variable">&amp;&amp;</span>  systemctl <span class="hljs-meta">stop</span> alertmanager <span class="hljs-variable">&amp;&amp;</span> systemctl start alertmanager
+</code></pre>
+<p>Now if one of your target instances down, you will receive an alert on the AlertManager and Gmail
+like below.</p>
+<p><img src="/docs/assets/guides/how-to-monitor/6-alert-manager.png" alt="grafana-am-6"></p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/4/2020 by Anson Lau</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#preparation">Preparation</a></li><li><a href="#installing-and-configuring-prometheus">Installing and Configuring Prometheus</a></li><li><a href="#starting-prometheus">Starting Prometheus</a></li><li><a href="#installing-grafana">Installing Grafana</a></li><li><a href="#installing-and-configuring-alertmanager-optional">Installing and Configuring Alertmanager (Optional)</a><ul class="toc-headings"><li><a href="#gmail-setup">Gmail Setup</a></li><li><a href="#alertmanager-configuration">AlertManager Configuration</a></li><li><a href="#alertmanager-integration">AlertManager Integration</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '53c6a4ab0d77c0755375a971c9b7cc3d',
+                indexName: 'kusama_guide',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>
