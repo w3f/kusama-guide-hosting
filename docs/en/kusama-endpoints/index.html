@@ -76,8 +76,8 @@
 <a href="https://polkadot.js.org/apps">Polkadot Apps</a> or other UIs and programmatic methods, you'd ideally
 be running your own node (<a href="maintain-sync">text guide</a>,
 <a href="https://www.youtube.com/watch?v=31DdfcxbAVs">video guide</a>). Granted, that's not something everyone
-can or wants to do, so convenience trumps ideals in most cases. To facilitate this convenience,
-Kusama has several public endpoints you can use for your apps.</p>
+wants to do, so convenience trumps ideals in most cases. To facilitate this convenience, Kusama has
+several public endpoints you can use for your apps.</p>
 <h2><a class="anchor" aria-hidden="true" id="parity-archive-node"></a><a href="#parity-archive-node" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parity Archive Node</h2>
 <p>The development company Parity maintains an archive node at endpoint
 <code>wss://kusama-rpc.polkadot.io/</code>.</p>
@@ -91,47 +91,21 @@ Kusama has several public endpoints you can use for your apps.</p>
 </code></pre>
 <p>or in Polkadot Apps UI by clicking the top-left corner of the screen and selecting the appropriate
 option:</p>
-<p><img src="/img/endpoints/parity.png" alt="Selecting Parity's Node"></p>
+<p><img src="/img/endpoints/kusama_endpoint_parity.png" width=40%/></p>
 <h2><a class="anchor" aria-hidden="true" id="web3-foundation-archive-node"></a><a href="#web3-foundation-archive-node" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Web3 Foundation Archive Node</h2>
 <p>The Web3 Foundation maintains an archive node at endpoint <code>wss://cc3-5.kusama.network/</code>.</p>
-<p>To connect to this node, replace the endpoint in the JavaScript snippet above.</p>
+<p>To connect to this node, use the endpoint in your JavaScript apps like so:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span>{ ApiPromise, WsProvider } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@polkadot/api'</span>)
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> provider = <span class="hljs-keyword">new</span> WsProvider(<span class="hljs-string">'wss://cc3-5.kusama.network/'</span>)
+    <span class="hljs-keyword">const</span> api = <span class="hljs-keyword">await</span> ApiPromise.create({ provider })
+    <span class="hljs-comment">// ...</span>
+</code></pre>
 <p>Connect to it in Polkadot Apps UI by clicking the top-left corner of the screen and selecting the
 appropriate option:</p>
-<p><img src="/img/endpoints/w3f.png" alt="Selecting W3F's Node"></p>
-<h2><a class="anchor" aria-hidden="true" id="kusama-ryo-full-node-cloud"></a><a href="#kusama-ryo-full-node-cloud" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kusama RYO Full Node Cloud</h2>
-<p>RYO (Run Your Own) infrastructure from <a href="https://ava.do">Avado</a> is a load balancer - a server
-redirecting requests randomly to other computers - to which you can attach your own home-run node.
-This means that by connecting to the load balancer's endpoint, you're randomly connecting to another
-person's public node: the convenience of one reliable endpoint, without the downside of
-centralization*.</p>
-<p>Check the current status of the Kusama RYO cloud including available nodes at
-<a href="https://status.cloud.ava.do/">https://status.cloud.ava.do/</a></p>
-<p>To connect to the RYO cloud, use the endpoint <code>wss://kusama.polkadot.cloud.ava.do/</code> in the
-JavaScript code.</p>
-<p>Connect to the endpoint in Polkadot Apps UI by clicking the top-left corner of the screen and
-selecting the appropriate option:</p>
-<p><img src="/img/endpoints/ryo.png" alt="Selecting the RYO cloud"></p>
-<h3><a class="anchor" aria-hidden="true" id="things-to-know"></a><a href="#things-to-know" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Things to know</h3>
-<h4><a class="anchor" aria-hidden="true" id="reliability"></a><a href="#reliability" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Reliability</h4>
-<p>There is no incentive to run these public nodes yet. We're working on making that happen. Ideally,
-the Kusama Treasury would fund this public infrastructure venture. For now, running the nodes is
-altruistic.</p>
-<h4><a class="anchor" aria-hidden="true" id="centralization"></a><a href="#centralization" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>*Centralization</h4>
-<p>The nodes are distributed and decentralized, but the load balancer serving them requests isn't. The
-Ava.do team is actively looking for other companies and organizations willing to run load balancers
-as backups to the main one - <a href="https://t.me/joinchat/F_LlkBLEoDrFioPNviEpsQ">get in touch</a> if you'd
-like to lend a hand.</p>
-<h4><a class="anchor" aria-hidden="true" id="full-nodes"></a><a href="#full-nodes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Full nodes</h4>
-<p>The nodes in the RYO cloud are currently <em>full nodes</em>, not <em>archive nodes</em>. To learn the difference,
-<a href="https://www.youtube.com/watch?v=31DdfcxbAVs">watch this crash course</a>. If you need archive data,
-run your own archive node or use a Parity or W3F hosted node for now. Archive nodes in RYO are
-planned for a future update.</p>
-<h4><a class="anchor" aria-hidden="true" id="avado-only"></a><a href="#avado-only" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Avado Only</h4>
-<p>For now, the RYO cloud can be joined only with Ava.do hardware. This is a guarantee that the
-hardware is at or above minimum requirements, so that the endpoint can guarantee a reliable node on
-the other end. In the future, fully custom remote-run and even cloud-run nodes will be able to join
-the RYO cloud.</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 5/4/2020 by joe petrowski</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/kusama-claims"><span class="arrow-prev">← </span><span>Claims</span></a><a class="docs-next button" href="/docs/en/mirror-maintain-guides-how-to-validate-kusama"><span>How to run a Validator on Kusama</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#parity-archive-node">Parity Archive Node</a></li><li><a href="#web3-foundation-archive-node">Web3 Foundation Archive Node</a></li><li><a href="#kusama-ryo-full-node-cloud">Kusama RYO Full Node Cloud</a><ul class="toc-headings"><li><a href="#things-to-know">Things to know</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+<p><img src="/img/endpoints/kusama_endpoint_web3.png" width=40%/></p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/4/2020 by Kirsten Richard</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/kusama-claims"><span class="arrow-prev">← </span><span>Claims</span></a><a class="docs-next button" href="/docs/en/mirror-maintain-guides-how-to-validate-kusama"><span>How to run a Validator on Kusama</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#parity-archive-node">Parity Archive Node</a></li><li><a href="#web3-foundation-archive-node">Web3 Foundation Archive Node</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
