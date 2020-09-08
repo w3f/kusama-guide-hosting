@@ -1,0 +1,212 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Using Ledger Devices · Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Kusama has a [Ledger][] application that is compatible with the Ledger Nano S and Ledger Nano X"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Using Ledger Devices · Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://guide.kusama.network/"/><meta property="og:description" content="Kusama has a [Ledger][] application that is compatible with the Ledger Nano S and Ledger Nano X"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="/css/klaro.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="/js/custom.js"></script><script type="text/javascript" src="/js/klaro-config.js"></script><script type="text/javascript" src="/js/klaro.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/./img/Kusama_logotype_white_large.png" alt="Guide"/><h2 class="headerTitleWithLogo">Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/en/kusama-getting-started" target="_self">Get Started</a></li><li class="siteNavGroupActive"><a href="/docs/en/kusama-index" target="_self">Docs</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/zh-CN/kusama-ledger">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Kusama</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Kusama<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/kusama-index">Home</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Get Started</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/kusama-getting-started">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-faucet">Faucet</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-claims">Claims</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-endpoints">Kusama Endpoints</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Try</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/mirror-maintain-guides-how-to-validate-kusama">How to run a Validator on Kusama</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-maintain-guides-how-to-nominate-kusama">Nominator Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-governance">Governance</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-identity">Identity</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-treasury">Treasury</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-build-build-with-polkadot">Polkadot Builders Starter&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/maintain-guides-society-kusama">Join Kappa Sigma Mu</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-social-recovery">Account Recovery</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Break</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/mirror-maintain-errors">Resolving Errors</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-bug-bounty">Bug Bounty</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-adverserial-cheatsheet">Adverserial Cheatsheet</a></li></ul></div><li class="navListItem navListItemActive"><a class="navItem" href="/docs/en/kusama-ledger">Ledger Devices</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-timeline">Timeline</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-community">Community</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-parameters">Parameters</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-coc">Code of Conduct</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/kusama-ledger.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Using Ledger Devices</h1></header><article><div><span><p>Kusama has a <a href="https://www.ledger.com/">Ledger</a> application that is compatible with the Ledger Nano S and Ledger Nano X
+devices. The Ledger devices are hardware wallets that keep your private key secured on a physical
+device that does not get directly exposed to your computer or the internet. It is strongly
+recommended to use a hardware wallet if you are managing a significant amount of funds.</p>
+<p>The Kusama application allows you to manage Kusama's native asset, the KSM. It supports most of the
+available transaction types of the network (a notable exception is the &quot;Batch&quot; transaction from the
+Utility pallet).</p>
+<h2><a class="anchor" aria-hidden="true" id="requirements"></a><a href="#requirements" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Requirements</h2>
+<p>This is a list of what you will need before starting:</p>
+<ul>
+<li>A Ledger Nano S or a Ledger Nano X.</li>
+<li>The latest firmware installed (at the time of writing this was 1.6).</li>
+<li>Ledger Live is installed.</li>
+<li>A web browser is installed that you can use to access <a href="https://polkadot.js.org/apps">Polkadot-JS Apps</a>.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="installing-the-ledger-application"></a><a href="#installing-the-ledger-application" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installing the Ledger Application</h2>
+<h3><a class="anchor" aria-hidden="true" id="using-ledger-live"></a><a href="#using-ledger-live" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using Ledger Live</h3>
+<ul>
+<li>Open the &quot;Manager&quot; tab in Ledger Live.</li>
+<li>Connect and unlock your Ledger device.</li>
+<li>If asked, allow the manager on your device by pressing the right button.</li>
+<li>Find Kusama in the app catalog.</li>
+<li>Click the &quot;Install&quot; button of the app.</li>
+<li>An installation window appears.</li>
+<li>Your device will display &quot;Processing…&quot;.</li>
+<li>The app installation is confirmed.</li>
+</ul>
+<p>Please proceed to the usage instructions below.</p>
+<h3><a class="anchor" aria-hidden="true" id="using-the-developer-release"></a><a href="#using-the-developer-release" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using the Developer Release</h3>
+<blockquote>
+<p>NOTE: These instructions are for development installation only. It is recommended to install the
+application from Ledger Live unless you <em>know exactly what you're doing</em>.</p>
+</blockquote>
+<p>Instructions for downloading the prerelease binary from the GitHub releases is written <a href="https://github.com/Zondax/ledger-kusama#download-and-install">on the
+README</a> for the Kusama Ledger application GitHub repository.</p>
+<p>On the <a href="https://github.com/Zondax/ledger-kusama/releases">releases page</a> you can download the shell script <code>install_app.sh</code> and then make it
+executable in your shell by typing the command <code>chmod +x install_app.sh</code>.</p>
+<p>Using <code>install_app.sh</code> help command will show you the available options:</p>
+<pre><code class="hljs css language-zsh">$ ./install_app.sh --<span class="hljs-built_in">help</span>
+Zondax Installer [Kusama-1.2011.1] [Warning: use only <span class="hljs-keyword">for</span> <span class="hljs-built_in">test</span>/demo apps]
+  load    - Load Kusama app
+  delete  - Delete Kusama app
+  version - Show Kusama app version
+</code></pre>
+<p>Next, you must make sure your Ledger device is plugged in and unlocked and you're using the latest
+firmware (1.6 at the time of writing). If everything is prepared, then type <code>install_app.sh load</code>
+and accept the prompts on your Ledger device to install the application.</p>
+<p>First it will prompt you to allow an unsafe manager. Navigate all the way to the left and click both
+buttons to allow the unsafe manager to install the Kusama app.</p>
+<p>After some processing time, the screen of your device will update to say &quot;Install app Kusama&quot;.
+Again, navigate all the way to the right, verify the Identifier hash matches the one that is printed
+in your terminal. Click both buttons on &quot;Perform Installation&quot; to install the application. It will
+ask again for your Pin code and you should enter it in the device.</p>
+<p>At the end of the process you should have the newly installed Kusama application on the device.</p>
+<h2><a class="anchor" aria-hidden="true" id="using-on-polkadot-js-apps"></a><a href="#using-on-polkadot-js-apps" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using on Polkadot-JS Apps</h2>
+<h3><a class="anchor" aria-hidden="true" id="loading-your-account"></a><a href="#loading-your-account" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Loading Your Account</h3>
+<p><a href="https://polkadot.js.org/apps">Polkadot-JS Apps</a> already has an integration with the Ledger application so that your device will
+work with the browser interface after installation. The functionality is currently gated behind a
+feature setting that you will need to turn on.</p>
+<p>In order to turn on the interoperability with the Kusama Ledger application, go to the &quot;Settings&quot;
+tab in Polkadot-JS Apps. Find the option for attachting Ledger devices and switch the option from
+the default &quot;Do not attach Ledger devices&quot; to &quot;Attach Ledger via WebUSB&quot;.</p>
+<p><img src="/docs/assets/ledger.png" alt=""></p>
+<p>Click &quot;Save&quot; to keep your settings.</p>
+<p>Now when you go to the &quot;Accounts&quot; tab you will see a new button that says &quot;Query Ledger&quot;. Ensure
+that your Ledger device is unlocked and you have navigated into the Kusama application, then click
+the &quot;Query Ledger&quot; button.</p>
+<p><img src="/docs/assets/ledger-2.png" alt=""></p>
+<p>You will not get any feedback from the web page, but if all went well you should be able to scroll
+down and find a new account on the page named &quot;Ledger&quot;. Under the type column, the account will also
+show &quot;ledger&quot;.</p>
+<p><img src="/docs/assets/ledger-3.png" alt=""></p>
+<p>You can now use this account to interact with Kusama on Polkadot-JS Apps and it will prompt your
+ledger for confirmation when you initiate a transaction.</p>
+<h3><a class="anchor" aria-hidden="true" id="confirming-the-address-on-your-device"></a><a href="#confirming-the-address-on-your-device" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Confirming the Address on your Device</h3>
+<p>On the &quot;Accounts&quot; tab, find your Ledger-connected account (the one called &quot;Ledger&quot;). Click on the
+three vertical dots at the left of the row. This will open a new menu, here you can click the &quot;Show
+address on hardware device&quot; option to display the address on your device.</p>
+<p><img src="/docs/assets/ledger-4.png" alt=""></p>
+<p>Here you can scroll through and make sure the address matches to what is displayed on Polkadot-JS
+Apps.</p>
+<h3><a class="anchor" aria-hidden="true" id="checking-balance-of-your-account"></a><a href="#checking-balance-of-your-account" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Checking Balance of Your Account</h3>
+<p>There are a few methods to check the balance of your account. You can use Polkadot-JS Apps or you
+can use a block explorer like Polkascan.</p>
+<h4><a class="anchor" aria-hidden="true" id="using-polkadot-js-apps"></a><a href="#using-polkadot-js-apps" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using Polkadot-JS Apps</h4>
+<p>Once you have your account loaded on the &quot;Accounts&quot; tab it should show a row with your Ledger
+account. At the far right of the row is located your account's KSM balances. If you click the menu
+open it will show details of your balance such as locks or reserve amounts.</p>
+<h3><a class="anchor" aria-hidden="true" id="using-a-block-explorer"></a><a href="#using-a-block-explorer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using a Block Explorer</h3>
+<p>You can also use a block explorer such as <a href="https://polkascan.io/kusama">Polkascan</a> or <a href="https://kusama.subscan.io/">Subscan</a> to check the KSM balance of
+your account. On these block explorers you can search for you account in the search box and click on
+it to reveal the details. It will show your KSM balance as well as information about your bonded or
+locked amounts.</p>
+<h3><a class="anchor" aria-hidden="true" id="sending-a-transfer"></a><a href="#sending-a-transfer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sending a Transfer</h3>
+<p>If you would like to send a transfer from your account housed on the Ledger device, the easiest
+method is to use <a href="https://polkadot.js.org/apps">Polkadot-JS Apps</a>.</p>
+<ul>
+<li>Click on the &quot;Transfer&quot; button in &quot;Accounts&quot; dropdown in the top navigation menu.</li>
+<li>In the top input, select &quot;Ledger&quot; as your sending account.</li>
+<li>In the second input, select the account that you want to transfer funds to.</li>
+<li>In the third input, enter the amount of KSM you want to transfer.</li>
+<li>Click the &quot;Make Transfer&quot; button.</li>
+<li>Confirm the transaction on your device.</li>
+<li>A green success notification will be displayed when the transaction is included in a block.</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="receiving-a-transfer"></a><a href="#receiving-a-transfer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Receiving a Transfer</h3>
+<p>In order to receive a transfer on the account that is stored on your Ledger device, you will need to
+provide the sender (i.e. the payer) your address. You can copy your address to the clipboard after
+loading your device on Polkadot-JS Apps by clicking the account icon or by highlighting the address
+and pressing ctrl-c (command-c on Apple keyboards). Then you will provide your address to the payer
+so they can send a transfer.</p>
+<h2><a class="anchor" aria-hidden="true" id="support"></a><a href="#support" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Support</h2>
+<p>If you need support please send an email to <a href="mailto:support@kusama.network">support@kusama.network</a>.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/8/2020 by Logan Saether</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/kusama-adverserial-cheatsheet"><span class="arrow-prev">← </span><span>Adverserial Cheatsheet</span></a><a class="docs-next button" href="/docs/en/kusama-timeline"><span>Timeline</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#requirements">Requirements</a></li><li><a href="#installing-the-ledger-application">Installing the Ledger Application</a><ul class="toc-headings"><li><a href="#using-ledger-live">Using Ledger Live</a></li><li><a href="#using-the-developer-release">Using the Developer Release</a></li></ul></li><li><a href="#using-on-polkadot-js-apps">Using on Polkadot-JS Apps</a><ul class="toc-headings"><li><a href="#loading-your-account">Loading Your Account</a></li><li><a href="#confirming-the-address-on-your-device">Confirming the Address on your Device</a></li><li><a href="#checking-balance-of-your-account">Checking Balance of Your Account</a></li><li><a href="#using-a-block-explorer">Using a Block Explorer</a></li><li><a href="#sending-a-transfer">Sending a Transfer</a></li><li><a href="#receiving-a-transfer">Receiving a Transfer</a></li></ul></li><li><a href="#support">Support</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '53c6a4ab0d77c0755375a971c9b7cc3d',
+                indexName: 'kusama_guide',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>
