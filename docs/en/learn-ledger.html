@@ -20,6 +20,12 @@
 <p>Note: Because of required WebUSB support, Ledger wallets currently only work on Chromium-based
 browsers like Brave and Chrome.</p>
 </blockquote>
+<blockquote>
+<p>Warning: Because of a recent runtime upgrade to Polkadot, the Ledger app hosted on Ledger's app
+store in Ledger Live does not work. A fix has already been submitted and is pending review, but if
+you urgently need to interact with your Ledger account, follow the
+<a href="#using-the-developer-release">manual installation instructions</a>.</p>
+</blockquote>
 <p>The Polkadot <a href="https://www.ledger.com/">Ledger</a> application is compatible with both the Ledger Nano S and the Ledger Nano X
 devices. Ledger devices are hardware wallets that keep your secret secured on a physical device that
 does not expose it to your computer or the internet. It is strongly recommend to use a hardware
@@ -82,22 +88,27 @@ tab in Polkadot-JS Apps. Find the option for attaching Ledger devices and switch
 default &quot;Do not attach Ledger devices&quot; to &quot;Attach Ledger via WebUSB&quot;.</p>
 <p><img src="/docs/assets/ledger.png" alt="Dropdown selector for allowing Ledger connections in PolkadotJS Settings"></p>
 <p>Click &quot;Save&quot; to keep your settings.</p>
-<p>Now when you go to the &quot;Accounts&quot; tab you will see a new button that says &quot;Query Ledger&quot;. Ensure
-that your Ledger device is unlocked and you have navigated into the Polkadot application, then click
-this button.</p>
-<p><img src="/docs/assets/ledger/query-ledger.png" alt="Query Ledger button in PolkadotJS"></p>
-<p>Depending on your browser and its security settings, you might need to confirm the USB connection
-through a popup like the one below:</p>
-<p><img src="/docs/assets/ledger/query-device.png" alt="Display of the Ledger account in the Accounts list of PolkadotJS"></p>
-<p>You should be able to scroll down and find a new account on the page named &quot;Ledger&quot;. Under the type
-column, the account will also show &quot;Ledger&quot;.</p>
-<p><img src="/docs/assets/ledger/ledger-balance.png" alt="Confirm device connection popup"></p>
+<p>Now when you go to the &quot;Accounts&quot; tab you will see a new button that says &quot;Add Ledger&quot;. Ensure that
+your Ledger device is unlocked and you have navigated into the Polkadot application, then click this
+button.</p>
+<p><img src="/docs/assets/ledger/query-ledger.png" alt="Add Ledger button in PolkadotJS"></p>
+<p>A popup will appear asking you to select an account and derivation path.</p>
+<p><img src="/docs/assets/ledger/add-account.png" alt="Picking an account and derivation path"></p>
+<p>The first option lets you select an account. You can have multiple accounts on a single Ledger
+device. The second dropdown lets you pick a derivation path - think of it like a formula from which
+child accounts are generated. If in doubt, pick the first option for both.</p>
+<p>Once you confirm your selection, depending on your browser and its security settings, you might need
+to confirm the USB connection through a popup like the one below when adding the Ledger device for
+the first time:</p>
+<p><img src="/docs/assets/ledger/query-device.png" alt="Display the device connection popup"></p>
+<p>You should now be able to scroll down and find a new account on the page with the type &quot;ledger&quot;.</p>
+<p><img src="/docs/assets/ledger/ledger-balance.png" alt="Displaying the Ledger account in the list"></p>
 <p>You can now use this account to interact with Polkadot on Polkadot-JS Apps and it will prompt your
 ledger for confirmation when you initiate a transaction.</p>
 <h3><a class="anchor" aria-hidden="true" id="confirming-the-address-on-your-device"></a><a href="#confirming-the-address-on-your-device" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Confirming the Address on your Device</h3>
-<p>On the &quot;Accounts&quot; tab, find your Ledger-connected account (the one called &quot;Ledger&quot;). Click on the
-three vertical dots at the end of the row. This will open a new menu, here you can click the &quot;Show
-address on hardware device&quot; option to display the address on your device.</p>
+<p>On the &quot;Accounts&quot; tab, find your Ledger-connected account. Click on the three vertical dots at the
+end of the row. This will open a new menu, here you can click the &quot;Show address on hardware device&quot;
+option to display the address on your device.</p>
 <p><img src="/docs/assets/ledger-4.png" alt="Options menu of an account in the Accounts screen of PolkadotJS"></p>
 <p>Here you can scroll through and make sure the address matches to what is displayed on Polkadot-JS
 Apps.</p>
@@ -118,12 +129,11 @@ locked amounts.</p>
 <p>Instructions to send a transfer can be found on the
 <a href="learn-balance-transfers">balance transfer page</a>.</p>
 <h3><a class="anchor" aria-hidden="true" id="receiving-a-transfer"></a><a href="#receiving-a-transfer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Receiving a Transfer</h3>
-<p>In order to receive a transfer on the account that is stored on your Ledger device, you will need to
+<p>In order to receive a transfer on the accounts stored on your Ledger device, you will need to
 provide the sender (i.e. the payer) with your address.</p>
-<p>The easiest way to get your address is to click on the account name (Ledger) which will open a
-sidebar. Your address will be shown in this sidebar, along with some other information. Another
-method is just clicking on your account's avatar icon - this immediately copies your address to the
-clipboard.</p>
+<p>The easiest way to get your address is to click on the account name which will open a sidebar. Your
+address will be shown in this sidebar, along with some other information. Another method is just
+clicking on your account's avatar icon - this immediately copies your address to the clipboard.</p>
 <blockquote>
 <p><strong>Warning</strong>: before giving anyone your address, make sure it matches what's really on the Ledger
 by <a href="#confirming-the-address-on-your-device">confirming the address on your device</a>. Some malware
@@ -149,7 +159,7 @@ page.</li>
 <p>If you need support please send an email to
 <a href="mailto:support@polkadot.network">support@polkadot.network</a> or visit our
 <a href="https://support.polkadot.network">Support Page</a>.</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/15/2020 by Bruno Škvorc</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#requirements">Requirements</a></li><li><a href="#installing-the-ledger-application">Installing the Ledger Application</a><ul class="toc-headings"><li><a href="#using-ledger-live">Using Ledger Live</a></li><li><a href="#using-the-developer-release">Using the Developer Release</a></li></ul></li><li><a href="#using-on-polkadot-js-apps">Using on Polkadot-JS Apps</a><ul class="toc-headings"><li><a href="#loading-your-account">Loading Your Account</a></li><li><a href="#confirming-the-address-on-your-device">Confirming the Address on your Device</a></li><li><a href="#checking-the-balance-of-your-account">Checking the Balance of Your Account</a></li><li><a href="#sending-a-transfer">Sending a Transfer</a></li><li><a href="#receiving-a-transfer">Receiving a Transfer</a></li><li><a href="#staking">Staking</a></li></ul></li><li><a href="#support">Support</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/16/2020 by Bruno Škvorc</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#requirements">Requirements</a></li><li><a href="#installing-the-ledger-application">Installing the Ledger Application</a><ul class="toc-headings"><li><a href="#using-ledger-live">Using Ledger Live</a></li><li><a href="#using-the-developer-release">Using the Developer Release</a></li></ul></li><li><a href="#using-on-polkadot-js-apps">Using on Polkadot-JS Apps</a><ul class="toc-headings"><li><a href="#loading-your-account">Loading Your Account</a></li><li><a href="#confirming-the-address-on-your-device">Confirming the Address on your Device</a></li><li><a href="#checking-the-balance-of-your-account">Checking the Balance of Your Account</a></li><li><a href="#sending-a-transfer">Sending a Transfer</a></li><li><a href="#receiving-a-transfer">Receiving a Transfer</a></li><li><a href="#staking">Staking</a></li></ul></li><li><a href="#support">Support</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
