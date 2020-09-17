@@ -17,24 +17,43 @@
           }
         });
       </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-balance-transfers.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Balance Transfers</h1></header><article><div><span><p>Balance transfers are used to send one balance from one account to another account. To start
-transferring balances, we will begin by using the Polkadot-JS User Interface.</p>
-<h2><a class="anchor" aria-hidden="true" id="polkadot-js-ui"></a><a href="#polkadot-js-ui" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Polkadot-JS UI</h2>
-<p>Begin by opening up the <a href="https://polkadot.js.org/apps">Polkadot-JS UI</a>. There are two ways to make a
-transaction: underneath &quot;Accounts&quot; by using the &quot;Transfer&quot; tab or through the &quot;Accounts&quot; tab. We
-will be starting off with the Accounts tab, so head there.</p>
+transferring balances, we will begin by using <a href="https://polkadot.js.org/apps">Polkadot-JS Apps</a>. This guide assumes that you've
+already <a href="learn-account-generation">created an account</a> and have some funds that will be transferred.</p>
+<h2><a class="anchor" aria-hidden="true" id="polkadot-js-apps"></a><a href="#polkadot-js-apps" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Polkadot-JS Apps</h2>
 <blockquote>
-<p>Please note: For these examples, the network of choice is Polkadot. If you'd like to change this,
-please click on the network selection from the top left corner of the navigation.</p>
+<p>NOTE: In this walkthrough we will be using the Polkadot network. If you would like to switch to
+Kusama or a different network, you can change it by clicking the top left navigation dropdown and
+selecting a different network.</p>
 </blockquote>
-<p>Assuming that you've already <a href="learn-account-generation">created a Polkadot or Kusama account</a>, we
-will click on the &quot;send&quot; button beside the account you'd like to send from.</p>
-<p><img src="/docs/assets/account-page-transfers.png" alt=""></p>
-<p>There should be a window that pops up displaying the sender, the receiver, the amount, and the
-existential deposit (minimum amount you must have in your account balance).</p>
-<p><img src="/docs/assets/account-send-transfer.png" alt=""></p>
-<p>If you wanted to send a transfer using the &quot;Transfer&quot; tab underneath &quot;Accounts&quot;, you'd need to head
-over to the specific tab and the window will ask you for the same information as before.</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/9/2020 by Kirsten Richard</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#polkadot-js-ui">Polkadot-JS UI</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+<p>Let's begin by opening up the <a href="https://polkadot.js.org/apps">Polkadot-JS Apps</a>. There are two ways to make a balance transfer:</p>
+<ol>
+<li>By using the &quot;Transfer&quot; tab in the &quot;Accounts&quot; dropdown (located on the top navigational menu).</li>
+<li>Clicking the &quot;send&quot; button while in the &quot;Accounts&quot; page.</li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="using-the-transfer-tab"></a><a href="#using-the-transfer-tab" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using the Transfer Tab</h3>
+<p>Click on the &quot;Transfer&quot; tab in the &quot;Accounts&quot; dropdown.</p>
+<p><img src="/docs/assets/transfer-1.png" alt="transfer"></p>
+<p>Now a modal window will appear on the page. The modal asks you to enter 3 inputs:</p>
+<ul>
+<li>&quot;send from account&quot;: Your account with funds that you will send from.</li>
+<li>&quot;send to address&quot;: The address of the account that will receive the funds.</li>
+<li>&quot;amount&quot;: The amount of tokens you will transfer.</li>
+</ul>
+<p>The &quot;existential deposit&quot; box shows you the minimum amount of funds you must keep in the account for
+it to remain active. See the <a href="build-protocol-info#existential-deposit">existential deposit</a> section for more information.</p>
+<p><img src="/docs/assets/transfer-2.png" alt="transfer"></p>
+<p>After setting your inputs correctly, click the &quot;Make Transfer&quot; button and confirm. Once the transfer
+is included in a block you will see a green notification in the top-right corner of your screen.</p>
+<h3><a class="anchor" aria-hidden="true" id="from-the-accounts-page"></a><a href="#from-the-accounts-page" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>From the Accounts Page</h3>
+<p>Navigate to the &quot;Accounts&quot; page by selecting the &quot;Accounts&quot; tab from the &quot;Accounts&quot; dropdown located
+on the top navigational menu of Polkadot-JS Apps.</p>
+<p>You will see a list of accounts you have loaded. Click the &quot;Send&quot; button in the row for the account
+you will like to send funds from.</p>
+<p><img src="/docs/assets/transfer-3.png" alt="transfer"></p>
+<p>Now you will see the same modal window as if using the &quot;Transfer&quot; tab. Fill in the inputs correctly
+and hit &quot;Make Transfer&quot; then confirm the balance transfer. You will see a green notification in the
+top-right corner of the screen when the transfer is included in a block.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/17/2020 by Logan Saether</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#polkadot-js-apps">Polkadot-JS Apps</a><ul class="toc-headings"><li><a href="#using-the-transfer-tab">Using the Transfer Tab</a></li><li><a href="#from-the-accounts-page">From the Accounts Page</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
