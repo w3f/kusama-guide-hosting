@@ -37,13 +37,13 @@ stash account, set one up. Note that it is extremely unsafe to set an exchange a
 recipient of the staking rewards.</p>
 <h2><a class="anchor" aria-hidden="true" id="using-polkadot-js-ui"></a><a href="#using-polkadot-js-ui" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using Polkadot-JS UI</h2>
 <h3><a class="anchor" aria-hidden="true" id="step-1-bond-your-tokens"></a><a href="#step-1-bond-your-tokens" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 1: Bond your tokens</h3>
-<p>On the <a href="https://polkadot.js.org/apps">Polkadot-JS UI</a> navigate to the &quot;Staking&quot; tab. The &quot;Staking
-Overview&quot; subsection will show you all the active validators and their information - their
-identities, the amount of KSM that are staking for them, amount that is their own provided stake,
-how much they charge in commission, the era points they've earned in the current era, and the last
-block number that they produced. If you click on the chart button it will take you to the &quot;Validator
-Stats&quot; page for that validator that shows you more detailed and historical information about the
-validator's stake, rewards and slashes.</p>
+<p>On the <a href="https://polkadot.js.org/apps">Polkadot-JS UI</a> navigate to the &quot;Staking&quot; (underneath
+&quot;Network&quot;) tab. The &quot;Staking Overview&quot; subsection will show you all the active validators and their
+information - their identities, the amount of KSM that are staking for them, amount that is their
+own provided stake, how much they charge in commission, the era points they've earned in the current
+era, and the last block number that they produced. If you click on the chart button it will take you
+to the &quot;Validator Stats&quot; page for that validator that shows you more detailed and historical
+information about the validator's stake, rewards and slashes.</p>
 <p>The &quot;Account actions&quot; subsection (<a href="https://polkadot.js.org/apps/#/staking/actions">link</a>) allows you
 to stake and nominate.</p>
 <p>The &quot;Payouts&quot; subsection (<a href="https://polkadot.js.org/apps/#/staking/payouts">link</a>) allows you to
@@ -55,12 +55,12 @@ validators that are awaiting more nominations to enter the active validator set.
 stay in the waiting queue until they have enough KSM backing them (as allocated through the
 <a href="https://wiki.polkadot.network/docs/en/learn-phragmen">Phragmén election mechanism</a>). It is possible
 validator can remain in the queue for a very long time if they never get enough backing.</p>
-<p>The &quot;Validator Stat's subsection (<a href="https://polkadot.js.org/apps/#/staking/query">link</a>) allows you
+<p>The &quot;Validator Stats&quot; subsection (<a href="https://polkadot.js.org/apps/#/staking/query">link</a>) allows you
 to query a validator's stash address and see historical charts on era points, elected stake,
 rewards, and slashes.</p>
-<p>Pick &quot;Account actions&quot;, then click the grey &quot;+ Nominator&quot; button.</p>
+<p>Pick &quot;Account actions&quot; underneath &quot;Network&quot; &gt; &quot;Staking&quot;, then click the &quot;+ Nominator&quot; button.</p>
 <p>You will see a modal window that looks like the below:</p>
-<p><img src="/docs/assets/nominator-update-1.png" alt="nominator-update-1"></p>
+<p><img src="/docs/assets/kusama/kusama_nominator_popup.png" alt="nominator-update-1"></p>
 <p>Select a &quot;value bonded&quot; that is <strong>less</strong> than the total amount of KSM you have, so you have some
 left over to pay transaction fees. Transaction fees are currently at least 0.01 KSM, but they are
 dynamic based on a variety of factors including the load of recent blocks.</p>
@@ -82,7 +82,7 @@ be distributed to up to 16 validators. Be careful about the validators you choos
 slashed if your validator commits an offence.</p>
 <p>Click on &quot;Nominate&quot; on an account you've bonded and you will be presented with another popup asking
 you to select some validators.</p>
-<p><img src="/img/NPoS/nominate.png" alt="Nominating validators"></p>
+<p><img src="/docs/assets/kusama/kusama_nominator_selection.png" alt="Nominating validators"></p>
 <p>Select them, confirm the transaction, and you're done - you are now nominating. Your nominations
 will become active in the next era. Eras last six hours on Kusama - depending on when you do this,
 your nominations may become active almost immediately, or you may have to wait almost the entire six
@@ -146,7 +146,7 @@ has twelve decimal places and is always represented as an integer with zeroes at
 </code></pre>
 <p>After a few seconds, you should see the hash of the transaction and if you would like to verify the
 nomination status, you can check that on the Polkadot-JS UI as well.</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/16/2020 by Bruno Škvorc</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#setting-up-stash-and-controller-keys">Setting up Stash and Controller keys</a></li><li><a href="#using-polkadot-js-ui">Using Polkadot-JS UI</a><ul class="toc-headings"><li><a href="#step-1-bond-your-tokens">Step 1: Bond your tokens</a></li><li><a href="#step-2-nominate-a-validator">Step 2: Nominate a validator</a></li><li><a href="#step-3-stop-nominating">Step 3: Stop nominating</a></li></ul></li><li><a href="#using-command-line-interface-cli">Using Command-Line Interface (CLI)</a><ul class="toc-headings"><li><a href="#step-1-install-polkadotapi-cli">Step 1: Install @polkadot/api-cli</a></li><li><a href="#step-2-bond-your-ksm">Step 2. Bond your KSM</a></li><li><a href="#step-3-nominate-a-validator">Step 3. Nominate a validator</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/22/2020 by Kirsten Richard</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#setting-up-stash-and-controller-keys">Setting up Stash and Controller keys</a></li><li><a href="#using-polkadot-js-ui">Using Polkadot-JS UI</a><ul class="toc-headings"><li><a href="#step-1-bond-your-tokens">Step 1: Bond your tokens</a></li><li><a href="#step-2-nominate-a-validator">Step 2: Nominate a validator</a></li><li><a href="#step-3-stop-nominating">Step 3: Stop nominating</a></li></ul></li><li><a href="#using-command-line-interface-cli">Using Command-Line Interface (CLI)</a><ul class="toc-headings"><li><a href="#step-1-install-polkadotapi-cli">Step 1: Install @polkadot/api-cli</a></li><li><a href="#step-2-bond-your-ksm">Step 2. Bond your KSM</a></li><li><a href="#step-3-nominate-a-validator">Step 3. Nominate a validator</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
