@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Adding accounts to an ENS domain · Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="ENS (Ethereum Name Service) is a system of smart contracts on the Ethereum blockchain which allows"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Adding accounts to an ENS domain · Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://guide.kusama.network/"/><meta property="og:description" content="ENS (Ethereum Name Service) is a system of smart contracts on the Ethereum blockchain which allows"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="/css/klaro.css"/><link rel="stylesheet" href="/css/copycode.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="/js/custom.js"></script><script type="text/javascript" src="/js/klaro-config.js"></script><script type="text/javascript" src="/js/klaro.js"></script><script type="text/javascript" src="/js/clipboard.min.js"></script><script type="text/javascript" src="/js/copycode.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/./img/Kusama_logotype_white_large.png" alt="Guide"/><h2 class="headerTitleWithLogo">Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/en/kusama-getting-started" target="_self">Get Started</a></li><li class="siteNavGroupActive"><a href="/docs/en/kusama-index" target="_self">Docs</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/zh-CN/mirror-ens">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Kusama</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Kusama<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/kusama-index">Home</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Get Started</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/kusama-getting-started">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-faucet">Faucet</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-claims">Claims</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-endpoints">Kusama Endpoints</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Try</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/mirror-maintain-guides-how-to-validate-kusama">How to run a Validator on Kusama</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-maintain-guides-how-to-nominate-kusama">Nominator Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-governance">Governance</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-identity">Identity</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-treasury">Treasury</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-build-build-with-polkadot">Polkadot Builders Starter&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/maintain-guides-society-kusama">Join Kappa Sigma Mu</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-social-recovery">Account Recovery</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Break</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/mirror-maintain-errors">Resolving Errors</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-bug-bounty">Bug Bounty</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-adverserial-cheatsheet">Adverserial Cheatsheet</a></li></ul></div><li class="navListItem navListItemActive"><a class="navItem" href="/docs/en/mirror-ens">Using ENS with DOT/KSM accounts</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-ledger">Ledger Devices</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-timeline">Timeline</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-community">Community</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-parameters">Parameters</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-coc">Code of Conduct</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/mirror-ens.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Adding accounts to an ENS domain</h1></header><article><div><span><p>ENS (Ethereum Name Service) is a system of smart contracts on the Ethereum blockchain which allows
+users to claim domain names like <code>bruno.eth</code>. Supporting wallets can then allow senders to input ENS
+domains instead of long and unwieldy addresses. This prevents phishing, fraud, typos, and adds a
+layer of usability on top of the regular wallet user experience.</p>
+<blockquote>
+<p>Note: You will need an ENS name and an Ethereum account with some ether in it to follow along with
+this guide. To register an ENS name, visit the <a href="https://app.ens.domains">ENS App</a> or any number of
+subdomain registrars like <a href="https://nameth.io">Nameth</a>. Note that if you're using an older ENS
+name, you should make sure you're using the
+<a href="https://medium.com/the-ethereum-name-service/ens-registry-migration-is-over-now-what-a-few-things-to-know-fb05f921872a">new resolver</a>.
+Visiting the ENS App will warn you about this if not. You will also need some way to use your
+Ethereum address - following this guide on a personal computer is recommended. Wallets like
+<a href="https://frame.sh/">Frame</a> and <a href="https://metamask.io">Metamask</a> are safe and will make interacting
+with the Ethereum blockchain through your browser very easy.</p>
+</blockquote>
+<p>Despite living on the Ethereum blockchain, the ENS system has multi-chain support. In this guide
+you'll go through the process of adding a KSM and DOT address to ENS. We cover both KSM and DOT to
+show two different approaches.</p>
+<blockquote>
+<p>Note: DOT can currently only be added using the Resolver method. KSM can be added through both
+methods described below.</p>
+</blockquote>
+<p>This guide is also available in video format <a href="https://youtu.be/XKjZk-5_mQc">on Youtube</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="adding-via-the-ui"></a><a href="#adding-via-the-ui" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Adding via the UI</h2>
+<p>The <a href="https://app.ens.domains">ENS App</a> allows an ENS domain owner to inspect all records bound to
+the domain, and to add new ones.</p>
+<p><img src="/docs/assets/ens/01-min.png" alt="bruno.eth domain name in the ENS application"></p>
+<p>In the example above, the domain <code>bruno.eth</code> has an Ethereum and a Bitcoin address attached. Let's
+attach a KSM account. First, click the <code>[+]</code> icon in the Records tab.</p>
+<p><img src="/docs/assets/ens/02-min.png" alt="The plus icon in the records tab"></p>
+<p>Then, pick &quot;Other Addresses&quot;, &quot;KSM&quot;, and input the Kusama address:</p>
+<p><img src="/docs/assets/ens/03-min.png" alt="Inputs needed to register a KSM address"></p>
+<p>After clicking Save, your Ethereum wallet will ask you to confirm a transaction. Once processed, the
+record will show up on the domain's page:</p>
+<p><img src="/docs/assets/ens/04-min.png" alt="KSM address now visible in bruno.eth records"></p>
+<h2><a class="anchor" aria-hidden="true" id="adding-via-the-resolver"></a><a href="#adding-via-the-resolver" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Adding via the Resolver</h2>
+<p>DOT has only recently been added to ENS, so it's not available in the UI yet. Let's go through an
+alternative method of registering a DOT address on the <code>bruno.eth</code> domain.</p>
+<p>First, you need to find out which resolver we have set on the domain. This should be
+<a href="https://etherscan.io/address/0x4976fb03c32e5b8cfe2b6ccb31c09ba78ebaba41">Public Resolver 2</a>, but
+you can double check on the domain's ENS page.</p>
+<p><img src="/docs/assets/ens/05-min.png" alt="The domain's resolver is highlighted on the ENS app page"></p>
+<p>Next, you need to go to the
+<a href="https://etherscan.io/address/0x4976fb03c32e5b8cfe2b6ccb31c09ba78ebaba41#writeContract">resolver contract's Write Contract interface on Etherscan</a>
+by clicking on &quot;<em>Contract -&gt; Write Contract</em>&quot;, or appending <code>#writeContract</code> to the resolver's URL
+in Etherscan, like so:
+<a href="https://etherscan.io/address/0x4976fb03c32e5b8cfe2b6ccb31c09ba78ebaba41#writeContract">https://etherscan.io/address/0x4976fb03c32e5b8cfe2b6ccb31c09ba78ebaba41#writeContract</a></p>
+<p>There should be an option to &quot;Connect to Web3&quot; which, when clicked, will ask your active wallet for
+permission to connect.</p>
+<p><img src="/docs/assets/ens/06-min.png" alt="Connect to Web3 option"></p>
+<p>Allow this. If for some reason the option &quot;Connect to Web3&quot; does not automatically switch to
+&quot;Connected - Web3 [YOUR_ADDRESS]&quot;, refresh the page and try again.</p>
+<p><img src="/docs/assets/ens/07-min.png" alt="Connected to Web3"></p>
+<p>Scroll down to <code>setAddr</code>. There will be three input fields on this function: <code>node</code> is the
+<a href="https://docs.ens.domains/contract-api-reference/name-processing#algorithm">namehash</a> of your
+domain. You can get it by entering your domain into
+<a href="https://swolfeyes.github.io/ethereum-namehash-calculator/">this tool</a>. Cointype is the ID of the
+supported coin, as specified in the <a href="https://github.com/ensdomains/address-encoder">address-encoder</a>
+library which wallets can use to integrate ENS. The file to look for is
+<a href="https://github.com/ensdomains/address-encoder/blob/master/src/index.ts">src/index.ts</a> - scroll to
+the bottom and notice DOT and KSM. The coin ID of KSM is 434, while DOT is 354, so we enter this
+into <code>coinType</code>. <code>a</code> is the address to bind to this value, in public key format. To turn your
+address into a public key, use <a href="https://www.shawntabrizi.com/substrate-js-utilities/">this tool</a> and
+enter your address into the <code>AccountId to Hex</code> left field, then copy the output of the right field.</p>
+<p><img src="/docs/assets/ens/08-min.png" alt="Filled out information in the contract's write interface"></p>
+<p>Clicking &quot;Write&quot; will initiate a transaction. Note that Etherescan's UI is in beta and might throw a
+&quot;GasLimit&quot; error. If this happens, modify the gas limit in your wallet to 80,000. You can leave the
+gas fee as is - any wallet you use will usually be good at estimating the required fee.</p>
+<p>Once the transaction is confirmed, your DOT address will be bound to your ENS domain. Because the
+ENS App UI is currently missing support for DOT, this entry will not be visible. However, should a
+wallet decide to implement ENS before the official ENS App does, the resolving will work just fine.</p>
+<h3><a class="anchor" aria-hidden="true" id="wallet-support"></a><a href="#wallet-support" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Wallet Support</h3>
+<p>There is no wallet support for ENS names for either KSM or DOT at this time.</p>
+<h3><a class="anchor" aria-hidden="true" id="relevant-links"></a><a href="#relevant-links" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Relevant links</h3>
+<ul>
+<li><a href="https://docs.ens.domains/">ENS docs</a></li>
+<li><a href="https://medium.com/the-ethereum-name-service/ens-launches-multi-coin-support-15-wallets-to-integrate-92518ab20599">ENS Multi-chain announcement</a></li>
+<li><a href="https://github.com/ensdomains/address-encoder">Address encoder</a></li>
+<li><a href="https://swolfeyes.github.io/ethereum-namehash-calculator/">Namehash calculator</a></li>
+<li><a href="https://www.shawntabrizi.com/substrate-js-utilities/">Address to pubkey converter</a></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/kusama-adverserial-cheatsheet"><span class="arrow-prev">← </span><span>Adverserial Cheatsheet</span></a><a class="docs-next button" href="/docs/en/kusama-ledger"><span>Ledger Devices</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#adding-via-the-ui">Adding via the UI</a></li><li><a href="#adding-via-the-resolver">Adding via the Resolver</a><ul class="toc-headings"><li><a href="#wallet-support">Wallet Support</a></li><li><a href="#relevant-links">Relevant links</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '53c6a4ab0d77c0755375a971c9b7cc3d',
+                indexName: 'kusama_guide',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>
