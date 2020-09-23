@@ -159,11 +159,12 @@ voting on it.</p>
 <p><img src="/img/treasury/proposal.jpg" alt="A pending proposal"></p>
 <p>Remember that the proposal has no metadata, so it's up to the proposer to create a description and
 purpose that the council could study and base their votes on.</p>
-<p>At this point, a Council member can turn this proposal into a motion to accept, or a motion to
-reject. It is possible (but unlikely) that a motion for both acceptance and rejection is created.
-After being turned into a council motion, the proposal needs 51% of the council to approve it to
-pass, or 51% to reject it to fail. If majority is not reached, the proposal remains in limbo -
-neither accepted nor rejected until more council members weigh in.</p>
+<p>At this point, a Council member can create a motion to accept or to reject the treasury proposal. It
+is possible that one motion to accept and another motion to reject are both created. The proportions
+to accept and reject council proposals varies between accept or reject and possibly depending on
+which network the Treasury is implemented on.</p>
+<p>On Polkadot and Kusama, the threshold for accepting a treasury proposal is at least three-fifths of
+the council. The threshold for rejecting a proposal is at least one-half of the council.</p>
 <p><img src="/img/treasury/motion.jpg" alt="Motion in action"></p>
 <h2><a class="anchor" aria-hidden="true" id="tipping"></a><a href="#tipping" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tipping</h2>
 <p>Next to the proposals process, a separate system for making tips exists for the treasury. Tips can
@@ -230,7 +231,7 @@ migration to a minority fork. However, the possibility of this scenario is quite
 <ul>
 <li><a href="https://github.com/paritytech/substrate/blob/master/frame/treasury/src/lib.rs">Substrate's Treasury Pallet</a> -
 The Rust implementation of the treasury.
-(<a href="https://substrate.dev/rustdocs/v2.0.0-rc6/pallet_treasury/index.html">Docs</a>)</li>
+(<a href="https://substrate.dev/rustdocs/v2.0.0/pallet_treasury/index.html">Docs</a>)</li>
 <li><a href="https://medium.com/@gavofyork/kusama-rollout-and-governance-31eb18041044">Gavin Wood's Kusama Rollout Plan</a> -
 Details the treasury in its first live environment on the Kusama network.</li>
 </ul>
