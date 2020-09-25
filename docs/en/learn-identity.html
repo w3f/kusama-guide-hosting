@@ -30,9 +30,9 @@ information, so the data must be less than that. When inputting the data manuall
 <a href="https://onlineutf8tools.com/convert-utf8-to-bytes">UTF8 to bytes</a> converter can help.</p>
 <p>The easiest way to add the built-in fields is to click the gear icon next to one's account and
 select &quot;Set on-chain identity&quot;.</p>
-<p><img src="/img/identity/01.jpg" alt="Gear icon provides the option to set identity"></p>
+<p><img src="/docs/assets/identity/01.jpg" alt="Gear icon provides the option to set identity"></p>
 <p>A popup will appear, offering the default fields.</p>
-<p><img src="/img/identity/02.jpg" alt="Identity field setup popup"></p>
+<p><img src="/docs/assets/identity/02.jpg" alt="Identity field setup popup"></p>
 <p>To add custom fields beyond the default ones, use the Extrinsics UI to submit a raw transaction by
 first clicking &quot;Add Item&quot; and adding any field name you like. The example below adds a field
 <code>steam</code>, which is a user's <a href="https://store.steampowered.com">Steam</a> username. The first value is the
@@ -41,14 +41,14 @@ name also has to be provided, otherwise the Identity pallet would consider it wi
 it with the &quot;None&quot; option still selected. That is to say, every time you make a change to your
 identity values, you need to re-submit the entire set of fields: the write operation is always
 &quot;overwrite&quot;, never &quot;append&quot;.</p>
-<p><img src="/img/identity/03.jpg" alt="Setting a custom field"></p>
+<p><img src="/docs/assets/identity/03.jpg" alt="Setting a custom field"></p>
 <p>Note that custom fields are not shown in the UI by default:</p>
-<p><img src="/img/identity/04.jpg" alt="Only built-in fields are shown"></p>
+<p><img src="/docs/assets/identity/04.jpg" alt="Only built-in fields are shown"></p>
 <p>The rendering of such custom values is, ultimately, up to the UI/dapp makers. In the case of
 PolkadotJS, the team prefers to only show official fields for now. If you want to check that the
 values are still stored, use the <a href="https://polkadot.js.org/apps/#/chainstate">Chain State UI</a> to
 query the active account's identity info:</p>
-<p><img src="/img/identity/05.jpg" alt="Raw values of custom fileds are available on-chain"></p>
+<p><img src="/docs/assets/identity/05.jpg" alt="Raw values of custom fileds are available on-chain"></p>
 <p>It is up to your own UI or dapp to then do with this data as it pleases. The data will remain
 available for querying via the Polkadot API, so you don't have to rely on the PolkadotJS UI.</p>
 <p>You can have a maximum of 100 custom fields.</p>
@@ -75,7 +75,7 @@ proposal is in the queue ask people to second it so that it gets ahead in the re
 <p>Here's how to submit a proposal to become a registrar:</p>
 <p>Go to the Democracy tab, select &quot;Submit preimage&quot;, and input the information for this motion -
 notably which account you're nominating to be a registrar in the <code>identity.setRegistrar</code> function.</p>
-<p><img src="/img/identity/12.jpg" alt="Setting a registrar"></p>
+<p><img src="/docs/assets/identity/12.jpg" alt="Setting a registrar"></p>
 <p>Copy the preimage hash. In the above image, that's
 <code>0x90a1b2f648fc4eaff4f236b9af9ead77c89ecac953225c5fafb069d27b7131b7</code>. Submit the preimage by signing
 a transaction.</p>
@@ -83,7 +83,7 @@ a transaction.</p>
 field needs to be at least 10 KSM. You can find out the minimum by querying the chain state under
 <a href="https://polkadot.js.org/apps/#/chainstate">Chain State</a> -&gt; Constants -&gt; democracy -&gt;
 minimumDeposit.</p>
-<p><img src="/img/identity/13.jpg" alt="Submitting a proposal"></p>
+<p><img src="/docs/assets/identity/13.jpg" alt="Submitting a proposal"></p>
 <p>At this point, DOT holders can second the motion. With enough seconds, the motion will become a
 referendum, which is then voted on. If it passes, users will be able to request judgement from this
 registrar.</p>
@@ -113,7 +113,7 @@ issuing faulty judgements.</p>
 for the <code>max_fee</code> put the maximum you're willing to pay for these confirmations.</p>
 <p>If you don't know which registrar to pick, first check the available registrars by going to
 <a href="">&quot;Chain State UI&quot;</a> and selecting <code>identity.registrars()</code> to get the full list.</p>
-<p><img src="/img/identity/14.jpg" alt="Showing all registrars"></p>
+<p><img src="/docs/assets/identity/14.jpg" alt="Showing all registrars"></p>
 <p>The image above reveals two registrars:</p>
 <ul>
 <li>Registrar 0, FcxNWVy5RESDsErjwyZmPCW6Z8Y3fbfLzmou34YZTrbcraL charges 25 KSM per judgement</li>
@@ -122,21 +122,21 @@ for the <code>max_fee</code> put the maximum you're willing to pay for these con
 <p>To find out how to contact the registrar after the application for judgement or to learn who they
 are, we can check their identity by adding them to our Address Book. Their identity will be
 automatically loaded.</p>
-<p><img src="/img/identity/15.jpg" alt="Gav is a registrar"></p>
+<p><img src="/docs/assets/identity/15.jpg" alt="Gav is a registrar"></p>
 <p>Gavin Wood is registrar #0.</p>
-<p><img src="/img/identity/16.jpg" alt="Chevdor is registrar #1"></p>
+<p><img src="/docs/assets/identity/16.jpg" alt="Chevdor is registrar #1"></p>
 <p>Chevdor is registrar #1. We pick that one.</p>
-<p><img src="/img/identity/08.jpg" alt="Requesting judgement"></p>
+<p><img src="/docs/assets/identity/08.jpg" alt="Requesting judgement"></p>
 <p>This will make your identity go from unjudged:</p>
-<p><img src="/img/identity/07.jpg" alt="An unjudged identity"></p>
+<p><img src="/docs/assets/identity/07.jpg" alt="An unjudged identity"></p>
 <p>To &quot;waiting&quot;:</p>
-<p><img src="/img/identity/09.jpg" alt="A pending identity"></p>
+<p><img src="/docs/assets/identity/09.jpg" alt="A pending identity"></p>
 <p>At this point, direct contact with the registrar is required - the contact info is in their identity
 as shown above. Each registrar will have their own set of procedures to verify your identity and
 values, and only once you've satisfied their requirements will the process continue.</p>
 <p>Once the registrar has confirmed the identity, a green checkmark should appear next to your account
 name with the appropriate confidence level:</p>
-<p><img src="/img/identity/10.jpg" alt="A confirmed identity"></p>
+<p><img src="/docs/assets/identity/10.jpg" alt="A confirmed identity"></p>
 <p><em>Note that changing even a single field's value after you've been verified will un-verify your
 account and you will need to start the judgement process anew. However, you can still change fields
 while the judgement is going on - it's up to the registrar to keep an eye on the changes.</em></p>
@@ -153,16 +153,16 @@ validators.</p>
 parent sender account. The value to put into the Data field of each parent is the optional name of
 the sub-account. If omitted, the sub-account will inherit the parent's name and be displayed as
 <code>parent/parent</code> instead of <code>parent/child</code>.</p>
-<p><img src="/img/identity/06.jpg" alt="Sub account setup"></p>
+<p><img src="/docs/assets/identity/06.jpg" alt="Sub account setup"></p>
 <p>Note that a deposit of 2.5KSM is required for every sub-account.</p>
 <h2><a class="anchor" aria-hidden="true" id="clearing-and-killing"></a><a href="#clearing-and-killing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Clearing and Killing</h2>
 <p><strong>Clearing:</strong> Users can clear their identity information and have their deposit returned. Clearing
 an identity also clears all sub accounts and returns their deposits.</p>
-<p><img src="/img/identity/clear.gif" alt="Clearing an identity"></p>
+<p><img src="/docs/assets/identity/clear.gif" alt="Clearing an identity"></p>
 <p>Clearing is done through the <a href="https://polkadot.js.org/apps/#/extrinsics">Extrinsics UI</a>.</p>
 <p><strong>Killing:</strong> The Council can kill an identity that it deems erroneous. This results in a slash of
 the deposit.</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/1/2020 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#setting-an-identity">Setting an Identity</a><ul class="toc-headings"><li><a href="#format-caveat">Format Caveat</a></li></ul></li><li><a href="#registrars">Registrars</a><ul class="toc-headings"><li><a href="#becoming-a-registrar">Becoming a registrar</a></li></ul></li><li><a href="#judgements">Judgements</a></li><li><a href="#sub-accounts">Sub Accounts</a></li><li><a href="#clearing-and-killing">Clearing and Killing</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/25/2020 by Anson Lau</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#setting-an-identity">Setting an Identity</a><ul class="toc-headings"><li><a href="#format-caveat">Format Caveat</a></li></ul></li><li><a href="#registrars">Registrars</a><ul class="toc-headings"><li><a href="#becoming-a-registrar">Becoming a registrar</a></li></ul></li><li><a href="#judgements">Judgements</a></li><li><a href="#sub-accounts">Sub Accounts</a></li><li><a href="#clearing-and-killing">Clearing and Killing</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
