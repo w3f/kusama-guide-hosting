@@ -109,17 +109,18 @@ entirely.</p>
 <p>All referenda have an <em>enactment delay</em> associated with them. This is the period of time between the
 referendum ending and, assuming the proposal was approved, the changes being enacted. For the first
 two ways that a referendum is launched, this is a fixed time. For Kusama, it is 8 days; in Polkadot,
-it is planned to be 28 days. For the third type, it can be set as desired.</p>
+it is 28 days. For the third type, it can be set as desired.</p>
 <p>Emergency proposals deal with major problems with the network that need to be &quot;fast-tracked&quot;. These
 will have a shorter enactment time.</p>
 <h3><a class="anchor" aria-hidden="true" id="proposing-a-referendum"></a><a href="#proposing-a-referendum" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Proposing a Referendum</h3>
 <h4><a class="anchor" aria-hidden="true" id="public-referenda"></a><a href="#public-referenda" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Public Referenda</h4>
-<p>Anyone can propose a referendum by depositing the minimum amount of DOT for a certain period (number
-of blocks). If someone agrees with the proposal, they may deposit the same amount of tokens to
-support it. The proposal with the highest amount of bonded support will be selected to be a
+<p>Anyone can propose a referendum by depositing the minimum amount of tokens for a certain period
+(number of blocks). If someone agrees with the proposal, they may deposit the same amount of tokens
+to support it. The proposal with the highest amount of bonded support will be selected to be a
 referendum. Note that this may be different than the absolute number of seconds; for instance, three
 accounts bonding 20 DOT each would &quot;outweigh&quot; ten accounts bonding a single DOT each. The bonded
 tokens will be released once the proposal is tabled (that is, brought to a vote).</p>
+<p>There can be a maximum of 100 public proposals in the proposal queue.</p>
 <h4><a class="anchor" aria-hidden="true" id="council-referenda"></a><a href="#council-referenda" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Council Referenda</h4>
 <p>Unanimous Council - When all members of the council agree on a proposal, it can be moved to a
 referendum. This referendum will have a negative turnout bias (that is, the smaller the amount of
@@ -143,13 +144,13 @@ council-proposed) is the only time that multiple referenda will be able to be vo
 <h4><a class="anchor" aria-hidden="true" id="voting-on-a-referendum"></a><a href="#voting-on-a-referendum" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Voting on a referendum</h4>
 <p>To vote, a voter generally must lock their tokens up for at least the enactment delay period beyond
 the end of the referendum. This is in order to ensure that some minimal economic buy-in to the
-result is needed and to dissuade vote selling. It is possible to vote without locking at all, but
-your vote is worth a small fraction of a normal vote, given your stake. At the same time, holding
-only a small amount of DOT tokens does not mean that the holder cannot influence the referendum
-result, thanks to time-locking. You can read more about this at
-<a href="#voluntary-locking">Voluntary Locking</a>.</p>
+result is needed and to dissuade vote selling.</p>
+<p>It is possible to vote without locking at all, but your vote is worth a small fraction of a normal
+vote, given your stake. At the same time, holding only a small amount of tokens does not mean that
+the holder cannot influence the referendum result, thanks to time-locking. You can read more about
+this at <a href="#voluntary-locking">Voluntary Locking</a>.</p>
 <blockquote>
-<p>To learn more on voting on referenda, please check out our
+<p>To learn more about voting on referenda, please check out our
 <a href="https://www.youtube.com/watch?v=BkbhhlsezGA&amp;list=PLOyWqupZ-WGuAuS00rK-pebTMAOxW41W8&amp;index=31&amp;ab_channel=Polkadot">technical explainer video</a>.</p>
 </blockquote>
 <pre><code class="hljs"><span class="hljs-attr">Example:</span>
@@ -235,8 +236,8 @@ to the decision. Moreover, winning proposals are autonomously enacted only after
 period.</p>
 <h4><a class="anchor" aria-hidden="true" id="voluntary-locking"></a><a href="#voluntary-locking" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Voluntary Locking</h4>
 <p>Polkadot utilizes an idea called <code>Voluntary Locking</code> that allows token holders to increase their
-voting power by declaring how long they are willing to lock-up their DOT, hence, the maximum number
-of votes for each token holder will be calculated by the following formula:</p>
+voting power by declaring how long they are willing to lock-up their tokens, hence, the maximum
+number of votes for each token holder will be calculated by the following formula:</p>
 <pre><code class="hljs"><span class="hljs-built_in">Max</span> votes = tokens * vote_multiplier
 </code></pre>
 <p>The conviction multiplier increases the vote multiplier by one every time the lock period doubles.</p>
@@ -254,8 +255,8 @@ of votes for each token holder will be calculated by the following formula:</p>
 <tr><td style="text-align:center">32</td><td style="text-align:center">6</td></tr>
 </tbody>
 </table>
-<p>Based on the genesis runtime, the maximum number of lock periods is set to 6 and the lock period is
-30 days on Polkadot and eight days on Kusama.</p>
+<p>The maximum number of lock periods is set to 6 and the lock period is 30 days on Polkadot and eight
+days on Kusama.</p>
 <h4><a class="anchor" aria-hidden="true" id="adaptive-quorum-biasing"></a><a href="#adaptive-quorum-biasing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Adaptive Quorum Biasing</h4>
 <p>Polkadot introduces a concept, &quot;Adaptive Quorum Biasing&quot;, which functions as a lever that the
 council can use to alter the effective super-majority required to make it easier or more difficult
@@ -279,11 +280,14 @@ becomes a simple-majority.</p>
 <p>All three tallying mechanisms - majority carries, super-majority approve, and super-majority
 against - equate to a simple majority-carries system at 100% turnout.</p>
 <h2><a class="anchor" aria-hidden="true" id="council"></a><a href="#council" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Council</h2>
+<blockquote>
+<p><a href="https://www.youtube.com/watch?v=837Vv3gdRzI">Video explainer on Council</a></p>
+</blockquote>
 <p>To represent passive stakeholders, Polkadot introduces the idea of a &quot;council&quot;. The council is an
 on-chain entity comprising a number of actors, each represented as an on-chain account. On Polkadot,
 the council currently consists of 13 members. This is expected to increase over the next few months
 to 24 seats. In general, the council will end up having a fixed number of seats. On Polkadot, this
-will be 24 seats while on Kusama it is 17 seats.</p>
+will be 24 seats while on Kusama it is 19 seats.</p>
 <p>The council is called upon primarily for three tasks of governance: proposing sensible referenda,
 cancelling uncontroversially dangerous or malicious referenda, and electing the technical committee.</p>
 <p>For a referendum to be proposed by the council, a strict majority of members must be in favor, with
@@ -293,26 +297,37 @@ Council motions which pass with a 3/5 (60%) super-majority - but without reachin
 support - will move to a public referendum under a neutral, majority-carries voting scheme. In the
 case that all members of the council vote in favor of a motion, the vote is considered unanimous and
 becomes a referundum with negative adaptive quorum biasing.</p>
-<p>A two-thirds majority of the council can cancel a referendum. This may function as a last-resort if
-there is an issue found late in a referendum's proposal such as a bug in the code of the runtime
-that the proposal would institute.</p>
+<h3><a class="anchor" aria-hidden="true" id="canceling"></a><a href="#canceling" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Canceling</h3>
+<p>A proposal can be canceled if the <a href="#technical-committee">technical committee</a> unanimously agrees to
+do so, or if Root origin (e.g. sudo or Council) triggers this functionality. A canceled proposal's
+deposit is burned.</p>
+<p>Additionally, a two-thirds majority of the council can cancel a referendum. This may function as a
+last-resort if there is an issue found late in a referendum's proposal such as a bug in the code of
+the runtime that the proposal would institute.</p>
 <p>If the cancellation is controversial enough that the council cannot get a two-thirds majority, then
 it will be left to the stakeholders <em>en masse</em> to determine the fate of the proposal.</p>
-<blockquote>
-<p>For information on council, please head over to our
-<a href="https://www.youtube.com/watch?v=837Vv3gdRzI&amp;list=PLOyWqupZ-WGuAuS00rK-pebTMAOxW41W8&amp;index=32&amp;ab_channel=Polkadot">technical explainer video</a>.</p>
-</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="blacklisting"></a><a href="#blacklisting" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Blacklisting</h3>
+<p>A proposal can be blacklisted by Root origin (e.g. sudo or Council). A blacklisted proposal and its
+related referendum (if any) is immediately <a href="#canceling">canceled</a>. Additionally, a blacklisted
+proposal's hash cannot re-appear in the proposal queue. Blacklisting is useful when removing
+removing erroneous proposals that could be submitted with the same hash, i.e.
+<a href="https://polkascan.io/polkadot/democracy/proposal/2">proposal #2</a> in which the submitter used plain
+text to make a suggestion. Upon seeing their proposal removed, a submitter who is not properly
+introduced to the democracy system of Polkadot might be tempted to re-submit the same proposal. That
+said, this is far from a fool-proof method of preventing invalid proposals from being submitted - a
+single changed character in a proposal's text will also change the hash of the proposal, rendering
+the per-hash blacklist invalid.</p>
 <h3><a class="anchor" aria-hidden="true" id="how-to-be-a-council-member"></a><a href="#how-to-be-a-council-member" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to be a council member?</h3>
 <p><img src="/docs/assets/governance/approval-vote.png" alt=""></p>
-<p>Currently there are 13 seats on the council. All stakeholders are free to signal their approval of
-any of the registered candidates.</p>
+<p>All stakeholders are free to signal their approval of any of the registered candidates.</p>
 <p>Council elections are handled by the same <a href="learn-phragmen">Phragmén election</a> process that selects
 validators from the available pool based on nominations. However, token holders' votes for
 councillors are isolated from any of the nominations they may have on validators. Council terms last
-for one day. At the end of each term, Phragmén election algorithm runs and the result will choose
-the new councillors based on the vote configurations of all voters. The election also chooses a set
-number of runners up (currently seven on Kusama and fifteen on Polkadot) that will remain in the
-queue with their votes intact.</p>
+for one day on Kusama and one week on Polkadot.</p>
+<p>At the end of each term, Phragmén election algorithm runs and the result will choose the new
+councillors based on the vote configurations of all voters. The election also chooses a set number
+of runners up (currently 19 on Kusama and 20 on Polkadot) that will remain in the queue with their
+votes intact.</p>
 <p>As opposed to a &quot;first past the post&quot;, where voters must decide only on a single candidate chosen
 from a list, a Phragmén election is a more expressive way to indicate voters' views. Token holders
 can treat it as Yes or No voting to support as many candidates as they want. The election algorithm
@@ -372,14 +387,13 @@ prime.</p>
 of the three chambers of Kusama governance (along with the Council and the Referendum chamber). The
 Technical Committee is composed of the teams that have successfully implemented or specified either
 a Polkadot/Kusama runtime or Polkadot Host. Teams are added or removed from the Technical Committee
-via simple majority vote of the council.</p>
-<p>The Technical Committee can, along with the Polkadot Council, produce emergency referenda, which are
+via simple majority vote of the <a href="#council">Council</a>.</p>
+<p>The Technical Committee can, along with the Council, produce emergency referenda, which are
 fast-tracked for voting and implementation. These emergency referenda are intended for use only
 under urgent circumstances.</p>
 <p>Fast-tracked referenda are the only type of referenda that can be active alongside another active
 referendum. Thus, with fast tracked referenda it is possible to have two active referendums at the
 same time. Voting on one does not prevent a user from voting on the other.</p>
-<h2><a class="anchor" aria-hidden="true" id="usage-of-dotlearn-dotdot-for-governance"></a><a href="#usage-of-dotlearn-dotdot-for-governance" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="learn-DOT#DOT-for-governance">Usage of DOT</a></h2>
 <h2><a class="anchor" aria-hidden="true" id="frequently-asked-questions"></a><a href="#frequently-asked-questions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Frequently Asked Questions</h2>
 <h3><a class="anchor" aria-hidden="true" id="how-can-i-appeal-to-the-council-to-enact-a-change-on-my-behalf"></a><a href="#how-can-i-appeal-to-the-council-to-enact-a-change-on-my-behalf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How can I appeal to the council to enact a change on my behalf?</h3>
 <p>In some circumstances you may want to appeal to the on-chain council to enact a change on your
@@ -411,7 +425,7 @@ explaining how governance works in Polkadot and Kusama.</li>
 <li><a href="https://www.crowdcast.io/e/governance-on-polkadot--">Governance on Polkadot</a> - An explanation of
 how governance works in Polkadot and Kusama, with Bill Laboon.</li>
 </ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 4/14/2020 by Anson Lau</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/mirror-maintain-guides-how-to-nominate-kusama"><span class="arrow-prev">← </span><span>Nominator Guide</span></a><a class="docs-next button" href="/docs/en/mirror-learn-identity"><span>Identity</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#mechanism">Mechanism</a></li><li><a href="#referenda">Referenda</a><ul class="toc-headings"><li><a href="#proposing-a-referendum">Proposing a Referendum</a></li></ul></li><li><a href="#council">Council</a><ul class="toc-headings"><li><a href="#how-to-be-a-council-member">How to be a council member?</a></li><li><a href="#prime-members">Prime Members</a></li></ul></li><li><a href="#technical-committee">Technical Committee</a></li><li><a href="#usage-of-dotlearn-dotdot-for-governance"><a href="learn-DOT#DOT-for-governance">Usage of DOT</a></a></li><li><a href="#frequently-asked-questions">Frequently Asked Questions</a><ul class="toc-headings"><li><a href="#how-can-i-appeal-to-the-council-to-enact-a-change-on-my-behalf">How can I appeal to the council to enact a change on my behalf?</a></li></ul></li><li><a href="#resources">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 4/14/2020 by Anson Lau</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/mirror-maintain-guides-how-to-nominate-kusama"><span class="arrow-prev">← </span><span>Nominator Guide</span></a><a class="docs-next button" href="/docs/en/mirror-learn-identity"><span>Identity</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#mechanism">Mechanism</a></li><li><a href="#referenda">Referenda</a><ul class="toc-headings"><li><a href="#proposing-a-referendum">Proposing a Referendum</a></li></ul></li><li><a href="#council">Council</a><ul class="toc-headings"><li><a href="#canceling">Canceling</a></li><li><a href="#blacklisting">Blacklisting</a></li><li><a href="#how-to-be-a-council-member">How to be a council member?</a></li><li><a href="#prime-members">Prime Members</a></li></ul></li><li><a href="#technical-committee">Technical Committee</a></li><li><a href="#frequently-asked-questions">Frequently Asked Questions</a><ul class="toc-headings"><li><a href="#how-can-i-appeal-to-the-council-to-enact-a-change-on-my-behalf">How can I appeal to the council to enact a change on my behalf?</a></li></ul></li><li><a href="#resources">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
