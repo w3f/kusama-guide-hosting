@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Polkadot Builders Starter&#x27;s Guide · Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="_This article is the up-to-date version of the blog post:"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Polkadot Builders Starter&#x27;s Guide · Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://guide.kusama.network/"/><meta property="og:description" content="_This article is the up-to-date version of the blog post:"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="/css/klaro.css"/><link rel="stylesheet" href="/css/copycode.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="/js/custom.js"></script><script type="text/javascript" src="/js/klaro-config.js"></script><script type="text/javascript" src="/js/klaro.js"></script><script type="text/javascript" src="/js/clipboard.min.js"></script><script type="text/javascript" src="/js/copycode.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Polkadot Builders Starter&#x27;s Guide · Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="_This article is the maintained version of the blog post:"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Polkadot Builders Starter&#x27;s Guide · Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://guide.kusama.network/"/><meta property="og:description" content="_This article is the maintained version of the blog post:"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="/css/klaro.css"/><link rel="stylesheet" href="/css/copycode.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="/js/custom.js"></script><script type="text/javascript" src="/js/klaro-config.js"></script><script type="text/javascript" src="/js/klaro.js"></script><script type="text/javascript" src="/js/clipboard.min.js"></script><script type="text/javascript" src="/js/copycode.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
         document.addEventListener('DOMContentLoaded', function() {
           addBackToTop(
             {"zIndex":100}
@@ -72,12 +72,12 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/mirror-build-build-with-polkadot.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Polkadot Builders Starter&#x27;s Guide</h1></header><article><div><span><p><em>This article is the up-to-date version of the blog post:
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/mirror-build-build-with-polkadot.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Polkadot Builders Starter&#x27;s Guide</h1></header><article><div><span><p><em>This article is the maintained version of the blog post:
 <a href="https://medium.com/polkadot-network/everything-you-need-to-know-to-prepare-for-polkadot-32d08b929735">Everything you Need to Know to Prepare for Polkadot</a>.</em></p>
 <p>Polkadot is a blockchain protocol with two goals: providing <strong>shared security</strong> among all connected
 parachains and allowing all connected chains to <strong>interoperate</strong> by using <a href="learn-crosschain">XCMP</a>.
 With the advent of <a href="build-pdk">PDKs</a> like Parity Substrate and Cumulus, the time it takes to develop
-and launch a new chain has dropped significantly. Whereas before it would take years to launch a new
+and launch a new chain has dropped significantly. While before it would take years to launch a new
 chain, now it may only take weeks or even days.</p>
 <p>This guide will walk you through the steps you can take today to get started building your vision
 with Polkadot. It will explain the difference between a parachain and a smart contract (and why one
@@ -90,19 +90,20 @@ application in anticipation of the Polkadot mainnet launch later this year.</p>
 <li>Canary network: <strong>Kusama</strong></li>
 <li>Current major testnets: <strong>Westend</strong> (Polkadot clone) and <strong>Rococo</strong> (parachains)</li>
 <li>Substrate: <strong>2.0.0</strong></li>
-<li>ink!: <strong>In development</strong>
-(<a href="https://substrate.dev/docs/en/knowledgebase/smart-contracts">Documentation</a>)</li>
+<li>ink!: <strong>3.0</strong> (<a href="https://substrate.dev/docs/en/knowledgebase/smart-contracts">Documentation</a>)</li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="what-you-need-to-know"></a><a href="#what-you-need-to-know" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What you need to know</h2>
 <p>Polkadot mainnet has been released. There are also two major testnets - <strong>Westend</strong>, which aims to
 run similarly to the current Polkadot mainnet, and <strong>Rococo</strong>, which is used specifically for
-testing parachains. Additionally, there is a value-bearing canary network called Kusama. Polkadot is
-being built with <a href="learn-implementations">implementations in various programming languages</a> ranging
-from Rust to JavaScript. Currently the leading implementation is built in Rust and built on the
-Substrate framework. Substrate is a library that allows developers to develop entire blockchain
-applications with ease by bundling together a networking protocol, consensus, and Wasm interpreter.
-Cumulus, an extension to Substrate, allows any Substrate built chain to connect to Polkadot and
-become a parachain. Substrate is currently on its 2.0.0 tagged release that solidified its API.</p>
+testing parachains. Additionally, there is a value-bearing canary network called <a href="https://kusama.network">Kusama</a> that
+gets features before Polkadot does.</p>
+<p>Polkadot has <a href="learn-implementations">implementations in various programming languages</a> ranging from
+Rust to JavaScript. Currently the leading implementation is built in Rust and built using the
+Substrate framework. Substrate is a framework that allows developers to develop entire blockchain
+applications with ease. This is accomplished by bundling core essientials such as the networking
+protocol, consensus layer, Wasm interpreter, and runtime modules (called pallets). Cumulus, an
+extension to Substrate, allows any Substrate built chain to connect to Polkadot and become a
+parachain. Substrate is currently on its 2.0.0 tagged release that stabilized its API for now.</p>
 <p>Polkadot does not natively support smart contracts, however there will be parachains that do.
 Substrate chains can include smart contract functionality by using the
 <a href="https://github.com/paritytech/substrate/tree/master/frame/contracts">Contracts</a> pallet for Wasm contracts or the <a href="https://github.com/paritytech/substrate/tree/master/frame/evm">EVM</a> pallet in
@@ -119,9 +120,10 @@ to build on Polkadot.</p>
 <p>Polkadot provides a few ways for you to deploy your application: as a smart contract on an existing
 parachain, as your own parachain, or as a parathread. There are trade-offs when working with each of
 these and reading this section will help you understand them.</p>
-<p>Parachains are individual chains containing their own runtime logic that benefit from the shared
+<p>Parachains are &quot;parallel&quot; chains containing their own runtime logic and can benefit from the shared
 security and the cross-chain messaging provided by the Polkadot Relay Chain. Parachains permit a
-high degree of flexibility and customization but will require more effort to create and maintain.</p>
+high degree of flexibility and customization but require more effort to create and maintain over
+time.</p>
 <p>Parathreads are like parachains and enable the developer to have lower-level control of the logic of
 their application. The main difference between the two is economic, since parathreads will be much
 less expensive to secure than a parachain. The lower costs of parathreads are due to the fact that
@@ -137,7 +139,7 @@ characteristics of their host chain.</p>
 <p>If there is a need to have a large amount of control over the design and features of your
 application, a parachain is a better choice. Keep in mind, smart contracts can be used as a testing
 ground before later being turned into full-fledged parachains. Smart contract platforms will usually
-have more convenient tooling like IDEs to facilitate quick iterations. A smart contract MVP could be
+have convenient tooling like IDEs to facilitate quick iterations. A smart contract MVP could be
 created to gauge user interest before putting in the work to build out a parachain.</p>
 <p>Parachains grant the creators more space to build the monetary system and other aspects of the chain
 from the ground up. They will allow for more succinct and efficient execution of complex logic than
@@ -156,7 +158,9 @@ treasury.</li>
 <p>Parachains open possibilities to construct complex runtime logic that would be too expensive to
 execute with smart contracts. However, unlike smart contracts, parachains lack a mandatory gas
 metering system entirely and could potentially be vulnerable to bugs that cause infinite loops
-(something that is prevented by design in smart contracts).</p>
+(something that is prevented by design in smart contracts). This vulnerability is mitigated by the
+weight system that is implemented in Substrate -- although it places more of a burden on the
+developer of the parachain to properly perform benchmarks.</p>
 <p>You may also decide to harness a combination of parachain, parathread, and smart contract. If you
 have certain logic that requires loops and it cannot be removed, use the native parachain runtime to
 handle all complex logic and the smart contract to call iteration. If you require off-chain data
@@ -195,18 +199,19 @@ Foundation is giving grants to teams who are doing this, learn more and apply on
 <h3><a class="anchor" aria-hidden="true" id="get-started-with-substrate"></a><a href="#get-started-with-substrate" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Get started with Substrate</h3>
 <p>Substrate is the underlying framework on which Polkadot itself is built. It is a toolset for
 blockchain innovators that provides the necessary building blocks for constructing a chain. It
-includes a library of modular plug-ins from which you can compose your chain logic and allows you to
-write your own pallets to use or publish to the community.</p>
+includes a library of modular runtime plug-ins from which you can compose your chain logic and
+allows you to write your own pallets to use or publish to the community.</p>
 <p>The best way to get started with Substrate is to explore the
 <a href="https://substrate.dev/docs/en/">Substrate Knowledge Base</a>, an online resource built and maintained
 by Parity Technologies.</p>
 <p>We recommend that you poke around in there to become familiar with the common patterns. Once you
-have a solid understanding, you can challenge yourself by progressing through the Substratekitties
-workshop then advancing to the TCR Dappchain tutorial or one of the others.</p>
+have a solid understanding, you can challenge yourself by progressing through the tutorials that are
+provided.</p>
 <h3><a class="anchor" aria-hidden="true" id="how-to-set-up-your-parachain"></a><a href="#how-to-set-up-your-parachain" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to set up your parachain</h3>
-<p>After creating your chain logic with Substrate, you will be able to compile it down to a Wasm
-executable. This Wasm code blob will contain the entire state transition function of your chain, and
-is what you will need to deploy your project to Polkadot as either a parachain or parathread.</p>
+<p>After creating your chain runtime logic with Substrate, you will be able to compile it down to a
+Wasm executable. This Wasm code blob will contain the entire state transition function of your
+chain, and is what you will need to deploy your project to Polkadot as either a parachain or
+parathread.</p>
 <p>Validators on Polkadot will use the submitted Wasm code to validate the state transitions of your
 chain or thread, but doing this requires some additional infrastructure. A validator needs some way
 to stay up to date with the most recent state transitions, since Polkadot nodes will not be required
@@ -232,9 +237,6 @@ connected to Polkadot. This includes:</p>
 Polkadot with minimal modification, possibly as little work as importing a crate and adding a
 single line.</li>
 </ul>
-<p>Rob Habermeier, a co-founder of Polkadot, last year gave a talk at EthCC that introduced Cumulus,
-which you can watch below.</p>
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/thgtXq5YMOo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <h3><a class="anchor" aria-hidden="true" id="how-to-deploy-your-parachain-or-parathread-in-polkadot"></a><a href="#how-to-deploy-your-parachain-or-parathread-in-polkadot" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to deploy your parachain or parathread in Polkadot</h3>
 <h4><a class="anchor" aria-hidden="true" id="parachain"></a><a href="#parachain" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parachain</h4>
 <p>In order to include your parachain into the Polkadot network, you will need to acquire a parachain
@@ -288,6 +290,12 @@ and want to deploy to a live environment.</p>
 contracts. At this point, the smart contracts would be able to interact with other pieces of the
 Polkadot ecosystem through <a href="learn-crosschain">XCMP</a>.</p>
 <p>Edgeware documentation can be found <a href="https://docs.edgewa.re/">here</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="moonbeam"></a><a href="#moonbeam" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Moonbeam</h2>
+<p><a href="https://moonbeam.network">Moonbeam</a> is another project that is planning to deploy to Polkadot as a parachain and will
+support smart contracts. Since Moonbeam uses <a href="https://github.com/paritytech/frontier">Frontier</a>, an interoperability layer with existing
+Ethereum tooling, it will support all applications that are written to target the EVM environment
+with little friction.</p>
+<p>Try deploying a contract to Moonbeam by following their <a href="https://docs.moonbeam.network/">documentation</a>.</p>
 <h3><a class="anchor" aria-hidden="true" id="ink"></a><a href="#ink" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ink</h3>
 <p><a href="https://github.com/paritytech/ink">ink!</a> is a domain specific language for writing smart contracts
 in Rust and compiles to Wasm code. As it states in its README, it is still in an experimental phase
@@ -334,6 +342,7 @@ We are actively producing content to help developers get up to speed and will ma
 the latest resources. You should also keep up to date with the following links:</p>
 <ul>
 <li><a href="https://edgewa.re">Edgeware</a>.</li>
+<li><a href="https://moonbeam.network">Moonbeam</a></li>
 <li><a href="https://github.com/paritytech/ink">ink!</a>. (Keep an eye out for content on the wiki tab.)</li>
 <li><a href="https://github.com/paritytech/substrate/tree/master/frame/contracts">Substrate contracts pallet</a>.</li>
 </ul>
@@ -349,7 +358,7 @@ about them. Developers may be interested in joining the
 <a href="https://riot.im/app/#/room/#substrate-technical:matrix.org">Substrate Technical</a> to ask their
 questions. As always, keep up to date with Polkadot by following the <a href="community">social channels</a>.</p>
 <p>Good luck!</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 3/24/2020 by Logan Saether</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/mirror-learn-treasury"><span class="arrow-prev">← </span><span>Treasury</span></a><a class="docs-next button" href="/docs/en/maintain-guides-society-kusama"><span>Join Kappa Sigma Mu</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#where-are-we-now">Where are we now?</a></li><li><a href="#what-you-need-to-know">What you need to know</a></li><li><a href="#what-is-the-difference-between-building-a-parachain-a-parathread-or-a-smart-contract">What is the difference between building a parachain, a parathread, or a smart contract?</a></li><li><a href="#so-you-want-to-build-a-parachain-or-parathread">So you want to build a parachain or parathread...</a><ul class="toc-headings"><li><a href="#get-started-with-substrate">Get started with Substrate</a></li><li><a href="#how-to-set-up-your-parachain">How to set up your parachain</a></li><li><a href="#how-to-deploy-your-parachain-or-parathread-in-polkadot">How to deploy your parachain or parathread in Polkadot</a></li></ul></li><li><a href="#so-you-want-to-build-a-smart-contract">So you want to build a smart contract...</a><ul class="toc-headings"><li><a href="#edgeware">Edgeware</a></li><li><a href="#ink">Ink</a></li></ul></li><li><a href="#deploying-your-smart-contract">Deploying your smart contract</a></li><li><a href="#paying-for-your-smart-contract">Paying for your smart contract</a><ul class="toc-headings"><li><a href="#its-still-early">It's still early</a></li></ul></li><li><a href="#conclusion">Conclusion</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 3/24/2020 by Logan Saether</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/mirror-learn-treasury"><span class="arrow-prev">← </span><span>Treasury</span></a><a class="docs-next button" href="/docs/en/maintain-guides-society-kusama"><span>Join Kappa Sigma Mu</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#where-are-we-now">Where are we now?</a></li><li><a href="#what-you-need-to-know">What you need to know</a></li><li><a href="#what-is-the-difference-between-building-a-parachain-a-parathread-or-a-smart-contract">What is the difference between building a parachain, a parathread, or a smart contract?</a></li><li><a href="#so-you-want-to-build-a-parachain-or-parathread">So you want to build a parachain or parathread...</a><ul class="toc-headings"><li><a href="#get-started-with-substrate">Get started with Substrate</a></li><li><a href="#how-to-set-up-your-parachain">How to set up your parachain</a></li><li><a href="#how-to-deploy-your-parachain-or-parathread-in-polkadot">How to deploy your parachain or parathread in Polkadot</a></li></ul></li><li><a href="#so-you-want-to-build-a-smart-contract">So you want to build a smart contract...</a><ul class="toc-headings"><li><a href="#edgeware">Edgeware</a></li></ul></li><li><a href="#moonbeam">Moonbeam</a><ul class="toc-headings"><li><a href="#ink">Ink</a></li></ul></li><li><a href="#deploying-your-smart-contract">Deploying your smart contract</a></li><li><a href="#paying-for-your-smart-contract">Paying for your smart contract</a><ul class="toc-headings"><li><a href="#its-still-early">It's still early</a></li></ul></li><li><a href="#conclusion">Conclusion</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
