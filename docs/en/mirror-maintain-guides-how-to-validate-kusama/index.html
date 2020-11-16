@@ -162,10 +162,10 @@ verify that everything is working:</p>
 <p>You will need to build the <code>polkadot</code> binary from the
 <a href="https://github.com/paritytech/polkadot">paritytech/polkadot</a> repository on GitHub using the source
 code available in the <strong>v0.8</strong> branch.</p>
-<p>You should generally use the latest <strong>0.8.x</strong> tag. At the time of writing, this was <strong>0.8.3</strong>, but
-you should review the output from the &quot;git tag&quot; command (<code>git tag | grep &quot;$v\0\.8&quot;</code>) to see a list
-of all the potential 0.8 releases. You should replace <code>v0.8.8</code> with the latest build (i.e., the
-highest number). You can also find the latest Kusama version on the
+<p>You should generally use the latest <strong>0.8.x</strong> tag. At the time of writing, this was <strong>0.8.26-1</strong>,
+but you should review the output from the &quot;git tag&quot; command to see a list of all the potential 0.8
+releases. You should replace <code>VERSION</code> with the latest build (i.e., the highest number). You can
+also find the latest Kusama version on the
 <a href="https://github.com/paritytech/polkadot/releases">release</a> tab.</p>
 <blockquote>
 <p>Note: If you prefer to use SSH rather than HTTPS, you can replace the first line of the below with
@@ -173,8 +173,9 @@ highest number). You can also find the latest Kusama version on the
 </blockquote>
 <pre><code class="hljs css language-sh">git <span class="hljs-built_in">clone</span> https://github.com/paritytech/polkadot.git
 <span class="hljs-built_in">cd</span> polkadot
-git tag | grep <span class="hljs-string">"<span class="hljs-variable">$v</span>\0\.8"</span>
-git checkout v0.8.8
+git tag -l | sort -V | grep -v -- <span class="hljs-string">'-rc'</span>
+<span class="hljs-built_in">echo</span> Get the latest version and replace VERSION (below) with it.
+git checkout VERSION
 ./scripts/init.sh
 cargo build --release
 </code></pre>
