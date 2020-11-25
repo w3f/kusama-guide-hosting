@@ -36,10 +36,6 @@ growing needs without the risks of network forks.</p>
 <p>By connecting these dots, Polkadot serves as a foundational part of a decentralized web, where users
 control their data and are not limited by trust bounds within the network.</p>
 <h2><a class="anchor" aria-hidden="true" id="why-polkadot"></a><a href="#why-polkadot" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Why Polkadot?</h2>
-<p>The Polkadot network is heading towards a future with a secure ecosystem for decentralized
-applications (built with blockchain technology) to communicate and interact in. Polkadot has deep
-roots in the blockchain industry and working hard to build on existing blockchain concepts like
-governance, scalibility, and many more.</p>
 <p>Back in the early 2000's, when the internet was gaining popularity for the first time, the internet
 featured read-only, static, basic webpages. The online connected world at the time was only the
 beginning of virtual data, identities, and more. The internet during this time was also called the
@@ -59,16 +55,16 @@ intermediaries and build a trustless infrastructure.</p>
 </blockquote>
 <h2><a class="anchor" aria-hidden="true" id="how-does-polkadot-work"></a><a href="#how-does-polkadot-work" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How does Polkadot work?</h2>
 <p>The Polkadot network uses a sharded model where shards - called &quot;<a href="learn-parachains">parachains</a>&quot;,
-allows transactions to be processed in parallel instead of one-by-one. Each parachain in the network
-have unique state transition functions (STF). Based on Polkadot's design, as long as a chain's logic
-can compile to Wasm and adheres to the Relay Chain API, then it can connect to the Polkadot network
-as a parachain.</p>
+allow transactions to be processed in parallel instead of sequentially. Each parachain in the
+network has a unique state transition functions (STF). Based on Polkadot's design, as long as a
+chain's logic can compile to Wasm and adheres to the Relay Chain API, then it can connect to the
+Polkadot network as a parachain.</p>
 <p>Polkadot has a Relay Chain acting as the main chain of the system. Parachains construct and propose
-blocks to validators on the Relay Chain, where the blocks undergo rigorous availability and validity
-checks before being added to the finalized chain. As the Relay Chain provides the security
-guarantees, collators don't have any security responsibilities, and thus do not require a robust
-incentive system. This is how the entire network stays up to date with the many transactions that
-take place.</p>
+blocks to validators on the Relay Chain, where the blocks undergo rigorous
+<a href="learn-availability">availability and validity</a> checks before being added to the finalized chain. As
+the Relay Chain provides the security guarantees, <a href="learn-collator">collators</a> - full nodes of these
+parachains - don't have any security responsibilities, and thus do not require a robust incentive
+system. This is how the entire network stays up to date with the many transactions that take place.</p>
 <p><img src="/docs/assets/polkadot_relay_chain.png" alt="polkadot-relay-chain"></p>
 <p>In order to interact with chains that want to use their own finalization process (e.g. Bitcoin),
 Polkadot has <a href="learn-bridges">bridge parachains</a> that offer two-way compatibility, meaning that
@@ -81,9 +77,10 @@ environment for trust-free message passing that opens up true interoperability.<
 <a href="https://www.youtube.com/watch?v=_-k0xkooSlA">Polkadot Explainer video</a></p>
 </blockquote>
 <h2><a class="anchor" aria-hidden="true" id="why-should-you-use-polkadot"></a><a href="#why-should-you-use-polkadot" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Why should you use Polkadot?</h2>
-<p>Whether you're a blockchain developer or if you're interested in taking part of Polkadot's
-community, Polkadot offers a platform for everyone. The Polkadot Wiki offers a place for builders
-and maintainers to utilize tools and for brand-new learners to dive into educational material.</p>
+<p>Whether you're a blockchain developer or if you're interested in taking part of
+<a href="https://polkadot.network/polkadot-ambassador-program/">Polkadot's community</a>, Polkadot offers a
+platform for everyone. This wiki offers a place for builders and maintainers to utilize
+<a href="build-tools-index">tools</a> and for brand-new learners to dive into educational material.</p>
 <h2><a class="anchor" aria-hidden="true" id="getting-started"></a><a href="#getting-started" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Getting Started</h2>
 <p>For brand-new learners of Blockchain technology:</p>
 <ul>
@@ -123,8 +120,8 @@ articles to read on <a href="https://medium.com/polkadot-network">Polkadot's Med
 <li><a href="maintain-guides-how-to-vote-councillor">Voting for Councillors</a></li>
 <li><a href="learn-treasury">Using the Treasury</a></li>
 </ul>
-<p>For brand-new learners of Kusama: To learn more about how to build and maintain on the Kusama
-network, please head over to our <a href="https://guide.kusama.network/">Kusama Guide</a>.</p>
+<p>For brand-new learners of Kusama, Polkadot's canary cousin network: To learn more about how to build
+and maintain on the Kusama network, please head over to our <a href="https://guide.kusama.network/">Kusama Guide</a>.</p>
 <h2><a class="anchor" aria-hidden="true" id="resources"></a><a href="#resources" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resources</h2>
 <ul>
 <li><a href="https://www.crowdcast.io/polkadot">Polkadot Crowdcast</a> - List of all Crowdcast webinars that the
@@ -149,7 +146,7 @@ being built for Polkadot.</li>
 <li><a href="https://support.polkadot.network/">Polkadot Knowledge Base</a> - Troubleshooting resources for
 specific errors and problems.</li>
 </ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/3/2020 by Bill Laboon</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#what-is-polkadot">What is Polkadot?</a></li><li><a href="#why-polkadot">Why Polkadot?</a></li><li><a href="#how-does-polkadot-work">How does Polkadot work?</a></li><li><a href="#why-should-you-use-polkadot">Why should you use Polkadot?</a></li><li><a href="#getting-started">Getting Started</a></li><li><a href="#resources">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 11/25/2020 by Bruno Škvorc</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#what-is-polkadot">What is Polkadot?</a></li><li><a href="#why-polkadot">Why Polkadot?</a></li><li><a href="#how-does-polkadot-work">How does Polkadot work?</a></li><li><a href="#why-should-you-use-polkadot">Why should you use Polkadot?</a></li><li><a href="#getting-started">Getting Started</a></li><li><a href="#resources">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
