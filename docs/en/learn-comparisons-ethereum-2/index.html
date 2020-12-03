@@ -25,24 +25,26 @@ governing how the blockchain can change state with each block. This STF provides
 smart contract execution. Contracts exist on a single shard and can send asynchronous messages
 between shards.</p>
 <p>Likewise, in Polkadot, each shard hosts core logic, the shards are executed in parallel, and
-Polkadot can send cross-shard asynchronous messages. However, each shard in the protocol has a
-unique STF. Applications can exist either within a single shard or across shards by composing logic.
-Polkadot uses WebAssembly (Wasm) as a &quot;meta-protocol&quot;. A shard's STF can be abstract as long as the
-validators on Polkadot can execute it within a Wasm environment.</p>
+Polkadot can send cross-shard asynchronous messages. However, each Polkadot shard (in Polkadot
+terminology, &quot;<a href="learn-parachains">parachain</a>&quot;) has a unique STF. Applications can exist either within
+a single shard or across shards by composing logic. Polkadot uses WebAssembly (Wasm) as a
+&quot;meta-protocol&quot;. A shard's STF can be abstract as long as the validators on Polkadot can execute it
+within a Wasm environment.</p>
 <h2><a class="anchor" aria-hidden="true" id="architecture"></a><a href="#architecture" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Architecture</h2>
 <h3><a class="anchor" aria-hidden="true" id="ethereum-20"></a><a href="#ethereum-20" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ethereum 2.0</h3>
 <p>Ethereum 2.0's main chain is called the Beacon Chain. The primary load on the Beacon Chain is
 attestations, which are votes on availability of shard data and Beacon Chain validity. Each shard in
 Ethereum 2 is simply a blockchain with the Ethereum Wasm (eWasm) interface.</p>
-<p>Ethereum 2.0 will launch Phase 0 with just a Beacon Chain. In Phase 1, it will launch 64 shards as
-simple chains to test the Beacon Chain's finality. Each shard submits &quot;crosslinks&quot; to the Beacon
-Chain, which contain the information to finalize shard data. Later, in Phase 2, the shards will
-implement the eWasm interface, finally making the system usable. [1]</p>
+<p>Ethereum 2.0 launched Phase 0 on 1 December 2020 with just a Beacon Chain. In Phase 1, it will
+launch 64 shards as simple chains to test the Beacon Chain's finality. Each shard submits
+&quot;crosslinks&quot; to the Beacon Chain, which contain the information to finalize shard data. Later, in
+Phase 2, the shards will implement the eWasm interface, finally making the system usable to end
+users. [1]</p>
 <p>The network will also have &quot;side chains&quot; to interact with chains that are not under the finality
 protocol of Ethereum 2.0.</p>
 <h3><a class="anchor" aria-hidden="true" id="polkadot"></a><a href="#polkadot" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Polkadot</h3>
 <p>Like Ethereum 2.0, Polkadot also has a main chain, called the Relay Chain, with a number of shards,
-called &quot;<a href="learn-parachains">parachains</a>&quot;. Parachains are not restricted to a single interface like
+called <a href="learn-parachains">parachains</a>. Parachains are not restricted to a single interface like
 eWasm. Instead, they can define their own logic and interface, as long as they provide their STF to
 the Relay Chain validators so that they can execute it.</p>
 <p>Polkadot, now live as a Relay Chain only, plans to launch the ability to validate up to 20 shards
@@ -55,7 +57,7 @@ Polkadot has <a href="learn-bridges">bridge parachains</a> that offer two-way co
 <h2><a class="anchor" aria-hidden="true" id="consensus"></a><a href="#consensus" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Consensus</h2>
 <p>Both Ethereum 2.0 and Polkadot use hybrid consensus models where block production and finality each
 have their own protocol. The finality protocols - Casper FFG for Ethereum 2.0 and GRANDPA for
-Polkadot - are GHOST-based and both can finalize batches of blocks in one round. For block
+Polkadot - are both GHOST-based. and can both finalize batches of blocks in one round. For block
 production, both protocols use slot-based protocols that randomly assign validators to a slot and
 provide a fork choice rule for unfinalized blocks - RandDAO/LMD for Ethereum 2.0 and BABE for
 Polkadot.</p>
@@ -85,10 +87,11 @@ availability and validity guarantees: They need at least 111 validators per shar
 and 256 validators per shard to finalize all shards within one epoch. With 64 shards, that's 16,384
 validators (given 256 validators per shard). [3][4]</p>
 <p>Polkadot is able to provide strong finality and availability guarantees with much fewer validators.
-Therefore, Polkadot uses <a href="learn-staking">Nominated Proof of Stake (NPoS)</a> to select validators from
-a smaller set, letting smaller holders nominate validators to run infrastructure while still
-claiming the rewards of the system, without running a node of their own. Polkadot plans to have
-1,000 validators in the first year and needs about ten validators for each parachain in the network.</p>
+Polkadot uses <a href="learn-staking">Nominated Proof of Stake (NPoS)</a> to select validators from a smaller
+set, letting smaller holders nominate validators to run infrastructure while still claiming the
+rewards of the system, without running a node of their own. Polkadot plans to have 1,000 validators
+by the end of its first year of operation, and needs about ten validators for each parachain in the
+network.</p>
 <h2><a class="anchor" aria-hidden="true" id="shards"></a><a href="#shards" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Shards</h2>
 <p>Every shard in Ethereum 2.0 has the same STF. During phase 1 (expected 2021 [5]), the shards will be
 simple data containers that provide crosslinks to the Beacon Chain. In phase 2 (expected 2023), they
@@ -120,11 +123,12 @@ interpretation by the receiving chain.</p>
 like Github discussions, All Core Devs calls, and Ethereum Magicians to make decisions about the
 protocol. [8]</p>
 <p>Polkadot uses on-chain <a href="learn-governance">governance</a> with a multicameral system. There are several
-avenues to pass proposals, e.g. from an on-chain Council, a Technical Committee, or from the public.
-All proposals ultimately pass through a public referendum, where the majority of tokens can always
-control the outcome. For low-turnout referenda, Polkadot uses adaptive quorum biasing to set the
-passing threshold. Referenda can contain a variety of proposals, including fund allocation from an
-on-chain <a href="learn-treasury">Treasury</a>. Decisions get enacted on-chain and are binding and autonomous.</p>
+avenues to issue proposals, e.g. from the on-chain Council, the Technical Committee, or from the
+public. All proposals ultimately pass through a public referendum, where the majority of tokens can
+always control the outcome. For low-turnout referenda, Polkadot uses adaptive quorum biasing to set
+the passing threshold. Referenda can cover a variety of topics, including fund allocation from an
+on-chain <a href="learn-treasury">Treasury</a> or modifying the underlying runtime code of the chain. Decisions
+get enacted on-chain and are binding and autonomous.</p>
 <h2><a class="anchor" aria-hidden="true" id="upgrades"></a><a href="#upgrades" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Upgrades</h2>
 <p>Upgrades on Ethereum 2.0 will follow the normal hard-fork procedure, requiring validators to upgrade
 their nodes in order to implement protocol changes.</p>
@@ -136,10 +140,10 @@ upgraded without forking the chain.</p>
 &quot;parachains/parathreads&quot; in Polkadot) are secured by a main chain by linking shard state in the
 blocks of the main chains. The two protocols differ in a few main areas. First, all shards in
 Ethereum 2.0 have the same STF, while Polkadot lets shards have an abstract STF. Second, governance
-processes in Ethereum are off-chain and require coordination for a hard fork to enact governance
-decisions, while in Polkadot the decisions are on-chain and enacted autonomously. Third, the
-validator selection mechanisms are different because Polkadot can provide strong availability and
-validity guarantees with a smaller number of validators per shard.</p>
+processes in Ethereum 2.0 are planned to be off-chain and thus require coordination for a hard fork
+to enact governance decisions, while in Polkadot the decisions are on-chain and enacted
+autonomously. Third, the validator selection mechanisms are different because Polkadot can provide
+strong availability and validity guarantees with a smaller number of validators per shard.</p>
 <h2><a class="anchor" aria-hidden="true" id="references"></a><a href="#references" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>References</h2>
 <ol>
 <li><a href="https://docs.ethhub.io/ethereum-roadmap/ethereum-2.0/eth-2.0-phases/">Ethereum 2.0 Phases</a></li>
@@ -151,7 +155,7 @@ validity guarantees with a smaller number of validators per shard.</p>
 <li><a href="https://github.com/ethereum/wiki/wiki/Sharding-FAQ#how-would-synchronous-cross-shard-messages-work">Sharding FAQ</a></li>
 <li><a href="https://github.com/ethereum/wiki/wiki/Governance-compendium">Ethereum Governance Compendium</a></li>
 </ol>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 10/13/2020 by Bruno Škvorc</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#model">Model</a></li><li><a href="#architecture">Architecture</a><ul class="toc-headings"><li><a href="#ethereum-20">Ethereum 2.0</a></li><li><a href="#polkadot">Polkadot</a></li></ul></li><li><a href="#consensus">Consensus</a></li><li><a href="#staking-mechanics">Staking Mechanics</a></li><li><a href="#shards">Shards</a></li><li><a href="#message-passing">Message Passing</a></li><li><a href="#governance">Governance</a></li><li><a href="#upgrades">Upgrades</a></li><li><a href="#conclusion">Conclusion</a></li><li><a href="#references">References</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 12/3/2020 by Bill Laboon</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#model">Model</a></li><li><a href="#architecture">Architecture</a><ul class="toc-headings"><li><a href="#ethereum-20">Ethereum 2.0</a></li><li><a href="#polkadot">Polkadot</a></li></ul></li><li><a href="#consensus">Consensus</a></li><li><a href="#staking-mechanics">Staking Mechanics</a></li><li><a href="#shards">Shards</a></li><li><a href="#message-passing">Message Passing</a></li><li><a href="#governance">Governance</a></li><li><a href="#upgrades">Upgrades</a></li><li><a href="#conclusion">Conclusion</a></li><li><a href="#references">References</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
