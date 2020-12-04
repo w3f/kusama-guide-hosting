@@ -94,9 +94,6 @@ configuration
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="conclusions"></a><a href="#conclusions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Conclusions</h2>
 <ul>
-<li><p>Do not expose validators to the public internet, they should only be accessible by allowed
-parties. Therefore, we propose a layered approach in which the validators are isolated from the
-internet and connect to the Polkadot network via an intermediate layer of public-facing nodes.</p></li>
 <li><p>At the moment, Polkadot/Substrate can't interact with HSM/SGX, so we need to provide the signing
 key seeds to the validator machine. This key is kept in memory for signing operations and
 persisted to disk (encrypted with a password).</p></li>
@@ -115,26 +112,9 @@ code should be kept in private version control, reviewed, audited, and tested.</
 <li><p>Session keys should be generated and provided in a secure way.</p></li>
 <li><p>Polkadot should be started at boot and restarted if stopped for any reason (supervisor process).</p></li>
 <li><p>Polkadot should run as non-root user.</p></li>
-<li><p>Each validator should connect to the Polkadot network through a set of at least 2 public-facing
-nodes. The connection is done through a VPN and the machine can't access the public internet, thus
-the only possible connection is through the VPN.</p></li>
-</ul>
-<h3><a class="anchor" aria-hidden="true" id="public-facing-nodes"></a><a href="#public-facing-nodes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Public Facing Nodes</h3>
-<ul>
-<li><p>At least two nodes associated with each validator run on at least two different cloud providers
-and they only publicly expose the p2p port.</p></li>
-<li><p>They can run as a container on Kubernetes and we can define the desired state (number of replicas
-always up, network and storage settings); the connection between the validator and the
-public-facing nodes is done through a VPN. They have the common Kubernetes security setup in place
-(restrictive service account, pod security policy and network policy).</p></li>
-<li><p>Node keys should be provided in a secure way.</p></li>
-<li><p>Only run the Polkadot container, no additional services. The VPN agent should run on a sidecar in
-the same pod (sharing the same network stack).</p></li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="monitoring"></a><a href="#monitoring" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Monitoring</h3>
 <ul>
-<li><p>Public-facing nodes and the validator should be monitored and alerts set for several failure
-conditions defined.</p></li>
 <li><p>There should be an on-call rotation for managing the alerts.</p></li>
 <li><p>There should be a clear protocol with actions to perform for each level of each alert and an
 escalation policy.</p></li>
@@ -147,7 +127,7 @@ escalation policy.</p></li>
 <li><a href="https://forum.cosmos.network/t/sentry-node-architecture-overview/454">Sentry Node Architecture Overview</a></li>
 <li><a href="https://medium.com/loom-network/hsm-policies-and-the-importance-of-validator-security-ec8a4cc1b6f">HSM Policies and the Important of Validator Security</a></li>
 </ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/26/2020 by Kirsten Richard</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#high-availability">High Availability</a></li><li><a href="#key-management">Key Management</a><ul class="toc-headings"><li><a href="#signing-outside-the-client">Signing Outside the Client</a></li></ul></li><li><a href="#monitoring-tools">Monitoring Tools</a></li><li><a href="#linux-best-practices">Linux Best Practices</a></li><li><a href="#conclusions">Conclusions</a><ul class="toc-headings"><li><a href="#validators">Validators</a></li><li><a href="#public-facing-nodes">Public Facing Nodes</a></li><li><a href="#monitoring">Monitoring</a></li></ul></li><li><a href="#resources">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 12/4/2020 by Anson Lau</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#high-availability">High Availability</a></li><li><a href="#key-management">Key Management</a><ul class="toc-headings"><li><a href="#signing-outside-the-client">Signing Outside the Client</a></li></ul></li><li><a href="#monitoring-tools">Monitoring Tools</a></li><li><a href="#linux-best-practices">Linux Best Practices</a></li><li><a href="#conclusions">Conclusions</a><ul class="toc-headings"><li><a href="#validators">Validators</a></li><li><a href="#monitoring">Monitoring</a></li></ul></li><li><a href="#resources">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
