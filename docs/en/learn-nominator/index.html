@@ -47,15 +47,17 @@ nomination. However, the election algorithm attempts to minimize this situation,
 occur often. See the <a href="learn-phragmen#optimizations">section on Phragmén optimization</a> for more
 details.</p>
 <h3><a class="anchor" aria-hidden="true" id="oversubscribed-validators"></a><a href="#oversubscribed-validators" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Oversubscribed Validators</h3>
-<p>Validators can only pay out to 256 nominators per era. If more than 256 nominators nominate the same
-validator, it is &quot;oversubscribed&quot;, and only the top 256 staked nominators (ranked by amount of
-stake) are paid rewards. Other nominators will receive no rewards for that era, although their stake
-will still be used to calculate entry into the active validator set.</p>
+<p>Validators can only pay out to a certain number of nominators per era. This is currently set to
+{{ polkadot_max_nominators }}, but can be modified via governance. If more than
+{{ polkadot_max_nominators }} nominators nominate the same validator, it is &quot;oversubscribed&quot;, and
+only the top {{ polkadot_max_nominators }} staked nominators (ranked by amount of stake) are paid
+rewards. Other nominators will receive no rewards for that era, although their stake will still be
+used to calculate entry into the active validator set.</p>
 <p>Although it is difficult to determine exactly how many nominators will nominate a given validator in
 the next era, one can estimate based on the current number of nominators. A nominator with only 5
-nominators in this era, for instance, is unlikely to have more than 256 in the next era. An
-already-oversubscribed validator with 500 nominators this era, however, is much more likely to be
-oversubscribed in the next era as well.</p>
+nominators in this era, for instance, is unlikely to have more than {{ polkadot_max_nominators }} in
+the next era. An already-oversubscribed validator with 1000 nominators this era, however, is much
+more likely to be oversubscribed in the next era as well.</p>
 <h3><a class="anchor" aria-hidden="true" id="possible-effect-of-inactive-nominations-on-rewards"></a><a href="#possible-effect-of-inactive-nominations-on-rewards" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Possible effect of inactive nominations on rewards</h3>
 <p>As long as you have nominated more than one validator candidate and at least one of them got
 elected, your bonded stake will be fully distributed to one or more validators. That being said, you
@@ -103,7 +105,7 @@ Kusama canary network.</li>
 <li><a href="maintain-guides-how-to-unbond">Stop Being a Nominator (all networks)</a> - Guide on stopping
 nominations and withdrawing tokens.</li>
 </ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/26/2020 by Logan Saether</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 12/10/2020 by Bill Laboon</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();

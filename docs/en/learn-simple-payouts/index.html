@@ -33,11 +33,11 @@ inflationary rewards, and nomination exposures. Rewards will not be claimable mo
 after they were earned. This means that all rewards must be claimed within 84 eras.</p>
 <p>Anyone can trigger a payout for any validator, as long as they are willing to pay the transaction
 fee. Someone must submit a transaction with a validator ID and an era index. Polkadot will
-automatically calculate that validator's reward, find the top 256 nominators for that era, and
-distribute the rewards pro rata.</p>
+automatically calculate that validator's reward, find the top {{ polkadot_max_nominators }}
+nominators for that era, and distribute the rewards pro rata.</p>
 <blockquote>
-<p>Note: The Staking system only applies the highest 256 nominations to each validator to reduce the
-complexity of the staking set.</p>
+<p>Note: The Staking system only applies the highest {{ polkadot_max_nominators }} nominations to
+each validator to reduce the complexity of the staking set.</p>
 </blockquote>
 <p>These details are handled for you automatically if you use the
 <a href="https://polkadot.js.org/apps/#/staking/payout">Polkadot-JS UI</a>, which also allows you to submit
@@ -63,7 +63,7 @@ claim them. If you want to maximize compounding, then you will need to claim oft
 <li>Staking operations at the end of an era are closed to allow the off-chain validator election to
 take place. See <a href="learn-phragmen#off-chain-phragmen">Off-chain Phragmén</a> for more information.</li>
 </ol>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/25/2020 by Bill Laboon</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#claiming-rewards">Claiming Rewards</a></li><li><a href="#faq-and-cautionary-notes">F.A.Q. and Cautionary Notes</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 12/10/2020 by Bill Laboon</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#claiming-rewards">Claiming Rewards</a></li><li><a href="#faq-and-cautionary-notes">F.A.Q. and Cautionary Notes</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
