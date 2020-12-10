@@ -26,22 +26,17 @@ take control and commit slashable behavior.</li>
 <li>Must be high availability.</li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="high-availability"></a><a href="#high-availability" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>High Availability</h2>
-<p>The best way to keep your validator available is to have it behind a layer of &quot;sentry nodes&quot;. Sentry
-nodes are full nodes that can be provisioned on cloud infrastructure, e.g. AWS, GCP, Azure. Your
-validator node should be placed in a private data center and limit its connections to the sentry
-nodes.</p>
-<p>Sentry nodes can filter the messages that they send to the validator, never sending duplicates so
-that the validator doesn't get spammed. Likewise, if a sentry node is attacked and goes offline,
-other instances can be provisioned to replace it. DDoS attacks should never make it to the
-validator.</p>
-<p>As validators are expected to have 100% uptime, node operators may want to have failovers. In this
-setup, there would be one primary validator, and a second one that only responds to messages if the
-primary goes offline.</p>
-<p>If multiple validators do end up online at the same time, your validator may end up signing multiple
-blocks and will thus get slashed for equivocation. A properly configured, highly available setup
-like this will reduce your chances of getting slashed for non-responsiveness, but a misconfigured
-setup will increase your chances of getting slashed for equivocation. This is a trade-off, and we
-expect that different validators will make different decisions on which side they err towards.</p>
+<p>High availability set-ups that involve redundant validator nodes may seem attractive at first.
+However, they can be <strong>very dangerous</strong> if they are not set up perfectly. The reason for this is
+that the session keys used by a validator should always be isolated to just a single node.
+Replicating session keys across multiple nodes could lead to equivocation slashes, or soon to
+parachain validity slashes which can make you lose <strong>100% of your staked funds</strong>.</p>
+<p>The good news is that 100% uptime of your validator is not really needed, as it has some buffer
+within eras in order to go offline for a little while and upgrade. For this reason, we advise that
+you only attempt a high availability set-up if you're confident you know exactly what you're doing.
+Many expert validators have made mistakes in the past due to the handling of session keys.</p>
+<p>Remember, even if your validator goes offline for some time, the offline slash is much more
+forgiving than the equivocation or parachain validity slashing.</p>
 <h2><a class="anchor" aria-hidden="true" id="key-management"></a><a href="#key-management" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Key Management</h2>
 <p>See the <a href="https://wiki.polkadot.network/en/latest/polkadot/learn/keys/">Polkadot Keys guide</a> for more
 information on keys. The keys that are of primary concern for validator infrastructure are the
@@ -127,7 +122,7 @@ escalation policy.</p></li>
 <li><a href="https://forum.cosmos.network/t/sentry-node-architecture-overview/454">Sentry Node Architecture Overview</a></li>
 <li><a href="https://medium.com/loom-network/hsm-policies-and-the-importance-of-validator-security-ec8a4cc1b6f">HSM Policies and the Important of Validator Security</a></li>
 </ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 12/4/2020 by Anson Lau</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#high-availability">High Availability</a></li><li><a href="#key-management">Key Management</a><ul class="toc-headings"><li><a href="#signing-outside-the-client">Signing Outside the Client</a></li></ul></li><li><a href="#monitoring-tools">Monitoring Tools</a></li><li><a href="#linux-best-practices">Linux Best Practices</a></li><li><a href="#conclusions">Conclusions</a><ul class="toc-headings"><li><a href="#validators">Validators</a></li><li><a href="#monitoring">Monitoring</a></li></ul></li><li><a href="#resources">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 12/10/2020 by Logan Saether</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#high-availability">High Availability</a></li><li><a href="#key-management">Key Management</a><ul class="toc-headings"><li><a href="#signing-outside-the-client">Signing Outside the Client</a></li></ul></li><li><a href="#monitoring-tools">Monitoring Tools</a></li><li><a href="#linux-best-practices">Linux Best Practices</a></li><li><a href="#conclusions">Conclusions</a><ul class="toc-headings"><li><a href="#validators">Validators</a></li><li><a href="#monitoring">Monitoring</a></li></ul></li><li><a href="#resources">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
