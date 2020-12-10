@@ -157,6 +157,65 @@ make their tip valuations known.</p>
 300 KSM from the treasury.</p>
 <p>In order for Bob to be paid his tip, some account must call the <code>close_tip</code> extrinsic at the end of
 the closing period for the tip. This extrinsic may be called by anyone.</p>
+<h2><a class="anchor" aria-hidden="true" id="bounties-spending"></a><a href="#bounties-spending" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bounties Spending</h2>
+<p>There are practical limits to Council Members curation capabilities when it comes to treasury
+proposals: Council members likely do not have the expertise to make a proper assessment of the
+activities described in all proposals. Even if individual Councillors have that expertise, it is
+highly unlikely that a majority of members are capable in such diverse topics.</p>
+<p>Bounties Spending proposals aim to delegate the curation activity of spending proposals to experts
+called Curators: They can be defined as addresses with agency over a portion of the treasury with
+the goal of fixing a bug, vulnerability, develop a strategy, or monitoring a set of tasks related to
+a specific topic: all for the benefit of the Polkadot ecosystem.</p>
+<p>A proposer can submit a bounty proposal for the Council to pass, with a curator to be defined later,
+whose background and expertise is such that they are capable of determining when the task is
+complete. Curators are selected by the Council after the bounty proposal passes, and need to add an
+upfront payment to take the position. This deposit can be used to punish them if they act
+maliciously. But if they are successful in their task of getting someone to complete the bounty
+work, they will receive their deposit back and part of the bounty reward.</p>
+<p>When submitting the value of the bounty, the proposer includes a reward for curators willing to
+invest their time and expertise in the task: this amount is included in the total value of the
+bounty. In this sense, the curator's fee can be defined as the result of subtracting the value paid
+to the bounty rewardee from the total value of the bounty.</p>
+<p>In general terms, curators are expected to have a well-balanced track record related to the issues
+the bounty tries to resolve: they should be at least knowledgeable on the topics the bounty touches,
+and show project management skills or experience. These recommendations ensure an effective use of
+the mechanism. A Bounty Spending is a reward for a specified body of work - or specified set of
+objectives - that needs to be executed for a predefined treasury amount to be paid out. The
+responsibility of assigning a payout address once the specified set of objectives is completed is
+delegated to the curator.</p>
+<p>After the Council has activated a bounty, it delegates the work that requires expertise to the
+curator who gets to close the active bounty. Closing the active bounty enacts a delayed payout to
+the payout address and a payout of the curator fee. The delay phase allows the Council to act if any
+issues arise.</p>
+<p>To minimize storage on chain in the same way as any proposal, bounties don't contain contextual
+information. When a user submits a bounty spending proposal, they will probably need to find an
+off-chain way to explain the proposal (any of the available community forums serve this purpose).
+<a href="https://docs.google.com/document/d/1-IBz_owspV5OcvezWXpksWDQReWowschD0TFuaVKKcU/edit?usp=sharing">This template</a>
+can help as a checklist of all needed information for the Council to make an informed decision.</p>
+<p>The bounty has a predetermined duration of 90 days with the possibility of being extended by the
+curator. Aiming to maintain flexibility on the tasks’ curation, the curator will be able to create
+sub-bounties for more granularity and allocation in the next iteration of the mechanism.</p>
+<h3><a class="anchor" aria-hidden="true" id="creating-a-bounty-proposal"></a><a href="#creating-a-bounty-proposal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating a Bounty Proposal</h3>
+<p>Anyone can create a Bounty proposal using Polkadot JS Apps: Users will be able to submit a proposal
+on the dedicated Bounty section under Governance. The development of a robust user interface to view
+and manage bounties in the Polkadot Apps is on its way and it will serve Council members, Curators
+and Beneficiaries of the bounties, as well as all Kusama users observing the on-chain treasury
+governance. For now, the help of a Councillor is needed to open a bounty proposal as a motion to be
+voted.</p>
+<p>A bounty can be cancelled by deleting the earmark for a specific treasury amount or be closed if the
+tasks have been completed. On the opposite side, the 90 days life of a bounty can be extended by
+amending the expiry block number of the bounty to stay active.</p>
+<h3><a class="anchor" aria-hidden="true" id="closing-a-bounty"></a><a href="#closing-a-bounty" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Closing a bounty</h3>
+<p>The curator can close the bounty once they approve the completion of its tasks. The curator should
+make sure to set up the payout address on the active bounty beforehand. Closing the Active bounty
+enacts a delayed payout to the payout address and a payout of the curator fee.</p>
+<p>A bounty can be closed by using the extrinsics tab and selecting the Treasury pallet, then
+<code>Award_bounty</code>, making sure the right bounty is to be closed and finally sign the transaction. It is
+important to note that those who received a reward after the bounty is completed, must claim the
+specific amount of the payout from the payout address, by calling <code>Claim_bounty</code> after the curator
+closed the allocation.</p>
+<p>To understand more about Bounties and how this new mechanism works, read this
+<a href="https://polkadot.network/kusama-and-polkadot-now-reward-curators-helping-to-scale-councils-functions-join-the-force-moving-the-community-forward/">Polkadot Blog post</a>.</p>
 <h2><a class="anchor" aria-hidden="true" id="faq"></a><a href="#faq" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>FAQ</h2>
 <h3><a class="anchor" aria-hidden="true" id="what-prevents-the-treasury-from-being-captured-by-a-majority-of-the-council"></a><a href="#what-prevents-the-treasury-from-being-captured-by-a-majority-of-the-council" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What prevents the treasury from being captured by a majority of the Council?</h3>
 <p>The majority of the Council can decide the outcome of a treasury spend proposal. In an adversarial
@@ -189,7 +248,7 @@ migration to a minority fork. However, the possibility of this scenario is quite
 The Rust implementation of the treasury.
 (<a href="https://substrate.dev/rustdocs/v2.0.0/pallet_treasury/index.html">Docs</a>)</li>
 </ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 12/3/2020 by Polkadot Wiki CI</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#funding-the-treasury">Funding the Treasury</a></li><li><a href="#creating-a-treasury-proposal">Creating a Treasury Proposal</a><ul class="toc-headings"><li><a href="#announcing-the-proposal">Announcing the Proposal</a></li><li><a href="#creating-the-proposal">Creating the Proposal</a></li></ul></li><li><a href="#tipping">Tipping</a><ul class="toc-headings"><li><a href="#example">Example</a></li></ul></li><li><a href="#faq">FAQ</a><ul class="toc-headings"><li><a href="#what-prevents-the-treasury-from-being-captured-by-a-majority-of-the-council">What prevents the treasury from being captured by a majority of the Council?</a></li></ul></li><li><a href="#further-reading">Further Reading</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 12/10/2020 by Bill Laboon</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#funding-the-treasury">Funding the Treasury</a></li><li><a href="#creating-a-treasury-proposal">Creating a Treasury Proposal</a><ul class="toc-headings"><li><a href="#announcing-the-proposal">Announcing the Proposal</a></li><li><a href="#creating-the-proposal">Creating the Proposal</a></li></ul></li><li><a href="#tipping">Tipping</a><ul class="toc-headings"><li><a href="#example">Example</a></li></ul></li><li><a href="#bounties-spending">Bounties Spending</a><ul class="toc-headings"><li><a href="#creating-a-bounty-proposal">Creating a Bounty Proposal</a></li><li><a href="#closing-a-bounty">Closing a bounty</a></li></ul></li><li><a href="#faq">FAQ</a><ul class="toc-headings"><li><a href="#what-prevents-the-treasury-from-being-captured-by-a-majority-of-the-council">What prevents the treasury from being captured by a majority of the Council?</a></li></ul></li><li><a href="#further-reading">Further Reading</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
