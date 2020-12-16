@@ -79,8 +79,30 @@ the <a href="https://polkadot.js.org/apps/#/staking/targets">Targets</a> section
 inputting the number of tokens you would like to stake to check it. Then, nominate those who have a
 higher profit. However, that does not guarantee the right way to evaluate the validators' overall
 performance.</p>
-<p>One example would be if a validator is regularly offline, their nominators most likely would get
-fewer rewards than others. More importantly, when many validators are
+<h3><a class="anchor" aria-hidden="true" id="filter-out-validators-with-undesirable-traits"></a><a href="#filter-out-validators-with-undesirable-traits" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Filter Out Validators With Undesirable Traits</h3>
+<p>On the Targets page, you can filter out validators that have traits that may indicate an issue with
+you nominating them. You can turn these filters off and on to help narrow down which validators you
+should nominate. It is important to note that none of these traits are necessarily &quot;bad&quot;; however,
+depending on your validator selection methodology, they may be characteristics that you would be
+interested in filtering out.</p>
+<ul>
+<li><strong>Single from operator</strong> - Do not show groups of validators run by a single operator.</li>
+<li><strong>No 20%+ comm</strong> - Do not show any validators with a commission of 20% or higher.</li>
+<li><strong>No at capacity</strong> - Do not show any validators who are currently operating
+<a href="glossary#capacity">at capacity</a> (i.e., could potentially be oversubscribed).</li>
+<li><strong>Recent payouts</strong> - Only show validators that have recently caused a
+<a href="learn-simple-payouts">payout to be issued</a>. Note that anyone can cause a payout to occur; it does
+not have to be the operator of a validator.</li>
+<li><strong>Only elected</strong> - Only show validators that are currently in the active set (i.e., they have been
+elected to produce blocks this era).</li>
+<li><strong>Only with an identity</strong> - Only show validators that have set an <a href="learn-identity">identity</a>. Note
+that this identity does not have to be verified by a registrar for the validator to show up in the
+list.</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="review-your-validators-history"></a><a href="#review-your-validators-history" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Review Your Validators' History</h3>
+<p>How the validator acted in the past may be a good indicator of how they will act in the future. An
+example of problematic behavior would be if a validator is regularly offline, their nominators most
+likely would get fewer rewards than others. More importantly, when many validators are
 <a href="learn-staking#unresponsiveness">unreachable</a>, those nominators who staked with them will be
 slashed.</p>
 <p><img src="/img/staking/polkadotjs_validator_stats.png" alt="Validator Stats"></p>
@@ -90,6 +112,27 @@ produced, rewards and slashes, and <a href="learn-identity">identity</a> (if the
 nominator should do comprehensive research on their validator candidates - they should go over the
 validators' websites to see who they are, what kind of infrastructure setup they are using,
 reputation, the vision behind the validator, and more.</p>
+<h3><a class="anchor" aria-hidden="true" id="be-aware-of-risks-of-multiple-validators"></a><a href="#be-aware-of-risks-of-multiple-validators" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Be Aware of Risks of Multiple Validators</h3>
+<p>Recall that slashing is an additive function; the more validators that are offline or equivocate in
+a given session, the harsher the penalties. Since validators that are controlled by a single entity
+are more at risk of a &quot;synchronized&quot; failure, nominating them implies a greater risk of having a
+large slash of your nominated funds. Generally, it is safer to nominate validators whose behavior is
+independent from others in as many ways as possible (different hardware, geographic location, owner,
+etc.).</p>
+<h3><a class="anchor" aria-hidden="true" id="avoiding-oversubscribed-validators"></a><a href="#avoiding-oversubscribed-validators" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Avoiding Oversubscribed Validators</h3>
+<p>If you are not nominating with a large number of DOTs, you should try to avoid
+<a href="glossary#oversubscribed">oversubscribed</a> validators. It is not always easy to calculate if the
+validator selected will be oversubscribed in the next session; one way to avoid choosing potentially
+oversubscribed validators is to filter out any that are <a href="glossary#capacity">at capacity</a> on the
+Targets page.</p>
+<p>Finally, if you have a very small amount of DOTs, you may not be able to have your nomination fit
+into the election set. The nominator to validator mapping has to fit in a single block, and if there
+are too many nominators, the lowest-staked nominations will be dropped. This value is obviously
+dynamic and will vary over time. If you review the lowest amount of nominations that are occurring
+on current validators, you can get a good idea of how many DOTs will likely be necessary to have
+your nomination earn you rewards. You can read the blog post
+<a href="https://polkadot.network/polkadot-staking-an-update/">&quot;Polkadot Staking: An Update&quot;</a> for more
+details.</p>
 <blockquote>
 <p>These concepts have been further explained in the
 <a href="https://www.youtube.com/watch?v=weG_uzdSs1E&amp;list=PLOyWqupZ-WGuAuS00rK-pebTMAOxW41W8&amp;index=4">Why Nominate on Polkadot &amp; Kusama video</a>
@@ -105,7 +148,7 @@ Kusama canary network.</li>
 <li><a href="maintain-guides-how-to-unbond">Stop Being a Nominator (all networks)</a> - Guide on stopping
 nominations and withdrawing tokens.</li>
 </ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 12/10/2020 by Bill Laboon</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 12/16/2020 by Bill Laboon</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
