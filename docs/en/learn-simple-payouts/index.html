@@ -18,11 +18,11 @@
         });
       </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-simple-payouts.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Simple Payouts</h1></header><article><div><span><p>Polkadot and Kusama make stakers claim their rewards for past eras by submitting a transaction. This
 naturally leads to spreading out reward distribution, as people make transactions at disparate
-times, rather than updating the accounts of all stakers in a single block. Even if everyone
-submitted a reward claim at the same time, the fact that they are individual transactions would
-allow the block construction algorithm to process only a limited number per block and ensure that
-the network maintains a constant block time. If all rewards were sent out in one block, this could
-cause serious issues with the stability of the network.</p>
+times, rather than updating the accounts of all stakers in a single block.</p>
+<p>Even if everyone submitted a reward claim at the same time, the fact that they are individual
+transactions would allow the block construction algorithm to process only a limited number per block
+and ensure that the network maintains a constant block time. If all rewards were sent out in one
+block, this could cause serious issues with the stability of the network.</p>
 <p>Simple payouts requires one transaction per validator per era to claim rewards. The reason Polkadot
 requires this is to avoid an attack where someone has several thousand accounts nominating a single
 validator. The major cost in reward distribution is mutating the accounts in storage, and Polkadot
@@ -49,21 +49,22 @@ which will list all the pending payouts for your stashes.</p>
 accounts for payout.</p>
 <p><img src="/docs/assets/polkadotjs_payout_popup.png" alt="select-payouts"></p>
 <p>Once you are done with payout, another screen will appear asking for you to sign and submit the
-transaction, and that is all there is to claiming rewards.</p>
+transaction.</p>
 <p><img src="/docs/assets/polkadotjs_payout_complete.png" alt="transaction-payouts"></p>
 <h2><a class="anchor" aria-hidden="true" id="faq-and-cautionary-notes"></a><a href="#faq-and-cautionary-notes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>F.A.Q. and Cautionary Notes</h2>
 <ol>
 <li>Rewards expire after 84 eras. On Polkadot, that's about 84 days. On Kusama, it is approximately
 21 days.</li>
 <li>Claiming rewards (or neglecting to claim rewards) does not affect nominations in any way.
-Nominations will persist after claiming rewards or the rewards expire.</li>
+Nominations will persist after claiming rewards or after the rewards expire.</li>
 <li>Rewards are not minted until they are claimed. Therefore, if your reward destination is &quot;stash,
 increasing amount at stake&quot;, then your staked amount does not reflect your rewards until you
-claim them. If you want to maximize compounding, then you will need to claim often.</li>
+claim them. If you want to maximize compounding, then you will need to claim often or nominate
+validators which regularly claim for you.</li>
 <li>Staking operations at the end of an era are closed to allow the off-chain validator election to
 take place. See <a href="learn-phragmen#off-chain-phragmen">Off-chain Phragmén</a> for more information.</li>
 </ol>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 12/10/2020 by Bill Laboon</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#claiming-rewards">Claiming Rewards</a></li><li><a href="#faq-and-cautionary-notes">F.A.Q. and Cautionary Notes</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 12/31/2020 by Bruno Škvorc</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#claiming-rewards">Claiming Rewards</a></li><li><a href="#faq-and-cautionary-notes">F.A.Q. and Cautionary Notes</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();

@@ -23,12 +23,13 @@ conservative, prioritizing stability and dependability.</p>
 <h2><a class="anchor" aria-hidden="true" id="what-the-two-networks-have-in-common"></a><a href="#what-the-two-networks-have-in-common" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What the two networks have in common</h2>
 <p>Kusama was released as an early version of the same code to be used in Polkadot, which means they
 share the same underlying architecture: a multichain, heterogeneously-sharded design based on
-Nominated Proof of Stake (NPoS). Both networks also share key innovations like on-chain governance,
-hot-swappable runtimes for forkless, on-chain upgrades, and Cross-Chain Message Passing (XCMP) for
-interoperability. Governance on both Polkadot and Kusama is designed to be decentralized and
-permissionless, giving a say in how the network is run to everyone who owns the native token (DOT
-for Polkadot, KSM for Kusama). Therefore, <strong>over time the networks will evolve independently,
-converging or diverging according to the decisions of their respective communities.</strong></p>
+<a href="learn-consensus">Nominated Proof of Stake (NPoS)</a>. Both networks also share key innovations like
+on-chain <a href="learn-governance">governance</a>, hot-swappable runtimes for forkless, on-chain upgrades, and
+<a href="learn-crosschain">Cross-Chain Message Passing (XCMP)</a> for interoperability. Governance on both
+Polkadot and Kusama is designed to be decentralized and permissionless, giving a say in how the
+network is run to everyone who owns the native token (DOT for Polkadot, KSM for Kusama). Therefore,
+<strong>over time the networks will evolve independently, converging or diverging according to the
+decisions of their respective communities.</strong></p>
 <h2><a class="anchor" aria-hidden="true" id="key-differences"></a><a href="#key-differences" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Key differences</h2>
 <p>There are a few important distinctions to be made.</p>
 <p><img src="/docs/assets/Cousins_2.png" alt="polkadot_vs_kusama"></p>
@@ -37,39 +38,36 @@ converging or diverging according to the decisions of their respective communiti
 governance parameters that allow for faster upgrades. Kusama is up to four times faster than
 Polkadot, with seven days for token holders to vote on referendums followed by an enactment period
 of eight days, after which the referendum will be enacted on the chain. This means stakeholders need
-to stay active and vigilant if they want to keep up with all the proposals, referenda , and
-upgrades, and validators on Kusama often need to update at short notice. On Polkadot, votes last 28
-days followed by an enactment period of 28 days. This does not mean that the Kusama blockchain
-itself is faster, in the sense of faster block times or transaction throughput (these are the same
-on both networks), but that there's a shorter amount of time between governance events such as
-proposing new referenda, voting, and enacting approved upgrades. This allows Kusama to adapt and
-evolve faster than Polkadot.</p>
+to stay active and vigilant if they want to keep up with all the proposals, referenda, and upgrades,
+and validators on Kusama often need to update on short notice.</p>
+<p>On Polkadot, votes last 28 days followed by an enactment period of 28 days. This does not mean that
+the Kusama blockchain itself is faster, in the sense of faster block times or transaction throughput
+(these are the same on both networks), but that there's a shorter amount of time between governance
+events such as proposing new referenda, voting, and enacting approved upgrades. This allows Kusama
+to adapt and evolve faster than Polkadot.</p>
 <h3><a class="anchor" aria-hidden="true" id="lean-setups"></a><a href="#lean-setups" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Lean setups</h3>
 <p>Teams wishing to run a parachain need to bond tokens as security. The bonding requirement on Kusama
-is likely to be lower than on Polkadot. Kusama validators can also benefit from the
-<a href="https://polkadot.network/join-kusamas-thousand-validators-programme/">1000 Validators Program</a>,
-which helps them kickstart their Kusama nodes with nominations from Web3 Foundation and Parity
-Technologies. For those who want to validate on Kusama <em>and</em> Polkadot, the same setup and
-infrastructure can be used for both networks.</p>
+is likely to be lower than on Polkadot.</p>
 <h3><a class="anchor" aria-hidden="true" id="use-cases"></a><a href="#use-cases" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Use cases</h3>
 <p>Polkadot is and always will be the primary network for the deployment of enterprise-level
 applications and those that entail high-value transactions requiring bank-level security and
 stability. The initial use case for Kusama is as a pre-production environment, a “canary network”.
 Building on Kusama first allows teams to test things out in a live, fully decentralized and
 community-controlled network with real-world conditions and lower stakes in the event of problems or
-bugs than on Polkadot. Many projects will maintain parachains on both networks, experimenting and
-testing new technologies and features on Kusama before deploying them to Polkadot. Some teams will
-decide just to stay on Kusama, which is likely to be a place where we see some exciting
-experimentation with new technologies going forward. Projects that require high-throughput but don’t
-necessarily require bank-like security, such as some gaming, social networking, and content
-distribution applications, are particularly good candidates for this use case. Kusama may also prove
-to be the perfect environment for ambitious experiments with new ideas and new innovations in areas
-like governance, incentives, monetary policy, and DAOs (decentralized autonomous organizations).
-Future upgrades to the Polkadot runtime will also likely be deployed to Kusama before Polkadot
-mainnet. This way, not only will we be able to see how these new technologies and features will
-perform under real-world conditions before bringing them to Polkadot, but teams who have deployed to
-both networks will also get an advance look at how their own technology will perform under those
-upgrades.</p>
+bugs than on Polkadot.</p>
+<p>Many projects will maintain parachains on both networks, experimenting and testing new technologies
+and features on Kusama before deploying them to Polkadot. Some teams will decide just to stay on
+Kusama, which is likely to be a place where we see some exciting experimentation with new
+technologies going forward. Projects that require high-throughput but don’t necessarily require
+bank-like security, such as some gaming, social networking, and content distribution applications,
+are particularly good candidates for this use case.</p>
+<p>Kusama may also prove to be the perfect environment for ambitious experiments with new ideas and new
+innovations in areas like governance, incentives, monetary policy, and DAOs (decentralized
+autonomous organizations). Future upgrades to the Polkadot runtime will also likely be deployed to
+Kusama before Polkadot mainnet. This way, not only will we be able to see how these new technologies
+and features will perform under real-world conditions before bringing them to Polkadot, but teams
+who have deployed to both networks will also get an advance look at how their own technology will
+perform under those upgrades.</p>
 <h2><a class="anchor" aria-hidden="true" id="going-forward"></a><a href="#going-forward" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Going forward</h2>
 <p>Ultimately, Kusama and Polkadot will live on as independent, standalone networks with their own
 communities, their own governance, and their own complementary use cases, though they will continue
@@ -83,7 +81,7 @@ guidance to teams building for the ecosystem.</p>
 <li><a href="https://guide.kusama.network">The Kusama Wiki</a></li>
 <li><a href="https://kusama.dotapps.io">Kusama on Polkadot-JS Apps</a></li>
 </ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/24/2020 by MajellaH</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#what-the-two-networks-have-in-common">What the two networks have in common</a></li><li><a href="#key-differences">Key differences</a><ul class="toc-headings"><li><a href="#speed">Speed</a></li><li><a href="#lean-setups">Lean setups</a></li><li><a href="#use-cases">Use cases</a></li></ul></li><li><a href="#going-forward">Going forward</a></li><li><a href="#explore-more">Explore more</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 12/31/2020 by Bruno Škvorc</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#what-the-two-networks-have-in-common">What the two networks have in common</a></li><li><a href="#key-differences">Key differences</a><ul class="toc-headings"><li><a href="#speed">Speed</a></li><li><a href="#lean-setups">Lean setups</a></li><li><a href="#use-cases">Use cases</a></li></ul></li><li><a href="#going-forward">Going forward</a></li><li><a href="#explore-more">Explore more</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2020 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
