@@ -55,41 +55,7 @@ at which point other nodes will not accept them.</p>
 <p>You can tail the logs with <code>journalctl</code> like so:</p>
 <pre><code class="hljs css language-bash">journalctl -f -u polkadot-validator
 </code></pre>
-<h2><a class="anchor" aria-hidden="true" id="wireguard-systemd-configuration"></a><a href="#wireguard-systemd-configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Wireguard systemd configuration</h2>
-<p>You can automatically restart your VPN tunnel between your validator and its sentries using the
-configuration you have already created in the
-<a href="maintain-guides-how-to-setup-sentry-node">Set Up a Sentry Node - Public Node</a> guide.</p>
-<p>Create a file called <code>wireguard.service</code> in <code>/etc/systemd/system</code>.</p>
-<pre><code class="hljs css language-bash">touch /etc/systemd/system/wireguard.service
-</code></pre>
-<p>Write the commands needed to auto-start wireguard previously configured as <code>wg0</code> into the <code>wgo.conf</code>
-file in the <code>/etc/wireguard/</code> directory.</p>
-<pre><code class="hljs"><span class="hljs-section">[Unit]</span>
-<span class="hljs-attr">Description</span>=Wireguard VPN
-
-<span class="hljs-section">[Service]</span>
-<span class="hljs-attr">Type</span>=forking
-<span class="hljs-attr">ExecStart</span>=PATH_TO_WG-QUICK_BIN up wg0
-
-<span class="hljs-attr">Restart</span>=always
-
-<span class="hljs-section">[Install]</span>
-<span class="hljs-attr">WantedBy</span>=multi-user.target
-</code></pre>
-<p>The path to the wg-quick binary on Debian based distributions is usually: <code>/usr/bin/wg-quick</code>. If in
-doubt, run <code>whereis wg-quick</code>. To enable this to autostart on boot:</p>
-<pre><code class="hljs css language-bash">systemctl <span class="hljs-built_in">enable</span> wireguard.service
-</code></pre>
-<p>Start it manually with:</p>
-<pre><code class="hljs css language-bash">systemctl start wireguard.service
-</code></pre>
-<p>You can check that it's working with:</p>
-<pre><code class="hljs css language-bash">systemctl status wireguard.service
-</code></pre>
-<p>You can tail the logs with journalctl like so:</p>
-<pre><code class="hljs css language-bash">journalctl -f -u wireguard
-</code></pre>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/4/2020 by Kirsten Richard</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#wireguard-systemd-configuration">Wireguard systemd configuration</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2021 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 1/5/2021 by Logan Saether</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2021 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
