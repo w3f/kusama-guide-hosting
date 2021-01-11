@@ -33,25 +33,31 @@ the lagging blocks uncle blocks.</em></p>
 <p>Payments occur at the end of every era.</p>
 <h2><a class="anchor" aria-hidden="true" id="payout-scheme"></a><a href="#payout-scheme" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Payout Scheme</h2>
 <p>No matter how much total stake is behind a validator, all validators split the block authoring
-payout equally. The total payout, however, may differ based on <a href="#era-points">era points</a>, as
-described above.</p>
+payout essentially equally. The payout of a specific validator, however, may differ based on
+<a href="#era-points">era points</a>, as described above. Although there is a probabilistic component to
+receiving era points, and they may be impacted slightly depending on factors such as network
+connectivity, well-behaving validators should generally average out to having similar era point
+totals over a large number of eras.</p>
 <p>Validators may also receive &quot;tips&quot; from senders as an incentive to include transactions in their
-produced blocks.</p>
-<p>For simplicity, the examples below will assume all validators have the same amount of era points.</p>
+produced blocks. Validators will receive 100% of these tips directly.</p>
+<p>Validators will receive staking rewards in the form of the native token of that chain (KSM for
+Kusama and DOT for Polkadot).</p>
+<p>For simplicity, the examples below will assume all validators have the same amount of era points,
+and received no tips.</p>
 <pre><code class="hljs">Validator Set Size (v): <span class="hljs-number">4</span>
-Validator <span class="hljs-number">1</span> Stake (v1): <span class="hljs-number">18</span> DOT
-Validator <span class="hljs-number">2</span> Stake (v2):  <span class="hljs-number">9</span> DOT
-Validator <span class="hljs-number">3</span> Stake (v3):  <span class="hljs-number">8</span> DOT
-Validator <span class="hljs-number">4</span> Stake (v4):  <span class="hljs-number">7</span> DOT
+Validator <span class="hljs-number">1</span> Stake (v1): <span class="hljs-number">18</span> tokens
+Validator <span class="hljs-number">2</span> Stake (v2):  <span class="hljs-number">9</span> tokens
+Validator <span class="hljs-number">3</span> Stake (v3):  <span class="hljs-number">8</span> tokens
+Validator <span class="hljs-number">4</span> Stake (v4):  <span class="hljs-number">7</span> tokens
 Payout (p): <span class="hljs-number">8</span> DOT
 
 Payout <span class="hljs-keyword">for</span> each validator (v1 - v4):
-p / v = <span class="hljs-number">8</span> / <span class="hljs-number">4</span> = <span class="hljs-number">2</span> DOT
+p / v = <span class="hljs-number">8</span> / <span class="hljs-number">4</span> = <span class="hljs-number">2</span> tokens
 </code></pre>
 <p>Note that this is different than most other Proof-of-Stake systems such as Cosmos. As long as a
 validator is in the validator set, it will receive the same block reward as every other validator.
-Validator <code>v1</code>, who had 18 DOT staked, received the same reward (2 DOT) in this era as <code>v4</code> who had
-only 7 DOT staked.</p>
+Validator <code>v1</code>, who had 18 tokens staked, received the same reward (2 tokens) in this era as <code>v4</code>
+who had only 7 tokens staked.</p>
 <h2><a class="anchor" aria-hidden="true" id="running-multiple-validators"></a><a href="#running-multiple-validators" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Running Multiple Validators</h2>
 <p>It is possible for a single entity to run multiple validators. Running multiple validators may
 provide a better risk/reward ratio. Assuming you have enough DOT, or enough stake nominates your
@@ -59,6 +65,8 @@ validator, to ensure that your validators remain in the validator set, running m
 will result in a higher return than running a single validator.</p>
 <p>For the following example, assume you have 18 DOT to stake. For simplicity's sake, we will ignore
 nominators. Running a single validator, as in the example above, would net you 2 DOT in this era.</p>
+<p>Note that while DOT is used as an example, this same formula would apply to KSM when running a
+validator on Kusama.</p>
 <pre><code class="hljs">Validator Set Size (v): <span class="hljs-number">4</span>
 Validator <span class="hljs-number">1</span> Stake (v1): <span class="hljs-number">18</span> DOT &lt;- Your validator
 Validator <span class="hljs-number">2</span> Stake (v2):  <span class="hljs-number">9</span> DOT
@@ -83,9 +91,9 @@ Your payout = (p / v) * <span class="hljs-number">1</span> = (<span class="hljs-
 </code></pre>
 <p>With enough stake, you could run more than two validators. However, each validator must have enough
 stake behind it to be in the validator set.</p>
-<p>The incentives of the system favor equally-staked validators. This will most likely be a dynamic,
-rather than static, equilibrium. Potential validators will run different numbers of validators and
-apply different amounts of stake to them as time goes on, and in response to the actions of other
+<p>The incentives of the system favor equally-staked validators. This works out to be a dynamic, rather
+than static, equilibrium. Potential validators will run different numbers of validators and apply
+different amounts of stake to them as time goes on, and in response to the actions of other
 validators on the network.</p>
 <h2><a class="anchor" aria-hidden="true" id="slashing"></a><a href="#slashing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Slashing</h2>
 <p>Although rewards are paid equally, slashes are relative to a validator's stake. Therefore, if you do
@@ -96,7 +104,17 @@ punishes attacks that appear coordinated more severely than individual attacks. 
 example, run multiple validators hosted on the same infrastructure. A proper multi-validator
 configuration would ensure that they do not fail simultaneously.</p>
 <p>Nominators have the incentive to nominate the lowest-staked validator, as this will result in the
-lowest risk and highest reward.</p>
+lowest risk and highest reward. This is due to the fact that while their vulnerability to slashing
+remains the same (since it is percentage-based), their rewards are higher since they will be a
+higher proportion of the total stake allocated to that validator.</p>
+<p>To clarify this, let us imagine two validators, <code>v1</code> and <code>v2</code>. Assume both are in the active set,
+have commission set to 0%, and are well-behaved. The only difference is that <code>v1</code> has 90 DOT
+nominating it and <code>v1</code> only has 10. If you nominate <code>v1</code>, it now has <code>90 + 10 = 100</code> DOT, and you
+will get 10% of the staking rewards for the next era. If you nominate <code>v2</code>, it now has
+<code>10 + 10 = 20</code> DOT nominating it, and you will get 50% of the staking rewards for the next era. In
+actuality, it would be quite rare to see such a large difference between the stake of validators,
+but the same principle holds even for smaller differences. If there is a 10% slash of either
+validator, then you will lose 1 DOT in each case.</p>
 <h2><a class="anchor" aria-hidden="true" id="nominators-and-validator-payments"></a><a href="#nominators-and-validator-payments" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Nominators and Validator Payments</h2>
 <p>Nominated stake allows you to &quot;vote&quot; for validators and share in the rewards (and slashing) without
 running a validator node yourself. Validators can choose to keep a percentage of the rewards due to
@@ -106,9 +124,10 @@ validator itself, plus any stake bonded by nominators.</p>
 <blockquote>
 <p><strong>NOTE:</strong> Validators set their preference as a percentage of the block reward, <em>not</em> an absolute
 number of DOT. Polkadot's block reward is based on the <em>total</em> amount at stake, with the reward
-peaking when the amount staked is at 50% of the total supply. In periods when there is a lower
-amount staked, and therefore lower rewards, the validator's payout preference could mean that
-there is zero left over for nominators.</p>
+peaking when the amount staked is at 50% of the total supply. The commission is set as the amount
+taken by the validator; that is, 0% commission means that the validator does not receive any
+proportion of the rewards besides that owed to it from self-stake, and 100% commission means that
+the validator operator gets all rewards and gives none to its nominators.</p>
 </blockquote>
 <p>In the following examples, we can see the results of several different validator payment schemes and
 split between nominator and validator stake. We will assume a single nominator for each validator.
@@ -118,14 +137,15 @@ four nominators with equal stake bonded, each will receive 0.5 DOT. Note also th
 nominator may stake different validators.</p>
 <p>Each validator in the example has selected a different validator payment (that is, a percentage of
 the reward set aside directly for the validator before sharing with all bonded stake). The
-validator's payment percentage (in DOT) is listed in brackets (<code>[]</code>) next to each validator. Note
-that since the validator payment is public knowledge, having a low or non-existent validator payment
-may attract more stake from nominators, since they know they will receive a larger reward.</p>
+validator's payment percentage (in DOT, although the same calculations work for KSM) is listed in
+brackets (<code>[]</code>) next to each validator. Note that since the validator payment is public knowledge,
+having a low or non-existent validator payment may attract more stake from nominators, since they
+know they will receive a larger reward.</p>
 <pre><code class="hljs">Validator Set Size (v): <span class="hljs-number">4</span>
-Validator <span class="hljs-number">1</span> Stake (v1) [<span class="hljs-number">0.2</span>]: <span class="hljs-number">18</span> DOT (<span class="hljs-number">9</span> validator, <span class="hljs-number">9</span> nominator)
-Validator <span class="hljs-number">2</span> Stake (v2) [<span class="hljs-number">0.4</span>]:  <span class="hljs-number">9</span> DOT (<span class="hljs-number">3</span> validator, <span class="hljs-number">6</span> nominator)
-Validator <span class="hljs-number">3</span> Stake (v3) [<span class="hljs-number">0.1</span>]:  <span class="hljs-number">8</span> DOT (<span class="hljs-number">4</span> validator, <span class="hljs-number">4</span> nominator)
-Validator <span class="hljs-number">4</span> Stake (v4) [<span class="hljs-number">0.0</span>]:  <span class="hljs-number">6</span> DOT (<span class="hljs-number">1</span> validator, <span class="hljs-number">5</span> nominator)
+Validator <span class="hljs-number">1</span> Stake (v1) [<span class="hljs-number">20</span>% commission]: <span class="hljs-number">18</span> DOT (<span class="hljs-number">9</span> validator, <span class="hljs-number">9</span> nominator)
+Validator <span class="hljs-number">2</span> Stake (v2) [<span class="hljs-number">40</span>% commission]:  <span class="hljs-number">9</span> DOT (<span class="hljs-number">3</span> validator, <span class="hljs-number">6</span> nominator)
+Validator <span class="hljs-number">3</span> Stake (v3) [<span class="hljs-number">10</span>% commission]:  <span class="hljs-number">8</span> DOT (<span class="hljs-number">4</span> validator, <span class="hljs-number">4</span> nominator)
+Validator <span class="hljs-number">4</span> Stake (v4) [ <span class="hljs-number">0</span>% commission]:  <span class="hljs-number">6</span> DOT (<span class="hljs-number">1</span> validator, <span class="hljs-number">5</span> nominator)
 Payout (p): <span class="hljs-number">8</span> DOT
 
 Payout <span class="hljs-keyword">for</span> each validator (v1 - v4):
@@ -163,7 +183,7 @@ v4:
 v4 validator total reward: <span class="hljs-number">0</span> + <span class="hljs-number">0.33</span> DOT = <span class="hljs-number">0.33</span> DOT
 v4 nominator reward: <span class="hljs-number">1.67</span> DOT
 </code></pre>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 8/18/2020 by Logan Saether</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#era-points">Era Points</a></li><li><a href="#payout-scheme">Payout Scheme</a></li><li><a href="#running-multiple-validators">Running Multiple Validators</a></li><li><a href="#slashing">Slashing</a></li><li><a href="#nominators-and-validator-payments">Nominators and Validator Payments</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2021 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 1/11/2021 by Bill Laboon</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#era-points">Era Points</a></li><li><a href="#payout-scheme">Payout Scheme</a></li><li><a href="#running-multiple-validators">Running Multiple Validators</a></li><li><a href="#slashing">Slashing</a></li><li><a href="#nominators-and-validator-payments">Nominators and Validator Payments</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2021 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
