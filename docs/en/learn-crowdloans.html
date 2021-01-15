@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Parachain Crowdloans · Guide</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Polkadot allows parachains to source DOT for their parachain bids in a decentralized crowdloan."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Parachain Crowdloans · Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://guide.kusama.network/"/><meta property="og:description" content="Polkadot allows parachains to source DOT for their parachain bids in a decentralized crowdloan."/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="/css/klaro.css"/><link rel="stylesheet" href="/css/copycode.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="/js/custom.js"></script><script type="text/javascript" src="/js/klaro-config.js"></script><script type="text/javascript" src="/js/klaro.js"></script><script type="text/javascript" src="/js/clipboard.min.js"></script><script type="text/javascript" src="/js/copycode.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/./img/Kusama_logotype_white_large.png" alt="Guide"/><h2 class="headerTitleWithLogo">Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/kusama-getting-started" target="_self">Get Started</a></li><li class=""><a href="/docs/en/kusama-index" target="_self">Docs</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/zh-CN/learn-crowdloans">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-crowdloans.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Parachain Crowdloans</h1></header><article><div><span><p>Polkadot allows parachains to source DOT for their parachain bids in a decentralized crowdloan.</p>
+<p>Anyone can create a new crowdloan campaign for a parachain slot. A campaign is configured as a range
+of slots (i.e. the duration the parachain will bid for), a cap, and a duraction. The duration can
+last over several auctions, meaning that the team will not need to restart the campaign just because
+they do not secure a slot on their first attempt.</p>
+<p>Each created campaign will have an index. Once a crowdloan campaign is open, anyone can participate
+by sending a special transaction that references the campaign's index. DOT used to participate must
+be transferrable — that is, not locked for any reason, including staking, vesting, and
+governance — because they will be moved into a module-controlled account that was generated
+uniquely for this campaign.</p>
+<blockquote>
+<p>Important: All crowdloan contributions are handled by the Crowdloan module’s logic where a
+campaign is identified by index, not by address. <strong>Never transfer DOT to an address in support of
+a campaign.</strong></p>
+</blockquote>
+<p>It is up to individual parachain teams to decide if and how they want to reward participants who
+forgo staking and choose to lock their DOT in support of the parachain’s campaign. As one can
+imagine, rewards will take many forms and may vary widely among projects.</p>
+<p>During some point of the crowdloan campaign the owner will upload the parachain data. Ideally, the
+owner does this before soliciting contributions to the campaign so that the contributors can verify
+it. The data can only be uploaded once during the course of the campaign and it will be what is
+deployed as the parachain's runtime. Of course, once the parachain is running it can always change
+via runtime upgrades (as determined through its own local governance).</p>
+<p>If a crowdloan campaign is successful, that parachain will be on-boarded in Polkadot. The collective
+DOT will be locked in that parachain's account for the entire duration that it is active (up to two
+years).</p>
+<p>Participants will be able to reclaim their DOT in one of two ways:</p>
+<ul>
+<li>If the campaign was successful, then the parachain will enter a retirement phase at the end of its
+lease. During this phase, participants can withdraw the DOT with which they participated.</li>
+<li>If the campaign was not succsesful, then this retirement phase will begin at the campaign's
+configured end, and participants can likewise withdraw their DOT.</li>
+</ul>
+<p>Note that withdrawing DOT requires a transaction for each participant. Anyone can make the
+transactions, so a parachain team could free every participant's DOT in a batch. Tokens that are not
+withdrawn within a certain amount of time will go to the Polkadot Treasury.</p>
+<p>Several teams in the ecosystem are preparing dashboards to track auctions and crowdloan campaigns.
+Check back to this page for updates as these are released.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 1/15/2021 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2021 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '53c6a4ab0d77c0755375a971c9b7cc3d',
+                indexName: 'kusama_guide',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>

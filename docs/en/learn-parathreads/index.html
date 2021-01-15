@@ -20,8 +20,8 @@
 Polkadot security without needing to lease a dedicated parachain slot. This is done through
 economically sharing the scarce resource of a <em>parachain slot</em> among a number of competing resources
 (parathreads). Chains that otherwise would not be able to acquire a full parachain slot, or do not
-find it economically sensible to do so, are enabled to still participate in Polkadot's shared
-security -- albeit with an associated fee per block. It also offers a graceful off-ramp to
+find it economically sensible to do so, are enabled to participate in Polkadot's shared security
+— albeit with an associated fee per executed block. It also offers a graceful off-ramp to
 parachains that no longer require a dedicated parachain slot, but would like to continue using the
 Relay Chain.</p>
 <h2><a class="anchor" aria-hidden="true" id="origin"></a><a href="#origin" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Origin</h2>
@@ -33,19 +33,19 @@ allows the capacity of a computer's memory to expand and for more processes to r
 the trade-off that some processes will take longer to progress.</p>
 <h2><a class="anchor" aria-hidden="true" id="parachain-vs-parathread"></a><a href="#parachain-vs-parathread" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parachain vs. Parathread</h2>
 <p>Parachains and parathreads are very similar from a development perspective. One can imagine that a
-chain developed with Substrate can at different points in its lifetime assume one of three
-states: 1) independent chain with secured bridge, 2) parachain, or 3) parathread. It can switch
-between these last two states with relatively minimal effort on behalf of developers since the
-difference is more of an economic distinction than a technological one.</p>
+chain developed with Substrate can at different points in its lifetime assume one of three states:
+an independent chain with secured bridge, a parachain, or a parathread. It can switch between these
+last two states with relatively minimal effort since the difference is more of an economic
+distinction than a technological one.</p>
 <p>Parathreads have the exact same benefits for connecting to Polkadot that a full parachain has.
 Namely, it is able to send messages to other para{chain,threads} through XCMP and it is secured
 under the full economic security of Polkadot's validator set.</p>
 <p>The difference between parachains and parathreads is economic. Parachains must be registered through
 a normal means of Polkadot, i.e. governance proposal or parachain slot auction. Parathreads have a
 fixed fee for registration that would realistically be much lower than the cost of acquiring a
-parachain slot. Similarly to how DOT are locked for the duration of parachain slots and then
-returned to the winner of the auction, the deposit for a parathread will be returned to the
-parathread after the conclusion of its term.</p>
+parachain slot. Similar to how DOT are locked for the duration of parachain slots and then returned
+to the winner of the auction, the deposit for a parathread will be returned to the parathread after
+the conclusion of its term.</p>
 <p>Registration of the parathread does not guarantee anything more than the registration of the
 parathread code to the Polkadot Relay Chain. When a parathread progresses by producing a new block,
 there is a fee that must be paid in order to participate in a per-block auction for inclusion in the
@@ -69,8 +69,6 @@ them the most profit. The tokens from the parathread bids will likely be split 8
 80% goes into Polkadot treasury and 20% goes to the block author. This is the same split that
 applies also to transaction fees and, like many other parameters in Polkadot, can be changed through
 a governance mechanism.</p>
-<p>For a precise description of the parathread protocol, see
-<a href="https://hackmd.io/UcOOzoyDR9WJpQBZICtg3Q?both#Parathread-Protocol">here</a>.</p>
 <h2><a class="anchor" aria-hidden="true" id="parathread-economics"></a><a href="#parathread-economics" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parathread Economics</h2>
 <p>There are two sources of compensation for collators:</p>
 <ol>
@@ -86,32 +84,23 @@ local parathread inflation or via a stockpile of funds like a treasury.</li>
 </ol>
 <p>Collators may be paid in local parathread currency. However, the Relay Chain transacts with the
 Polkadot universal currency (DOT) only. Collators must then submit block candidates with an
-associated bid in DOT. This means that if the parathread offers a local currency, the collator will
-need to understand the exchange rate between this currency and DOT in order to place a proper DOT
-bid on the Relay Chain and ensure that they make a profit.</p>
+associated bid in DOT.</p>
 <h2><a class="anchor" aria-hidden="true" id="parachain-slot-swaps"></a><a href="#parachain-slot-swaps" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parachain Slot Swaps</h2>
 <p>It will be possible for a parachain that holds a parachain slot to swap this slot with a parathread
 so that the parathread &quot;upgrades&quot; to a full parachain and the parachain becomes a parathread. The
 chain can also stop being a chain and continue as a thread without swapping the slot. The slot, if
-unoccupied, would be <a href="learn-auction">auctioned off in the next auction period</a>.</p>
+unoccupied, would be auctioned off in the next <a href="learn-auction">auction period</a>.</p>
 <p>This provides a graceful off-ramp for parachains that have reached the end of their lease and do not
 have sufficient usage to justify renewal; they can remain registered on the Relay Chain but only
 produce new blocks when they need to.</p>
 <p>Parathreads help ease the sharp stop of the parachain slot term by allowing parachains that are
 still doing something useful to produce blocks, even if it is no longer economically viable to rent
 a parachain slot.</p>
-<p>The off-boarding is always in the following order: Parachain -&gt; Parathread -&gt; Dormant thread. This
-process is not automatic due to a thread requiring a deposit, so an expired parachain will skip
-right to <em>dormant thread</em> if for some reason there isn't a single operational entity of that chain
-left (no sudo or member of democracy to make that deposit).</p>
-<p>When going dormant, the ParaId and the original genesis, as well as all the historically finalized
-blocks stay on the Relay Chain, so a dormant thread or chain can continue where it left off if it
-rebuilds its community and gathers the necessary funds for a new lease or parathread deposit.</p>
 <h2><a class="anchor" aria-hidden="true" id="resources"></a><a href="#resources" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resources</h2>
 <ul>
 <li><a href="https://medium.com/polkadot-network/parathreads-pay-as-you-go-parachains-7440d23dde06">Parathreads: Pay-as-you-go Parachains</a></li>
 </ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 12/10/2020 by Dan Shields</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#origin">Origin</a></li><li><a href="#parachain-vs-parathread">Parachain vs. Parathread</a></li><li><a href="#how-will-parathreads-be-operated">How Will Parathreads be Operated?</a></li><li><a href="#parathread-economics">Parathread Economics</a></li><li><a href="#parachain-slot-swaps">Parachain Slot Swaps</a></li><li><a href="#resources">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2021 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 1/15/2021 by joe petrowski</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#origin">Origin</a></li><li><a href="#parachain-vs-parathread">Parachain vs. Parathread</a></li><li><a href="#how-will-parathreads-be-operated">How Will Parathreads be Operated?</a></li><li><a href="#parathread-economics">Parathread Economics</a></li><li><a href="#parachain-slot-swaps">Parachain Slot Swaps</a></li><li><a href="#resources">Resources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2021 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
