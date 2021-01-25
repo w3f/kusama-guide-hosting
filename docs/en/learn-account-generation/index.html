@@ -16,7 +16,9 @@
             languagesDropDown.className = "hide";
           }
         });
-      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-account-generation.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Account Generation</h1></header><article><div><span><p>There are several ways to generate a Polkadot address:</p>
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/learn-account-generation.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Account Generation</h1></header><article><div><span><p>An address is the public part of a Polkadot account. The private part is the key used to access this
+address. The public and private part together make up a Polkadot account.</p>
+<p>There are several ways to generate a Polkadot account:</p>
 <ul>
 <li><a href="#polkadotjs-browser-plugin">Polkadot{.js} Browser Plugin</a> <strong>RECOMMENDED FOR MOST USERS</strong></li>
 <li><a href="#subkey">Subkey</a> <strong>ADVANCED and MOST SECURE</strong></li>
@@ -26,30 +28,42 @@
 <li><a href="learn-ledger">Ledger Hardware Wallet</a></li>
 </ul>
 <blockquote>
-<p>To learn more on how to create Polkadot accounts, head over to our
-<a href="https://www.youtube.com/watch?v=hhUZ40ZWqkE&amp;list=PLOyWqupZ-WGuAuS00rK-pebTMAOxW41W8&amp;index=19">video</a></p>
+<p>If you prefer video instructions, we have an easy to follow guide
+<a href="https://www.youtube.com/watch?v=hhUZ40ZWqkE&amp;list=PLOyWqupZ-WGuAuS00rK-pebTMAOxW41W8&amp;index=19">on YouTube</a></p>
 </blockquote>
 <h2><a class="anchor" aria-hidden="true" id="disclaimer-key-security"></a><a href="#disclaimer-key-security" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DISCLAIMER: Key Security</h2>
-<p>Your secret seed is the <em>only</em> way to get access to your account. You must keep the secret both
-secure and private. If you share your secret with anyone they will be able to have full access to
-your account, including all of your funds. The secret, for this reason, is a target from hackers and
-others with bad intentions to steal your funds. We recommend a variety of account generation methods
-that have various convienience and security tradeoffs. Please review this page carefully before
-making your address so that you understand the risks of the account generation method you choose and
-how to properly mitigate them in order to keep your funds safe.</p>
+<p>The <em>only</em> ways to get access to your account are via your secret seed or your account's JSON file
+in combination with a password. You must keep them both secure and private. If you share them with
+anyone they will have full access to your account, including all of your funds. This information is
+a target for hackers and others with bad intentions - see also
+<a href="learn-scams">How to Recognize Scams</a>.</p>
+<p>On this page we recommend a variety of account generation methods that have various convienience and
+security tradeoffs. Please review this page carefully before making your account so that you
+understand the risks of the account generation method you choose and how to properly mitigate them
+in order to keep your funds safe.</p>
 <h3><a class="anchor" aria-hidden="true" id="storing-your-key-safely"></a><a href="#storing-your-key-safely" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Storing your key safely</h3>
 <p>The seed is your <strong>key</strong> to the account. Knowing the seed allows you, or anyone else who knows the
 seed, to re-generate and control this account.</p>
 <p>It is imperative to store the seed somewhere safe, secret, and secure. If you lose access to your
-account, you can re-create it by entering the seed. This also means that somebody else can have
-control over your account if they have access to your seed.</p>
+account (i.e. you forget the password for your account's JSON file), you can re-create it by
+entering the seed. This also means that somebody else can have control over your account if they
+have access to your seed.</p>
 <p>For maximum security, the seed should be written down on paper or another non-digital device and
 stored in a safe place. You may also want to protect your seed from physical damage, as well (e.g.
-by storing in a sealed plastic bag to prevent water damage, storing it in a fireproof safe, etc.) It
-is recommended that you store multiple copies of the seed in geographically separate locations
-(e.g., one in your home safe and one in a safety deposit box at your bank).</p>
+by storing in a sealed plastic bag to prevent water damage, storing it in a fireproof safe, etching
+it in metal, etc.) It is recommended that you store multiple copies of the seed in geographically
+separate locations (e.g., one in your home safe and one in a safety deposit box at your bank).</p>
 <p>You should definitely not store your seed on any kind of computer that has or may have access to the
 internet in the future.</p>
+<h3><a class="anchor" aria-hidden="true" id="storing-your-accounts-json-file"></a><a href="#storing-your-accounts-json-file" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Storing your account's JSON file</h3>
+<p>The JSON file is encrypted with a password, which means you can import it into any wallet which
+supports JSON imports, but to then use it, you need the password. You don't have to be as careful
+with your JSON file's storage as you would with your seed (i.e. it can be on a USB drive near you),
+but remember that in this case your account is only as secure as the password you used to encrypt
+it. Do not use easy to guess or hard to remember passwords. It is good practice to use a
+<a href="https://xkcd.com/936/">mnemonic password of four to five words</a>. These are nearly impossible for
+computers to guess due to the number of combinations possible, but much easier for humans to
+remember.</p>
 <h2><a class="anchor" aria-hidden="true" id="polkadotjs-browser-plugin"></a><a href="#polkadotjs-browser-plugin" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Polkadot{.js} Browser Plugin</h2>
 <p>The Polkadot{.js} plugin provides a reasonable balance of security and usability. It provides a
 separate local mechanism to generate your address and interact with Polkadot.</p>
@@ -57,86 +71,67 @@ separate local mechanism to generate your address and interact with Polkadot.</p
 from your browser, to store your private keys. It also allows signing of transactions and similar
 functionality.</p>
 <p>It is still running on the same computer you use to connected to the internet with and thus is less
-secure than using Parity Signer or other air-gapped protocols.</p>
+secure than using Parity Signer or other air-gapped approaches.</p>
 <h3><a class="anchor" aria-hidden="true" id="install-the-browser-plugin"></a><a href="#install-the-browser-plugin" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install the Browser Plugin</h3>
 <p>The browser plugin is available for both
 <a href="https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd?hl=en">Google Chrome</a>
-and <a href="https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension">FireFox</a>.</p>
-<p>If you would like to know more or review the code of the plugin yourself, you can visit the Github
-source <a href="https://github.com/polkadot-js/extension">repository</a>.</p>
+(and Chromium based browsers like Brave) and
+<a href="https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension">FireFox</a>.</p>
+<p>If you would like to know more or review the code of the plugin yourself, you can visit the
+<a href="https://github.com/polkadot-js/extension">Github source repository</a>.</p>
 <p>After installing the plugin, you should see the orange and white Polkadot{.js} logo in the menu bar
 of your browser.</p>
 <p><img src="/docs/assets/accounts/polkadot_plugin_js_02.jpg" alt="plugin-02"></p>
 <h3><a class="anchor" aria-hidden="true" id="open-accounts"></a><a href="#open-accounts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Open Accounts</h3>
-<p>Navigate to <a href="https://polkadot.js.org/apps">Polkadot Apps</a>. Click on the &quot;Accounts&quot; tab. This is
-located in the sidebar on the left of your screen.</p>
-<p><img src="/docs/assets/accounts/polkadot_plugin_js_03.jpg" alt="plugin-03"></p>
+<p>Navigate to <a href="https://polkadot.js.org/apps">Polkadot Apps</a>. Click on the &quot;Accounts&quot; tab.</p>
 <h3><a class="anchor" aria-hidden="true" id="create-account"></a><a href="#create-account" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create Account</h3>
 <p>Open the Polkadot{.js} browser extension by clicking the logo on the top bar of your browser. You
-will see a separate browser window open. If you have used this extension before, you may see a list
-of previously generated accounts. In any case you will see two buttons: “I want to create an account
-with a new seed” and “I have a pre-existing seed, import the account.&quot;</p>
-<p>Click “I want to create an account with a new seed”.</p>
-<p><img src="/docs/assets/accounts/polkadot_plugin_js_04.jpg" alt="plugin-04"></p>
-<p>The Polkadot{.js} plugin will then use system randomness to make a new seed for you and display it
+will see a browser popup not unlike the one below.</p>
+<p><img src="/docs/assets/accounts/polkadot_plugin_js_new_01.png" alt="Initial PolkadotJS popup"></p>
+<p>Click the big plus button or select &quot;Create new account&quot; from the small plus icon in the top right.
+The Polkadot{.js} plugin will then use system randomness to make a new seed for you and display it
 to you in the form of twelve words.</p>
-<p>You should back up these keys. It is imperative to store the seed somewhere safe, secret, and
-secure. If you cannot access your account via Polkadot{.js} for some reason, you can simply re-enter
-your seed, and have access to your account once again.</p>
-<p><img src="/docs/assets/accounts/polkadot_plugin_js_05.jpg" alt="plugin-05"></p>
-<p>Please see above for information on <a href="#disclaimer-key-security">storing your key safely</a>.</p>
+<p><img src="/docs/assets/accounts/polkadot_plugin_js_new_02.png" alt="New seed"></p>
+<p>You should back up these words as <a href="#storing-your-key-safely">explained above</a>. It is imperative to
+store the seed somewhere safe, secret, and secure. If you cannot access your account via
+Polkadot{.js} for some reason, you can re-enter your seed through the &quot;Add account menu&quot; by
+selecting &quot;Import account from pre-existing seed&quot;.</p>
+<p><img src="/docs/assets/accounts/polkadot_plugin_js_new_03.png" alt="New seed"></p>
 <h3><a class="anchor" aria-hidden="true" id="name-account"></a><a href="#name-account" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Name Account</h3>
-<p>You are not able to edit the seed words. However, you should add a descriptive name for this account
-in the lower textbox (e.g. “Bob”, “Jane”, or “Office Account”).</p>
+<p>The account name is arbitrary and for your use only. It is not stored on the blockchain and will not
+be visible to other users who look at your address via a block explorer. If you're juggling multiple
+accounts, it helps to make this as descriptive and detailed as needed.</p>
 <h3><a class="anchor" aria-hidden="true" id="enter-password"></a><a href="#enter-password" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Enter Password</h3>
-<p>After typing a name for the account, a new textbox will appear in which you can enter a password.
-When you start typing, a new textbox will appear underneath it. Enter the same password in the
-second textbox. If your passwords do not match, the plugin will not allow you to generate the
-account.</p>
-<p>Note that this password will protect your data in the plugin, and any backup file you export from
-the plugin. It does NOT protect your seed phrase. If someone knows the twelve words in your mnemonic
-seed, they still have control over your account even if they do not know the password.</p>
-<p><img src="/docs/assets/accounts/polkadot_plugin_js_06.jpg" alt="plugin-06"></p>
-<h3><a class="anchor" aria-hidden="true" id="review-account"></a><a href="#review-account" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Review Account</h3>
-<p>Once both of your passwords match, the program will display information about the account that will
-be generated for you.</p>
-<p><img src="/docs/assets/accounts/polkadot_plugin_js_07.jpg" alt="plugin-07"></p>
-<p>Click on “Add the account with the generated seed”. You will be taken back to the main page of the
-plugin, which should now include your generated account.</p>
+<p>The password will be used to encrypt this account's information. You will need to re-enter it when
+using the account for any kind of outgoing transaction or when using it to cryptographically sign a
+message.</p>
+<p>Note that this password does NOT protect your seed phrase. If someone knows the twelve words in your
+mnemonic seed, they still have control over your account even if they do not know the password.</p>
 <h3><a class="anchor" aria-hidden="true" id="set-address-for-polkadot-mainnet"></a><a href="#set-address-for-polkadot-mainnet" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Set Address for Polkadot Mainnet</h3>
 <p>Now we will ensure that the addresses are displayed as Polkadot mainnet addresses.</p>
-<p>Click on &quot;Options&quot; at the top of the plugin window.</p>
-<p><img src="/docs/assets/accounts/polkadot_plugin_js_08.jpg" alt="plugin-08"></p>
-<p>In the &quot;display addresses formatted for&quot; dropdown, select &quot;Polkadot (live) and then click &quot;Back&quot;.</p>
-<p><img src="/docs/assets/accounts/polkadot_plugin_js_09.jpg" alt="plugin-09"></p>
-<h3><a class="anchor" aria-hidden="true" id="get-address"></a><a href="#get-address" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Get Address</h3>
-<p>Verify that your address has a “1” as the first character. This indicates that it is a Polkadot
-mainnet address.</p>
-<p><img src="/docs/assets/accounts/polkadot_plugin_js_10.jpg" alt="plugin-10"></p>
-<p>You can copy the address by double-clicking on the string representation of the address itself, and
-then copying (e.g. with Control-C on Windows or Linux, Command-C on OS X). DO NOT click on the icon
-representing your account (the colorful hexagon of differently-colored dots) - this will copy a
-Kusama version of your address.</p>
-<p>Be sure that you select the ENTIRE displayed address. Note that when you paste it, you will see even
-more characters than are displayed.</p>
-<p><img src="/docs/assets/accounts/polkadot_plugin_js_11.jpg" alt="plugin-11"></p>
-<h3><a class="anchor" aria-hidden="true" id="copy-address"></a><a href="#copy-address" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Copy Address</h3>
-<p>You can now copy and paste the address from the address textbox, and you now have a plain-text copy
-of your Polkadot mainnet address.</p>
-<p>Note that an address in a different format can always be converted to a Polkadot address, since the
-same public key can be used for generating addresses on different networks. However, for ease of use
-and understanding, it is best to ensure that you are always using Polkadot mainnet addresses.</p>
+<p>Click on &quot;Options&quot; at the top of the plugin window, and under &quot;Display address format for&quot; select
+&quot;Polkadot Relay Chain&quot;.</p>
+<p><img src="/docs/assets/accounts/polkadot_plugin_js_new_04.png" alt="New seed"></p>
+<p>Your address' format is only visual - the data used to derive this representation of your address
+are the same, so you can use the same address on multiple chains. However, for privacy reasons, we
+recommend creating a new address for each chain you're using.</p>
+<p>Our <a href="learn-accounts#address-conversion-tools">Accounts page</a> also has a tool you can use to convert
+your address between the different chain formats.</p>
+<p>You can copy your address by clicking on the account's icon while the desired chain format is
+active. E.g. selecting &quot;Substrate&quot; as the format will change your address to start with the number
+5, and clicking the colorful icon of your account will copy it in that format. While in Polkadot
+mode (starts with 1), that format will be copied, and so on.</p>
 <h2><a class="anchor" aria-hidden="true" id="subkey"></a><a href="#subkey" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Subkey</h2>
-<p>Subkey is recommended for technically advanced users who are comfortable with command line and
+<p>Subkey is recommended for technically advanced users who are comfortable with the command line and
 compiling Rust code. Subkey allows you to generate keys on any device that can compile the code.
-Subkey may also be useful for automated account generation, using an air-gapped device other than
-one running iOS or Android or other specific purposes. It is not recommended for general users.</p>
+Subkey may also be useful for automated account generation using an air-gapped device. It is not
+recommended for general users.</p>
 <p>For detailed build and usage instructions of subkey, please see
 <a href="https://github.com/paritytech/substrate/tree/master/bin/utils/subkey">here</a>.</p>
 <p><img src="/docs/assets/accounts/subkey_01.jpg" alt="subkey-01"></p>
-<h2><a class="anchor" aria-hidden="true" id="polkadot-js"></a><a href="#polkadot-js" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Polkadot-JS</h2>
+<h2><a class="anchor" aria-hidden="true" id="polkadot-js-apps"></a><a href="#polkadot-js-apps" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Polkadot-JS Apps</h2>
 <blockquote>
-<p>Please note! If you use Polkadot-JS to create your account and clear your cookies in your browser,
+<p>Please note! If you use this method to create your account and clear your cookies in your browser,
 your account will be lost forever if you do not <a href="learn-account-restore">back it up</a>. Make sure you
 store your seed phrase in a safe place, or download the account's JSON file if using the
 Polkadot{.js} browser extension. Learn more about account backup and restoration
@@ -147,37 +142,24 @@ way of generating an account. It should only be used if all of the other methods
 your situation.</p>
 <h3><a class="anchor" aria-hidden="true" id="go-to-polkadot-js-apps"></a><a href="#go-to-polkadot-js-apps" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Go to Polkadot-JS Apps</h3>
 <p>Navigate to <a href="https://polkadot.js.org/apps">Polkadot-JS Apps</a> and click on &quot;Accounts&quot; underneath the
-Accounts tab. It is located in the navigation bar on the top of your screen.</p>
+Accounts tab. It is located in the navigation bar at the top of your screen.</p>
 <p><img src="/docs/assets/accounts/polkadot_js_01.png" alt="pjs-01"></p>
 <blockquote>
-<p>Note: For these screenshots, I am currently connected to the Polkadot network. To create an
-account on a different network, you'll need to click on the network selection in the top left
-corner of the navigation menu. A pop-up sidebar will appear listing live, testing, and custom node
-to choose from. Do remember to hit the &quot;Switch&quot; button when you want to switch your network.</p>
+<p>To create an account on a different network than Polkadot, you'll need to click on the network
+selection in the top left corner of the navigation menu. A pop-up sidebar will appear listing
+live, testing, and custom node to choose from. Do remember to hit the &quot;Switch&quot; button when you
+want to switch your network.</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="start-account-generation"></a><a href="#start-account-generation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Start Account Generation</h3>
-<p>Click on the &quot;Add Account&quot; button.</p>
-<p><img src="/docs/assets/accounts/polkadot_js_02.png" alt="pjs-02"></p>
-<p>You should see a pop-up that looks like the one here. The required text fields to complete are
-highlighted in pink.</p>
-<p><img src="/docs/assets/accounts/polkadot_js_03.jpg" alt="pjs-03"></p>
-<p>You can ignore the Advanced creation options; the defaults are fine. You will have to enter an
-Account Name and a password to protect your account. Be sure to select a secure and hard-to-guess
-password. Note that anything will be accepted as a password here. Please note: There are no checks
-to see if it is long enough or secure. You will need this password for any future interaction with
-or transaction from this account.</p>
-<p>When you have entered valid information for both, the color of the text boxes will turn from pink to
-white.</p>
-<p><img src="/docs/assets/accounts/polkadot_js_04.jpg" alt="pjs-04"></p>
-<p>Please see above for information on <a href="#disclaimer-key-security">storing your key safely</a>.</p>
+<p>Click on the &quot;Add Account&quot; button. You should see a pop-up similar to the process encountered when
+using the <a href="#polkadotjs-browser-plugin">Polkadot JS Extension method</a> above. Follow the same
+instructions and remember to <a href="#storing-your-key-safely">store your seed safely</a>!</p>
 <h3><a class="anchor" aria-hidden="true" id="create-and-back-up-account"></a><a href="#create-and-back-up-account" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create and Back Up Account</h3>
-<p>Click “Save” and your account will be created. It will also generate a backup file that you should
-save to your computer. Ideally, you would also save it on an external hard drive or thumb drive, or
-print it out and be able to re-enter it later. You should not store it in cloud storage, email it to
-yourself, etc.</p>
+<p>Click “Save” and your account will be created. It will also generate a
+<a href="#storing-your-accounts-json-file">backup JSON file</a> that you should safely store, ideally on a USB
+off the computer you're using. You should not store it in cloud storage, email it to yourself, etc.</p>
 <p>You can use this backup file to restore your account. This backup file is not readable unless it is
 decrypted with the password.</p>
-<p><img src="/docs/assets/accounts/polkadot_js_05.png" alt="pjs-05"></p>
 <h3><a class="anchor" aria-hidden="true" id="multi-signature-accounts"></a><a href="#multi-signature-accounts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Multi-signature Accounts</h3>
 <p>Multi-signature accounts are accounts created from several standard accounts (or even other
 multi-sig accounts). For a full explanation, please see the
@@ -211,11 +193,19 @@ request has to come from the multi-sig, but be signed (re-requested) from each s
 threshold is reached.</p>
 <p>Signatories should communicate off-chain to prevent many pending transactions and crossed
 communication lines on-chain.</p>
+<blockquote>
+<p>The bigger the multisig, the more of a deposit an account needs to put down when initiating a
+multi-sig call. This is to prevent chain storage spam with pending but never-resolved multi-sig
+transactions. Once a call is resolved (canceled or executed) the deposit is returned to the
+initiator. The deposit is not taken from the multi-sig's balance, but from the initiator.</p>
+</blockquote>
+<p>For a more in-depth introduction into multi signature accounts on Polkadot, please see
+<a href="learn-accounts#multi-signature-accounts">the accounts page section on Multi-sigs</a>.</p>
 <h2><a class="anchor" aria-hidden="true" id="parity-signer"></a><a href="#parity-signer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parity Signer</h2>
 <p>Parity Signer is a secure way of storing your DOT on an air-gapped device. It is highly recommended
 that you turn off wifi, cellular network, Bluetooth, NFC, and any other communications methods after
 installing it. If you have any communications methods turned on, you will see an &quot;unshielded&quot; icon
-in red on the top-right corner that indicates your connection may not be secure.</p>
+in red in the top-right corner that indicates your connection may not be secure.</p>
 <h3><a class="anchor" aria-hidden="true" id="create-account-1"></a><a href="#create-account-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create Account</h3>
 <p>Click &quot;Create&quot; to create an identity, or &quot;recover&quot; if you have previously backed up the recovery
 phrase. You can have multiple identities on one device. Each identity can manage multiple addresses
@@ -227,14 +217,9 @@ on different networks.</p>
 <h3><a class="anchor" aria-hidden="true" id="back-up-account"></a><a href="#back-up-account" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Back Up Account</h3>
 <p>Parity Signer will then generate a recovery phrase for you and display it in the form of 12 or 24
 words.</p>
-<p>You should write down this recovery phrase on paper and store it somewhere safe, secret, and secure.
-If you cannot access your account via your phone for some reason, you can simply re-enter your
-recovery phrase on another phone that has Parity Signer installed, and have access to your account
-once again. This is the only way to recover your account, and anyone who has access to these words
-will also have access to your account. Therefore, it is a good idea to write them down and store
-them in multiple secure places!</p>
+<p>You should write down this recovery phrase on paper and
+<a href="#storing-your-key-safely">store it somewhere safe</a>.</p>
 <p><img src="/docs/assets/accounts/ps-create-3.jpg" alt="Parity Signer Create Account 3"></p>
-<p>Please see above for information on <a href="#disclaimer-key-security">storing your key safely</a>.</p>
 <h3><a class="anchor" aria-hidden="true" id="set-pin"></a><a href="#set-pin" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Set PIN</h3>
 <p>After confirming that you have backed up your seed, a new textbox will appear in which you can set a
 PIN. The PIN code should contain at least 6 digits. If the PIN codes do not match, it will not allow
@@ -243,11 +228,13 @@ sensitive operations such as deleting an identity or revealing the recovery phra
 <p>Note that if someone knows the 12/24 words in your recovery phrase, they will still have control
 over your account, even if they do not know the PIN.</p>
 <p><img src="/docs/assets/accounts/ps-create-4.jpg" alt="Parity Signer Create Account 4"></p>
-<h3><a class="anchor" aria-hidden="true" id="get-address-1"></a><a href="#get-address-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Get Address</h3>
-<p>Choose which network you would like to create an address on by clicking the name of the network. For
-example, if you select &quot;Polkadot&quot;, a new Polkadot address will be created for you under this
+<h3><a class="anchor" aria-hidden="true" id="get-address"></a><a href="#get-address" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Get Address</h3>
+<p>Choose which network you would like to create an address for by clicking the name of the network.
+For example, if you select &quot;Polkadot&quot;, a new Polkadot address will be created for you under this
 identity.</p>
 <p><img src="/docs/assets/accounts/ps-create-5.jpg" alt="Parity Signer Create Account 5"></p>
+<p>There is currently no way to copy your address from Parity signer in plain-text in order to send it
+via text or email. You must use the QR method.</p>
 <h3><a class="anchor" aria-hidden="true" id="your-address"></a><a href="#your-address" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Your Address</h3>
 <p>The address will be shown as a QR code. You can import your address to the Polkadot-JS Apps by going
 to the <a href="https://polkadot.js.org/apps/#/accounts">Accounts</a> page on an Internet-connected computer
@@ -261,8 +248,8 @@ continue to keep your key safe.</p>
 <p>To use a Ledger hardware wallet to create your address and keep your tokens in cold storage, follow
 the instructions on our <a href="learn-ledger">Ledger hardware wallet guide page</a>.</p>
 <h2><a class="anchor" aria-hidden="true" id="vanity-generator"></a><a href="#vanity-generator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Vanity Generator</h2>
-<p>Vanity generator is a tool on <a href="https://polkadot.js.org/apps/#/accounts/vanity">Polkadot-JS UI</a> that
-lets you generate addresses which contain a specific substring.</p>
+<p>The vanity generator is a tool on <a href="https://polkadot.js.org/apps/#/accounts/vanity">Polkadot-JS UI</a>
+that lets you generate addresses which contain a specific substring.</p>
 <p><img src="/docs/assets/polkadot_vanity_generator_page.png" alt="Vanity Generator page"></p>
 <p>The vanity generator takes the following parameters:</p>
 <ul>
@@ -275,12 +262,15 @@ recommended in most cases for its security.</li>
 will start generating on your screen. Note that depending on the length of the substring and the
 processing speed of your computer, it may take some time before any accounts appear.</p>
 <p><img src="/docs/assets/polkadot_vanity_generate.png" alt="Vanity Generator search"></p>
-<p>The &quot;Save&quot; button will allow you to save on the generated accounts - they are not saved if you do
-not choose to do this. The next steps are identical to the
+<p>The &quot;Save&quot; button will allow you to save the generated accounts - they are not saved if you do not
+choose to do this. The next steps are identical to the
 <a href="#polkadotjs">steps above on creating an account on the UI</a>, where a password and name need to be
 filled in, and a backup file of your account will be downloaded.</p>
+<p>Note that the <a href="#subkey">Subkey tool</a> also has vanity generation built-in, and is orders of magnitude
+faster than the web version. If you need to generate addresses with longer strings, or need plenty
+of them, we recommend using Subkey instead.</p>
 <p><img src="/docs/assets/polkadot_save_account.png" alt="Vanity Generator chosen address"></p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 11/4/2020 by Kevin Veros Hamonangan</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#disclaimer-key-security">DISCLAIMER: Key Security</a><ul class="toc-headings"><li><a href="#storing-your-key-safely">Storing your key safely</a></li></ul></li><li><a href="#polkadotjs-browser-plugin">Polkadot{.js} Browser Plugin</a><ul class="toc-headings"><li><a href="#install-the-browser-plugin">Install the Browser Plugin</a></li><li><a href="#open-accounts">Open Accounts</a></li><li><a href="#create-account">Create Account</a></li><li><a href="#name-account">Name Account</a></li><li><a href="#enter-password">Enter Password</a></li><li><a href="#review-account">Review Account</a></li><li><a href="#set-address-for-polkadot-mainnet">Set Address for Polkadot Mainnet</a></li><li><a href="#get-address">Get Address</a></li><li><a href="#copy-address">Copy Address</a></li></ul></li><li><a href="#subkey">Subkey</a></li><li><a href="#polkadot-js">Polkadot-JS</a><ul class="toc-headings"><li><a href="#go-to-polkadot-js-apps">Go to Polkadot-JS Apps</a></li><li><a href="#start-account-generation">Start Account Generation</a></li><li><a href="#create-and-back-up-account">Create and Back Up Account</a></li><li><a href="#multi-signature-accounts">Multi-signature Accounts</a></li></ul></li><li><a href="#parity-signer">Parity Signer</a><ul class="toc-headings"><li><a href="#create-account-1">Create Account</a></li><li><a href="#name-account-1">Name Account</a></li><li><a href="#back-up-account">Back Up Account</a></li><li><a href="#set-pin">Set PIN</a></li><li><a href="#get-address-1">Get Address</a></li><li><a href="#your-address">Your Address</a></li></ul></li><li><a href="#ledger-hardware-wallet">Ledger Hardware Wallet</a></li><li><a href="#vanity-generator">Vanity Generator</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2021 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 1/25/2021 by Bruno Škvorc</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#disclaimer-key-security">DISCLAIMER: Key Security</a><ul class="toc-headings"><li><a href="#storing-your-key-safely">Storing your key safely</a></li><li><a href="#storing-your-accounts-json-file">Storing your account's JSON file</a></li></ul></li><li><a href="#polkadotjs-browser-plugin">Polkadot{.js} Browser Plugin</a><ul class="toc-headings"><li><a href="#install-the-browser-plugin">Install the Browser Plugin</a></li><li><a href="#open-accounts">Open Accounts</a></li><li><a href="#create-account">Create Account</a></li><li><a href="#name-account">Name Account</a></li><li><a href="#enter-password">Enter Password</a></li><li><a href="#set-address-for-polkadot-mainnet">Set Address for Polkadot Mainnet</a></li></ul></li><li><a href="#subkey">Subkey</a></li><li><a href="#polkadot-js-apps">Polkadot-JS Apps</a><ul class="toc-headings"><li><a href="#go-to-polkadot-js-apps">Go to Polkadot-JS Apps</a></li><li><a href="#start-account-generation">Start Account Generation</a></li><li><a href="#create-and-back-up-account">Create and Back Up Account</a></li><li><a href="#multi-signature-accounts">Multi-signature Accounts</a></li></ul></li><li><a href="#parity-signer">Parity Signer</a><ul class="toc-headings"><li><a href="#create-account-1">Create Account</a></li><li><a href="#name-account-1">Name Account</a></li><li><a href="#back-up-account">Back Up Account</a></li><li><a href="#set-pin">Set PIN</a></li><li><a href="#get-address">Get Address</a></li><li><a href="#your-address">Your Address</a></li></ul></li><li><a href="#ledger-hardware-wallet">Ledger Hardware Wallet</a></li><li><a href="#vanity-generator">Vanity Generator</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2021 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
