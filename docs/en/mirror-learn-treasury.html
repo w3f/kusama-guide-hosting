@@ -77,14 +77,13 @@
 by making a spending proposal that, if approved by the <a href="learn-governance#Council">Council</a>, will
 enter a waiting period before distribution. This waiting period is known as the budget period, and
 its duration is subject to <a href="learn-governance">governance</a>, with the current default set to
-{{ spend_period }} days. The Treasury attempts to spend as many proposals in the queue as it can
+6 days. The Treasury attempts to spend as many proposals in the queue as it can
 without running out of funds.</p>
 <p>If the Treasury ends a budget period without spending all of its funds, it suffers a burn of a
 percentage of its funds -- thereby causing deflationary pressure.
-{{ polkadot: This percentage is currently at 1%
-on Polkadot. :polkadot }} {{ kusama: This percentage is currently 0.2% on Kusama, with the amount currently going to
+ This percentage is currently 0.2% on Kusama, with the amount currently going to
 <a href="https://guide.kusama.network/docs/en/maintain-guides-society-kusama">Society</a> rather than being
-burned. :kusama }}</p>
+burned.</p>
 <p>When a stakeholder wishes to propose a spend from the Treasury, they must reserve a deposit totaling
 5% of the proposed spend (see below for variations). This deposit will be slashed if the proposal is
 rejected, and returned if it is accepted.</p>
@@ -118,7 +117,7 @@ inclusion. Part of this bid goes to the validator that accepts the block and the
 to the Treasury.</li>
 </ol>
 <h2><a class="anchor" aria-hidden="true" id="creating-a-treasury-proposal"></a><a href="#creating-a-treasury-proposal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating a Treasury Proposal</h2>
-<p>The proposer has to deposit 5% of the requested amount or {{ proposal_min_bond }} (whichever is
+<p>The proposer has to deposit 5% of the requested amount or 3.333 KSM (whichever is
 higher) as an anti-spam measure. This amount is burned if the proposal is rejected, or refunded
 otherwise. These values are subject to <a href="learn-governance">governance</a> so they may change in the
 future.</p>
@@ -136,20 +135,18 @@ takes place on the following platforms:</p>
 with their KSM address and automatically reads proposals from the chain, turning them into
 discussion threads. It also offers a sentiment gauge poll to get a feel for a proposal before
 committing to a vote.</li>
-<li>The {{ polkadot: <a href="https://forum.polkadot.network">Polkadot forum</a> :polkadot }}
-{{ kusama: <a href="https://forum.kusama.network">Kusama forum</a> :kusama }} can be used for proposal
+<li>The 
+<a href="https://forum.kusama.network">Kusama forum</a> can be used for proposal
 explanations.</li>
 <li><a href="https://commonwealth.im">Commonwealth.im</a> is a community site that allows users to log in with
-their {{ polkadot: Polkadot :polkadot }} {{ kusama: Kusama :kusama }} address and automatically
+their  Kusama address and automatically
 reads proposals from the chain, turning them into discussion threads.</li>
 </ul>
 <p>Spreading the word about the proposal's explanation is ultimately up to the proposer - the
-recommended way is using official Element channels like {{ polkadot: the
-<a href="https://app.element.io/#/room/#polkadot-watercooler:web3.foundation">Polkadot Watercooler</a> and
-<a href="https://app.element.io/#/room/#polkadot-direction:matrix.parity.io">Polkadot Direction room</a> :polkadot }}
-{{ kusama: the
+recommended way is using official Element channels like 
+the
 <a href="https://app.element.io/#/room/#kusama:matrix.parity.io">Kusama Direction room</a> or the
-<a href="https://app.element.io/#/room/#kusamawatercooler:polkadot.builders">Kusama Watercooler</a> :kusama }}.</p>
+<a href="https://app.element.io/#/room/#kusamawatercooler:polkadot.builders">Kusama Watercooler</a>.</p>
 <h3><a class="anchor" aria-hidden="true" id="creating-the-proposal"></a><a href="#creating-the-proposal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating the Proposal</h3>
 <p>One way to create the proposal is to use the Polkadot-JS Apps
 <a href="https://polkadot.js.org/apps">website</a>. From the website, use either the
@@ -184,19 +181,19 @@ do not have to. Once the window closes, anyone can call the <code>close_tip</cod
 be paid out.</p>
 <p>There are two types of tips: public and tipper-initiated. With public tips, a small bond is required
 to place them. This bond depends on the tip message length, and a fixed bond constant defined on
-chain, currently {{ tip_deposit_amount }}. Public tips carry a finder's fee of
-{{ tip_finders_fee }}% which is paid out from the total amount. Tipper-initiated tips, i.e. tips
+chain, currently 0.167 KSM. Public tips carry a finder's fee of
+20% which is paid out from the total amount. Tipper-initiated tips, i.e. tips
 that a Council member published, do not have a finder's fee or a bond.</p>
 <p>To better understand the process a tip goes through until it is paid out, let's consider an example.</p>
 <h3><a class="anchor" aria-hidden="true" id="example"></a><a href="#example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h3>
-<p>Bob has done something great for {{ polkadot: Polkadot :polkadot }} {{ kusama: Kusama :kusama }}.
+<p>Bob has done something great for  Kusama.
 Alice has noticed this and decides to report Bob as deserving a tip from the Treasury. The Council
 is composed of three members Charlie, Dave, and Eve.</p>
 <p>Alice begins the process by issuing the <code>report_awesome</code> extrinsic. This extrinsic requires two
 arguments, a reason and the address to tip. Alice submits Bob's address with the reason being a
 UTF-8 encoded URL to a post on
-{{ polkadot: <a href="https://polkadot.polkassembly.io">polkassembly</a> :polkadot }}
-{{ kusama: <a href="https://kusama.polkassembly.io">polkassembly</a> :kusama }} that explains her reasoning for
+
+<a href="https://kusama.polkassembly.io">polkassembly</a> that explains her reasoning for
 why Bob deserves the tip.</p>
 <p>As mentioned above, Alice must also lock up a deposit for making this report. The deposit is the
 base deposit as set in the chain's parameter list plus the additional deposit per byte contained in
@@ -208,15 +205,15 @@ tippers.</p>
 also independently) decide on the value of the tip that Bob deserves.</p>
 <p>Charlie, Dave, and Eve all review the report and make tips according to their personal valuation of
 the benefit Bob has provided to Kusama.</p>
-<p>Charlie tips {{ polkadot: 10 DOT :polkadot }} {{ kusama: 1 KSM :kusama }}. Dave tips
-{{ polkadot: 30 DOT :polkadot }} {{ kusama: 3 KSM :kusama }}. Eve tips
-{{ polkadot: 100 DOT :polkadot }} {{ kusama: 10 KSM :kusama }}.</p>
+<p>Charlie tips  1 KSM. Dave tips
+ 3 KSM. Eve tips
+ 10 KSM.</p>
 <p>The tip could have been closed out with only two of the three tippers. Once more than half of the
 tippers group have issued tip valuations, the countdown to close the tip will begin. In this case,
 the third tipper issued their tip before the end of the closing period, so all three were able to
 make their tip valuations known.</p>
 <p>Now the actual tip that will be paid out to Bob is the median of these tips, so Bob will be paid out
-{{ polkadot: 30 DOT :polkadot }} {{ kusama: 3 KSM :kusama }} from the Treasury.</p>
+ 3 KSM from the Treasury.</p>
 <p>In order for Bob to be paid his tip, some account must call the <code>close_tip</code> extrinsic at the end of
 the closing period for the tip. This extrinsic may be called by anyone.</p>
 <h2><a class="anchor" aria-hidden="true" id="bounties-spending"></a><a href="#bounties-spending" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bounties Spending</h2>
@@ -270,11 +267,11 @@ button '+ Add Bounty' on the upper-right side of the interface. Complete the bou
 requested allocation (including curator's fee) and confirm the call.</p>
 <p>After this, a Council member will need to assist you to pass the bounty proposal for vote as a
 motion. You can contact the Council by joining the
-{{ polkadot: Polkadot Direction <a href="https://parity.link/polkadot-direction">channel</a> :polkadot }}
-{{ kusama: Kusama Direction <a href="https://parity.link/kusama-direction">channel</a> :kusama }} in Element or
+
+Kusama Direction <a href="https://parity.link/kusama-direction">channel</a> in Element or
 joining our
-{{ polkadot: Polkadot Discord <a href="https://parity.link/polkadot-discord">server</a> :polkadot }}
-{{ kusama: Kusama Discord <a href="https://parity.link/kusama-discord">server</a> :kusama }} and publishing a
+
+Kusama Discord <a href="https://parity.link/kusama-discord">server</a> and publishing a
 short description of your bounty, with a link to one of the <a href="#announcing-the-proposal">forums</a> for
 contextual information.</p>
 <p>A bounty can be cancelled by deleting the earmark for a specific treasury amount or be closed if the
