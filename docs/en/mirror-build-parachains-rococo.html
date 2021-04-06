@@ -1,0 +1,368 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Building Parachains on Rococo · Guide</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="[Rococo](https://github.com/paritytech/cumulus#rococo-crown) is a Polkadot testnet built for testing"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Building Parachains on Rococo · Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://guide.kusama.network/"/><meta property="og:description" content="[Rococo](https://github.com/paritytech/cumulus#rococo-crown) is a Polkadot testnet built for testing"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="/css/klaro.css"/><link rel="stylesheet" href="/css/copycode.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="/js/custom.js"></script><script type="text/javascript" src="/js/klaro-config.js"></script><script type="text/javascript" src="/js/klaro.js"></script><script type="text/javascript" src="/js/clipboard.min.js"></script><script type="text/javascript" src="/js/copycode.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/./img/Kusama_logotype_white_large.png" alt="Guide"/><h2 class="headerTitleWithLogo">Guide</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/en/kusama-getting-started" target="_self">Get Started</a></li><li class="siteNavGroupActive"><a href="/docs/en/kusama-index" target="_self">Docs</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/zh-CN/mirror-build-parachains-rococo">中文</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noreferrer noopener">Help Translate</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>What to Try</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Kusama<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/kusama-index">Home</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Get Started</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/kusama-getting-started">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-faucet">Faucet</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-claims">Claims</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-endpoints">Kusama Endpoints</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-thousand-validators">Thousand Validators Programme</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-auction">Parachain Slots Auction</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-parachains">Parachains</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-parathreads">Parathreads</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-crowdloans">Parachain Crowdloans</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Try</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/mirror-maintain-guides-how-to-validate-kusama">How to run a Validator on Kusama</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-maintain-guides-how-to-nominate-kusama">Nominator Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-governance">Governance</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-identity">Identity</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-treasury">Treasury</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-learn-registrar">How to use W3F Registrar</a></li><li class="navListItem"><a class="navItem" href="/docs/en/mirror-build-build-with-polkadot">Polkadot Builders Starter&#x27;s Guide</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/en/mirror-build-parachains-rococo">Building Parachains on Rococo</a></li><li class="navListItem"><a class="navItem" href="/docs/en/maintain-guides-society-kusama">Join Kappa Sigma Mu</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-social-recovery">Account Recovery</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">What to Break</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/mirror-maintain-errors">Resolving Errors</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-bug-bounty">Bug Bounty</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-adverserial-cheatsheet">Adverserial Cheatsheet</a></li></ul></div><li class="navListItem"><a class="navItem" href="/docs/en/mirror-ens">Using ENS with DOT/KSM accounts</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-ledger">Ledger Devices</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-timeline">Timeline</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-community">Community</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-parameters">Parameters</a></li><li class="navListItem"><a class="navItem" href="/docs/en/kusama-coc">Code of Conduct</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/mirror-build-parachains-rococo.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Building Parachains on Rococo</h1></header><article><div><span><p><a href="https://github.com/paritytech/cumulus#rococo-crown">Rococo</a> is a Polkadot testnet built for testing
+parachains. Rococo utilizes Cumulus and HRMP (Horizontal Relay-routed Message Passing) in order to
+send transfers and messages between parachains and the Relay Chain. Every message is sent to the
+Relay Chain, then from the Relay Chain to the desired parachain. Rococo currently runs three test
+parachains (Tick, Trick, and Track), as well as several externally developed parachains.</p>
+<h2><a class="anchor" aria-hidden="true" id="who-is-building-parachains"></a><a href="#who-is-building-parachains" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Who is building Parachains?</h2>
+<p>You can see the list of included parachains
+<a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io#/parachains">here</a>. A list of
+proposed parachains is available
+<a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io#/parachains/proposals">here</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="parachain-workshop"></a><a href="#parachain-workshop" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parachain Workshop</h2>
+<p>If you are interested in running and launching your own parachain, Parity Technologies has created a
+<a href="https://substrate.dev/cumulus-workshop/#/1-prep/1-compiling">parachain workshop</a>. There is also a
+<a href="https://matrix.to/#/!WuksvCDImqYSxvNmua:matrix.parity.io?via=matrix.parity.io&amp;via=matrix.org&amp;via=web3.foundation">Rococo Element chat channel</a>
+as well as <a href="https://github.com/paritytech/cumulus#rococo">Cumulus' GitHub repository</a> available.</p>
+<h3><a class="anchor" aria-hidden="true" id="obtaining-roc"></a><a href="#obtaining-roc" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Obtaining ROC</h3>
+<p>ROC are available in the <a href="https://app.element.io/#/room/#rococo-faucet:matrix.org">Rococo Faucet</a>
+channel on Matrix. To receive ROC tokens, use the command:</p>
+<pre><code class="hljs"><span class="hljs-addition">!drip YOUR_ROCOCO_ADDRESS</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="how-to-connect-to-a-parachains"></a><a href="#how-to-connect-to-a-parachains" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to connect to a Parachains</h2>
+<p>If you would like to connect to a parachain via <a href="https://polkadot.js.org/apps/">Polkadot-JS Apps</a>,
+you may do so by clicking on the network selection at the top left hand corner of the navigation and
+selecting any parachain of choice. For the purpose of these following examples, we will be using the
+Rococo testnet &quot;Custom Node&quot; underneath &quot;Development&quot;, according to the
+<a href="https://substrate.dev/cumulus-workshop/#/1-prep/1-compiling">parachain workshop</a>.</p>
+<p><img src="/docs/assets/polkadotjs_network_parachains.png" alt="parachains on polkadotjs"></p>
+<h2><a class="anchor" aria-hidden="true" id="how-to-make-cross-chain-transfers"></a><a href="#how-to-make-cross-chain-transfers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to make Cross Chain transfers</h2>
+<p>To send a transfer between parachains, navigate to &quot;Accounts&quot; &gt; &quot;Transfer&quot;. From here, you'll need
+to select the parachain node that you are running. Next, enter in the amount that you'd like to send
+to another parachain. Be sure to select the correct parachain you'd like to send an amount to. Once
+you've hit the &quot;Submit&quot; button, you should see a green notification, indicating a successful
+transfer.</p>
+<h3><a class="anchor" aria-hidden="true" id="downward-transfers"></a><a href="#downward-transfers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Downward Transfers</h3>
+<p>Downward transfers are when an account on the Relay Chain sends a transfer to their account on a
+different parachain. This type of transfer uses a depository and mint model, meaning that when the
+DOT leave the sender's account on the Relay Chain and are transferred into an account on a
+parachain, the parachain mints a corresponding amount of tokens on the parachain.</p>
+<p>For example, we can send tokens from Alice's account on the Relay Chain to her account on
+parachain 200. To do so, we will need to head to the &quot;Network&quot; &gt; &quot;Parachains&quot; tab and click on the
+&quot;Transfer to chain&quot; button.</p>
+<p><img src="/docs/assets/rococo/rococo-downward-transfer.png" alt="rococo downward transfer"></p>
+<p>Notice here, that we can select which parachain to send the funds to, specify the amount to be sent,
+and add any comments or a memo for the transfer.</p>
+<h3><a class="anchor" aria-hidden="true" id="upward-transfers"></a><a href="#upward-transfers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Upward Transfers</h3>
+<p>Upward transfers occur <em>from</em> a parachain <em>to</em> an account on the Relay Chain. To proceed with this
+kind of transfer, we need to be connected to a parachain node on the network and be on the
+&quot;Network&quot; &gt; &quot;Parachains&quot; tab. Click on the &quot;Transfer to chain&quot; button.</p>
+<p><img src="/docs/assets/rococo/rococo-upward-transfer.png" alt="rococo upward transfer"></p>
+<p>Note that the toggle should be set to off, ensuring that the funds go to the Relay Chain and not
+another parachain.</p>
+<h3><a class="anchor" aria-hidden="true" id="lateral-transfers"></a><a href="#lateral-transfers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Lateral Transfers</h3>
+<p>This type of transfer is only possible with at least two different registered parachains. In true
+XCMP, lateral transfers would allow for messages to be sent directly from one parachain to another.
+However, this is not yet implemented, so the Relay Chain is helping us deliver messages for the time
+being. Lateral transfers work through the depository model, which means that in order to transfer
+tokens from chain 200 to chain 300, there must already be tokens owned by chain 200 deposited on
+chain 300. Lateral transfers are called HRMP, Horizontal Relay-Chain Message Passing.</p>
+<p>Before we can actually send funds from one parachain to another, we must ensure that the chain's
+account on the recipient chain has some funds in it. In this example, Alice will be sending some
+funds from her account on parachain 200 to her account on parachain 300.</p>
+<p>We can get that parachain account address, from our parachain 300's terminal:</p>
+<pre><code class="hljs"><span class="hljs-number">2020</span><span class="hljs-number">-08</span><span class="hljs-number">-26</span> <span class="hljs-number">14</span>:<span class="hljs-number">46</span>:<span class="hljs-number">34</span> Parachain Account: <span class="hljs-number">5</span>Ec4AhNv5ArwGxtngtW8qcVgzpCAu8nokvnh6vhtvvFkJtpq
+</code></pre>
+<p>From Alice's account on the Relay Chain, she is able to send some amount to parachain 200's
+depository.</p>
+<p><img src="/docs/assets/rococo/rococo-lateral-transfer.png" alt="rococo lateral transfer"></p>
+<p>Alice is now able to send from her account on parachain 200 to her account on parachain 300.</p>
+<p><img src="/docs/assets/rococo/rococo-lateral-transfer2.png" alt="rococo lateral transfer part 2"></p>
+<h1><a class="anchor" aria-hidden="true" id="rococo-parachain-requirements"></a><a href="#rococo-parachain-requirements" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rococo Parachain Requirements</h1>
+<p><a href="https://wiki.polkadot.network/docs/en/build-parachains-rococo#docsNav">Rococo</a> is the environment
+for parachain and <a href="https://wiki.polkadot.network/docs/en/learn-crosschain#overview-of-xcmp">XCMP</a>
+testing and will undergo rapid changes, updates and chain state resets as it develops. After the
+initial tests are successful on Rococo, we envision that in the long run it will be integrated into
+the <a href="https://wiki.polkadot.network/docs/en/maintain-networks#westend-test-network">Westend</a> test
+network.</p>
+<p>Below you will find a general plan on how we approach onboarding parachains within this new
+environment.</p>
+<h2><a class="anchor" aria-hidden="true" id="relevant-values-and-calculations"></a><a href="#relevant-values-and-calculations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Relevant Values and Calculations</h2>
+<p>Note that these are example values; all are subject to change.</p>
+<ul>
+<li>Lease Period Length: 1 Day = 14400 Blocks</li>
+<li>Ending Period: 15 Min = 150 Blocks</li>
+<li>Current Lease Period Index = Current Block Number / 14400</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="registration"></a><a href="#registration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Registration</h2>
+<p>All Parachains will need to Register as a &quot;Parathread&quot; first.</p>
+<p><img src="https://i.imgur.com/1orqcCx.png" alt=""></p>
+<p>To do this, they need:</p>
+<ul>
+<li>A unique Parachain ID (one that has not been previously registered)</li>
+<li>Runtime Wasm</li>
+<li>Initial Head Data</li>
+</ul>
+<p>After submission of this data, it will take 2 sessions (30 min x 2) for the candidate to fully
+onboard to a Parathread.</p>
+<blockquote>
+<p>Note: All transitions of a Para into different states will take at least 2 sessions (onboarding,
+offboarding, upgrading, downgrading, etc.)</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="slots"></a><a href="#slots" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Slots</h2>
+<p>To start, only 5 or 6 slots are planned to be available on Rococo to ensure that the chain functions
+properly.</p>
+<p>3 of these slots will be our &quot;system chains&quot;: Tick, Track, and Trick</p>
+<p>This means only 2 or 3 slots will be available for parachain auctions.</p>
+<h3><a class="anchor" aria-hidden="true" id="system-chains"></a><a href="#system-chains" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>System Chains</h3>
+<p>The system chains were given a lease through <code>Slots &gt; force_lease</code>, bypassing the auction process.</p>
+<p>Once they are a parathreads, we can call <code>force_lease</code> like so:</p>
+<pre><code class="hljs">fn force_lease(origin,
+<span class="hljs-symbol">    para:</span> ParaId,
+<span class="hljs-symbol">    leaser:</span> T::AccountId,
+<span class="hljs-symbol">    amount:</span> BalanceOf<span class="hljs-params">&lt;T&gt;</span>,
+<span class="hljs-symbol">    period_begin:</span> LeasePeriodOf<span class="hljs-params">&lt;T&gt;</span>,
+<span class="hljs-symbol">    period_count:</span> LeasePeriodOf<span class="hljs-params">&lt;T&gt;</span>,
+)
+</code></pre>
+<ul>
+<li><code>origin</code>: Must be root</li>
+<li><code>para</code>: The registered ParaId for the Parachain</li>
+<li><code>leaser</code>: The person who will pay the deposit <code>amount</code>.</li>
+<li><code>amount</code>: How much we reserve from <code>leaser</code>.</li>
+<li><code>period_begin</code>: The first lease period for the slot.</li>
+<li><code>period_count</code>: The number of lease periods to reserve.</li>
+</ul>
+<p>So assuming we start at genesis, and Trick is <code>ParaId(0)</code> something like:</p>
+<pre><code class="hljs">force_lease(ParaId(<span class="hljs-number">0</span>), Alice, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">100</span>)
+</code></pre>
+<p>would give Trick 100 lease periods, starting at lease period 0, but it wouldn't start until period 1
+anyway, since lease period 0 will be in progress starting with block 0.</p>
+<h3><a class="anchor" aria-hidden="true" id="auctioned-chains"></a><a href="#auctioned-chains" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Auctioned Chains</h3>
+<p>For the rest of the slots, we can set up auctions with <code>Auctions &gt; new_auction</code>:</p>
+<pre><code class="hljs"><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">new_auction</span></span>(
+    origin,
+    <span class="hljs-meta">#[compact]</span> duration: T::BlockNumber,
+    <span class="hljs-meta">#[compact]</span> lease_period_index: LeasePeriodOf&lt;T&gt;,
+)
+</code></pre>
+<ul>
+<li><code>origin</code>: Must be root</li>
+<li><code>duration</code>: How long the auction will last</li>
+<li><code>lease_period_index</code>: Which lease period is up for auction</li>
+</ul>
+<p>Auctions on Rococo should be relatively short, but since it is configurable per auction, we can
+adjust this based on community feedback. A duration of 12 hours - 24 hours should be good.</p>
+<p>Lease Period Index needs to be for some future lease period that we want to auction. The input is
+the FIRST of the 4 index periods that will be made available for auction.</p>
+<p>For example, if we call:</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">new_auction</span><span class="hljs-params">(<span class="hljs-number">3600</span>, <span class="hljs-number">2</span>)</span></span>
+</code></pre>
+<p>This will be an auction for 6 hours (10 blocks per min * 60 min per hour * 6 hours = 3600 blocks),
+which will auction lease periods 2, 3, 4, and 5.</p>
+<p>On top of the base 6 hours of the auction, there will be an additional ending period where final
+potentially winning bids can occur. So if the ending period is 150 blocks, then the total end to end
+auction time will be 3750 blocks.</p>
+<p>We should make sure that whatever lease period we select, and all the timelines for doing an
+auction, that the lease period will not have started.</p>
+<p>We can only run one auction at a time, but we can run an auction for the same lease period multiple
+times to add more slots. So we may make the exact same call again.</p>
+<p>Once we have saturated the slots we want for any particular lease period, we can then start auctions
+for the further future:</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">new_auction</span><span class="hljs-params">(<span class="hljs-number">3600</span>, <span class="hljs-number">6</span>)</span></span>
+</code></pre>
+<p>Since we previously auctioned slots 2 - 5, now we can start auctioning 6 - 9.</p>
+<h4><a class="anchor" aria-hidden="true" id="bidding"></a><a href="#bidding" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bidding</h4>
+<p>Anyone can make a bid to win a Parachain slot for a Para ID.</p>
+<p><img src="https://i.imgur.com/jOFjhnI.png" alt=""></p>
+<p>Pick the Para ID, how much you want to bid, and the slots you want to bid for.</p>
+<h4><a class="anchor" aria-hidden="true" id="crowdloan"></a><a href="#crowdloan" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Crowdloan</h4>
+<p>You can also make a crowdloan for your Para ID, but this part of the process is still unrefined and
+you may encounter problems.</p>
+<p><img src="https://i.imgur.com/dfYPBQ4.png" alt=""></p>
+<ul>
+<li>You can only create a crowdloan for a Para ID that you own / have registered.</li>
+<li>The crowdfund cap is the MAXIMUM amount your crowdloan can collect. You can still win a bid if you
+have less than your maximum, as long as your bid is the best in the auction.</li>
+<li>Ending Block is when you want your crowdloan to end. If you know an auction will start in 3 days,
+and will last for 5 days, you probably want to set your crowdloan to end in 10 days, or a similar
+timescale. This way you will be sure that your crowdloan is active during the entire auction
+process.</li>
+<li>You don't want to set your crowdloan to be too long, or else you will lock up users funds for a
+long time and they may not want to participate.</li>
+<li>The first slot must be the first slot you want to bid for. So if the current auction is for slots
+(3, 4, 5, 6), your first slot can be at least 3.</li>
+<li>Last slot must be with within that range too.</li>
+<li>You can cancel a crowdloan (if you made a mistake), as long as you did not receive a contribution.</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="tips"></a><a href="#tips" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tips</h3>
+<p>If you would like to test your setup first on a local machine, you should be able to do so by
+following the instructions in the readme
+<a href="https://github.com/paritytech/cumulus#launch-a-local-setup-including-a-relay-chain-and-a-parachain">launch a local setup</a>.</p>
+<h1><a class="anchor" aria-hidden="true" id="chachacha-v1---the-pre-rococo-environment"></a><a href="#chachacha-v1---the-pre-rococo-environment" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Chachacha V1 - The pre-rococo environment</h1>
+<p>Chachacha is a Rococo based network configured and supported by Centrifuge.</p>
+<p>The purpose of Chachacha is to serve as a support network to ease and speed up the onboarding of new
+parachains in Rococo.</p>
+<p>It helps:</p>
+<ul>
+<li>To get the parachains in the waiting list to a state that is ready to be added to Rococo for
+further performance and stability testing</li>
+<li>Parachains to find issues beforehand, by integrating earlier.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="characteristics"></a><a href="#characteristics" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Characteristics</h2>
+<ul>
+<li>Chachacha will be at par with the latest Rococo polkadot/cumulus/substrate version</li>
+<li>The network will be refreshed and restarted frequently</li>
+<li>Inclusion process is analogous to Rococo's</li>
+<li>Notifications and Support will be given in the
+<a href="https://matrix.to/#/!bNsgeAIUuMfcyVXKAu:matrix.org?via=matrix.org&amp;via=matrix.parity.io">Chachacha</a>
+Element channel</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="how-to-include-your-parachain-in-chachacha"></a><a href="#how-to-include-your-parachain-in-chachacha" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to include your parachain in Chachacha</h2>
+<ol>
+<li>Maintain <strong>at least two</strong> validators (full block authoring node) for
+<a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffullnode-relay.chachacha.centrifuge.io#/explorer">Chachacha</a>.
+<ol>
+<li>Treat this like a production grade Polkadot node - see
+<a href="https://wiki.polkadot.network/docs/en/maintain-guides-how-to-validate-polkadot#docsNav">Run a Validator (Polkadot)</a></li>
+<li>Chachacha Bootnodes
+<ol>
+<li><code>/ip4/34.89.248.129/tcp/30333/p2p/12D3KooWD8CAZBgpeZiSVVbaj8mijR6mfgUsHNAmCKwsRoRnFod4</code></li>
+<li><code>/ip4/35.242.217.240/tcp/30333/p2p/12D3KooWBthdCz4JshkMb4GxJXVwrHPv9GpWAgfh2hAdkyXQDKyN</code></li>
+</ol></li>
+<li>Node Setup - use one of the options below
+<ol>
+<li>Build from source:
+<ol>
+<li><code>git clone https://github.com/centrifuge/polkadot</code></li>
+<li><code>cd polkadot</code></li>
+<li><code>git checkout rococo-v1</code></li>
+<li><code>cargo build --release --features=real-overseer</code></li>
+<li><code>./target/release/polkadot --validator --chain rococo-chachacha --name &lt;your_chachacha_validator_name&gt; --bootnodes &lt;bootnodes_addr_from_above&gt;</code></li>
+</ol></li>
+<li>Use Docker:
+<ol>
+<li><code>docker run -d centrifugeio/rococo:chachacha-v1 --validator --chain rococo-chachacha --name &lt;your_chachacha_validator_name&gt; --bootnodes &lt;bootnodes_addr_from_above&gt;</code></li>
+</ol></li>
+</ol></li>
+<li>Check your node on the
+<a href="https://telemetry.polkadot.io/#list/Chachacha%20Staging%20Testnet">Chachacha Telemetry</a></li>
+<li>Generate your
+<a href="https://github.com/substrate-developer-hub/cumulus-workshop/blob/master/6-register/1-register.md#launching-the-validators">Chachacha V1 ValidatorId Address</a></li>
+<li>Follow
+<a href="https://matrix.to/#/!bNsgeAIUuMfcyVXKAu:matrix.org?via=matrix.org&amp;via=matrix.parity.io">Chachacha</a>
+announcements for Chachacha V1 validator updates, which can require one of the following
+scenarios
+<ol>
+<li>Update client</li>
+<li>Update client and purge-chain</li>
+</ol></li>
+</ol></li>
+<li>Maintain at least one collator (full block authoring node) for your team’s parachain.
+<ol>
+<li><code>cd &lt;root_cumulus_based_parachain_code&gt;</code></li>
+<li><code>cargo build --release</code></li>
+<li><code>./target/release/&lt;parachain_collator_name&gt; --version</code></li>
+<li><code>./target/release/&lt;parachain_collator_name&gt; export-genesis-state --parachain-id &lt;your_registered_parachain_id&gt; &gt; genesis-state</code></li>
+<li><code>./target/release/&lt;parachain_collator_name&gt; export-genesis-wasm &gt; genesis-wasm</code></li>
+<li><code>wget -O rococo-chachacha.json https://storage.googleapis.com/centrifuge-artifact-releases/rococo-chachacha.json</code></li>
+<li><code>./target/release/&lt;parachain_collator_name&gt; --collator --parachain-id &lt;your_registered_parachain_id&gt; --execution wasm --chain rococo-chachacha.json</code></li>
+</ol></li>
+<li>Sign up through the <a href="https://forms.gle/1fZTAaA312pkYCtV7">Chachacha V1 Parachain Registration</a>
+form</li>
+<li>After receiving CHA’s to the ValidatorId Address initiate the
+<a href="https://wiki.polkadot.network/docs/en/maintain-guides-how-to-validate-polkadot#submitting-the-setkeys-transaction">Submitting the setKeys Transaction</a>in
+<a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffullnode-relay.chachacha.centrifuge.io#/extrinsics">Chachacha Extrinsics</a></li>
+<li>Follow the
+<a href="https://github.com/substrate-developer-hub/cumulus-workshop/blob/master/en/6-register/1-register.md#request-parachain-registration">registration process</a></li>
+<li>You are free to do runtime upgrades after the parachain is connected, so you can still iterate on
+features later on</li>
+</ol>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/mirror-build-build-with-polkadot"><span class="arrow-prev">← </span><span>Polkadot Builders Starter&#x27;s Guide</span></a><a class="docs-next button" href="/docs/en/maintain-guides-society-kusama"><span>Join Kappa Sigma Mu</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#who-is-building-parachains">Who is building Parachains?</a></li><li><a href="#parachain-workshop">Parachain Workshop</a><ul class="toc-headings"><li><a href="#obtaining-roc">Obtaining ROC</a></li></ul></li><li><a href="#how-to-connect-to-a-parachains">How to connect to a Parachains</a></li><li><a href="#how-to-make-cross-chain-transfers">How to make Cross Chain transfers</a><ul class="toc-headings"><li><a href="#downward-transfers">Downward Transfers</a></li><li><a href="#upward-transfers">Upward Transfers</a></li><li><a href="#lateral-transfers">Lateral Transfers</a></li></ul></li><li><a href="#relevant-values-and-calculations">Relevant Values and Calculations</a></li><li><a href="#registration">Registration</a></li><li><a href="#slots">Slots</a><ul class="toc-headings"><li><a href="#system-chains">System Chains</a></li><li><a href="#auctioned-chains">Auctioned Chains</a></li><li><a href="#tips">Tips</a></li></ul></li><li><a href="#characteristics">Characteristics</a></li><li><a href="#how-to-include-your-parachain-in-chachacha">How to include your parachain in Chachacha</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2021 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+              var cookieSettings = document.getElementById('cookie-settings');
+              cookieSettings.onclick = function() {
+                return klaro.show();
+              };
+              </script></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '53c6a4ab0d77c0755375a971c9b7cc3d',
+                indexName: 'kusama_guide',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en"]}
+              });
+            </script></body></html>
