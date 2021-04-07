@@ -129,10 +129,10 @@ have ended before they even bid.</p>
 protocol. The VRF will provide the base of the randomness, which will retroactively determine the
 end-time of the auction.</p>
 <p>The slot durations are capped to ;
-Kusama slots durations and periods will be less than on Polkadot. Parachains may lease a slot for any
-contiguous range of the slot duration. Parachains may lease more than one slot over time, meaning
-that they could extend their lease to Polkadot past the maximum duration by leasing a contiguous
-slot.</p>
+Kusama slots durations and periods will be less than on Polkadot. Parachains may lease a slot for
+any combination of periods of the slot duration. Parachains may lease more than one slot over time,
+meaning that they could extend their lease to Polkadot past the maximum duration by leasing a
+contiguous slot.</p>
 <blockquote>
 <p>Note: Individual parachain slots are fungible. This means that parachains do not need to always
 inhabit the same slot, but as long as a parachain inhabits any slot it can continue as a
@@ -157,8 +157,7 @@ Slot</span> E |<span class="hljs-type">__________</span>|<span class="hljs-type"
 
 </code></pre>
 <p><em>Each period of the range 1 - 4 represents a
-
-or a shorter duration on Kusama</em></p>
+ or a shorter duration on Kusama</em></p>
 <p>More than one continuous period is a range.</p>
 <p>Bidders will submit a configuration of bids specifying the token amount they are willing to bond and
 for which ranges. The slot ranges may be any continuous range of the periods 1 - 4.</p>
@@ -195,7 +194,6 @@ number produced by the VRF is examined next to the threshold to determine if tha
 of the auction withing the so-called <em>ending period</em>. Additionally, the VRF will pick a block from
 the last epoch to take the state of bids from (to mitigate some types of attacks from malicious
 validators).</p>
-<p>On Kusama, the ending period is 1 hour long.</p>
 <h3><a class="anchor" aria-hidden="true" id="examples"></a><a href="#examples" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h3>
 <p>There is one parachain slot available.</p>
 <p>Charlie bids <code>75</code> for the range 1 - 4.</p>
@@ -220,12 +218,11 @@ Relay Chain.</p>
 <h3><a class="anchor" aria-hidden="true" id="how-does-this-mechanism-help-ensure-parachain-diversity"></a><a href="#how-does-this-mechanism-help-ensure-parachain-diversity" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How does this mechanism help ensure parachain diversity?</h3>
 <p>The method for dividing the parachain slots into intervals was partly inspired by the desire to
 allow for a greater amount of parachain diversity, and prevent particularly large and well-funded
-parachains from hoarding slots. By making each period a  six-week duration but the
-overall slot a 24-week duration, the mechanism can cope with well-funded parachains that
-will ensure they secure a slot at the end of their lease, while gradually allowing other parachains
-to enter the ecosystem to occupy the durations that are not filled. For example, if a large,
-well-funded parachain has already acquired a slot for range 1 - 4, they would be very interested in
-getting the next slot that would open for 2 - 5. Under this mechanism that parachain could acquire
+parachains from hoarding slots. By making each period a  short duration, the mechanism can cope
+with well-funded parachains that will ensure they secure a slot at the end of their lease, while gradually
+allowing other parachains to enter the ecosystem to occupy the durations that are not filled. For example,
+if a large, well-funded parachain has already acquired a slot for range 1 - 4, they would be very interested
+in getting the next slot that would open for 2 - 5. Under this mechanism that parachain could acquire
 period 5 (since that is the only one it needs) and allow range 2 - 4 of the second parachain slot to
 be occupied by another.</p>
 <h3><a class="anchor" aria-hidden="true" id="why-is-randomness-difficult-on-blockchains"></a><a href="#why-is-randomness-difficult-on-blockchains" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Why is randomness difficult on blockchains?</h3>

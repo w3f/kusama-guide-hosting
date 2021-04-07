@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Parachain Crowdloans · Guide</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content=" Kusama allows parachains to source DOT for"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Parachain Crowdloans · Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://guide.kusama.network/"/><meta property="og:description" content=" Kusama allows parachains to source DOT for"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="/css/klaro.css"/><link rel="stylesheet" href="/css/copycode.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="/js/custom.js"></script><script type="text/javascript" src="/js/klaro-config.js"></script><script type="text/javascript" src="/js/klaro.js"></script><script type="text/javascript" src="/js/clipboard.min.js"></script><script type="text/javascript" src="/js/copycode.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Parachain Crowdloans · Guide</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content=" Kusama allows parachains to source tokens"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Parachain Crowdloans · Guide"/><meta property="og:type" content="website"/><meta property="og:url" content="https://guide.kusama.network/"/><meta property="og:description" content=" Kusama allows parachains to source tokens"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/./img/kusama-brand-assets/Kusama_Canary_white.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap"/><link rel="stylesheet" href="/css/klaro.css"/><link rel="stylesheet" href="/css/copycode.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script><script type="text/javascript" src="/js/custom.js"></script><script type="text/javascript" src="/js/klaro-config.js"></script><script type="text/javascript" src="/js/klaro.js"></script><script type="text/javascript" src="/js/clipboard.min.js"></script><script type="text/javascript" src="/js/copycode.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
         document.addEventListener('DOMContentLoaded', function() {
           addBackToTop(
             {"zIndex":100}
@@ -72,16 +72,16 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/mirror-learn-crowdloans.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Parachain Crowdloans</h1></header><article><div><span><p> Kusama allows parachains to source DOT for
-their parachain bids in a decentralized crowdloan.</p>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/mirror-learn-crowdloans.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Parachain Crowdloans</h1></header><article><div><span><p> Kusama allows parachains to source tokens
+for their parachain bids in a decentralized crowdloan.</p>
 <blockquote>
 <p>Note: For information on how to participate in the crowdloan and parachain auction testing on
 Rococo, please see the  &gt;
 <a href="mirror-build-parachains-rococo">Rococo page</a>.</p>
 </blockquote>
-<p>Anyone can create a new crowdloan campaign for a parachain
-slot by depositing 10 KSM. A campaign is configured as a range of slots (i.e.
-the duration the 
+<p>Anyone can create a new crowdloan campaign for a parachain slot
+ by depositing a specified number of tokens. A campaign is configured as a
+range of slots (i.e. the duration the 
 <a href="mirror-learn-parachains">parachain</a> will bid for), a cap, and a duration. The
 duration can last over several auctions, meaning that the team will not need to restart the campaign
 just because they do not secure a slot on their first attempt.</p>
@@ -90,7 +90,6 @@ by sending a special transaction that references the campaign's index. Tokens us
 must be transferable — that is, not locked for any reason, including staking, vesting, and
 governance — because they will be moved into a module-controlled account that was generated
 uniquely for this campaign.</p>
-<p>On Kusama, the minimum contribution is 1 KSM.</p>
 <blockquote>
 <p>Important: All crowdloan contributions are handled by the Crowdloan module’s logic where a
 campaign is identified by index, not by address. <strong>Never transfer tokens to an address in support
@@ -114,7 +113,6 @@ lease. During this phase, participants can withdraw the tokens with which they p
 <li>If the campaign was not successful, then this retirement phase will begin at the campaign's
 configured end, and participants can likewise withdraw their tokens.</li>
 </ul>
-<p>On Kusama, this phase lasts for one week.</p>
 <p>Note that withdrawing tokens requires a transaction for each participant. Anyone can make the
 transactions, so a parachain team could free every participant's token in a batch. Tokens that are
 not withdrawn within a certain amount of time will go to the
