@@ -106,11 +106,12 @@ extension to Substrate, allows any Substrate built chain to connect to Polkadot 
 parachain. Substrate is currently on its 2.0.0 tagged release that stabilized its API for now.</p>
 <p>Polkadot does not natively support smart contracts, however there will be parachains that do.
 Substrate chains can include smart contract functionality by using the
-<a href="https://github.com/paritytech/substrate/tree/master/frame/contracts">Contracts</a> pallet for Wasm contracts or the <a href="https://github.com/paritytech/frontier/tree/master/frame/evm">EVM</a> pallet in
-FRAME via Frontier. The contracts pallet enables a chain to use Wasm-compiled contracts that can
-be deployed permissionlessly by users or with specific rules dependent on the chain. To facilitate
-development of Wasm smart contracts, Parity is also developing <a href="https://github.com/paritytech/ink">ink!</a>,
-a domain specific language built in Rust for writing smart contracts.</p>
+<a href="https://github.com/paritytech/substrate/tree/master/frame/contracts">Contracts</a> pallet for Wasm contracts or the <a href="https://github.com/paritytech/frontier/tree/master/frame/evm">EVM</a> pallet in FRAME
+via Frontier. The contracts pallet enables a chain to use Wasm-compiled contracts that can be
+deployed permissionlessly by users or with specific rules dependent on the chain. To facilitate
+development of Wasm smart contracts, Parity is also developing
+<a href="https://github.com/paritytech/ink">ink!</a>, a domain specific language built in Rust for writing
+smart contracts.</p>
 <p>Polkadot mainnet has been running since May 2020. Now that the tools have started to appear and
 stabilize, there has not been a better time to get your feet wet and start preparing for launch. But
 wait! Before you jump head-first into the code, you should think about the kind of decentralized
@@ -259,11 +260,11 @@ Builders of smart contracts can use these options when they become available. To
 to start development using a local development chain and later deploy to a live environment when the
 technology matures.</p>
 <p>Substrate supports smart contracts out-of-the-box in two ways. One way is using the provided
-<a href="https://github.com/paritytech/substrate/tree/master/frame/contracts">Contracts</a> pallet in the FRAME library. The other way is by using the
-<a href="https://github.com/paritytech/frontier/tree/master/frame/evm">EVM pallet</a> offered by Frontier.
-<a href="https://frontier.xyz/">Frontier</a> is a chain-agnostic DeFi aggregation layer that enables you to run Ethereum
-dapps natively on Substrate through the EVM pallet. The pallet enables the functionality for running
-EVM contracts. Addresses and values can also be mapped directly to Substrate from existing EVM code.</p>
+<a href="https://github.com/paritytech/substrate/tree/master/frame/contracts">Contracts</a> pallet in the FRAME library. The other way is by using the <a href="https://github.com/paritytech/frontier/tree/master/frame/evm">EVM
+pallet</a> offered by Frontier. <a href="https://frontier.xyz/">Frontier</a> is a chain-agnostic DeFi
+aggregation layer that enables you to run Ethereum dapps natively on Substrate through the EVM
+pallet. The pallet enables the functionality for running EVM contracts. Addresses and values can
+also be mapped directly to Substrate from existing EVM code.</p>
 <p>The experience of deploying to an EVM-based chain may be more familiar to developers that have
 written smart contract before. However, the Contracts pallet makes some notable improvements to the
 design of the EVM. Namely these are:</p>
