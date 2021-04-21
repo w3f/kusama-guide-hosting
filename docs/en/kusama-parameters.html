@@ -94,7 +94,7 @@ details on how Kusama's parameters differ from Polkadot's.</em></p>
 <tr><td>Slot</td><td>6 seconds</td><td>1</td></tr>
 <tr><td>Epoch</td><td>1 hour</td><td>600</td></tr>
 <tr><td>Session</td><td>1 hour</td><td>600</td></tr>
-<tr><td>Era</td><td>6 hours</td><td>3,600</td></tr>
+<tr><td>Era</td><td>6 hours</td><td>3_600</td></tr>
 </tbody>
 </table>
 <p>*<em>A maximum of one block per slot can be in a canonical chain. However, occasionally a slot will be
@@ -106,9 +106,9 @@ for more details.</em></p>
 <tr><th>Democracy</th><th>Time</th><th>Slots</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td>Voting period</td><td>7 days</td><td>100,800</td><td>How long the public can vote on a referendum.</td></tr>
-<tr><td>Launch period</td><td>7 days</td><td>100,800</td><td>How long the public can select which proposal to hold a referendum on, i.e., every week, the highest-weighted proposal will be selected to have a referendum.</td></tr>
-<tr><td>Enactment period</td><td>8 days</td><td>115,200</td><td>Time it takes for a successful referendum to be implemented on the network.</td></tr>
+<tr><td>Voting period</td><td>7 days</td><td>100_800</td><td>How long the public can vote on a referendum.</td></tr>
+<tr><td>Launch period</td><td>7 days</td><td>100_800</td><td>How long the public can select which proposal to hold a referendum on, i.e., every week, the highest-weighted proposal will be selected to have a referendum.</td></tr>
+<tr><td>Enactment period</td><td>8 days</td><td>115_200</td><td>Time it takes for a successful referendum to be implemented on the network.</td></tr>
 </tbody>
 </table>
 <table>
@@ -116,8 +116,8 @@ for more details.</em></p>
 <tr><th>Council</th><th>Time</th><th>Slots</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td>Term duration</td><td>1 day</td><td>14,400</td><td>The length of a council member's term until the next election round.</td></tr>
-<tr><td>Voting period</td><td>1 day</td><td>14,400</td><td>The council's voting period for motions.</td></tr>
+<tr><td>Term duration</td><td>1 day</td><td>14_400</td><td>The length of a council member's term until the next election round.</td></tr>
+<tr><td>Voting period</td><td>1 day</td><td>14_400</td><td>The council's voting period for motions.</td></tr>
 </tbody>
 </table>
 <p>The Kusama Council consists of up to 19 members and up to 19 runners up.</p>
@@ -126,8 +126,8 @@ for more details.</em></p>
 <tr><th>Technical committee</th><th>Time</th><th>Slots</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td>Cool-off period</td><td>7 days</td><td>604,800</td><td>The time a veto from the technical committee lasts before the proposal can be submitted again.</td></tr>
-<tr><td>Emergency voting period</td><td>3 hours</td><td>1,800</td><td>The voting period after the technical committee expedites voting.</td></tr>
+<tr><td>Cool-off period</td><td>7 days</td><td>604_800</td><td>The time a veto from the technical committee lasts before the proposal can be submitted again.</td></tr>
+<tr><td>Emergency voting period</td><td>3 hours</td><td>1_800</td><td>The voting period after the technical committee expedites voting.</td></tr>
 </tbody>
 </table>
 <h3><a class="anchor" aria-hidden="true" id="staking-validating-and-nominating"></a><a href="#staking-validating-and-nominating" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Staking, Validating, and Nominating</h3>
@@ -136,10 +136,10 @@ for more details.</em></p>
 <tr><th>Kusama</th><th>Time</th><th>Slots</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td>Term duration</td><td>6 hours</td><td>3,600</td><td>The time for which a validator is in the set after being elected. Note, this duration can be shortened in the case the a validator misbehaves.</td></tr>
-<tr><td>Nomination period</td><td>6 hours</td><td>3,600</td><td>How often a new validator set is <a href="learn-phragmen">elected</a>.</td></tr>
-<tr><td>Bonding duration</td><td>7 days</td><td>604,800</td><td>How long until your funds will be transferrable after unbonding. Note that the bonding duration is defined in eras, not directly by slots.</td></tr>
-<tr><td>Slash defer duration</td><td>7 days</td><td>604,800</td><td>Prevents overslashing and validators &quot;escaping&quot; and getting their nominators slashed with no repercussions to themselves. Note that the bonding duration is defined in eras, not directly by slots.</td></tr>
+<tr><td>Term duration</td><td>6 hours</td><td>3_600</td><td>The time for which a validator is in the set after being elected. Note, this duration can be shortened in the case the a validator misbehaves.</td></tr>
+<tr><td>Nomination period</td><td>6 hours</td><td>3_600</td><td>How often a new validator set is <a href="learn-phragmen">elected</a>.</td></tr>
+<tr><td>Bonding duration</td><td>7 days</td><td>604_800</td><td>How long until your funds will be transferrable after unbonding. Note that the bonding duration is defined in eras, not directly by slots.</td></tr>
+<tr><td>Slash defer duration</td><td>7 days</td><td>604_800</td><td>Prevents overslashing and validators &quot;escaping&quot; and getting their nominators slashed with no repercussions to themselves. Note that the bonding duration is defined in eras, not directly by slots.</td></tr>
 </tbody>
 </table>
 <h3><a class="anchor" aria-hidden="true" id="treasury"></a><a href="#treasury" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Treasury</h3>
@@ -148,15 +148,15 @@ for more details.</em></p>
 <tr><th>Treasury</th><th>Time</th><th>Slots</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td>Periods between spends</td><td>6 days</td><td>86,400</td><td>When the treasury can spend again after spending previously.</td></tr>
+<tr><td>Periods between spends</td><td>6 days</td><td>86_400</td><td>When the treasury can spend again after spending previously.</td></tr>
 </tbody>
 </table>
 <p>Burn percentage is currently <code>0.20%</code>, though instead of being burned this amount is temporarily
 redirected into the <a href="maintain-guides-society-kusama">Society</a>'s treasury to fund growth.</p>
 <h3><a class="anchor" aria-hidden="true" id="precision"></a><a href="#precision" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Precision</h3>
-<p>KSM have 12 decimals of precision. In other words, 1e12 (1,000,000,000,000 or one trillion) Plancks
+<p>KSM have 12 decimals of precision. In other words, 1e12 (1_000_000_000_000, or one trillion) Plancks
 make up a single KSM.</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 4/21/2021 by Logan Saether</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/kusama-community"><span class="arrow-prev">← </span><span>Community</span></a><a class="docs-next button" href="/docs/en/kusama-coc"><span>Code of Conduct</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2021 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 4/21/2021 by Bill Laboon</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/kusama-community"><span class="arrow-prev">← </span><span>Community</span></a><a class="docs-next button" href="/docs/en/kusama-coc"><span>Code of Conduct</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2021 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
