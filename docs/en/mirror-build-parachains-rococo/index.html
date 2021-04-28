@@ -261,87 +261,8 @@ long time and they may not want to participate.</li>
 <h3><a class="anchor" aria-hidden="true" id="tips"></a><a href="#tips" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tips</h3>
 <p>If you would like to test your setup first on a local machine, you should be able to do so by
 following the instructions in the readme
-<a href="https://github.com/paritytech/cumulus#launch-a-local-setup-including-a-relay-chain-and-a-parachain">launch a local setup</a>.</p>
-<h1><a class="anchor" aria-hidden="true" id="chachacha-v1---the-pre-rococo-environment"></a><a href="#chachacha-v1---the-pre-rococo-environment" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Chachacha V1 - The pre-rococo environment</h1>
-<p>Chachacha is a Rococo based network configured and supported by Centrifuge.</p>
-<p>The purpose of Chachacha is to serve as a support network to ease and speed up the onboarding of new
-parachains in Rococo.</p>
-<p>It helps:</p>
-<ul>
-<li>To get the parachains in the waiting list to a state that is ready to be added to Rococo for
-further performance and stability testing</li>
-<li>Parachains to find issues beforehand, by integrating earlier.</li>
-</ul>
-<h2><a class="anchor" aria-hidden="true" id="characteristics"></a><a href="#characteristics" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Characteristics</h2>
-<ul>
-<li>Chachacha will be at par with the latest Rococo polkadot/cumulus/substrate version</li>
-<li>The network will be refreshed and restarted frequently</li>
-<li>Inclusion process is analogous to Rococo's</li>
-<li>Notifications and Support will be given in the
-<a href="https://matrix.to/#/!bNsgeAIUuMfcyVXKAu:matrix.org?via=matrix.org&amp;via=matrix.parity.io">Chachacha</a>
-Element channel</li>
-</ul>
-<h2><a class="anchor" aria-hidden="true" id="how-to-include-your-parachain-in-chachacha"></a><a href="#how-to-include-your-parachain-in-chachacha" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to include your parachain in Chachacha</h2>
-<ol>
-<li>Maintain <strong>at least two</strong> validators (full block authoring node) for
-<a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffullnode-relay.chachacha.centrifuge.io#/explorer">Chachacha</a>.
-<ol>
-<li>Treat this like a production grade Polkadot node - see
-<a href="https://wiki.polkadot.network/docs/en/maintain-guides-how-to-validate-polkadot#docsNav">Run a Validator (Polkadot)</a></li>
-<li>Chachacha Bootnodes
-<ol>
-<li><code>/ip4/34.89.248.129/tcp/30333/p2p/12D3KooWD8CAZBgpeZiSVVbaj8mijR6mfgUsHNAmCKwsRoRnFod4</code></li>
-<li><code>/ip4/35.242.217.240/tcp/30333/p2p/12D3KooWBthdCz4JshkMb4GxJXVwrHPv9GpWAgfh2hAdkyXQDKyN</code></li>
-</ol></li>
-<li>Node Setup - use one of the options below
-<ol>
-<li>Build from source:
-<ol>
-<li><code>git clone https://github.com/centrifuge/polkadot</code></li>
-<li><code>cd polkadot</code></li>
-<li><code>git checkout rococo-v1</code></li>
-<li><code>cargo build --release --features=real-overseer</code></li>
-<li><code>./target/release/polkadot --validator --chain rococo-chachacha --name &lt;your_chachacha_validator_name&gt; --bootnodes &lt;bootnodes_addr_from_above&gt;</code></li>
-</ol></li>
-<li>Use Docker:
-<ol>
-<li><code>docker run -d centrifugeio/rococo:chachacha-v1 --validator --chain rococo-chachacha --name &lt;your_chachacha_validator_name&gt; --bootnodes &lt;bootnodes_addr_from_above&gt;</code></li>
-</ol></li>
-</ol></li>
-<li>Check your node on the
-<a href="https://telemetry.polkadot.io/#list/Chachacha%20Staging%20Testnet">Chachacha Telemetry</a></li>
-<li>Generate your
-<a href="https://github.com/substrate-developer-hub/cumulus-workshop/blob/master/6-register/1-register.md#launching-the-validators">Chachacha V1 ValidatorId Address</a></li>
-<li>Follow
-<a href="https://matrix.to/#/!bNsgeAIUuMfcyVXKAu:matrix.org?via=matrix.org&amp;via=matrix.parity.io">Chachacha</a>
-announcements for Chachacha V1 validator updates, which can require one of the following
-scenarios
-<ol>
-<li>Update client</li>
-<li>Update client and purge-chain</li>
-</ol></li>
-</ol></li>
-<li>Maintain at least one collator (full block authoring node) for your team’s parachain.
-<ol>
-<li><code>cd &lt;root_cumulus_based_parachain_code&gt;</code></li>
-<li><code>cargo build --release</code></li>
-<li><code>./target/release/&lt;parachain_collator_name&gt; --version</code></li>
-<li><code>./target/release/&lt;parachain_collator_name&gt; export-genesis-state --parachain-id &lt;your_registered_parachain_id&gt; &gt; genesis-state</code></li>
-<li><code>./target/release/&lt;parachain_collator_name&gt; export-genesis-wasm &gt; genesis-wasm</code></li>
-<li><code>wget -O rococo-chachacha.json https://storage.googleapis.com/centrifuge-artifact-releases/rococo-chachacha.json</code></li>
-<li><code>./target/release/&lt;parachain_collator_name&gt; --collator --parachain-id &lt;your_registered_parachain_id&gt; --execution wasm --chain rococo-chachacha.json</code></li>
-</ol></li>
-<li>Sign up through the <a href="https://forms.gle/1fZTAaA312pkYCtV7">Chachacha V1 Parachain Registration</a>
-form</li>
-<li>After receiving CHA’s to the ValidatorId Address initiate the
-<a href="https://wiki.polkadot.network/docs/en/maintain-guides-how-to-validate-polkadot#submitting-the-setkeys-transaction">Submitting the setKeys Transaction</a>in
-<a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ffullnode-relay.chachacha.centrifuge.io#/extrinsics">Chachacha Extrinsics</a></li>
-<li>Follow the
-<a href="https://github.com/substrate-developer-hub/cumulus-workshop/blob/master/en/6-register/1-register.md#request-parachain-registration">registration process</a></li>
-<li>You are free to do runtime upgrades after the parachain is connected, so you can still iterate on
-features later on</li>
-</ol>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/mirror-build-build-with-polkadot"><span class="arrow-prev">← </span><span>Polkadot Builders Starter&#x27;s Guide</span></a><a class="docs-next button" href="/docs/en/maintain-guides-society-kusama"><span>Join Kappa Sigma Mu</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#who-is-building-parachains">Who is building Parachains?</a></li><li><a href="#parachain-workshop">Parachain Workshop</a><ul class="toc-headings"><li><a href="#obtaining-roc">Obtaining ROC</a></li></ul></li><li><a href="#how-to-connect-to-a-parachains">How to connect to a Parachains</a></li><li><a href="#how-to-make-cross-chain-transfers">How to make Cross Chain transfers</a><ul class="toc-headings"><li><a href="#downward-transfers">Downward Transfers</a></li><li><a href="#upward-transfers">Upward Transfers</a></li><li><a href="#lateral-transfers">Lateral Transfers</a></li></ul></li><li><a href="#relevant-values-and-calculations">Relevant Values and Calculations</a></li><li><a href="#registration">Registration</a></li><li><a href="#slots">Slots</a><ul class="toc-headings"><li><a href="#system-chains">System Chains</a></li><li><a href="#auctioned-chains">Auctioned Chains</a></li><li><a href="#tips">Tips</a></li></ul></li><li><a href="#characteristics">Characteristics</a></li><li><a href="#how-to-include-your-parachain-in-chachacha">How to include your parachain in Chachacha</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2021 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
+<a href="https://github.com/paritytech/cumulus#launch-a-local-setup-including-a-relay-chain-and-a-parachain">launch a local setup</a> or consider setting up <a href="https://github.com/paritytech/polkadot-launch">Polkadot Launch</a>.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/mirror-build-build-with-polkadot"><span class="arrow-prev">← </span><span>Polkadot Builders Starter&#x27;s Guide</span></a><a class="docs-next button" href="/docs/en/maintain-guides-society-kusama"><span>Join Kappa Sigma Mu</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#who-is-building-parachains">Who is building Parachains?</a></li><li><a href="#parachain-workshop">Parachain Workshop</a><ul class="toc-headings"><li><a href="#obtaining-roc">Obtaining ROC</a></li></ul></li><li><a href="#how-to-connect-to-a-parachains">How to connect to a Parachains</a></li><li><a href="#how-to-make-cross-chain-transfers">How to make Cross Chain transfers</a><ul class="toc-headings"><li><a href="#downward-transfers">Downward Transfers</a></li><li><a href="#upward-transfers">Upward Transfers</a></li><li><a href="#lateral-transfers">Lateral Transfers</a></li></ul></li><li><a href="#relevant-values-and-calculations">Relevant Values and Calculations</a></li><li><a href="#registration">Registration</a></li><li><a href="#slots">Slots</a><ul class="toc-headings"><li><a href="#system-chains">System Chains</a></li><li><a href="#auctioned-chains">Auctioned Chains</a></li><li><a href="#tips">Tips</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/./img/kusama-brand-assets/Kusama_Canary_white.png" alt="Guide" width="66" height="58"/></a><div><p class="homepage-font">Kusama is an experimental <br/>community research and<br/> development network.</p><a href="https://guide.kusama.network/docs/en/kusama-index" target="_blank" class="homepage-font">Docs</a><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler (Element Chat)</a></div><a href="/kusama-wiki.zip" target="_blank" rel="noreferrer noopener">Download this Guide as PDF</a></section><section class="row"><div class="copyright homepage-font">Copyright © 2021 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a><a class="item homepage-font" href="#" id="cookie-settings">Cookie Settings</a><script>
               var cookieSettings = document.getElementById('cookie-settings');
               cookieSettings.onclick = function() {
                 return klaro.show();
