@@ -83,17 +83,17 @@ by stake-weighted referenda.</p>
 <h2><a class="anchor" aria-hidden="true" id="mechanism"></a><a href="#mechanism" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mechanism</h2>
 <p>In order to make any changes to the network, the idea is to compose active token holders and the
 council together to administrate a network upgrade decision. No matter whether the proposal is
-proposed by the public (DOT holders) or the council, it finally will have to go through a referendum
-to let all DOT holders, weighted by stake, make the decision.</p>
+proposed by the public (token holders) or the council, it finally will have to go through a
+referendum to let all holders, weighted by stake, make the decision.</p>
 <p>To better understand how the council is formed, please read <a href="#council">this section</a>.</p>
 <h2><a class="anchor" aria-hidden="true" id="referenda"></a><a href="#referenda" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Referenda</h2>
 <p>Referenda are simple, inclusive, stake-based voting schemes. Each referendum has a specific
 <em>proposal</em> associated with it that takes the form of a privileged function call in the runtime (that
 includes the most powerful call: <code>set_code</code>, which is able to switch out the entire code of the
-runtime, achieving what would otherwise require a &quot;hard fork&quot;). They are discrete events, have a
-fixed period where voting happens, and then are tallied and the function call is made if the vote is
-approved. Referenda are always binary; your only options in voting are &quot;aye&quot;, &quot;nay&quot;, or abstaining
-entirely.</p>
+runtime, achieving what would otherwise require a &quot;hard fork&quot;).</p>
+<p>Referenda are discrete events, have a fixed period where voting happens, and then are tallied and
+the function call is made if the vote is approved. Referenda are always binary; your only options in
+voting are &quot;aye&quot;, &quot;nay&quot;, or abstaining entirely.</p>
 <p>Referenda can be started in one of several ways:</p>
 <ul>
 <li>Publicly submitted proposals;</li>
@@ -112,10 +112,10 @@ will have a shorter enactment time.</p>
 <p>Anyone can propose a referendum by depositing the minimum amount of tokens for a certain period
 (number of blocks). If someone agrees with the proposal, they may deposit the same amount of tokens
 to support it - this action is called <em>seconding</em>. The proposal with the highest amount of bonded
-support will be selected to be a referendum in the next voting cycle. Note that this may be
-different than the absolute number of seconds; for instance, three accounts bonding 20 DOT each
-would &quot;outweigh&quot; ten accounts bonding a single DOT each. The bonded tokens will be released once the
-proposal is tabled (that is, brought to a vote).</p>
+support will be selected to be a referendum in the next voting cycle.</p>
+<p>Note that this may be different than the absolute number of seconds; for instance, three accounts
+bonding 20 DOT each would &quot;outweigh&quot; ten accounts bonding a single DOT each. The bonded tokens will
+be released once the proposal is tabled (that is, brought to a vote).</p>
 <p>There can be a maximum of 100 public proposals in the proposal queue.</p>
 <h4><a class="anchor" aria-hidden="true" id="council-referenda"></a><a href="#council-referenda" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Council Referenda</h4>
 <p>Unanimous Council - When all members of the council agree on a proposal, it can be moved to a
@@ -295,8 +295,8 @@ three tasks of governance: proposing sensible referenda, cancelling uncontrovers
 malicious referenda, and electing the technical committee.</p>
 <p>For a referendum to be proposed by the council, a strict majority of members must be in favor, with
 no member exercising a veto. Vetoes may be exercised only once by a member for any single proposal;
-if, after a cool-down period, the proposal is resubmitted, they may not veto it a second time.
-Council motions which pass with a 3/5 (60%) super-majority - but without reaching unanimous
+if, after a cool-down period, the proposal is resubmitted, they may not veto it a second time.</p>
+<p>Council motions which pass with a 3/5 (60%) super-majority - but without reaching unanimous
 support - will move to a public referendum under a neutral, majority-carries voting scheme. In the
 case that all members of the council vote in favor of a motion, the vote is considered unanimous and
 becomes a referendum with negative adaptive quorum biasing.</p>
@@ -372,13 +372,11 @@ keep remaining on the candidates' list for the next round.</p>
 next election. After round 2, even though candidates A &amp; B get the same number of votes in this
 round, candidate A gets elected because after adding the older unused approvals, it is higher than
 B.</p>
-<p>This is the tentative governance configuration for Polkadot post-genesis. It will be changed if any
-security loopholes have been found after several rounds of third-party auditing. Further changes can
-be made through on-chain governance.</p>
 <h3><a class="anchor" aria-hidden="true" id="prime-members"></a><a href="#prime-members" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Prime Members</h3>
-<p>The council, being an instantiation of Substrate's Collective pallet, implements what's called a
-<em>prime member</em> whose vote acts as the default for other members that fail to vote before the
-timeout.</p>
+<p>The council, being an instantiation of
+<a href="https://github.com/paritytech/substrate/tree/master/frame/collective">Substrate's Collective pallet</a>,
+implements what's called a <em>prime member</em> whose vote acts as the default for other members that fail
+to vote before the timeout.</p>
 <p>The prime member is chosen based on a <a href="https://en.wikipedia.org/wiki/Borda_count">Borda count</a>.</p>
 <p>The purpose of having a prime member of the council is to ensure a quorum, even when several members
 abstain from a vote. Council members might be tempted to vote a &quot;soft rejection&quot; or a &quot;soft
@@ -393,8 +391,8 @@ Technical Committee is composed of the teams that have successfully implemented 
 a Polkadot/Kusama runtime or Polkadot Host. Teams are added or removed from the Technical Committee
 via simple majority vote of the <a href="#council">Council</a>.</p>
 <p>The Technical Committee can, along with the Council, produce emergency referenda, which are
-fast-tracked for voting and implementation. These emergency referenda are intended for use only
-under urgent circumstances.</p>
+fast-tracked for voting and implementation. These are used for emergency bug fixes, or rapid
+implementation of new but battle-tested features into the runtime.</p>
 <p>Fast-tracked referenda are the only type of referenda that can be active alongside another active
 referendum. Thus, with fast tracked referenda it is possible to have two active referendums at the
 same time. Voting on one does not prevent a user from voting on the other.</p>
