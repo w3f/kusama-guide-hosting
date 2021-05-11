@@ -73,20 +73,20 @@
               }
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/mirror-learn-treasury.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Treasury</h1></header><article><div><span><p>The Treasury is a pot of funds collected through transaction fees, slashing,
-<a href="learn-staking#inflation">staking inefficiencies</a>, etc. The funds held in the Treasury can be spent
-by making a spending proposal that, if approved by the <a href="learn-governance#Council">Council</a>, will
-enter a waiting period before distribution. This waiting period is known as the budget period, and
-its duration is subject to <a href="learn-governance">governance</a>, with the current default set to
-6 days. The Treasury attempts to spend as many proposals in the queue as it can
-without running out of funds.</p>
+<a href="https://wiki.polkadot.network/docs/en/learn-staking/#inflation">staking inefficiencies</a>, etc. The
+funds held in the Treasury can be spent by making a spending proposal that, if approved by the
+<a href="learn-governance#Council">Council</a>, will enter a waiting period before distribution. This waiting
+period is known as the budget period, and its duration is subject to <a href="learn-governance">governance</a>,
+with the current default set to 6 days. The Treasury attempts to spend as many
+proposals in the queue as it can without running out of funds.</p>
 <p>If the Treasury ends a budget period without spending all of its funds, it suffers a burn of a
 percentage of its funds -- thereby causing deflationary pressure.
  This percentage is currently 0.2% on Kusama, with the amount currently going to
 <a href="https://guide.kusama.network/docs/en/maintain-guides-society-kusama">Society</a> rather than being
 burned.</p>
-<p>When a stakeholder wishes to propose a spend from the Treasury, they must reserve a deposit totaling
-5% of the proposed spend (see below for variations). This deposit will be slashed if the proposal is
-rejected, and returned if it is accepted.</p>
+<p>When a stakeholder wishes to propose a spend from the Treasury, they must reserve a deposit of at
+least 5% of the proposed spend (see below for variations). This deposit will be slashed if the
+proposal is rejected, and returned if it is accepted.</p>
 <p>Proposals may consist of (but are not limited to):</p>
 <ul>
 <li>Infrastructure deployment and continued operation.</li>
@@ -102,16 +102,17 @@ will be spent is up to their judgment.</p>
 <p>The Treasury is funded from different sources:</p>
 <ol>
 <li>Slashing: When a validator is slashed for any reason, the slashed amount is sent to the Treasury
-with a reward going to the entity that reported the validator (another validator or a fisherman).
-The reward is taken from the slash amount and varies per offence and number of reporters.</li>
+with a reward going to the entity that reported the validator (another validator). The reward is
+taken from the slash amount and varies per offence and number of reporters.</li>
 <li>Transaction fees: A portion of each block's transaction fees goes to the Treasury, with the
 remainder going to the block author.</li>
-<li>Staking inefficiency: <a href="learn-staking#inflation">Inflation</a> is designed to be 10% in the first
-year, and the ideal staking ratio is set at 50%, meaning half of all tokens should be locked in
-staking. Any deviation from this ratio will cause a proportional amount of the inflation to go to
-the Treasury. In other words, if 50% of all tokens are staked, then 100% of the inflation goes to
-the validators as reward. If the staking rate is greater than or less than 50%, then the
-validators will receive less, with the remainder going to the Treasury.</li>
+<li>Staking inefficiency: <a href="https://wiki.polkadot.network/docs/en/learn-staking/#inflation">Inflation</a>
+is designed to be 10% in the first year, and the ideal staking ratio is set at 50%, meaning half
+of all tokens should be locked in staking. Any deviation from this ratio will cause a
+proportional amount of the inflation to go to the Treasury. In other words, if 50% of all tokens
+are staked, then 100% of the inflation goes to the validators as reward. If the staking rate is
+greater than or less than 50%, then the validators will receive less, with the remainder going to
+the Treasury.</li>
 <li>Parathreads: <a href="learn-parathreads">Parathreads</a> participate in a per-block auction for block
 inclusion. Part of this bid goes to the validator that accepts the block and the remainder goes
 to the Treasury.</li>
@@ -130,17 +131,12 @@ proposal, they will probably need to find an off-chain way to explain the propos
 takes place on the following platforms:</p>
 <ul>
 <li>Many community members participate in discussion in the
-<a href="https://riot.w3f.tech/#/room/#kusama:matrix.parity.io">Kusama Element (previously Riot)</a> chat.</li>
-<li>The <a href="https://kusama.polkassembly.io">Polkassembly</a> discussion platform that allows users to log in
-with their KSM address and automatically reads proposals from the chain, turning them into
-discussion threads. It also offers a sentiment gauge poll to get a feel for a proposal before
-committing to a vote.</li>
-<li>The 
-<a href="https://forum.kusama.network">Kusama forum</a> can be used for proposal
-explanations.</li>
-<li><a href="https://commonwealth.im">Commonwealth.im</a> is a community site that allows users to log in with
-their  Kusama address and automatically
-reads proposals from the chain, turning them into discussion threads.</li>
+<a href="https://riot.w3f.tech/#/room/#kusama:matrix.parity.io">Kusama Element (previously Riot)</a> chat or
+<a href="https://riot.w3f.tech/#/room/#polkadot:matrix.parity.io">Polkadot Element</a>.</li>
+<li>The <a href="https://polkassembly.io">Polkassembly</a> discussion platform that allows users to log in with
+their Web3 address and automatically reads proposals from the chain, turning them into discussion
+threads. It also offers a sentiment gauge poll to get a feel for a proposal before committing to a
+vote.</li>
 </ul>
 <p>Spreading the word about the proposal's explanation is ultimately up to the proposer - the
 recommended way is using official Element channels like 
@@ -201,8 +197,8 @@ the reason. This is why Alice submitted a URL as the reason instead of the expla
 was cheaper for her to do so.</p>
 <p>For her trouble, Alice is able to claim the eventual finder's fee if the tip is approved by the
 tippers.</p>
-<p>Since the tipper group is the same as the Council on Kusama, the Council must now collectively (but
-also independently) decide on the value of the tip that Bob deserves.</p>
+<p>Since the tipper group is the same as the Council, the Council must now collectively (but also
+independently) decide on the value of the tip that Bob deserves.</p>
 <p>Charlie, Dave, and Eve all review the report and make tips according to their personal valuation of
 the benefit Bob has provided to Kusama.</p>
 <p>Charlie tips  1 KSM. Dave tips
