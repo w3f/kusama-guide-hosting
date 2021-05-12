@@ -92,17 +92,17 @@ Polkadot does... <em>expect chaos</em>...</li>
 </ul></li>
 <li>Official testnets:
 <ul>
-<li><strong>Westend</strong> - Functinality equal to the current Polkadot mainnet, with possible next-generation
-testing of features from time to time that will eventualy migrate onto Polkadot.</li>
+<li><strong>Westend</strong> - Functionality equal to the current Polkadot mainnet, with possible next-generation
+testing of features from time to time that will eventually migrate onto Polkadot.</li>
 <li><strong>Canvas</strong> - Wasm based Smart Contract enabled testnet, primarily for <code>ink!</code> development.</li>
-<li><strong>Rococo</strong> - Parachains and XCM testnent.</li>
+<li><strong>Rococo</strong> - Parachains and XCM testnet.</li>
 </ul></li>
 </ul>
 <p>Polkadot mainnet has been running since May 2020 and has
 <a href="learn-implementations">implementations in various programming languages</a> ranging from
-Rust to JavaScript. Currently the leading implementation is built in Rust and built using the
+Rust to JavaScript. Currently, the leading implementation is built in Rust and built using the
 Substrate framework.</p>
-<p>Tooling is rapildy evolving to interact with the network; there are so may ways to get started!</p>
+<p>Tooling is rapidly evolving to interact with the network; there are so many ways to get started!</p>
 <p>But before you jump head-first into the code, you should consider the <em>kind</em> of decentralized
 application you want to make and understand the different paradigms available to developers who
 want to build on Polkadot.</p>
@@ -116,7 +116,7 @@ security and the cross-chain messaging provided by the Polkadot Relay Chain. Par
 high degree of flexibility and customization but require more effort to create and maintain over
 time.</p>
 <p>Parathreads are like parachains and enable the developer to have lower-level control of the logic of
-their application. The main difference between the two is economic, since parathreads will be much
+their application. The main difference between the two is economic since parathreads will be much
 less expensive to secure than a parachain. The lower costs of parathreads are due to the fact that
 parathreads will only produce a block when they need to, unlike parachains, which have secured a
 slot to produce a block at every block of the Relay Chain. When building a parathread, you will use
@@ -180,7 +180,7 @@ created to gauge user interest before putting in the work to build out a paracha
 contract. The different patterns you may see for paying for your smart contract include:</p>
 <ul>
 <li>A transaction fee associated with deploying each transaction.</li>
-<li>A subscription model in which you pay some chain entity routinely for usage of the platform.</li>
+<li>A subscription model in which you pay some chain entity routinely for the usage of the platform.</li>
 <li>An access token model for which you need to hold a threshold of native tokens to use the platform
 (EOS has something similar). Storage rent.</li>
 <li>Free trial or developer promotion.</li>
@@ -195,7 +195,7 @@ using <a href="https://ipfs.io/">IPFS</a> or <a href="https://storj.io/">Storj</
 the content address on chain.</p>
 <hr>
 <p>This guide now splits into two sections depending on whether you’ve decided on a smart contract or a
-parachain to build your application. Feel free to read both sections, or just the one that is
+parachain to build your application. Feel free to read both sections or just the one that is
 applicable to you.</p>
 <ul>
 <li><a href="#so-you-want-to-build-a-parachain-or-parathread">I want to build a parachain or parathread!</a></li>
@@ -274,7 +274,7 @@ connect to Polkadot can support arbitrary state transitions, they can support sm
 <li>The <a href="https://github.com/paritytech/substrate/tree/master/frame/contracts">Contracts pallet</a> in the FRAME library for Wasm based contracts.</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="frontier-evm-contracts"></a><a href="#frontier-evm-contracts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Frontier EVM Contracts</h3>
-<p><a href="https://github.com/paritytech/frontier">Frontier</a> is suit of tools that enables a Substrate chain to run Ethereum contacts
+<p><a href="https://github.com/paritytech/frontier">Frontier</a> is the suite of tools that enables a Substrate chain to run Ethereum contacts
 (EVM) natively with the same API/RPC interface Ethereum exposes on Substrate. Ethereum Addresses
 can also be mapped directly to and from Substrate's SS58 sceme from existing accounts.</p>
 <h3><a class="anchor" aria-hidden="true" id="contracts-pallet"></a><a href="#contracts-pallet" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contracts Pallet</h3>
@@ -284,13 +284,13 @@ design of the EVM:</p>
 <ol>
 <li><p><strong>Wasm</strong>. The Contracts pallet uses WebAssembly as its compilation target. Any language that
 compiles to Wasm can potentially be used to write smart contracts. Although it's better to have a
-dedicated domain-specific-language and for that reason Parity offers the <a href="#ink">ink!</a> language.</p></li>
+dedicated domain-specific language and for that reason Parity offers the <a href="#ink">ink!</a> language.</p></li>
 <li><p><strong>Rent</strong>. Contracts must pay rent or else hold a deposit suitably large enough in order to
 justify its existence on-chain. When a contract does not uphold this, it may create what's called
 a <em>tombstone</em> which is a reference to the contract. In some conditions, the contract will be
 deleted outright along with its storage if it does not maintain these requirements.</p></li>
 <li><p><strong>Caching</strong>. Contracts are cached by default and therefore means they only need to be deployed
-once, and afterward be instantiated as many times as you want. This helps to keep the storage
+once and afterward be instantiated as many times as you want. This helps to keep the storage
 load on the chain down to the minimum. On top of this, when a contract is no longer being used
 and the <em>existential deposit</em> is drained, the code will be erased from storage (known as
 reaping).</p></li>
@@ -339,7 +339,7 @@ with little friction.</p>
 start building your project as a parachain or smart contract today. Even though the tooling is still
 maturing, the advantage of being early will be the familiarity and head start on your project,
 allowing you to innovate and create something truly new.</p>
-<p>If you have interesting ideas for parachains or smart contracts on Polkadot feel free to drop in to
+<p>If you have interesting ideas for parachains or smart contracts on Polkadot feel free to drop into
 the <a href="https://matrix.to/#/#polkadot-watercooler:matrix.org">Polkadot Watercooler</a> to talk
 about them. Developers may be interested in joining the
 <a href="https://matrix.to/#/#polkadotnoobs:matrix.org">Polkadot Beginners Lounge</a> or
