@@ -76,18 +76,17 @@
 on-chain account and subsequently ask for verification of this information by
 <a href="#registrars">registrars</a>.</p>
 <h2><a class="anchor" aria-hidden="true" id="setting-an-identity"></a><a href="#setting-an-identity" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setting an Identity</h2>
-<p>Users can set an identity by registering through default fields such as legal name, display
-name, website, Twitter handle, Riot handle, etc. along with some extra, custom fields for which
-they would like attestations (see <a href="#judgements">Judgements</a>).</p>
+<p>Users can set an identity by registering through default fields such as legal name, display name,
+website, Twitter handle, Riot handle, etc. along with some extra, custom fields for which they would
+like attestations (see <a href="#judgements">Judgements</a>).</p>
 <p>Users must reserve funds in a bond to store their information on chain:
-1.666, and 0.41666 per each field beyond
-the legal name. These funds are <em>locked</em>, not spent - they are returned when the identity is cleared.
-Each field can store up to 32 bytes of information, so the data must be less than that. When inputting
-the data manually through the
-<a href="https://polkadot.js.org/apps/#/extrinsics">Extrinsics UI</a>, a
+1.666, and 0.41666 per each field beyond the legal name.
+These funds are <em>locked</em>, not spent - they are returned when the identity is cleared. Each field can
+store up to 32 bytes of information, so the data must be less than that. When inputting the data
+manually through the <a href="https://polkadot.js.org/apps/#/extrinsics">Extrinsics UI</a>, a
 <a href="https://onlineutf8tools.com/convert-utf8-to-bytes">UTF8 to bytes</a> converter can help.</p>
-<p>The easiest way to add the built-in fields is to click the gear icon next to your account and
-select &quot;Set on-chain identity&quot;.</p>
+<p>The easiest way to add the built-in fields is to click the gear icon next to your account and select
+&quot;Set on-chain identity&quot;.</p>
 <p><img src="/docs/assets/identity/01.jpg" alt="Gear icon provides the option to set identity"></p>
 <p>A popup will appear, offering the default fields.</p>
 <p><img src="/docs/assets/identity/02.jpg" alt="Identity field setup popup"></p>
@@ -138,9 +137,9 @@ notably which account you're nominating to be a registrar in the <code>identity.
 <code>0x90a1b2f648fc4eaff4f236b9af9ead77c89ecac953225c5fafb069d27b7131b7</code>. Submit the preimage by signing
 a transaction.</p>
 <p>Next, select &quot;Submit Proposal&quot; and enter the previously copied preimage hash. The <code>locked balance</code>
-field needs to be at least 10 KSM. You can find out the minimum by querying the chain state under
-<a href="https://polkadot.js.org/apps/#/chainstate">Chain State</a> -&gt; Constants -&gt; democracy -&gt;
-minimumDeposit.</p>
+field needs to be at least 1.666 KSM. You can find out the minimum by
+querying the chain state under <a href="https://polkadot.js.org/apps/#/chainstate">Chain State</a> -&gt; Constants
+-&gt; democracy -&gt; minimumDeposit.</p>
 <p><img src="/docs/assets/identity/13.jpg" alt="Submitting a proposal"></p>
 <p>At this point, DOT holders can second the motion. With enough seconds, the motion will become a
 referendum, which is then voted on. If it passes, users will be able to request judgement from this
@@ -172,10 +171,10 @@ for the <code>max_fee</code> put the maximum you're willing to pay for these con
 <p>If you don't know which registrar to pick, first check the available registrars by going to
 <a href="">&quot;Chain State UI&quot;</a> and selecting <code>identity.registrars()</code> to get the full list.</p>
 <h2><a class="anchor" aria-hidden="true" id="cancelling-judgements"></a><a href="#cancelling-judgements" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cancelling Judgements</h2>
-<p>You may decide that you do not want to be judged by a registrar (for instance, because you
-realize you entered incorrect data or selected the wrong registrar). In this case, after submitting
-the request for judgement but before your identity has been judged, you can issue a call to cancel
-the judgement using an extrinsic.</p>
+<p>You may decide that you do not want to be judged by a registrar (for instance, because you realize
+you entered incorrect data or selected the wrong registrar). In this case, after submitting the
+request for judgement but before your identity has been judged, you can issue a call to cancel the
+judgement using an extrinsic.</p>
 <p><img src="/docs/assets/registrar_cancel_judgement.png" alt="Cancel Registrar"></p>
 <p>To do this, first, go to the <a href="https://polkadot.js.org/apps/#/extrinsics">&quot;Extrinsics UI&quot;</a> and select
 the <code>identity</code> pallet, then <code>cancelRequest</code>. Ensure that you are calling this from the correct
