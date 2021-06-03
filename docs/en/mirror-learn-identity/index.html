@@ -80,8 +80,16 @@ on-chain account and subsequently ask for verification of this information by
 website, Twitter handle, Riot handle, etc. along with some extra, custom fields for which they would
 like attestations (see <a href="#judgements">Judgements</a>).</p>
 <p>Users must reserve funds in a bond to store their information on chain:
-1.666, and 0.41666 per each field beyond the legal name.
-These funds are <em>locked</em>, not spent - they are returned when the identity is cleared. Each field can
+0.033333, and 0.008333 per each field beyond the legal name.
+These funds are <em>locked</em>, not spent - they are returned when the identity is cleared.</p>
+<p>These amounts can also be extracted by querying constants through
+the <a href="https://polkadot.js.org/apps/#/chainstate/constants">Chain state constants</a> tab on polkadot.js/apps.</p>
+<p>First, select <code>identity</code> as the <code>selected constant query</code>.</p>
+<p><img src="/docs/assets/identity/17.jpg" alt="Identity as the selected constant query"></p>
+<p>Then on the right-hand side, you can select the constants that you would like to view and add them onto the
+webpage by clicking the &quot;plus&quot; icon at the end of the bar.</p>
+<p><img src="/docs/assets/identity/18.jpg" alt="Identity as the selected constant query"></p>
+<p>Each field can
 store up to 32 bytes of information, so the data must be less than that. When inputting the data
 manually through the <a href="https://polkadot.js.org/apps/#/extrinsics">Extrinsics UI</a>, a
 <a href="https://onlineutf8tools.com/convert-utf8-to-bytes">UTF8 to bytes</a> converter can help.</p>
@@ -137,7 +145,7 @@ notably which account you're nominating to be a registrar in the <code>identity.
 <code>0x90a1b2f648fc4eaff4f236b9af9ead77c89ecac953225c5fafb069d27b7131b7</code>. Submit the preimage by signing
 a transaction.</p>
 <p>Next, select &quot;Submit Proposal&quot; and enter the previously copied preimage hash. The <code>locked balance</code>
-field needs to be at least 1.666 KSM. You can find out the minimum by
+field needs to be at least 0.033333 KSM. You can find out the minimum by
 querying the chain state under <a href="https://polkadot.js.org/apps/#/chainstate">Chain State</a> -&gt; Constants
 -&gt; democracy -&gt; minimumDeposit.</p>
 <p><img src="/docs/assets/identity/13.jpg" alt="Submitting a proposal"></p>
@@ -231,7 +239,9 @@ parent sender account. The value to put into the Data field of each parent is th
 the sub-account. If omitted, the sub-account will inherit the parent's name and be displayed as
 <code>parent/parent</code> instead of <code>parent/child</code>.</p>
 <p><img src="/docs/assets/identity/06.jpg" alt="Sub account setup"></p>
-<p>Note that a deposit of 2.5KSM is required for every sub-account.</p>
+<p>Note that a deposit of 0.006666 is required for every sub-account.</p>
+<p>You can use <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc.polkadot.io#/chainstate/constants">polkadot.js/apps</a> again to verify this amount by querying the <code>identity.subAccountDeposit</code> constant.</p>
+<p><img src="/docs/assets/identity/19.jpg" alt="Sub account constant"></p>
 <h2><a class="anchor" aria-hidden="true" id="clearing-and-killing-an-identity"></a><a href="#clearing-and-killing-an-identity" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Clearing and Killing an Identity</h2>
 <p><strong>Clearing:</strong> Users can clear their identity information and have their deposit returned. Clearing
 an identity also clears all sub accounts and returns their deposits.</p>
