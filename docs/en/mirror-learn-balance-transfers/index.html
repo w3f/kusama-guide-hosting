@@ -74,7 +74,7 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/w3f/polkadot-wiki/edit/master/docs/mirror-learn-balance-transfers.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Balance Transfers</h1></header><article><div><span><p>Balance transfers are used to send balance from one account to another account. To start
 transferring balances, we will begin by using <a href="https://polkadot.js.org/apps">Polkadot-JS Apps</a>. This guide assumes that you've
-already <a href="learn-account-generation">created an account</a> and have some funds that will be transferred.</p>
+already <a href="learn-account-generation">created an account</a> and have some funds that are ready to be transferred.</p>
 <h2><a class="anchor" aria-hidden="true" id="polkadot-js-apps"></a><a href="#polkadot-js-apps" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Polkadot-JS Apps</h2>
 <blockquote>
 <p>NOTE: In this walkthrough we will be using the Polkadot network, but this is the same process for
@@ -95,8 +95,9 @@ left navigation dropdown and selecting a different network.</p>
 <li>&quot;send to address&quot;: The address of the account that will receive the funds.</li>
 <li>&quot;amount&quot;: The amount of tokens you will transfer.</li>
 </ul>
-<p>The &quot;existential deposit&quot; box shows you the minimum amount of funds you must keep in the account for
-it to remain active. See the <a href="build-protocol-info#existential-deposit">existential deposit</a> section for more information.</p>
+<p>The &quot;existential deposit&quot; box shows you the
+<strong>minimum amount of funds you must keep in the account for it to remain active.</strong>
+See the <a href="build-protocol-info#existential-deposit">existential deposit</a> section for more information.</p>
 <p><img src="/docs/assets/transfer-2.png" alt="transfer"></p>
 <p>After setting your inputs correctly, click the &quot;Make Transfer&quot; button and confirm. Once the transfer
 is included in a block you will see a green notification in the top-right corner of your screen.</p>
@@ -114,12 +115,14 @@ will be used) to &quot;Normal transfer without keep-alive checks&quot; (<code>tr
 a common use case for using normal transfers is to entirely clear out the account, a second toggle
 will appear if you have the keep-alive check turned off that will send all the tokens in the
 account, minus a transaction fee, to the destination address.</p>
-<p>Note that attempting to send less than the existential deposit to an account with 0 DOT will always
+<p>Attempting to send less than the existential deposit to an account with 0 DOT will always
 fail, no matter if the keep-alive check is on or not. For instance, attempting to transfer 0.1 DOT
 to an account you just generated (and thus has no DOT) will fail, since 0.1 is less than the
 existential deposit of 1 DOT and the account cannot be initialized with such a low balance.</p>
-<p>Note that even if the transfer fails due to a keep-alive check, the transaction fee will be deducted
-from the sending account if you attempt to transfer.</p>
+<blockquote>
+<p>NOTE: Even if the transfer fails due to a keep-alive check, the transaction fee will
+be deducted from the sending account if you attempt to transfer.</p>
+</blockquote>
 <h3><a class="anchor" aria-hidden="true" id="existing-reference-error"></a><a href="#existing-reference-error" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Existing Reference Error</h3>
 <!-- These will be useful for future updates to this section: -->
 <!-- https://github.com/substrate-developer-hub/substrate-developer-hub.github.io/issues/965 -->
@@ -154,14 +157,14 @@ account that need to get resolved.</p>
 account under the 'balances' column. If it shows that some tokens are in a 'locked' state, you can
 see why by hovering over the information icon next to it.</p>
 <h4><a class="anchor" aria-hidden="true" id="existing-recovery-info"></a><a href="#existing-recovery-info" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Existing Recovery Info</h4>
-<p> Kusama does not use
+<p>Currently,  Kusama does not use
 the <a href="https://substrate.dev/docs/en/knowledgebase/runtime/frame#recovery">Recovery Pallet</a>, so this
-is probably not why your tokens have existing references. :polkadot}}</p>
+is probably not the reason for your tokens having existing references.</p>
 <p>On Kusama, you can check if recovery has been set up by checking the <code>recovery.recoverable(AccountId)</code>
 chain state. This can be found under <code>Developer &gt; Chain state</code> in <a href="https://polkadot.js.org/apps">PolkadotJS Apps</a>. :kusama}}</p>
 <h4><a class="anchor" aria-hidden="true" id="existing--polkadot-non-dot-polkadot--kusama-non-ksm-kusama--assets"></a><a href="#existing--polkadot-non-dot-polkadot--kusama-non-ksm-kusama--assets" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Existing  Kusama does not use the
 <a href="https://substrate.dev/docs/en/knowledgebase/runtime/frame#assets">Assets Pallet</a>, so this is
-probably not why your tokens have existing references.</p>
+probably not the reason for your tokens having existing references.</p>
 <h3><a class="anchor" aria-hidden="true" id="from-the-accounts-page"></a><a href="#from-the-accounts-page" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>From the Accounts Page</h3>
 <p>Navigate to the &quot;Accounts&quot; page by selecting the &quot;Accounts&quot; tab from the &quot;Accounts&quot; dropdown located
 on the top navigational menu of Polkadot-JS Apps.</p>
