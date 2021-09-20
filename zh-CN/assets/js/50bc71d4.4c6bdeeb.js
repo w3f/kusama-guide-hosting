@@ -1,0 +1,1 @@
+(self.webpackChunk=self.webpackChunk||[]).push([[6406],{39900:s=>{"use strict";s.exports={blogPosts:[]}}}]);
