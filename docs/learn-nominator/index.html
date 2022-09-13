@@ -15,7 +15,7 @@
 <script src="../js/custom.js"></script>
 <script src="../js/clipboard.min.js"></script>
 <script src="../js/copycode.js"></script><link rel="stylesheet" href="/assets/css/styles.13c1851d.css">
-<link rel="preload" href="/assets/js/runtime~main.78396a17.js" as="script">
+<link rel="preload" href="/assets/js/runtime~main.583369a2.js" as="script">
 <link rel="preload" href="/assets/js/main.bc9507e3.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
@@ -51,8 +51,7 @@ extremely important for the
 staking/election system. Bags-list allows up to
 <!-- -->
 <!-- -->
-nominators to set
-their intention to nominate, of which, the stake of the top
+nominators to set their intention to nominate, of which, the stake of the top
 <!-- -->
 <!-- -->
 nominators is considered for <a href="#staking-election-stages">electing set</a> that eventually determines the
@@ -75,9 +74,9 @@ instructions are available in this
 electing set, it will be Frank, Georgina, Eve, Dave, Alice. Even though Alice has only 10 DOT, she
 is first in line in Bag3.</p><p>Charlie can put himself in front (move up in the bag) using the <code>bagsList.putInFrontOf</code> extrinsic,
 since he has 15 DOT (more than Alice does at 10). Now if nothing changes for the next era, Frank,
-Georgina, Eve, Dave, and Charlie will get rewards. Bag3 now has: Charlie, Alice, Bob.
-The <code>bagsList.putInFrontOf</code> extrinsic can be issued through Polkadot JS Apps UI by clicking on the
-Move up button.</p><p><img loading="lazy" alt="PutInFrontOf Extrinsic" src="/assets/images/put-infront-of-ef633575f4bc13c41982e10fba17d520.png" width="1418" height="134" class="img_ev3q"></p><p>Alice gets upset, but she cannot move herself up, since Charlie has more DOT than her. Bob <em>could</em>
+Georgina, Eve, Dave, and Charlie will get rewards. Bag3 now has: Charlie, Alice, Bob. The
+<code>bagsList.putInFrontOf</code> extrinsic can be issued through Polkadot JS Apps UI by clicking on the Move
+up button.</p><p><img loading="lazy" alt="PutInFrontOf Extrinsic" src="/assets/images/put-infront-of-ef633575f4bc13c41982e10fba17d520.png" width="1418" height="134" class="img_ev3q"></p><p>Alice gets upset, but she cannot move herself up, since Charlie has more DOT than her. Bob <em>could</em>
 move himself in front of Alice, since he has 11 DOT (&gt; 10), but he still wouldn&#x27;t get rewards.</p><p>Let us consider a hypothetical scenario where Charlie set the staking rewards to be bonded
 automatically and Charlie&#x27;s stash crosses 20 DOT after rewards from several staking eras. As changes
 in bonded balance due to staking rewards or slashing do not automatically re-bag the account,
@@ -87,8 +86,9 @@ be re-bagged. This permissionless extrinsic can be signed and submitted by anyon
 simply a &quot;nominator&quot;.</li><li><strong>electing nominator:</strong> a nominator who is selected to be a part of the input to the
 <a href="/docs/learn-phragmen">NPoS election algorithm</a>. This selection is based on stake, and is done using
 the <a href="https://paritytech.github.io/substrate/master/pallet_bags_list/" target="_blank" rel="noopener noreferrer">bags-list pallet</a>.</li><li><strong>active nominator:</strong> a nominator who came out of the NPoS election algorithm backing an active
-validator. Staking rewards are received by top {{ polkadot_max_nominators }} nominators, but when
-slashing occurs, all the active nominators backing the validator get slashed.</li></ul><p><img loading="lazy" alt="Nominator Election" src="/assets/images/nominator-election-ae25b5db36fa18b56fa58c5370127dd4.png" width="612" height="430" class="img_ev3q"></p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="required-minimum-stake">Required Minimum Stake<a class="hash-link" href="#required-minimum-stake" title="Direct link to heading">​</a></h3><p>Due to the way the <a href="/docs/learn-phragmen">Phragmen algorithm</a> generates the solution set, and due to
+validator. Staking rewards are received by top
+<!-- -->
+nominators, but when slashing occurs, all the active nominators backing the validator get slashed.</li></ul><p><img loading="lazy" alt="Nominator Election" src="/assets/images/nominator-election-ae25b5db36fa18b56fa58c5370127dd4.png" width="612" height="430" class="img_ev3q"></p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="required-minimum-stake">Required Minimum Stake<a class="hash-link" href="#required-minimum-stake" title="Direct link to heading">​</a></h3><p>Due to the way the <a href="/docs/learn-phragmen">Phragmen algorithm</a> generates the solution set, and due to
 the fact that the solution set must fit in a single block, a minimum number of DOT will be required
 to nominate with, in order to receive staking rewards, can change between the eras.</p><ul><li><p><strong>min-intention-threshold:</strong> minimum stake to declare the intention to nominate. This parameter
 can be updated via on-chain governance and the most recent and up to date version can be found on
@@ -96,17 +96,27 @@ can be updated via on-chain governance and the most recent and up to date versio
 minimumNominatorBond</strong>)</p></li><li><p><strong>min-electing:</strong> minimum stake among the electing nominators. Since this is almost always the
 same as “min-active”, it might not be reported.</p></li><li><p><strong>min-active:</strong> minimum stake among the active nominators. If your stake falls below this dynamic
 threshold in a given era, you will not receive staking rewards for that era.</p></li></ul><p>Thus, for <strong>nominator counters</strong>, we have:</p><ul><li>count of nominator intentions, and max possible nominator intentions
-(<!-- -->).</li><li>count of electing nominators, and maximum possible electing nominators
-(<!-- -->).</li><li>count of active nominators, and maximum possible active nominators
-(<!-- -->).</li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="oversubscribed-validators">Oversubscribed Validators<a class="hash-link" href="#oversubscribed-validators" title="Direct link to heading">​</a></h3><p>Validators can only pay out to a certain number of nominators per era. This is currently set to
-{{ polkadot_max_nominators }}, but can be modified via governance. If more than
-{{ polkadot_max_nominators }} nominators nominate the same validator, it is &quot;oversubscribed&quot;, and
-only the top {{ polkadot_max_nominators }} staked nominators (ranked by amount of stake) are paid
-rewards. Other nominators will receive no rewards for that era, although their stake will still be
-used to calculate entry into the active validator set.</p><p>Although it is difficult to determine exactly how many nominators will nominate a given validator in
+<!-- -->
+(<!-- -->)</li><li>count of electing nominators, and maximum possible electing nominators
+<!-- -->
+(<!-- -->)</li><li>count of active nominators, and maximum possible active nominators
+<!-- -->
+(<!-- -->)</li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="oversubscribed-validators">Oversubscribed Validators<a class="hash-link" href="#oversubscribed-validators" title="Direct link to heading">​</a></h3><p>Validators can only pay out to a certain number of nominators per era. This is currently set to
+<!-- -->
+<!-- -->
+but can be modified via governance. If more than
+<!-- -->
+<!-- -->
+nominators nominate the same validator, it is &quot;oversubscribed&quot;, and only the top
+<!-- -->
+<!-- -->
+staked nominators (ranked by amount of stake) are paid rewards. Other nominators will receive no
+rewards for that era, although their stake will still be used to calculate entry into the active
+validator set.</p><p>Although it is difficult to determine exactly how many nominators will nominate a given validator in
 the next era, one can estimate based on the current number of nominators. A validator with only 5
-nominators in this era, for instance, is unlikely to have more than {{ polkadot_max_nominators }} in
-the next era. An already-oversubscribed validator with 1000 nominators this era, however, is very
+nominators in this era, for instance, is unlikely to have more than
+<!-- -->
+in the next era. An already-oversubscribed validator with 1000 nominators this era, however, is very
 likely to be oversubscribed in the next era as well.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="the-election-solution-set">The Election Solution Set<a class="hash-link" href="#the-election-solution-set" title="Direct link to heading">​</a></h3><p>Determining which validators are in the active set and which nominators are nominating them creates
 a very large graph mapping nominators to their respective validators. This &quot;solution set&quot; is
 computed off-chain and submitted to the chain, which means it must fit in a single block. If there
@@ -120,9 +130,9 @@ fully distributed to one or more validators. That being said, you may not receiv
 nominated very few validator candidates and no one got elected, or your stake is small and you only
 selected oversubscribed validators, or the validator you are nominating has 100% commission. It is
 generally wise to choose as many trustworthy validators as you can (up to
+<!-- -->
 <!-- -->)
-to reduce the risk of none of your nominated validators being
-elected.</p><div class="theme-admonition theme-admonition-info alert alert--info admonition_LlT9"><div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Not receiving Staking Rewards?</div><div class="admonitionContent_S0QG"><p>To explore the possible reasons for not receiving staking rewards, check out the
+to reduce the risk of none of your nominated validators being elected.</p><div class="theme-admonition theme-admonition-info alert alert--info admonition_LlT9"><div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Not receiving Staking Rewards?</div><div class="admonitionContent_S0QG"><p>To explore the possible reasons for not receiving staking rewards, check out the
 <a href="/docs/learn-staking-faq#3-why-am-i-not-receiving-staking-rewards">Staking FAQ</a></p></div></div><p>Rewards are <em>lazy</em> - somebody must trigger a payout for a validator for rewards to go all of the
 validator&#x27;s nominators. Any account can do this, although in practice validator operators often do
 this as a service to their nominators. See the page on <a href="/docs/learn-simple-payouts">Simple Payouts</a> for
@@ -130,16 +140,23 @@ more information and instructions for claiming rewards.</p><h3 class="anchor anc
 assisting in this process is the Staking <a href="https://polkadot.js.org/apps/#/staking/targets" target="_blank" rel="noopener noreferrer">Targets</a>
 table. This displays potential validators in a table that can be evaluated and sorted using various
 metrics. Outlined below are the relevant columns to consider, followed by a brief description of
-each.</p><ul><li><p><strong>payout</strong>: How recently the validator has made it&#x27;s last reward payout to nominators.</p></li><li><p><strong>nominators</strong>: This column consists of two number values.</p><p>1) Amount of nominators currently bonded in the current era and considered <code>active</code>.</p><p>2) Total amount of nominators that nominated that validator.</p><ul><li><p>You may want to be cautious of validators with a high number of subscribers. A validator is
-considered oversubscribed when more than 256 &#x27;active&#x27; nominators are assigned to the validator. In this
-scenario only the top 256 nominators will receive rewards. The remaining nominators will
-recieve nothing, however they can be slashed in the event that validator commits a
-slashable offence.</p></li><li><p>Every nominator can select up to a maxium of 16 validators, which contributes towards maximizing
-the probability of having the nominators stake applied to the validators active set. Nominating too
-few validators could result in the nominators losing their rewards when none of them make it to active set or
-when those Validator nodes stop validating. The election algorithm attempts to maximize the overall network
-stake, while minimizing the variance of the active stake across the validators. For additional information on
-the election process checkout the research behind
+each.</p><ul><li><p><strong>payout</strong>: How recently the validator has made it&#x27;s last reward payout to nominators.</p></li><li><p><strong>nominators</strong>: This column consists of two number values.</p><ol><li><p>Amount of nominators currently bonded in the current era and considered <code>active</code>.</p></li><li><p>Total amount of nominators that nominated that validator.</p></li></ol><ul><li><p>You may want to be cautious of validators with a high number of subscribers. A validator is
+considered oversubscribed when more than
+<!-- -->
+<!-- -->
+&#x27;active&#x27; nominators are assigned to the validator. In this scenario only the top
+<!-- -->
+<!-- -->
+nominators will receive rewards. The remaining nominators will recieve nothing, however they can
+be slashed in the event that validator commits a slashable offence.</p></li><li><p>Every nominator can select up to a maximum of
+<!-- -->
+<!-- -->
+validators, which contributes towards maximizing the probability of having the nominators stake
+applied to the validators active set. Nominating too few validators could result in the
+nominators losing their rewards when none of them make it to active set or when those Validator
+nodes stop validating. The election algorithm attempts to maximize the overall network stake,
+while minimizing the variance of the active stake across the validators. For additional
+information on the election process checkout the research behind
 <a href="https://research.web3.foundation/en/latest/polkadot/NPoS/1.%20Overview.html#polkadot-npos-1-overview--page-root" target="_blank" rel="noopener noreferrer">nominated proof-of-stake</a>.</p></li><li><p><em>example</em>: If nominator X has nominated validators A, B, C and D, but is actively only
 nominating validator B. The <code>active</code> count (left number) for nominator X is 1, counting B
 exclusively. The total or <code>all</code> count (right number) is 4, counting A, B, C and D.</p><table><thead><tr><th>validator</th><th>payout</th><th>nominators</th></tr></thead><tbody><tr><td><em>example</em></td><td>recently</td><td>1 (<code>active</code>) 4 (<code>all</code>)</td></tr></tbody></table></li></ul></li><li><p><strong>comm.</strong>: Total commission kept by the validator (100% means nominators will not receive a
@@ -199,8 +216,8 @@ and
 <a href="https://www.youtube.com/watch?v=K-a4CgVchvU&amp;list=PLOyWqupZ-WGuAuS00rK-pebTMAOxW41W8&amp;index=9" target="_blank" rel="noopener noreferrer">What to Consider when Nominating Validators on Polkadot and Kusama</a>
 and <a href="https://youtu.be/FCXC0CDhyS4" target="_blank" rel="noopener noreferrer">Nominating/Staking on Polkadot and Kusama</a></p></div></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="guides">Guides<a class="hash-link" href="#guides" title="Direct link to heading">​</a></h3><ul><li><a href="/docs/maintain-guides-how-to-nominate-polkadot">Be a Nominator (Polkadot)</a> - Guide on
 nominating on the Kusama canary network.</li><li><a href="/docs/maintain-guides-how-to-unbond">Stop Being a Nominator (all networks)</a> - Guide on
-stopping nominations and withdrawing tokens.</li></ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"></div><div class="col lastUpdated_vwxv"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2022-07-23T08:17:28.000Z">Jul 23, 2022</time></b> by <b>Keith Alfaro</b></span></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages navigation"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#active-vs-inactive-nomination" class="table-of-contents__link toc-highlight">Active vs. Inactive Nomination</a></li><li><a href="#bags-list" class="table-of-contents__link toc-highlight">Bags-list</a></li><li><a href="#minimum-active-nomination-to-receive-staking-rewards" class="table-of-contents__link toc-highlight">Minimum Active Nomination to Receive Staking Rewards</a></li><li><a href="#staking-election-stages" class="table-of-contents__link toc-highlight">Staking Election Stages</a></li><li><a href="#required-minimum-stake" class="table-of-contents__link toc-highlight">Required Minimum Stake</a></li><li><a href="#oversubscribed-validators" class="table-of-contents__link toc-highlight">Oversubscribed Validators</a></li><li><a href="#the-election-solution-set" class="table-of-contents__link toc-highlight">The Election Solution Set</a></li><li><a href="#receiving-rewards" class="table-of-contents__link toc-highlight">Receiving Rewards</a></li><li><a href="#what-to-take-into-consideration-when-nominating" class="table-of-contents__link toc-highlight">What to Take Into Consideration When Nominating</a></li><li><a href="#filter-out-validators-with-undesirable-traits" class="table-of-contents__link toc-highlight">Filter Out Validators With Undesirable Traits</a></li><li><a href="#review-your-validators-history" class="table-of-contents__link toc-highlight">Review Your Validators&#39; History</a></li><li><a href="#be-aware-of-the-risks-of-single-operators-with-multiple-validators" class="table-of-contents__link toc-highlight">Be Aware of The Risks of Single Operators with Multiple Validators</a></li><li><a href="#avoiding-oversubscribed-validators" class="table-of-contents__link toc-highlight">Avoiding Oversubscribed Validators</a></li><li><a href="#guides" class="table-of-contents__link toc-highlight">Guides</a></li></ul></div></div></div></div></main></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/Kusama_Canary_white.png" alt="Guide" width="66" height="58"></a><div><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://polkadot.network/faq/" target="_blank" rel="noreferrer noopener" class="homepage-font">FAQ</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://www.notion.so/web3foundation/Polkadot-Kusama-Community-Hub-ee1fd077ff6c42c381940404f6aa9f1c" target="_blank" rel="noreferrer noopener" class="homepage-font">Community Hub</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler</a><a href="https://github.com/w3f/General-Grants-Program" target="_blank" rel="noreferrer noopener" class="homepage-font">Grants and Bounties</a></div><div class="kusama-mainpage-cyber-row"><div class="kusama-mainpage-column"><h2 class="homepage-font-footer">Join a cyber secret society</h2><p class="homepage-font-footer">The Kappa Sigma Mu fraternity asks you to get a Kusama tattoo to join.</p><a href="/docs/maintain-guides-society-kusama"><button class="kusama-mainpage-build-footer">See Kappa Sigma Mu</button></a></div></div></section><section class="row"><div class="copyright homepage-font">© 2022 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a></section></footer></div>
-<script src="/assets/js/runtime~main.78396a17.js"></script>
+stopping nominations and withdrawing tokens.</li></ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"></div><div class="col lastUpdated_vwxv"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2022-09-13T14:21:17.000Z">Sep 13, 2022</time></b> by <b>Keith Alfaro</b></span></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages navigation"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#active-vs-inactive-nomination" class="table-of-contents__link toc-highlight">Active vs. Inactive Nomination</a></li><li><a href="#bags-list" class="table-of-contents__link toc-highlight">Bags-list</a></li><li><a href="#minimum-active-nomination-to-receive-staking-rewards" class="table-of-contents__link toc-highlight">Minimum Active Nomination to Receive Staking Rewards</a></li><li><a href="#staking-election-stages" class="table-of-contents__link toc-highlight">Staking Election Stages</a></li><li><a href="#required-minimum-stake" class="table-of-contents__link toc-highlight">Required Minimum Stake</a></li><li><a href="#oversubscribed-validators" class="table-of-contents__link toc-highlight">Oversubscribed Validators</a></li><li><a href="#the-election-solution-set" class="table-of-contents__link toc-highlight">The Election Solution Set</a></li><li><a href="#receiving-rewards" class="table-of-contents__link toc-highlight">Receiving Rewards</a></li><li><a href="#what-to-take-into-consideration-when-nominating" class="table-of-contents__link toc-highlight">What to Take Into Consideration When Nominating</a></li><li><a href="#filter-out-validators-with-undesirable-traits" class="table-of-contents__link toc-highlight">Filter Out Validators With Undesirable Traits</a></li><li><a href="#review-your-validators-history" class="table-of-contents__link toc-highlight">Review Your Validators&#39; History</a></li><li><a href="#be-aware-of-the-risks-of-single-operators-with-multiple-validators" class="table-of-contents__link toc-highlight">Be Aware of The Risks of Single Operators with Multiple Validators</a></li><li><a href="#avoiding-oversubscribed-validators" class="table-of-contents__link toc-highlight">Avoiding Oversubscribed Validators</a></li><li><a href="#guides" class="table-of-contents__link toc-highlight">Guides</a></li></ul></div></div></div></div></main></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/Kusama_Canary_white.png" alt="Guide" width="66" height="58"></a><div><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://polkadot.network/faq/" target="_blank" rel="noreferrer noopener" class="homepage-font">FAQ</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://www.notion.so/web3foundation/Polkadot-Kusama-Community-Hub-ee1fd077ff6c42c381940404f6aa9f1c" target="_blank" rel="noreferrer noopener" class="homepage-font">Community Hub</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler</a><a href="https://github.com/w3f/General-Grants-Program" target="_blank" rel="noreferrer noopener" class="homepage-font">Grants and Bounties</a></div><div class="kusama-mainpage-cyber-row"><div class="kusama-mainpage-column"><h2 class="homepage-font-footer">Join a cyber secret society</h2><p class="homepage-font-footer">The Kappa Sigma Mu fraternity asks you to get a Kusama tattoo to join.</p><a href="/docs/maintain-guides-society-kusama"><button class="kusama-mainpage-build-footer">See Kappa Sigma Mu</button></a></div></div></section><section class="row"><div class="copyright homepage-font">© 2022 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a></section></footer></div>
+<script src="/assets/js/runtime~main.583369a2.js"></script>
 <script src="/assets/js/main.bc9507e3.js"></script>
 </body>
 </html>
