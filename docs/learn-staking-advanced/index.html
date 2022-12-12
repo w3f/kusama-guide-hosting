@@ -15,7 +15,7 @@
 <script src="../js/custom.js"></script>
 <script src="../js/clipboard.min.js"></script>
 <script src="../js/copycode.js"></script><link rel="stylesheet" href="/assets/css/styles.4fd8784a.css">
-<link rel="preload" href="/assets/js/runtime~main.0e063525.js" as="script">
+<link rel="preload" href="/assets/js/runtime~main.7bc46b4e.js" as="script">
 <link rel="preload" href="/assets/js/main.e70fe053.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
@@ -25,27 +25,33 @@
 <a href="https://staking.polkadot.network/#/overview" target="_blank" rel="noopener noreferrer">Staking Dashboard</a> that makes staking much easier and
 check this
 <a href="https://support.polkadot.network/support/solutions/articles/65000182104" target="_blank" rel="noopener noreferrer">extensive article list</a> to
-help you get started.
+help you get started. You can now stake on
+Kusama natively with just
 <!-- -->
-All the examples presented on Polkadot apply to Kusama as well.</p></div></div><p>This page is meant to be an advanced guide to staking with
-Kusama.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="staking-proxies">Staking Proxies<a class="hash-link" href="#staking-proxies" title="Direct link to heading">​</a></h2><div class="theme-admonition theme-admonition-info alert alert--info admonition_LlT9"><div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Walk-through video tutorial</div><div class="admonitionContent_S0QG"><p>In this section, we go through a couple of scenarios that show how the permissions to sign for
+<!-- -->
+and earn staking rewards. For additional information, check out
+<a href="https://polkadot.network/blog/nomination-pools-are-live-stake-natively-with-just-1-dot/" target="_blank" rel="noopener noreferrer">this blog post</a>.</p></div></div><p>This page is meant to be an advanced guide to staking with
+Kusama. For a more general introduction,
+checkout the <a href="/docs/learn-staking">Introduction to Staking</a> page.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="staking-proxies">Staking Proxies<a class="hash-link" href="#staking-proxies" title="Direct link to heading">​</a></h2><div class="theme-admonition theme-admonition-info alert alert--info admonition_LlT9"><div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Walk-through video tutorial</div><div class="admonitionContent_S0QG"><p>In this section, we go through a couple of scenarios that show how the permissions to sign for
 staking-related actions by stash account, controller account, and staking proxy change according to
 their relationship. <a href="https://www.youtube.com/watch?v=WarVBPBPh0A" target="_blank" rel="noopener noreferrer">This video tutorial</a> goes through
 those scenarios using the <a href="https://polkadot.js.org/apps/#/accounts" target="_blank" rel="noopener noreferrer">Polkadot-JS UI</a>.</p></div></div><p>Kusama makes it possible to create accounts
 having special permissions also called <strong>proxy accounts</strong>. For mode details about proxy accounts
-visit the <a href="/docs/learn-proxies">dedicated page</a> on this wiki.</p><p>Proxy accounts are special accounts which can sign <a href="/docs/learn-extrinsics/#pallets-and-extrinsics"><strong>extrinsic calls</strong></a>
-made to specific <a href="/docs/learn-extrinsics/#pallets-and-extrinsics"><strong>pallets</strong></a> on behalf of the proxied account. There is
-thus the possibility to create staking proxy accounts that can be used to sign only extrinsic calls
-to staking, session and utility pallets.</p><p><img loading="lazy" alt="stash-controller" src="/assets/images/stash-controller-978875461a51b1f2689c22bdadfde1e4.png" width="1920" height="800" class="img_ev3q"></p><p>Usually, with the stash-controller setup, the stash still needs to sign for actions that are
+visit the <a href="/docs/learn-proxies">dedicated page</a> on this wiki.</p><p>Proxy accounts are special accounts which can sign
+<a href="/docs/learn-extrinsics/#pallets-and-extrinsics"><strong>extrinsic calls</strong></a> made to specific
+<a href="/docs/learn-extrinsics/#pallets-and-extrinsics"><strong>pallets</strong></a> on behalf of the proxied account. There
+is thus the possibility to create staking proxy accounts that can be used to sign only extrinsic
+calls to staking, session and utility pallets.</p><p><img loading="lazy" alt="stash-controller" src="/assets/images/stash-controller-978875461a51b1f2689c22bdadfde1e4.png" width="1920" height="800" class="img_ev3q"></p><p>Usually, with the stash-controller setup, the stash still needs to sign for actions that are
 performed less often, i.e. bonding more funds and changing the controller (see figure above). The
 controller is used to sign for those staking actions that are performed more often such as
-nominating. Remember, staking on polkadot is not a set-and-forget action, as a nominator you will
-need to monitor the performance of your validators and make changes if needed. Also, each time you
-sign with an account, you expose the private key of that account to the internet with consequent
-risk of attack. Ideally, accounts with high economic power like the stash must be and remain as
-isolated as possible. With a staking proxy, the stash account is even more isolated than when using
-a controller. This does not necessarily mean that the staking proxy can sign for all staking-related
-transactions. Below we show two main configurations that affect a staking proxy&#x27;s permissions.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="stash-is-also-controller">Stash is also Controller<a class="hash-link" href="#stash-is-also-controller" title="Direct link to heading">​</a></h3><p>It is not necessary to have a controller if you have a staking proxy: the stash can also be the
+nominating. Remember, staking on Kusama is
+not a set-and-forget action, as a nominator you will need to monitor the performance of your
+validators and make changes if needed. Also, each time you sign with an account, you expose the
+private key of that account to the internet with consequent risk of attack. Ideally, accounts with
+high economic power like the stash must be and remain as isolated as possible. With a staking proxy,
+the stash account is even more isolated than when using a controller. This does not necessarily mean
+that the staking proxy can sign for all staking-related transactions. Below we show two main
+configurations that affect a staking proxy&#x27;s permissions.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="stash-is-also-controller">Stash is also Controller<a class="hash-link" href="#stash-is-also-controller" title="Direct link to heading">​</a></h3><p>It is not necessary to have a controller if you have a staking proxy: the stash can also be the
 controller, and the account security will not be compromised. In this case, the staking proxy will
 be used to sign all staking-relate transactions. Note that to change the staking proxy you will need
 to sign with the stash.</p><p><img loading="lazy" alt="stash-stakingProxy" src="/assets/images/stash-stakingProxy-52fce9bea3664e3bf5cd69d2572647c0.png" width="1920" height="800" class="img_ev3q"></p><p>This situation is similar to having the controller as a staking proxy. For a practical perspective
@@ -60,26 +66,27 @@ security perspective, the party who wants to fully control our staking actions m
 two accounts.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="bags-list">Bags List<a class="hash-link" href="#bags-list" title="Direct link to heading">​</a></h2><div class="theme-admonition theme-admonition-info alert alert--info admonition_LlT9"><div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_S0QG"><p>On Polkadot and Kusama, the instance of the pallet
 <a href="https://paritytech.github.io/substrate/master/pallet_bags_list/" target="_blank" rel="noopener noreferrer">Bags-List</a> is named as &#x27;voterList&#x27;</p></div></div><p>In Kusama&#x27;s NPoS nomination intents are
 placed in a semi-sorted list called <a href="https://github.com/paritytech/substrate/pull/9507" target="_blank" rel="noopener noreferrer">bags-list</a>.
-The bags list example below uses DOT for explaining the concepts.The Bags-List
-substrate pallet is designed to be self-maintaining, with minimal effort from the blockchain, making
-it extremely scalable. The bags list has two primary components, bags and nodes (or nominators&#x27;
-accounts), with bags containing the nodes with bonded balance within a specific range. In the figure
-below the 1st empty bag will contain nominators whose bonded balance is in the range of 21 - 30 DOT,
-the 2nd bag 11 - 20 DOT, and the 3rd bag 0-10 DOT. The nomination intents are the nominators&#x27;
-accounts with bonded tokens (in the example shown below, there are eight nomination intents) that
-will be put inside each of those three bags depending on their stake.</p><p><img loading="lazy" alt="bags list example 0" src="/assets/images/bags-list-example-0-6836e3658c32484103ffcd06d6372427.png" width="1920" height="800" class="img_ev3q"></p><p>The bags list is semi-sorted, meaning that sorting is only partially done. When the nomination
+The bags list example below uses DOT for explaining the concepts. The
+Bags-List substrate pallet is designed to be self-maintaining, with minimal effort from the
+blockchain, making it extremely scalable. The bags list has two primary components, bags and nodes
+(or nominators&#x27; accounts), with bags containing the nodes with bonded balance within a specific
+range. In the figure below the 1st empty bag will contain nominators whose bonded balance is in the
+range of 21 - 30 DOT, the 2nd bag 11 - 20 DOT, and the 3rd bag 0-10 DOT. The nomination intents are
+the nominators&#x27; accounts with bonded tokens (in the example shown below, there are eight nomination
+intents) that will be put inside each of those three bags depending on their stake.</p><p><img loading="lazy" alt="bags list example 0" src="/assets/images/bags-list-example-0-6836e3658c32484103ffcd06d6372427.png" width="1920" height="800" class="img_ev3q"></p><p>The bags list is semi-sorted, meaning that sorting is only partially done. When the nomination
 intents are submitted to the network, they are automatically put into each bag based on the number
 of bonded tokens, but within each bag, those nodes are arranged based on the time they are inserted
 and not based on their stake (see figure below). When the nomination intent of 19 DOT is submitted,
 it gets placed at the last spot in the 2nd bag (shown in the yellow circle). The same scenario
 applies for the node with 8 DOT (green circle) in the 3rd bag. Placing the node above all nodes with
 a lesser stake requires an additional step (more on this later).</p><p><img loading="lazy" alt="bags list example 1" src="/assets/images/bags-list-example-1-6aeffdb212b7af723f00e38b40780dcc.png" width="1920" height="800" class="img_ev3q"></p><p>The mentioned two nodes (19 DOT and 8 DOT) have the option to move up in their respective bags,
-which can put them in front of the nodes with less stake than them (see figure below). This action must be done
-manually by submitting the <code>putInFrontOf</code> extrinsic within the <code>voterList</code> pallet instance.
-Moreover, if the node with 19 DOT bonds an additional 2 DOT, that node will be put automatically in
-the 1st bag (i.e. automatic <code>rebag</code>) because the total number of bonded tokens will now be within the range of the 1st bag. That node with now 21 DOT will be put at the tail end of the 1st bag with the
-possibility to manually put itself in front of &quot;older&quot; nodes with less than 21 DOT (if there are
-any).</p><p><img loading="lazy" alt="bags list example 2" src="/assets/images/bags-list-example-2-aec08a8679a23e697f416374cbcdf735.png" width="1920" height="800" class="img_ev3q"></p><p>If one decides to send staking rewards to the stash account and automatically bond them (i.e.
+which can put them in front of the nodes with less stake than them (see figure below). This action
+must be done manually by submitting the <code>putInFrontOf</code> extrinsic within the <code>voterList</code> pallet
+instance. Moreover, if the node with 19 DOT bonds an additional 2 DOT, that node will be put
+automatically in the 1st bag (i.e. automatic <code>rebag</code>) because the total number of bonded tokens will
+now be within the range of the 1st bag. That node with now 21 DOT will be put at the tail end of the
+1st bag with the possibility to manually put itself in front of &quot;older&quot; nodes with less than 21 DOT
+(if there are any).</p><p><img loading="lazy" alt="bags list example 2" src="/assets/images/bags-list-example-2-aec08a8679a23e697f416374cbcdf735.png" width="1920" height="800" class="img_ev3q"></p><p>If one decides to send staking rewards to the stash account and automatically bond them (i.e.
 compounding the staking rewards), the position within a bag does not change automatically. The same
 scenario applies to a slashing event, i.e., when a nominator gets slashed, their position within a
 bag does not change. This might result in a scenario where the node is in the wrong bag and needs to
@@ -93,6 +100,7 @@ storage. In the current staking system configuration, the bags list keeps
 <!-- -->
 <!-- -->
 nomination intents, of which, at most
+<!-- -->
 <!-- -->
 come out as the electing nominators. See
 <a href="/docs/learn-nominator#staking-election-stages">Staking Election Stages</a> section for more info.</p><p>This means that only a portion of the nomination intents is kept. Once the nomination period ends,
@@ -110,9 +118,10 @@ functionality of nomination intents using bags is extremely important for the
 <a href="https://gist.github.com/kianenigma/aa835946455b9a3f167821b9d05ba376" target="_blank" rel="noopener noreferrer">long-term improvements</a> of the
 staking/election system.</p><p><img loading="lazy" alt="bags list example 2" src="/assets/images/bags-list-example-3-08c2b290f95e036e026f667fca527704.png" width="1920" height="800" class="img_ev3q"></p><div class="theme-admonition theme-admonition-caution alert alert--warning admonition_LlT9"><div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Minimum active nomination threshold to earn rewards is dynamic</div><div class="admonitionContent_S0QG"><p>Submitting a nomination intent does not guarantee staking rewards. The stake of the top
 <!-- -->
+<!-- -->
 nominators is applied to the validators in the active set. To avail of staking rewards, ensure that
-the number of tokens bonded is higher than the minimum active bond. For more information, see
-the <a href="/docs/learn-nominator">nominator guide</a>.</p></div></div><p>The &quot;election solution&quot; which is a connected graph between nominators and validators with the stake
+the number of tokens bonded is higher than the minimum active bond. For more information, see the
+<a href="/docs/learn-nominator">nominator guide</a>.</p></div></div><p>The &quot;election solution&quot; which is a connected graph between nominators and validators with the stake
 as edge weights, has to meet certain requirements, such as maximizing the amount of stake to
 nominate validators and distributing the stake backing validators as evenly as possible. The
 objectives of this election mechanism are to maximize the security of the network, and achieve fair
@@ -154,10 +163,13 @@ since staking participation is changing dynamically, it works well as an indicat
 of nominators a validator may have, a validator does have a limit to how many nominators to which it
 can pay rewards. In Kusama this limit is
 currently
+<!-- -->
 <!-- -->,
 although this can be modified via runtime upgrade. A validator with more than
 <!-- -->
+<!-- -->
 nominators is <em>oversubscribed</em>. When payouts occur, only the top
+<!-- -->
 <!-- -->
 nominators as measured by the amount of stake allocated to that validator will receive rewards. All
 other nominators are essentially &quot;wasting&quot; their stake - they used their nomination to elect that
@@ -211,26 +223,30 @@ rather than the sum. This ensures protection from overslashing. Likewise, the pe
 maximum slashes are computed is finite and the validator is chilled with nominations withdrawn after
 a slashing event, as stated in the previous section. This prevents rage-quit attacks in which, once
 caught misbehaving, a participant deliberately misbehaves more because their slashing amount is
-already maxed out.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="simple-payouts">Simple Payouts<a class="hash-link" href="#simple-payouts" title="Direct link to heading">​</a></h2><p>Polkadot and Kusama make stakers claim their rewards for past eras by submitting a transaction. This
-naturally leads to spreading out reward distribution, as people make transactions at disparate
-times, rather than updating the accounts of all stakers in a single block.</p><p>Even if everyone submitted a reward claim at the same time, the fact that they are individual
+already maxed out.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="simple-payouts">Simple Payouts<a class="hash-link" href="#simple-payouts" title="Direct link to heading">​</a></h2><p>Kusama makes stakers claim their rewards for
+past eras by submitting a transaction. This naturally leads to spreading out reward distribution, as
+people make transactions at disparate times, rather than updating the accounts of all stakers in a
+single block.</p><p>Even if everyone submitted a reward claim at the same time, the fact that they are individual
 transactions would allow the block construction algorithm to process only a limited number per block
 and ensure that the network maintains a constant block time. If all rewards were sent out in one
 block, this could cause serious issues with the stability of the network.</p><p>Simple payouts require one transaction per validator, per <a href="/docs/glossary##era">era</a>, to
-claim rewards. The reason Polkadot requires this is to avoid an attack where someone has several
-thousand accounts nominating a single validator. The major cost in reward distribution is mutating
-the accounts in storage, and Polkadot cannot pay out several thousand accounts in a single
-transaction.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="claiming-rewards">Claiming Rewards<a class="hash-link" href="#claiming-rewards" title="Direct link to heading">​</a></h3><p>Polkadot stores the last 84 eras of reward information (e.g. maps of era number to validator points,
-staking rewards, nomination exposure, etc.). Rewards will not be claimable more than 84 eras after
-they were earned. This means that all rewards must be claimed within a maximum of 84 eras, although
-under certain circumstances (described below) this may be as low as 28 eras.</p><p>If a validator kills their stash, any remaining rewards will no longer be claimable. Before doing
+claim rewards. The reason Kusama requires
+this is to avoid an attack where someone has several thousand accounts nominating a single
+validator. The major cost in reward distribution is mutating the accounts in storage, and
+Kusama cannot pay out several thousand
+accounts in a single transaction.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="claiming-rewards">Claiming Rewards<a class="hash-link" href="#claiming-rewards" title="Direct link to heading">​</a></h3><p>Kusama stores the last 84 eras of reward
+information (e.g. maps of era number to validator points, staking rewards, nomination exposure,
+etc.). Rewards will not be claimable more than 84 eras after they were earned. This means that all
+rewards must be claimed within a maximum of 84 eras, although under certain circumstances (described
+below) this may be as low as 28 eras.</p><p>If a validator kills their stash, any remaining rewards will no longer be claimable. Before doing
 this, however, they would need to first stop validating and then unbond the funds in their stash,
 which takes 28 eras. If a validator were to immediately chill and start unbonding after rewards are
 calculated, and nobody issued a payout for that era from that validator in the next 28 eras, the
-reward would no longer be claimable.</p><div class="theme-admonition theme-admonition-info alert alert--info admonition_LlT9"><div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_S0QG"><p>In order to be absolutely sure that staking rewards can be claimed, users should trigger a
-payout before 28 eras have passed.</p></div></div><p>Anyone can trigger a payout for any validator, as long as they are willing to pay the transaction
-fee. Someone must submit a transaction with a validator ID and an era index. Polkadot will
-automatically calculate that validator&#x27;s reward, find the top
+reward would no longer be claimable.</p><div class="theme-admonition theme-admonition-info alert alert--info admonition_LlT9"><div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_S0QG"><p>In order to be absolutely sure that staking rewards can be claimed, users should trigger a payout
+before 28 eras have passed.</p></div></div><p>Anyone can trigger a payout for any validator, as long as they are willing to pay the transaction
+fee. Someone must submit a transaction with a validator ID and an era index.
+Kusama will automatically calculate that
+validator&#x27;s reward, find the top
 <!-- -->
 <!-- -->
 nominators for that era, and distribute the rewards pro rata.</p><div class="theme-admonition theme-admonition-note alert alert--secondary admonition_LlT9"><div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_S0QG"><p>The Staking system only applies the highest
@@ -251,10 +267,16 @@ Nominations will persist after claiming rewards or after the rewards expire.</li
 increasing amount at stake&quot;, then your staked amount does not reflect your rewards until you
 claim them. If you want to maximize compounding, then you will need to claim often or nominate
 validators which regularly claim for you.</li><li>Staking operations at the end of an era are closed to allow the off-chain validator election to
-take place. See <a href="/docs/learn-phragmen#off-chain-phragmen">Off-chain Phragmén</a> for more information.</li></ol><h2 class="anchor anchorWithStickyNavbar_LWe7" id="inflation">Inflation<a class="hash-link" href="#inflation" title="Direct link to heading">​</a></h2><p></p><div class="theme-admonition theme-admonition-info alert alert--info admonition_LlT9"><div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_S0QG"><p>DOT went through <a href="/docs/redenomination">redenomination</a> in 2020 that saw the DOT token
-supply increase by 100 times. The current token supply on Polkadot is</p>(Over 1.2 Billion DOT).</div></div><p>KSM is inflationary; there is no maximum number of KSM. On Kusama network, inflation is <a href="https://github.com/paritytech/polkadot/blob/756ccc35e93d1a78e3c71a0e67ae4da5f1d09f69/runtime/kusama/src/lib.rs#L535" target="_blank" rel="noopener noreferrer">set to be 10% annually</a>, with validator rewards being a function of the amount staked
-and the remainder going to the treasury. The current token supply on Kusama is <!-- -->
-(Over 12 Million KSM).</p><p>There is an <em>ideal staking rate</em> that the network tries to maintain. The goal is to have the <em>system
+take place. See <a href="/docs/learn-phragmen#off-chain-phragmen">Off-chain Phragmén</a> for more information.</li></ol><h2 class="anchor anchorWithStickyNavbar_LWe7" id="inflation">Inflation<a class="hash-link" href="#inflation" title="Direct link to heading">​</a></h2><p>KSM is an inflationary token. In fact, there is
+no maximum number of KSM. On
+Kusama network, inflation is
+<!-- -->
+<a href="https://github.com/paritytech/polkadot/blob/756ccc35e93d1a78e3c71a0e67ae4da5f1d09f69/runtime/kusama/src/lib.rs#L535" target="_blank" rel="noopener noreferrer">set to be 10% annually</a>,
+with validator rewards being a function of the amount staked and the remainder going to the
+treasury.</p><div class="theme-admonition theme-admonition-info alert alert--info admonition_LlT9"><div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_S0QG"><p>DOT went through <a href="/docs/redenomination">redenomination</a> in 2020 that saw the DOT token
+supply increase by 100 times.</p><p>The current token supply on Kusama is
+<!-- -->
+<!-- --> (Over 12 Million KSM).</p></div></div><p>There is an <em>ideal staking rate</em> that the network tries to maintain. The goal is to have the <em>system
 staking rate</em> meet the <em>ideal staking rate</em>. The system staking rate would be the total amount
 staked over the total token supply, where the total amount staked is the stake of all validators and
 nominators on the network. The ideal staking rate accounts for having sufficient backing of
@@ -262,16 +284,16 @@ KSM to prevent the possible compromise of
 security while keeping the native token liquid.
 KSM is inflated according to the system staking
 rate of the entire network.</p><div class="theme-admonition theme-admonition-info alert alert--info admonition_LlT9"><div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_S0QG"><p>According to the inflation model, this would suggest that if you do not use your
-KSM for staking, your tokens dilute over time.</p></div></div><p>The ideal staking rate on Polkadot also varies with the number of parachains (50% is the current
-estimation of all DOT that should be staked, per parachain slot).</p><div class="theme-admonition theme-admonition-info alert alert--info admonition_LlT9"><div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>The ideal staking rate varies based on the number of parachains</div><div class="admonitionContent_S0QG"><p>The current staking rate on Polkadot still assumes the absence of parachains, with the suggested
-ideal staking rate of 75%. You can track the progress on the issue to adjust it
-<a href="https://github.com/paritytech/polkadot/pull/5872" target="_blank" rel="noopener noreferrer">here</a>. This has already been adjusted on Kusama,
-which has an ideal staking rate of approximately 50% with 50 parachains. When the number of slots
-reaches 60, the ideal staking rate is 45%.
-<a href="https://github.com/paritytech/polkadot/blob/master/runtime/kusama/src/lib.rs#L535" target="_blank" rel="noopener noreferrer">Here</a> is the
-code for reference. This code assumes that the number of slots auctioned correspond to the number of
-parachains on the relaychain, which may not be true as new slots can be occupied by old parachains
-that are renewing their lease. You can also track the progress on resolving this specific issue
+KSM for staking, your tokens dilute over time.</p></div></div><p>The ideal staking rate on Kusama also varies
+with the number of parachains (50% is the current estimation of all
+KSM that should be staked, per parachain slot).</p><div class="theme-admonition theme-admonition-info alert alert--info admonition_LlT9"><div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>The ideal staking rate varies based on the number of parachains</div><div class="admonitionContent_S0QG"><p>The current staking rate on
+
+<!-- -->
+Kusama has an ideal staking rate of approximately 50% with 50 parachains.
+When the number of slots reaches 60, the ideal staking rate is 45%. <a href="https://github.com/paritytech/polkadot/blob/master/runtime/kusama/src/lib.rs#L535" target="_blank" rel="noopener noreferrer">Here</a> is the code for reference.
+This code assumes that the number of slots auctioned correspond to the number of parachains on the
+relaychain, which may not be true as new slots can be occupied by old parachains that are renewing
+their lease. You can also track the progress on resolving this specific issue
 <a href="https://github.com/paritytech/polkadot/pull/5872" target="_blank" rel="noopener noreferrer">here</a>.</p></div></div><p>If the amount of tokens staked goes below the ideal rate, then staking rewards for nominators go up,
 incentivizing them to stake more tokens on the network. On the contrary, if it goes above the ideal
 rate, staking rewards drop. This is a result of the change in the percentage of staking rewards that
@@ -284,8 +306,8 @@ dynamically to provide incentives to participate (or not participate) in staking
 validators/nominators if 50% of all KSM / DOT are staked. Any deviation from the 50% - positive or
 negative - sends the proportional remainder to the treasury and effectively reduces staking rewards.</p><p>For those who are interested in knowing more about the design of the inflation model for the
 network, please see
-<a href="https://w3f-research.readthedocs.io/en/latest/polkadot/overview/2-token-economics.html" target="_blank" rel="noopener noreferrer">here</a>.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"></div><div class="col lastUpdated_vwxv"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2022-11-30T14:22:03.000Z">Nov 30, 2022</time></b> by <b>Filippo</b></span></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages navigation"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/learn-staking"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Introduction to Staking</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/maintain-guides-how-to-nominate-kusama"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">How to Nominate on Kusama</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#staking-proxies" class="table-of-contents__link toc-highlight">Staking Proxies</a><ul><li><a href="#stash-is-also-controller" class="table-of-contents__link toc-highlight">Stash is also Controller</a></li><li><a href="#stash-is-not-controller" class="table-of-contents__link toc-highlight">Stash is not Controller</a></li></ul></li><li><a href="#bags-list" class="table-of-contents__link toc-highlight">Bags List</a></li><li><a href="#rewards-distribution" class="table-of-contents__link toc-highlight">Rewards Distribution</a></li><li><a href="#slashing" class="table-of-contents__link toc-highlight">Slashing</a><ul><li><a href="#unresponsiveness" class="table-of-contents__link toc-highlight">Unresponsiveness</a></li><li><a href="#equivocation" class="table-of-contents__link toc-highlight">Equivocation</a></li><li><a href="#slashing-across-eras" class="table-of-contents__link toc-highlight">Slashing Across Eras</a></li></ul></li><li><a href="#simple-payouts" class="table-of-contents__link toc-highlight">Simple Payouts</a><ul><li><a href="#claiming-rewards" class="table-of-contents__link toc-highlight">Claiming Rewards</a></li><li><a href="#faq-and-cautionary-notes" class="table-of-contents__link toc-highlight">FAQ and Cautionary Notes</a></li></ul></li><li><a href="#inflation" class="table-of-contents__link toc-highlight">Inflation</a></li></ul></div></div></div></div></main></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/Kusama_Canary_white.png" alt="Guide" width="66" height="58"></a><div><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://polkadot.network/faq/" target="_blank" rel="noreferrer noopener" class="homepage-font">FAQ</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://www.notion.so/web3foundation/Polkadot-Kusama-Community-Hub-ee1fd077ff6c42c381940404f6aa9f1c" target="_blank" rel="noreferrer noopener" class="homepage-font">Community Hub</a><a href="https://kusa.ma/discord" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Discord</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler</a><a href="https://github.com/w3f/General-Grants-Program" target="_blank" rel="noreferrer noopener" class="homepage-font">Grants and Bounties</a></div><div class="kusama-mainpage-cyber-row"><div class="kusama-mainpage-column"><h2 class="homepage-font-footer">Join a cyber secret society</h2><p class="homepage-font-footer">The Kappa Sigma Mu fraternity asks you to get a Kusama tattoo to join.</p><a href="/docs/maintain-guides-society-kusama"><button class="kusama-mainpage-build-footer">See Kappa Sigma Mu</button></a></div></div></section><section class="row"><div class="copyright homepage-font">© 2022 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a></section></footer></div>
-<script src="/assets/js/runtime~main.0e063525.js"></script>
+<a href="https://w3f-research.readthedocs.io/en/latest/polkadot/overview/2-token-economics.html" target="_blank" rel="noopener noreferrer">here</a>.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"></div><div class="col lastUpdated_vwxv"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2022-12-09T15:23:26.000Z">Dec 9, 2022</time></b> by <b>Keith Alfaro</b></span></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages navigation"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/learn-staking"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Introduction to Staking</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/maintain-guides-how-to-nominate-kusama"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">How to Nominate on Kusama</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#staking-proxies" class="table-of-contents__link toc-highlight">Staking Proxies</a><ul><li><a href="#stash-is-also-controller" class="table-of-contents__link toc-highlight">Stash is also Controller</a></li><li><a href="#stash-is-not-controller" class="table-of-contents__link toc-highlight">Stash is not Controller</a></li></ul></li><li><a href="#bags-list" class="table-of-contents__link toc-highlight">Bags List</a></li><li><a href="#rewards-distribution" class="table-of-contents__link toc-highlight">Rewards Distribution</a></li><li><a href="#slashing" class="table-of-contents__link toc-highlight">Slashing</a><ul><li><a href="#unresponsiveness" class="table-of-contents__link toc-highlight">Unresponsiveness</a></li><li><a href="#equivocation" class="table-of-contents__link toc-highlight">Equivocation</a></li><li><a href="#slashing-across-eras" class="table-of-contents__link toc-highlight">Slashing Across Eras</a></li></ul></li><li><a href="#simple-payouts" class="table-of-contents__link toc-highlight">Simple Payouts</a><ul><li><a href="#claiming-rewards" class="table-of-contents__link toc-highlight">Claiming Rewards</a></li><li><a href="#faq-and-cautionary-notes" class="table-of-contents__link toc-highlight">FAQ and Cautionary Notes</a></li></ul></li><li><a href="#inflation" class="table-of-contents__link toc-highlight">Inflation</a></li></ul></div></div></div></div></main></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/Kusama_Canary_white.png" alt="Guide" width="66" height="58"></a><div><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://polkadot.network/faq/" target="_blank" rel="noreferrer noopener" class="homepage-font">FAQ</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://www.notion.so/web3foundation/Polkadot-Kusama-Community-Hub-ee1fd077ff6c42c381940404f6aa9f1c" target="_blank" rel="noreferrer noopener" class="homepage-font">Community Hub</a><a href="https://kusa.ma/discord" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Discord</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler</a><a href="https://github.com/w3f/General-Grants-Program" target="_blank" rel="noreferrer noopener" class="homepage-font">Grants and Bounties</a></div><div class="kusama-mainpage-cyber-row"><div class="kusama-mainpage-column"><h2 class="homepage-font-footer">Join a cyber secret society</h2><p class="homepage-font-footer">The Kappa Sigma Mu fraternity asks you to get a Kusama tattoo to join.</p><a href="/docs/maintain-guides-society-kusama"><button class="kusama-mainpage-build-footer">See Kappa Sigma Mu</button></a></div></div></section><section class="row"><div class="copyright homepage-font">© 2022 Web3 Foundation</div><a class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a></section></footer></div>
+<script src="/assets/js/runtime~main.7bc46b4e.js"></script>
 <script src="/assets/js/main.e70fe053.js"></script>
 </body>
 </html>
