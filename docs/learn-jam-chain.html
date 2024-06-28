@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper docs-doc-page docs-version-current plugin-docs plugin-id-default docs-doc-id-learn/learn-jam-chain" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v2.4.3">
+<title data-rh="true">Polkadot&#x27;s JAM Chain · Guide</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://guide.kusama.network/docs/learn-jam-chain"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Polkadot&#x27;s JAM Chain · Guide"><meta data-rh="true" name="description" content="Polkadot&#x27;s Join-Accumulate Machine."><meta data-rh="true" property="og:description" content="Polkadot&#x27;s Join-Accumulate Machine."><meta data-rh="true" name="keywords" content="Polkadot,JAM,join-accumulate"><link data-rh="true" rel="icon" href="/img/Kusama_Canary_white.png"><link data-rh="true" rel="canonical" href="https://guide.kusama.network/docs/learn-jam-chain"><link data-rh="true" rel="alternate" href="https://guide.kusama.network/docs/learn-jam-chain" hreflang="en"><link data-rh="true" rel="alternate" href="https://guide.kusama.network/docs/learn-jam-chain" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://33KMAMG2DG-dsn.algolia.net" crossorigin="anonymous"><link rel="search" type="application/opensearchdescription+xml" title="Guide" href="/opensearch.xml">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&display=swap">
+<script src="https://buttons.github.io/buttons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js"></script>
+<script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" onload="addBackToTop()" defer="defer"></script>
+<script src="https://apisa.kusama.network/latest.js" async defer="defer"></script>
+<script src="../js/custom.js"></script>
+<script src="../js/clipboard.min.js"></script>
+<script src="../js/copycode.js"></script><link rel="stylesheet" href="/assets/css/styles.39413441.css">
+<link rel="preload" href="/assets/js/runtime~main.b7e3fab6.js" as="script">
+<link rel="preload" href="/assets/js/main.6ea67b6e.js" as="script">
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}return t}()||function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}(),document.documentElement.setAttribute("data-announcement-bar-initially-dismissed",function(){try{return"true"===localStorage.getItem("docusaurus.announcement.dismiss")}catch(t){}return!1}())</script><div id="__docusaurus">
+<div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><div class="announcementBar_mb4j" style="background-color:#e6007a;color:white" role="banner"><div class="announcementBarPlaceholder_vyr4"></div><div class="content_knG7 announcementBarContent_xLdY">The Polkadot Blockchain Academy is coming to Asia! <a href="https://www.polkadot.network/development/academy/?utm_source=guide.kusama.network&utm_medium=referral&utm_campaign=pba%204%205&utm_content=notification" target="_blank" rel="noopener noreferrer">Find out more 👉</a></div><button type="button" aria-label="Close" class="clean-btn close closeButton_CVFx announcementBarClose_gvF7"><svg viewBox="0 0 15 15" width="14" height="14"><g stroke="currentColor" stroke-width="3.1"><path d="M.75.75l13.5 13.5M14.25.75L.75 14.25"></path></g></svg></button></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/Kusama_logotype_white_large.png" alt="" class="themedImage_ToTc themedImage--light_HNdA"><img src="/img/Kusama_logotype_white_large.png" alt="" class="themedImage_ToTc themedImage--dark_i4oU"></div><b class="navbar__title text--truncate">Guide</b></a></div><div class="navbar__items navbar__items--right"><a class="navbar__item navbar__link" href="/docs/kusama-getting-started">Docs</a><div class="searchBox_ZlJk"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div><a class="navbar__item navbar__link" href="/docs/contributing">Contribute</a><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" class="iconLanguage_nlXk"><path fill="currentColor" d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"></path></svg>English</a><ul class="dropdown__menu"><li><a href="/docs/learn-jam-chain" target="_self" rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang="en">English</a></li><li><a href="https://crowdin.com/project/polkadot-wiki" target="_blank" rel="noopener noreferrer" class="dropdown__link">Help us translate</a></li></ul></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0 docsWrapper_BCFX"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docPage__5DB"><main class="docMainContainer_gTbr docMainContainerEnhanced_Uz_u"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Polkadot&#x27;s JAM Chain</h1></header><div class="theme-admonition theme-admonition-info alert alert--info admonition_LlT9"><div class="admonitionHeading_tbUL"><span class="admonitionIcon_kALy"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_S0QG"><p>JAM paper is available at <a href="https://graypaper.com/" target="_blank" rel="noopener noreferrer">graypaper.com</a> and the information regarding JAM
+prize is available at <a href="https://jam.web3.foundation/" target="_blank" rel="noopener noreferrer">jam.web3.foundation</a>. Download the printable
+version of the graypaper <a target="_blank" href="/assets/files/graypaper_inverted_no_background-c91065921202b42b4203049d643a76a4.pdf">here</a>.</p></div></div><p>JAM, short for Join-Accumulate Machine, represents a prospective design to succeed the relay chain.
+Its name originates from CoreJAM, denoting Collect Refine Join Accumulate, which outlines the
+computation model the machine embodies and that was
+<a href="https://github.com/polkadot-fellows/RFCs/blob/006a9ff07c3d3bc5316c6bf63b05e966e694cc2d/text/corejam.md" target="_blank" rel="noopener noreferrer">first described in an RFC by Gavin Wood</a>.
+However, within the actual chain, only the Join and Accumulate functions are executed, while the
+Collect and Refine processes occur off-chain.</p><p>Unlike the current iterative approach, JAM will be introduced as a comprehensive singular upgrade.
+Several factors contribute to this decision:</p><ul><li>A unified upgrade allows for precise restriction of post-upgrade actions, which is challenging
+with an iterative approach.</li><li>It mitigates the constant stream of minor upgrades and breaking changes that occur regularly over
+weeks or months.</li></ul><p>While this shift entails a significant breaking change, efforts will be made to minimize its impact
+to manageable levels. Consolidating multiple smaller breaking changes into a single transition is
+deemed preferable, introducing a novel blockchain concept that uniquely integrates various existing
+ideas.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="a-rollup-chain">A Rollup Chain<a href="#a-rollup-chain" class="hash-link" aria-label="Direct link to A Rollup Chain" title="Direct link to A Rollup Chain">​</a></h2><p>JAM will be a domain-specific chain that handles one particular domain of problems. In this case,
+roll-ups. JAM&#x27;s rollups are heavily bounded in terms of their security. This is what Polkadot has
+been doing for the last five years, it is already a highly domain-specific roll-up chain. JAM
+essentially makes it less opinionated and more generic.</p><p>The JAM chain accepts outputs of roll-ups, in more general terms, bits of computation done
+elsewhere, and integrates the outputs into a shared state, similarly to how the Polkadot Relay Chain
+functions.</p><p>The job of the JAM chain is to provide the necessary apparatus to ensure that the output correctly
+reflects the input when it goes through the transformation it&#x27;s meant to have undergone.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="smart-contract-similarity">Smart Contract Similarity<a href="#smart-contract-similarity" class="hash-link" aria-label="Direct link to Smart Contract Similarity" title="Direct link to Smart Contract Similarity">​</a></h2><p>JAM exhibits several similarities with a smart contract chain:</p><ul><li>Permissionless code execution occurs directly on the JAM chain itself.</li><li>The state of the JAM chain is organized into distinct encapsulations.</li><li>Alongside state, encapsulations encompass code and balance.</li></ul><p>These encapsulations of state are termed <strong>services</strong>. Thus, the JAM state is partitioned into
+services. The creation of a new service is permissionless, akin to deploying a smart contract on a
+smart contract chain. Consequently, adding a new service to the JAM chain does not necessitate
+approval from any authority or adherence to governance mechanisms, unlike Substrate-based chains
+that mandate governance approval for adding new pallets. Services encompass code, balance, and
+certain state components, resembling the structure commonly observed on a smart contract chain.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="service-entry-points">Service Entry Points<a href="#service-entry-points" class="hash-link" aria-label="Direct link to Service Entry Points" title="Direct link to Service Entry Points">​</a></h2><p>JAM services&#x27; code is split into three different entry points:</p><ul><li><strong>Refine</strong> is the function that does the mostly stateless computation. It defines the
+transformation for the rollup for a specific service.</li><li><strong>Accumulate</strong> is the function that takes the output of that and folds it into the overall state
+of the service</li><li><strong>OnTransfer</strong> handles information coming from other services.</li></ul><p><strong>Work packages</strong> are the input to a service. Work packages can have many <strong>work items</strong> in them.
+Every work item is associated with a service, and it reflects the actual input to the service. For
+the parachains service, this is where the transactions and all of the blockchain inputs are entered.</p><p>The JAM security apparatus consists a two-stage processing where the Refine function accepts a work
+item as an input and yields a work result as an output, which gets fed into the Accumulate function
+(first Refine, then Accumulate). Work items are refined into <strong>work results</strong>, and therefore, a work
+package containing many work items is refined into a <strong>work report</strong>, which is the corresponding
+results of several items. A work package can be assigned that uses one core for a specific time slot
+(typically a period of 6 seconds).</p><p><img loading="lazy" alt="refine-accumulate" src="/assets/images/refine-accumulate-376dcd569f7a4b6f1ed20798f522bd0e.png" width="1874" height="1052" class="img_ev3q"></p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="jam-is-transactionless">JAM is Transactionless<a href="#jam-is-transactionless" class="hash-link" aria-label="Direct link to JAM is Transactionless" title="Direct link to JAM is Transactionless">​</a></h3><p>JAM distinguishes itself from smart contract chains by operating transactionlessly. There are no
+transactions within JAM; all actions are permissionless and initially undergo a Refine stage. During
+this stage, the service pre-refines input data, transforming it into work reports consisting of work
+results. Subsequently, these work results are transferred onto the chain.</p><p>Despite the absence of transactions, JAM still accommodates extrinsic information of a specific
+format. There are five types of extrinsic information:</p><ul><li>Guarantees</li><li>Assurances</li><li>Judgments</li><li>Preimages</li><li>Tickets</li></ul><p>The first three types form part of the JAM chain&#x27;s security framework. Guarantees and assurances
+involve validators collectively attesting that a work result accurately reflects the outcome of its
+corresponding work item after transformation through the service&#x27;s refine function.</p><p>Judgments occur when then integrity of a work result is considered uncertain and a large plurality
+of validators attest to its validity or lack thereof. In this case an invalid work item may already
+have been integrated into the service’s state and a rollback may need to happen. Judgments must
+occur within one hour of submitting the work report to the chain, during which finality is
+temporarily paused.</p><p>Preimages represent a feature provided by the JAM chain for the refine function. While the refine
+function is typically stateless, it can perform one stateful operation: looking up the preimage of a
+hash. This feature is the only opinionated aspect of the refine function.</p><p>Tickets serve as anonymous entries into the block production mechanism. They are not immediately
+required for block production; instead, the system operates two epochs in advance. This mechanism is
+part of the SAFROLE algorithm, a refined version of the original <a href="/docs/learn-safrole">SASSAFRAS</a>
+algorithm.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="refine-function">Refine Function<a href="#refine-function" class="hash-link" aria-label="Direct link to Refine Function" title="Direct link to Refine Function">​</a></h3><p>In the Refine processing stage within JAM, up to 15 MB of data can be accepted during each time
+slot, which lasts 6 seconds. However, Refine yields a maximum of 90 kB of data, resulting in
+significant data compaction that is necessary due to the distributed nature of
+<a href="/docs/learn-parachains-protocol#availability-and-validity-anv-protocol">the availability system</a>.
+For instance, in the context of a parachain, the 15 MB of data represents the
+<a href="/docs/learn-parachains-protocol#protocols-summary">Proof of Validity (PoV)</a>, while the 90 kB of data
+corresponds to the <a href="/docs/learn-parachains-protocol#candidate-receipts">candidate receipt</a>.</p><p>Refine can execute for up to 6 seconds of <a href="#polkadot-virtual-machine-pvm">PVM</a> gas, equivalent to
+the full block period of the relay chain. This extended execution time, compared to the current
+limit of two seconds for PVFs, is facilitated by <a href="#benchmarks-vs-metering">secure metering</a> and
+other optimizations inherent to PVM.</p><p>Preimage lookups can also be conducted within Refine. If a hash and its associated preimage are
+believed to be available on the JAM chain, the preimage can be requested by providing the hash. This
+capability enables efficient storage and retrieval of code, such as parachain code, by storing the
+code on the JAM chain and referencing its hash in the work package.</p><p>Refine is the primary processing workhorse, handling tasks with largely stateless operations.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="accumulate-function">Accumulate Function<a href="#accumulate-function" class="hash-link" aria-label="Direct link to Accumulate Function" title="Direct link to Accumulate Function">​</a></h3><p>The accumulate function is responsible for integrating the output generated by the Refine function
+into the chain state. Accumulate can accept multiple outputs from Refine, all originating from the
+same service. Both Refine and Accumulate serve as entry points from a service-specific code blob.</p><p>Accumulate&#x27;s execution time per output is considerably shorter than Refine’s, typically around 10
+milliseconds at most. However, the duration depends on factors such as the number of work items in
+the work package. If a work package contains multiple items, the available time is divided among
+them.</p><p>Unlike Refine, Accumulate is stateful, granting it access to the JAM chain&#x27;s state. It can read
+storage from any service, write to its key-value store, transfer funds, and include a memo with fund
+transfers. Additionally, Accumulate can create new services, upgrade its code, and request preimage
+availability, among other functionalities.</p><p>Moreover, Refine can invoke child instances of the PVM. This allows for creating sub-instances, or
+virtual machines, where code and data can be deployed, memory and stack configurations can be
+customized, and computations can be executed within a flexible framework.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="on-transfer-function">On-transfer Function<a href="#on-transfer-function" class="hash-link" aria-label="Direct link to On-transfer Function" title="Direct link to On-transfer Function">​</a></h3><p>The onTransfer function within the JAM system is also stateful, enabling it to modify the service&#x27;s
+state. It has the capability to inspect the state of other services and make changes to its own
+state. This functionality facilitates communication between services, albeit in an asynchronous
+manner.</p><p>Unlike many smart contract platforms, where interactions occur synchronously, in JAM the interaction
+between encapsulated components, such as smart contracts or services in this case, happens
+asynchronously. Messages, along with tokens, are sent, and at some point later during the same
+six-second execution period, the receiving service processes them. There is no immediate return
+path; if a return path is needed, the sending service must initiate another transfer or modify its
+state in a way that the receiving service can later interpret.</p><p>Both Accumulate and onTransfer are designed to be executed in parallel, allowing different services&#x27;
+accumulation and transfers to occur simultaneously. This design opens the possibility for future
+enhancements, such as allocating more than the current 10 milliseconds of gas input. In theory, a
+secondary core could be utilized to execute certain accumulations, providing them with significantly
+more gas to utilize.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="jam-chains-generalization">JAM Chain&#x27;s Generalization<a href="#jam-chains-generalization" class="hash-link" aria-label="Direct link to JAM Chain&#x27;s Generalization" title="Direct link to JAM Chain&#x27;s Generalization">​</a></h2><p>Polkadot, as outlined in the original Polkadot white paper, is primarily tailored to a specific
+service profile: delivering parachains. In pursuit of this service, Polkadot has developed two
+essential subcomponents:</p><ul><li>the distributed data availability system</li><li>the auditing and guarantees system for computation (i.e. a roll-up system with robust security
+guarantees)</li></ul><p>JAM represents a reduction in the level of opinionation compared to Polkadot, offering a higher
+level of abstraction and generalization. This facilitates easier utilization of underlying
+components according to individual preferences.</p><p>JAM operates in a permissionless manner, akin to smart contract chains, allowing individuals to
+upload and expect the execution of code. Additionally, it hosts data, enables preimage lookup, and
+manages state, resembling a key-value pair system. The genesis block of JAM includes a service to
+facilitate the creation of new services since JAM lacks a mechanism for accepting transactions
+directly.</p><p>Services within JAM have no predefined limits on the amount of code, data, or state they can
+accommodate. Their capabilities are determined by crypto-economic factors; the more DOT tokens
+deposited, the greater capacity for data and state. For instance, <strong>the parachains service</strong>
+consolidates all Polkadot 1.1 functionality within a single service on JAM, with the potential for
+additional services to leverage Polkadot&#x27;s distributed availability system, and auditing and
+guarantees system for computation.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="polkadot-virtual-machine-pvm">Polkadot Virtual Machine (PVM)<a href="#polkadot-virtual-machine-pvm" class="hash-link" aria-label="Direct link to Polkadot Virtual Machine (PVM)" title="Direct link to Polkadot Virtual Machine (PVM)">​</a></h2><p>The PVM design is rooted in the RISC-V ISA (Instruction Set Architecture), known for its simplicity
+and versatility. The RISC-V ISA offers several advantages:</p><ul><li>It is easy to transpile into common hardware formats such as x86, x64, and ARM.</li><li>It is well-supported by tooling like <a href="https://llvm.org/" target="_blank" rel="noopener noreferrer">LLVM</a></li></ul><p>The PVM itself embodies simplicity and security, being sandboxable and offering various execution
+guarantees. It is deterministic, consensus-sensitive, and friendly to metering. Unlike other VMs,
+the PVM lacks complexity and excessive opinionation.</p><p>WASM, while optimized for web use cases, presents challenges with stack management, particularly in
+handling continuations. RISC-V addresses this issue by placing the stack in memory, facilitating
+continuations handling naturally without additional complexity.</p><p>Additionally, the PVM demonstrates exceptional execution speeds, especially when run on conventional
+hardware like X64 and ARM, offering advantages such as free metering compared to WASM.</p><p>The incorporation of RISC-V-enabled continuations is poised to establish a new standard for scalable
+coding across multi-core platforms like JAM. Asynchronous, parallelized architectures are
+increasingly essential for scalability in both hardware and software platforms, a trend that is
+expected to extend to blockchain and consensus algorithms.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="safrole">SAFROLE<a href="#safrole" class="hash-link" aria-label="Direct link to SAFROLE" title="Direct link to SAFROLE">​</a></h2><p><a href="/docs/learn-safrole">SAFROLE</a> is a block production algorithm, a simplification of
+<a href="https://research.web3.foundation/Polkadot/protocols/block-production/SASSAFRAS" target="_blank" rel="noopener noreferrer">SASSAFRAS</a>. It
+excludes some components that may be useful for parachains. So parachains may probably stick with
+SASSAFRAS rather SAFROLE. SAFROLE will be as simple as possible to:</p><ul><li>Ensure that it is as minimally opinionated as possible to maximize the potential future use cases</li><li>To follow in the footsteps of Ethereum yellow paper, and really try to get as many implementations
+as possible to try and spread the expertise.</li></ul><p>Understanding how Polkadot 1.0 works end-to-end is challenging. With JAM, someone who is capable of
+reading and understanding the yellow paper would be able to read and understand fairly quickly how
+JAM works. So simplicity is crucial.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="networking">Networking<a href="#networking" class="hash-link" aria-label="Direct link to Networking" title="Direct link to Networking">​</a></h2><p>Networking for JAM uses the <a href="https://en.wikipedia.org/wiki/QUIC" target="_blank" rel="noopener noreferrer">QUIC protocol</a>. This allows direct
+point-to-point connections between a large numbers of validators. So essentially all 1,000-plus
+validators on Polkadot can have a persistent connection to each other without potential issues with
+sockets. Gossip is avoided, mostly because it is not needed, because JAM will not handle
+transactions. In case of distributing something that&#x27;s not point-to-point or within a very small
+subset validators, grid-diffusal will be used, in which validators are arranged into a grid, and
+packages are sent by a row, and then each node on the row sends it to all members of its column.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="pipelining-for-efficient-block-processing">Pipelining for Efficient Block Processing<a href="#pipelining-for-efficient-block-processing" class="hash-link" aria-label="Direct link to Pipelining for Efficient Block Processing" title="Direct link to Pipelining for Efficient Block Processing">​</a></h2><p>In state-based blockchains like Ethereum, the header of blocks typically contains the posterior
+state root, summarizing the state after all block computations. Consequently, the header cannot be
+sent until all computations are complete. However, some computations can be performed before sending
+the header, as their outcomes determine the block&#x27;s validity.</p><p>In JAM, a different approach is adopted by placing the prior state root in the header instead of the
+posterior state root. This means that the state roots featured in the header lag by one block. As a
+result, lightweight computations, comprising approximately 5% of the block&#x27;s workload or execution
+time, can be executed, and the block can be distributed immediately afterward. The remaining 95% of
+the block&#x27;s computation, primarily accumulation tasks, can be completed subsequently. This enables
+the next block to be started before the execution of the current block is finished.</p><p>This approach allows for more efficient utilization of time between blocks. In traditional setups
+like Polkadot&#x27;s six-second block time, where the posterior state root must be provided, only a
+portion of the time can be used for computation. However, with pipelining in JAM, the entire block
+time can be effectively utilized for computations, maximizing efficiency.</p><p>While using the full block time for computation may not be ideal, as it could lead to perpetual
+catching up and delayed block imports, JAM&#x27;s approach enables significantly more time for
+computation compared to traditional setups. This means that approximately three to three and a half
+seconds of effective block computation time can be achieved, a substantial improvement over the
+current setup.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="architectural-differences-jam-vs-relay-chain">Architectural Differences: JAM vs. Relay Chain<a href="#architectural-differences-jam-vs-relay-chain" class="hash-link" aria-label="Direct link to Architectural Differences: JAM vs. Relay Chain" title="Direct link to Architectural Differences: JAM vs. Relay Chain">​</a></h2><p>One of the architectural distinctions between JAM and the Relay Chain lies in the degree to which
+functionality is fixed. While the relay chain fixes certain elements, such as the language used to
+define the protocol (WASM), JAM goes further in this regard. For instance, it dictates the type used
+for encoding the block header and the hashing scheme, making alterations to these aspects
+challenging.</p><p>However, flexibility comparable to that enabled by the WebAssembly meta-protocol in the relay chain
+is preserved in JAM through its service model. In this model, upgradability responsibility is
+shifted to services, freeing the chain itself from the burden of being upgradable. Three primary
+reasons support this decision:</p><ul><li>Simplicity is prioritized. Maintaining a non-upgradable chain significantly reduces complexity.</li><li>The relay chain&#x27;s tendency to introduce complex functionalities without removing older ones
+complicates matters. Because upgrades are easily implemented, there&#x27;s little incentive to simplify
+the Substrate SDK. Consequently, replicating Polkadot becomes impractical.</li><li>The potential for optimization afforded by JAM&#x27;s fixed parameters. With a clear understanding of
+the specific tasks the JAM chain must perform and the ability to set fixed parameters,
+optimizations in areas like network topology and timing become feasible. This contrasts with the
+challenges posed by the relay chain&#x27;s highly upgradable nature, where such optimizations are more
+complex due to the frequent alterations possible with each upgrade.</li></ul><p>Despite these differences, JAM retains flexibility in application-level functionalities, such as
+coretime sales, staking, and governance, all managed within services. Additionally, JAM introduces a
+novel concept by associating a token balance with a service, providing opportunities for economic
+model adjustments that are not easily achievable in purely upgradable chains like the Relay Chain.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="jam-toaster">JAM Toaster<a href="#jam-toaster" class="hash-link" aria-label="Direct link to JAM Toaster" title="Direct link to JAM Toaster">​</a></h2><p>One of the ongoing efforts in ensuring that JAM meets its original expectations involves
+establishing a comprehensive test environment for the JAM chain. Unlike small-scale test networks
+running on unreliable hardware to manage cloud computing costs, this initiative entails a
+substantial investment. Introducing the JAM toaster, essentially a test platform designed for
+conducting large-scale trials and performance assessments of JAM. This addresses a prior challenge
+encountered during the development of the Polkadot Relay Chain, where understanding the emergent
+effects and dynamics of operating a network at such scale proved difficult. Previous attempts were
+limited to a few dozen nodes on a test network and the Kusama network, which lacks comprehensive
+monitoring capabilities due to restrictions on accessing validator nodes. Conversely, the
+small-scale test network failed to accurately simulate the network dynamics of a larger-scale
+deployment. The JAM toaster aims to bridge this gap by enabling in-depth research at the scale of
+the entire JAM network, comprising 1,023 nodes. This platform facilitates the investigation of
+network behavior and performance characteristics, providing valuable insights for developers
+regarding the expected performance of their parachains.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="jam-and-substrate">JAM and Substrate<a href="#jam-and-substrate" class="hash-link" aria-label="Direct link to JAM and Substrate" title="Direct link to JAM and Substrate">​</a></h2><h3 class="anchor anchorWithStickyNavbar_LWe7" id="benchmarks-vs-metering">Benchmarks vs. Metering<a href="#benchmarks-vs-metering" class="hash-link" aria-label="Direct link to Benchmarks vs. Metering" title="Direct link to Benchmarks vs. Metering">​</a></h3><p>Benchmarks, or performance tests, can be optional when working with JAM. While they may still be
+necessary on occasion, JAM&#x27;s metered system can often obviate the need for frequent benchmarking.
+JAM operates on a metered system, allowing users to assess computational workload after completion.
+Additionally, there&#x27;s a theoretical mechanism to control computation, typically implemented at block
+construction time.</p><p>However, there are scenarios where benchmarking remains relevant. For instance, when metering is
+deemed too conservative for certain use cases, benchmarking might be necessary to enhance
+performance. Additionally, benchmarking could be useful for tasks requiring extended execution
+times, ensuring they aren&#x27;t run excessively long.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="xcmp">XCMP<a href="#xcmp" class="hash-link" aria-label="Direct link to XCMP" title="Direct link to XCMP">​</a></h3><p>Moving on to Cross-Chain Message Passing (XCMP), JAM mandates full XCMP support. This is because
+within the relay chain, there&#x27;s a provision for passing more data via a candidate receipt than would
+be practical if all parachains transmitted all data all the time. JAM adheres strictly to rules,
+even for parachain services, including limitations on data transmission between the &quot;refine&quot; and
+&quot;accumulate&quot; phases. Currently, with
+<a href="/docs/learn-xcm-transport#hrmp-xcmp-lites">Horizontal Relay Chain Message Passing (HRMP)</a>, all
+messages traverse the relay chain, constraining the data payload to 4 kB or less, which might not be
+realistic. Thus, XCMP, where only message headers are relayed via the chain while the actual message
+data is transmitted off-chain, emerges as a necessary and overdue improvement.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="accords">Accords<a href="#accords" class="hash-link" aria-label="Direct link to Accords" title="Direct link to Accords">​</a></h3><p><a href="/docs/polkadot-direction#xcm-and-accords">Accords</a> essentially encapsulate state and logic,
+resembling smart contracts, with multiple instances residing alongside each parachain. They
+facilitate message exchange between instances and enable synchronous interactions with parachains.
+Accords find utility in scenarios where trust between parachains is lacking, such as token
+transfers. Unlike the existing method involving a reserve intermediary, Accords streamline direct
+token teleportation between parachains, eliminating the need for trust-compromising intermediaries.
+Moreover, Accords could function as XCM forwarding mechanisms, ensuring message integrity even when
+relayed through third-party intermediaries, thus eliminating the need for explicit origin markers.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="boosting-efficiency">Boosting Efficiency<a href="#boosting-efficiency" class="hash-link" aria-label="Direct link to Boosting Efficiency" title="Direct link to Boosting Efficiency">​</a></h3><p>Lastly, JAM&#x27;s broader, less opinionated approach to leveraging underlying consensus mechanisms makes
+it conducive to implementing more innovative solutions. For instance, distributed availability for
+complex tasks like zero-knowledge proofs becomes more practical and efficient with JAM.
+Additionally, JAM supports a mixed resource consumption model, wherein work packages can contain
+both computationally intensive tasks and data-heavy operations. By pairing services with diverse
+resource requirements, such as those needing extensive computation with those necessitating high
+data availability, JAM optimizes the utilization of validators&#x27; resources, thereby reducing costs.
+This flexible approach enables the combination of tasks like distributed availability and SNARK
+verification with parachain workloads, driving down costs while enhancing efficiency.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="enhancements-and-compatibility-in-jam">Enhancements and Compatibility in JAM<a href="#enhancements-and-compatibility-in-jam" class="hash-link" aria-label="Direct link to Enhancements and Compatibility in JAM" title="Direct link to Enhancements and Compatibility in JAM">​</a></h2><p>JAM&#x27;s design prioritizes compatibility with existing Polkadot 1 parachains. While it maintains
+compatibility with the Polkadot SDK, the Polkadot Validator Function (PVF) undergoes retargeting.
+Instead of WebAssembly, it will target the Polkadot Virtual Machine (PVM). This transition is
+facilitated by the fact that PVM is a minor modification of RISC-V, which has already been
+established as an official LLVM target. Consequently, PVM could become an official LLVM target
+before the deployment of JAM.</p><p>Beyond serving as a host for parachains, JAM introduces significant enhancements. It offers the
+potential to streamline benchmarking efforts and alleviate future benchmarking requirements.
+Additionally, JAM introduces the concept of accords, multi-instance, multi-sharded smart contracts
+that govern and enforce specific interaction protocols between parachains. Furthermore, full
+Cross-Chain Message Passing (XCMP) support is essential, enabling the removal of limitations on
+information transfer between parachains, typically facilitated by Cross-Chain Messages (XCM).</p><p>Regarding Agile Coretime, JAM retains compatibility with existing setups. However, it introduces the
+capability to target coretime not only at parachains but also at arbitrary sets of work packages.
+This flexibility enhances the versatility and efficiency of resource allocation within the JAM
+ecosystem.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"></div><div class="col lastUpdated_vwxv"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2024-06-25T14:22:26.000Z">Jun 25, 2024</time></b> by <b>Filippo</b></span></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#a-rollup-chain" class="table-of-contents__link toc-highlight">A Rollup Chain</a></li><li><a href="#smart-contract-similarity" class="table-of-contents__link toc-highlight">Smart Contract Similarity</a></li><li><a href="#service-entry-points" class="table-of-contents__link toc-highlight">Service Entry Points</a><ul><li><a href="#jam-is-transactionless" class="table-of-contents__link toc-highlight">JAM is Transactionless</a></li><li><a href="#refine-function" class="table-of-contents__link toc-highlight">Refine Function</a></li><li><a href="#accumulate-function" class="table-of-contents__link toc-highlight">Accumulate Function</a></li><li><a href="#on-transfer-function" class="table-of-contents__link toc-highlight">On-transfer Function</a></li></ul></li><li><a href="#jam-chains-generalization" class="table-of-contents__link toc-highlight">JAM Chain&#39;s Generalization</a></li><li><a href="#polkadot-virtual-machine-pvm" class="table-of-contents__link toc-highlight">Polkadot Virtual Machine (PVM)</a></li><li><a href="#safrole" class="table-of-contents__link toc-highlight">SAFROLE</a></li><li><a href="#networking" class="table-of-contents__link toc-highlight">Networking</a></li><li><a href="#pipelining-for-efficient-block-processing" class="table-of-contents__link toc-highlight">Pipelining for Efficient Block Processing</a></li><li><a href="#architectural-differences-jam-vs-relay-chain" class="table-of-contents__link toc-highlight">Architectural Differences: JAM vs. Relay Chain</a></li><li><a href="#jam-toaster" class="table-of-contents__link toc-highlight">JAM Toaster</a></li><li><a href="#jam-and-substrate" class="table-of-contents__link toc-highlight">JAM and Substrate</a><ul><li><a href="#benchmarks-vs-metering" class="table-of-contents__link toc-highlight">Benchmarks vs. Metering</a></li><li><a href="#xcmp" class="table-of-contents__link toc-highlight">XCMP</a></li><li><a href="#accords" class="table-of-contents__link toc-highlight">Accords</a></li><li><a href="#boosting-efficiency" class="table-of-contents__link toc-highlight">Boosting Efficiency</a></li></ul></li><li><a href="#enhancements-and-compatibility-in-jam" class="table-of-contents__link toc-highlight">Enhancements and Compatibility in JAM</a></li></ul></div></div></div></div></main></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/Kusama_Canary_white.png" alt="Guide" width="66" height="58"></a><div><a href="https://kusama.network/" target="_blank" class="homepage-font">Kusama Network</a><a href="https://polkadot.network/faq/" target="_blank" rel="noreferrer noopener" class="homepage-font">FAQ</a><a href="https://twitter.com/kusamanetwork" target="_blank" rel="noreferrer noopener" class="homepage-font">Twitter</a><a href="https://www.notion.so/web3foundation/Polkadot-Kusama-Community-Hub-ee1fd077ff6c42c381940404f6aa9f1c" target="_blank" rel="noreferrer noopener" class="homepage-font">Community Hub</a><a href="https://kusa.ma/discord" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Discord</a><a href="https://matrix.to/#/!HfRYKXBoPmDBCAWUEJ:polkadot.builders" target="_blank" rel="noreferrer noopener" class="homepage-font">Kusama Watercooler</a><a href="https://web3.foundation/grants/" target="_blank" rel="noreferrer noopener" class="homepage-font">Grants and Bounties</a></div><div class="kusama-mainpage-cyber-row"><div class="kusama-mainpage-column"><h2 class="homepage-font-footer">Join a cyber secret society</h2><p class="homepage-font-footer">The Kappa Sigma Mu fraternity asks you to get a Kusama tattoo to join.</p><a href="/docs/maintain-guides-society-kusama"><button class="kusama-mainpage-build-footer">See Kappa Sigma Mu</button></a></div></div></section><section class="row"><div class="copyright homepage-font">© 2024 Web3 Foundation</div>·<a target="_blank" rel="noreferrer noopener" class="item homepage-font" href="https://polkadot.network/legal-disclosures/">Legal Disclosures</a>·<a target="_blank" rel="noreferrer noopener" class="item homepage-font" href="https://polkadot.network/privacy/">Privacy Policy</a></section></footer></div>
+<script src="/assets/js/runtime~main.b7e3fab6.js"></script>
+<script src="/assets/js/main.6ea67b6e.js"></script>
+</body>
+</html>
