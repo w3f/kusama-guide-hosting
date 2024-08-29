@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[9451],{6837:e=>{e.exports=JSON.parse('{"title":"Explore","description":"Explore Wallets, Apps and Programs in Polkadot and Kusama ecosystems.","slug":"/explore-index","permalink":"/docs/explore-index","navigation":{"next":{"title":"Home","permalink":"/docs/kusama-getting-started"}}}')}}]);
